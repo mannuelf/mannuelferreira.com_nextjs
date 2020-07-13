@@ -16,7 +16,7 @@
     "noEmit": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true
   },
