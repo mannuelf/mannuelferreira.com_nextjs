@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:tailwind": "tailwindcss build shared/tailwind.css -o tailwind.generated.css",
+    "build:tailwind": "tailwindcss build shared/tailwind.css -o shared/tailwind.generated.css",
     "dev": "yarn build:tailwind && next dev",
     "build": "next build",
     "start": "next start"
