@@ -1,10 +1,10 @@
 import {
   GET_BLOG_POSTS,
   GET_BLOG_POST,
-  GET_BLOG_POST_IMAGE
-} from "../actionTypes";
-import { THEMWEBS } from "../../config/themwebs";
-import Axios from "axios";
+  GET_BLOG_POST_IMAGE,
+} from '../actionTypes';
+import { THEMWEBS } from 'config/themwebs';
+import Axios from 'axios';
 
 export const getBlogPosts: any = () => async dispatch => {
   try {
@@ -12,11 +12,11 @@ export const getBlogPosts: any = () => async dispatch => {
     const results = await Axios.get(`${posts}/?per_page=9`);
     dispatch({
       type: GET_BLOG_POSTS,
-      payload: results.data
+      payload: results.data,
     });
   } catch (e) {
     console.log(e.message);
-    throw new Error("kablam!");
+    throw new Error('kablam!');
   }
 };
 
@@ -26,11 +26,11 @@ export const getBlogPost: any = id => async dispatch => {
     const post = await Axios.get(`${posts}/${id}`);
     dispatch({
       type: GET_BLOG_POST,
-      payload: post.data
+      payload: post.data,
     });
   } catch (e) {
     console.log(e);
-    throw new Error("kablam!");
+    throw new Error('kablam!');
   }
 };
 
@@ -40,7 +40,7 @@ export const getBlogPostImage: any = id => async dispatch => {
     const results = await Axios.get(`${media}/${id}`);
     dispatch({
       type: GET_BLOG_POST_IMAGE,
-      payload: results.data
+      payload: results.data,
     });
   } catch (e) {
     console.log(e);
