@@ -1,0 +1,6 @@
+[submodule "content/posts"]
+	path = content/posts
+	url = git@github.com:mannuelf/posts.git
+[submodule "posts"]
+	path = posts
+	url = git@github.com:mannuelf/posts.git
