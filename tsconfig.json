@@ -22,5 +22,8 @@
     "@icons/*": ["./assets/icons/*"]
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "typeAcquisition": {
+    "include": ["jest"]
+  }
 }
