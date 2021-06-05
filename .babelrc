@@ -1,0 +1,26 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    "inline-react-svg",
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "alias": {
+          "@components": "./components",
+          "@lib": "./lib",
+          "@shared": "./shared",
+          "@icons": "./assets/icons"
+        }
+      }
+    ],
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
+      }
+    ]
+  ]
+}
