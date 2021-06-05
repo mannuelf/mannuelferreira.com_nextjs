@@ -1,55 +1,21 @@
-import React, { ReactNode, useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from '../globalStyles';
-import styled from 'styled-components';
-import Link from 'next/link';
-import Head from 'next/head';
-import { darkTheme, lightTheme } from '../themeConfig';
+import Alert from './alert';
+import Footer from './Footer/footer';
+import Header from './header';
+import Meta from './meta';
 
 type Props = {
-  children?: ReactNode;
-  title?: string;
+  preview?: boolean;
+  children: React.ReactNode;
 };
 
-const Layout = ({ children, title = 'Mannuel Ferreira' }: Props) => {
-  const [theme, setTheme] = useState('light');
-
+const Layout = ({ preview, children }: Props) => {
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles>
-          <Head>
-            <title>{title}</title>
-            <meta charSet="utf-8" />
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width"
-            />
-          </Head>
-          <header>
-            <nav>
-              <Link href="/">
-                <a>Home</a>
-              </Link>{' '}
-              |{' '}
-              <Link href="/about">
-                <a>About</a>
-              </Link>{' '}
-              |{' '}
-              <Link href="/users">
-                <a>Users List</a>
-              </Link>{' '}
-              | <a href="/api/users">Users API</a>
-            </nav>
-          </header>
-          {children}
-          <footer>
-            <hr />
-            <span>I'm here to stay (Footer)</span>
-          </footer>
-        </GlobalStyles>
-      </>
-    </ThemeProvider>
+    <>
+      <Meta />
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </>
   );
 };
 
