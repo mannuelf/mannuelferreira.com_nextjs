@@ -2,15 +2,13 @@
 title: 'Terminal for productivity'
 excerpt: 'If you are are software developer, that means if you build websites, backend code, configure databases, configure servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language.'
 coverImage: '/assets/blog/dynamic-routing/cover.jpg'
-date: '2020-03-16T05:35:07.322Z'
+date: '2020-02-16T05:35:07.322Z'
 author:
   name: M Ferreira
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ogImage:
   url: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ---
-
-# Terminal for productivity
 
 If you are are software developer, that means if you build websites, backend code, configure databases, configure servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language.
 

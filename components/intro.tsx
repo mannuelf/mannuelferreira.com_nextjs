@@ -1,11 +1,11 @@
-const Intro = () => {
+const Intro = ({ author }) => {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
+    <section className="flex-col md:flex-col flex items-center md:justify-between mt-16 mb-16 md:mb-12">
       <h1 className="text-4xl leading-10 pb-5">
         Hi, my name is Mannuel Ferreira
       </h1>
       <p>
-        I'm a Software Engineers, I teach Front End development at{' '}
+        I'm a Software Engineer, I teach Front End development at{' '}
         <a
           href="https://www.noroff.no/"
           target="_blank"
@@ -27,9 +27,9 @@ const Intro = () => {
       <p>
         I enjoy building and designing applications for the web. I love working
         with web technology JavaScript, TypeScript, React, Vue Js, PHP, python,
-        Sass, SCSS, Docker, Kubernetes, Minikube, Linux, Mac OSX, CENTOS,
-        UBUNTU, AWS, Google Cloud, Heroku, Netlify, Next.js. I enjoy learning
-        and teaching web development and engineering concepts.
+        Sass, Docker, Kubernetes, Minikube, Linux, Mac OSX, CENTOS, UBUNTU, AWS,
+        Google Cloud, Heroku, Netlify, Next.js. I enjoy learning, teaching web
+        development and engineering concepts.
       </p>
     </section>
   );

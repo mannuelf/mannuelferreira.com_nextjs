@@ -10,8 +10,6 @@ ogImage:
   url: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ---
 
-# What is Sass and how does it work
-
 Sass stands for Syntactically Awesome Stylesheets. It is a CSS Pre-Processor meaning you are able to write CSS with super powers of functions, variables, loops, mixins and components or partials.
 
 Sass files have a special extension `.scss` and not `.css`.

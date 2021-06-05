@@ -64,7 +64,6 @@ export const theme = {
 export const GlobalStyle = createGlobalStyle`
   body {
     font-family: ${theme.font.primary},${theme.font.secondary};
-    text-align: center;
     background: ${theme.color.lightestGrey};
     color: ${theme.color.black};
     -webkit-font-smoothing: antialiased;

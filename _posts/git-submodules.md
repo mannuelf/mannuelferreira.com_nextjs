@@ -2,7 +2,7 @@
 title: 'Git submodules'
 excerpt: git submodules are great, they allow you to add another repository to an existing project. So that you can keep your dependecies seperate and managed by separate repos.'
 coverImage: '/assets/blog/dynamic-routing/cover.jpg'
-date: '2020-03-16T05:35:07.322Z'
+date: '2020-01-16T05:35:07.322Z'
 author:
   name: M Ferreira
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
@@ -10,13 +10,11 @@ ogImage:
   url: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ---
 
-# Git submodules
-
-git submodules are great, they allow you to add another repository to an existing project. So that you can keep your dependecies seperate and managed by separate repos.
+git submodules are great, they allow you to add another repository to an existing project. So that you can keep your dependencies separate and managed by separate repos.
 
 You can leverage GIT as dependency management tool, sort of like NPM is for JavaScript.
 
-It great fo decoupling code where it makes sense. 
+It great fo decoupling code where it makes sense.
 
 I would like to keep a repository of blog posts in its own repo, so that i can pull it into any static site generator. So if i decide to move to a new JavaScript Framework its much easier.
 

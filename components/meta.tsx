@@ -34,7 +34,7 @@ const Meta = () => {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content={`Mannuel Ferreira, Software Engineer. I enjoy building and designing applications for the web. I enjoy working with web technologies such as PHP, python, Node.JS, Sass, JavaScript. ${CMS_NAME}.`}
+        content={`Mannuel Ferreira, Software Engineer. I enjoy building and designing applications for the web. I enjoy working with web technologies such as React, PHP, python, Node.JS, Sass, JavaScript. ${CMS_NAME}.`}
       />
       <link rel="stylesheet" href="https://use.typekit.net/eag6wma.css" />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
