@@ -11,5 +11,5 @@ export type User = {
 
 export type ThemeToggle = {
   theme: string;
-  toggleTheme: () => {}
+  toggleTheme: () => void
 }

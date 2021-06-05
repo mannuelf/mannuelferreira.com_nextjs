@@ -1,3 +1,3 @@
-# Portfolio website: Mannuel Ferreira
+# Mannuel Ferreira: Portfolio website
 
 ...

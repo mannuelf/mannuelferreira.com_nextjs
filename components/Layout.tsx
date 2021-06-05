@@ -4,7 +4,7 @@ import { GlobalStyles } from '../globalStyles';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Head from 'next/head';
-import { darkTheme, lightTheme } from '../ThemeConfig';
+import { darkTheme, lightTheme } from '../themeConfig';
 
 type Props = {
   children?: ReactNode;
