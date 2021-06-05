@@ -1,27 +1,35 @@
 {
-  "name": "blog-starter",
+  "name": "mannuelferreira.com",
   "version": "1.0.0",
   "scripts": {
+    "test": "jest",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "type-check": "tsc"
   },
   "dependencies": {
-    "classnames": "2.2.6",
-    "date-fns": "2.10.0",
-    "gray-matter": "4.0.2",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^13.1.9",
+    "jest": "^27.0.4",
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "remark": "11.0.2",
-    "remark-html": "10.0.0"
+    "styled-components": "^5.3.0",
+    "styled-theming": "^2.2.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.31",
-    "@types/react": "^17.0.2",
-    "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.4.0",
-    "typescript": "^4.2.3"
+    "@types/node": "^15.12.1",
+    "@types/react": "^17.0.9",
+    "@types/react-dom": "^17.0.6",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
+    "enzyme": "^3.11.0",
+    "moxios": "^0.4.0",
+    "typescript": "^4.3.2"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   },
   "license": "MIT"
 }
