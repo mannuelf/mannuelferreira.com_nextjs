@@ -7,9 +7,11 @@ import '@shared/tailwind.generated.css';
 import { lightTheme, darkTheme, GlobalStyle } from '../shared/GlobalStyle';
 require('dotenv').config();
 
-LogRocket.init(`${process.env.REACT_APP_LOG_ROCKET_ID}/mannueferreiracom`);
-ReactGa.initialize(`${process.env.REACT_APP_GOOGLE_ANALYTICS}`);
-ReactGa.pageview(window.location.pathname + window.location.search);
+if (typeof window !== 'undefined') {
+  LogRocket.init(`${process.env.REACT_APP_LOG_ROCKET_ID}/mannueferreiracom`);
+  ReactGa.initialize(`${process.env.REACT_APP_GOOGLE_ANALYTICS}`);
+  ReactGa.pageview(window.location.pathname + window.location.search);
+}
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState('light');
