@@ -1,4 +1,4 @@
-const Intro = ({ author }) => {
+const Intro = () => {
   return (
     <section className="flex-col md:flex-col flex items-center md:justify-between mt-16 mb-16 md:mb-12">
       <h1 className="text-4xl leading-10 pb-5">
