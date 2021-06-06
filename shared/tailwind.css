@@ -1,6 +1,5 @@
 @tailwind base;
 
-
 p a {
   background: hsla(0, 0%, 97%, 100%);
   display: inline-block;

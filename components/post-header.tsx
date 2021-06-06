@@ -11,7 +11,7 @@ type Props = {
 const PostHeader = ({ title, date, author }: Props) => {
   return (
     <>
-      <div className="max-w-2xl mx-auto">
+      <div className="mx-auto">
         <PostTitle>{title}</PostTitle>
         <div className="block md:hidden mb-6">
           <Avatar name={author.name} picture={author.picture} />
