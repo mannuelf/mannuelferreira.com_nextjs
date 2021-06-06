@@ -5,13 +5,7 @@
     [
       "module-resolver",
       {
-        "root": ["."],
-        "alias": {
-          "@components": "./components",
-          "@lib": "./lib",
-          "@shared": "./shared",
-          "@icons": "./assets/icons"
-        }
+        "root": ["."]
       }
     ],
     [

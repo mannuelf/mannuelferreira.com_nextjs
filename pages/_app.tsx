@@ -3,8 +3,8 @@ import { AppProps } from 'next/app';
 import LogRocket from 'logrocket';
 import ReactGa from 'react-ga';
 import { ThemeProvider } from 'styled-components';
-import '@shared/tailwind.generated.css';
-import { lightTheme, darkTheme, GlobalStyle } from '../shared/GlobalStyle';
+import '@shared/tailwind.min.css';
+import { lightTheme, darkTheme, GlobalStyle } from '@shared/GlobalStyle';
 require('dotenv').config();
 
 if (typeof window !== 'undefined') {

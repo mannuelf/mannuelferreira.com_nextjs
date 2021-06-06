@@ -2,24 +2,25 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
-    "jsx": "preserve",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@lib/*": ["lib/*"],
+      "@shared/*": ["shared/*"],
+      "@icons/*": ["assets/icons/*"],
+      "@types/*": ["types/*"]
+    },
     "allowJs": true,
-    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "node",
+    "noEmit": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
-  },
-  "baseUrl": ".",
-  "paths": {
-    "@components/*": ["./components/*"],
-    "@lib/*": ["./lib/*"],
-    "@shared/*": ["./shared/*"],
-    "@icons/*": ["./assets/icons/*"]
+    "skipLibCheck": true,
+    "strict": true
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -6,7 +6,7 @@
     "build": "next build && next export",
     "start": "next start",
     "typecheck": "tsc",
-    "build:tailwind": "tailwindcss build shared/tailwind.css -o shared/tailwind.generated.css",
+    "build:tailwind": "tailwindcss build shared/tailwind.css -o shared/tailwind.min.css",
     "prestart": "yarn run build:tailwind",
     "prebuild": "yarn run build:tailwind"
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../shared/GlobalStyle';
+import { theme } from '@shared/GlobalStyle';
 
 const StyledLogo = styled.a`
   display: block;

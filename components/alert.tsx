@@ -1,10 +1,10 @@
-import Container from './container'
-import cn from 'classnames'
-import { EXAMPLE_PATH } from '../lib/constants'
+import Container from './container';
+import cn from 'classnames';
+import { EXAMPLE_PATH } from '@lib/constants';
 
 type Props = {
-  preview?: boolean
-}
+  preview?: boolean;
+};
 
 const Alert = ({ preview }: Props) => {
   return (
@@ -42,7 +42,7 @@ const Alert = ({ preview }: Props) => {
         </div>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Alert
+export default Alert;
