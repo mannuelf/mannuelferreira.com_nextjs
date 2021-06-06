@@ -5,7 +5,6 @@ import ReactGa from 'react-ga';
 import { ThemeProvider } from 'styled-components';
 import '@shared/tailwind.css';
 import { lightTheme, darkTheme, GlobalStyle } from '@shared/GlobalStyle';
-require('dotenv').config();
 
 if (typeof window !== 'undefined') {
   LogRocket.init(`${process.env.REACT_APP_LOG_ROCKET_ID}/mannueferreiracom`);
