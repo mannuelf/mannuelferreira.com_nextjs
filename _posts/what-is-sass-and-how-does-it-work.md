@@ -57,7 +57,7 @@ The above Sass will compile down to:
   font-size: $font-small;
 }
 ```
+****
+Browsers do not understand files with the `.scss` extension, which is why you have a completion step.
 
-Browsers do not understand files with the `.scss` extension, which is why you have a complition step.
-
-In the `.scss` file you can do many prgramitic things like store variables, create functions, import orther partial `.scss` files.
+In the `.scss` file you can do many programmatic things like store variables, create functions, import other partial `.scss` files.

@@ -1,26 +1,5 @@
 @tailwind base;
 
-h1 {
-  @apply text-5xl;
-}
-
-h2 {
-  @apply text-4xl;
-}
-
-article h2,
-article h3 {
-  font-weight: 600;
-}
-
-article p {
-  font-size: 18;
-  letter-spacing: 0.01em;
-}
-
-h3 {
-  @apply text-3xl;
-}
 
 p a {
   background: hsla(0, 0%, 97%, 100%);

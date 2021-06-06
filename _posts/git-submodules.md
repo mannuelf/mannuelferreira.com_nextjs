@@ -1,6 +1,6 @@
 ---
 title: 'Git submodules'
-excerpt: git submodules are great, they allow you to add another repository to an existing project. So that you can keep your dependecies seperate and managed by separate repos.'
+excerpt: git submodules are great, they allow you to add another repository to an existing project. So that you can keep your dependencies separate and managed by separate repos.'
 coverImage: '/assets/blog/dynamic-routing/cover.jpg'
 date: '2020-01-16T05:35:07.322Z'
 author:
@@ -23,15 +23,15 @@ I would like to keep a repository of blog posts in its own repo, so that i can p
 Change directory into the already GIT enabled project that you want to include a sub module into.
 
 ```bash
-$ cd project-folder/
+cd project-folder/
 ```
 
-### Run the submodule add command 
+### Run the submodule add command
 
 This will initialise the submodule int you existing project.
 
 ```bash
-$ git submodule add git@github.com:mannuelf/blog-posts.git
+git submodule add git@github.com:mannuelf/blog-posts.git
 ```
 
 ### Run git status
@@ -46,6 +46,6 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-	new file:   .gitmodules
-	new file:   blog-posts
+ new file:   .gitmodules
+ new file:   blog-posts
 ```

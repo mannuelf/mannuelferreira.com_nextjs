@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '@components/Logo';
 import styled from 'styled-components';
+import Container from '@components/container';
 
 const StyledAppHeader = styled.header`
   display: flex;
@@ -12,9 +13,9 @@ const StyledAppHeader = styled.header`
 
 const Header = () => (
   <StyledAppHeader className="header sm:pr-6 md:pb-4">
-    <div className="container mx-auto">
+    <Container>
       <Logo />
-    </div>
+    </Container>
   </StyledAppHeader>
 );
 

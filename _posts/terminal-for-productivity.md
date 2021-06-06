@@ -1,6 +1,6 @@
 ---
 title: 'Terminal for productivity'
-excerpt: 'If you are are software developer, that means if you build websites, backend code, configure databases, configure servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language.'
+excerpt: 'If you are are software developer building websites you most likely are writing backend code, frontend code, configuring databases, servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language you are coding.'
 coverImage: '/assets/blog/dynamic-routing/cover.jpg'
 date: '2020-02-16T05:35:07.322Z'
 author:
@@ -10,13 +10,13 @@ ogImage:
   url: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ---
 
-If you are are software developer, that means if you build websites, backend code, configure databases, configure servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language.
+If you are are software developer building websites you most likely are writing backend code, frontend code, configuring databases, servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language you are coding.
 
 If this is you and you are you just starting out.
- 
-The best self investement you can do to boost your productivity is to learn the terminal and get comfortable moving around your computer using the terminal.
 
-You dont have know all the commands right up front. You only need a few key commands lets me show a few. and slowly build from there.
+The best self investment you can do to boost your productivity is to learn the terminal and get comfortable moving around your computer using the terminal.
+
+You don't have know all the commands right up front. You only need a few key commands lets me show a few. and slowly build from there.
 
 ## Make Directory
 
@@ -33,18 +33,20 @@ cd folder-name/
 ```
 
 Go back a directory
+
 ```bash
 cd ..
 ```
 
 Go back home (on unix based systems)
+
 ```bash
 cd ~/
 ```
 
 ## List directory
 
-Once youve arived in the directory, you of course want to list the contents
+Once you've arrived in the directory, next list the contents of directory
 
 ```bash
 ls
@@ -79,6 +81,7 @@ To delete a folder you need to specify the `-r` flag to remove the parent direct
 ```bash
 rm -r folder-name/
 ```
+
 Some times you want to force remove.
 
 ```bash

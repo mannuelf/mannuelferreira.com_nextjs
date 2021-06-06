@@ -1,15 +1,16 @@
 import FooterSocial from './footerSocial';
 import FooterCopyright from './footerCopyright';
+import Container from '@components/container';
 
 const Footer = () => {
   return (
     <footer className="app-footer p-10">
-      <div className="container mx-auto">
+      <Container>
         <div className="flex flex-wrap justify-start -mx-2">
           <FooterCopyright />
           <FooterSocial />
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };
