@@ -13,7 +13,7 @@ import markdownToHtml from '@lib/markdownToHtml';
 type Props = {
   post: Post;
   morePosts: Post[];
-  preview?: boolean;
+  preview?: boolean | undefined;
 };
 
 const Post = ({ post, morePosts, preview }: Props) => {
@@ -24,7 +24,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
   }
 
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
