@@ -6,12 +6,9 @@ import { getAllPosts } from '@lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@lib/constants';
 import LogRocket from 'logrocket';
-import ReactGa from 'react-ga';
 
 if (typeof window !== 'undefined') {
-  LogRocket.init(`${process.env.REACT_APP_LOG_ROCKET_ID}/mannueferreiracom`);
-  ReactGa.initialize(`${process.env.REACT_APP_GOOGLE_ANALYTICS}`);
-  ReactGa.pageview(window.location.pathname + window.location.search);
+  LogRocket.init(`${process.env.NEXT_PUBLIC_LOG_ROCKET_ID}/mannueferreiracom`);
 }
 
 type Props = {
