@@ -8,6 +8,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@netlify/plugin-nextjs": "^3.4.2",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.0",

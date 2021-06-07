@@ -13,7 +13,7 @@ const PostHeader = ({ title, date, author }: Props) => {
     <>
       <div className="mx-auto">
         <PostTitle>{title}</PostTitle>
-        <div className="block md:hidden mb-6">
+        <div className="block mb-6">
           <Avatar name={author.name} picture={author.picture} />
         </div>
         <div className="mb-6 text-lg">

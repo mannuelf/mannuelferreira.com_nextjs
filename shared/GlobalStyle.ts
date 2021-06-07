@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const lightTheme = {
   body: '#FFF',
+  heading: '',
   text: '#363537',
   toggleBorder: '#FFF',
   background: '#363537',
@@ -56,8 +57,8 @@ export const theme = {
     six: "48px"
   },
   font: {
-    primary: "freight-sans-pro",
-    secondary: "arial, sans-serif"
+    primary: "'Ubuntu', Arial, sans-serif",
+    secondary: "'Fira Sans', Arial, sans-serif"
   }
 };
 
@@ -66,8 +67,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${theme.font.primary},${theme.font.secondary};
     background: ${theme.color.lightestGrey};
     color: ${theme.color.black};
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   code {
@@ -85,21 +84,6 @@ export const GlobalStyle = createGlobalStyle`
     text-align: left;
   }
 
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 800
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 18px;
-    padding-bottom: 16px;
-    line-height: 24px;
-  }
-
   .app-footer {
     background: ${theme.color.spaceCadetDark};
     color: ${theme.color.lightestGrey};
@@ -107,9 +91,5 @@ export const GlobalStyle = createGlobalStyle`
     & a {
       color: ${theme.color.lightestGrey}
     }
-  }
-
-  .wp-block-image {
-    padding-bottom: ${theme.height.sixteen}
   }
 `;
