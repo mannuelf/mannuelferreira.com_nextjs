@@ -70,7 +70,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   code {
-    font-family: ubuntu-mono, monospace;
+    font-family: 'Ubuntu mono', monospace;
+  }
+
+  .markdown-body p {
+    margin-bottom: .8em;
   }
 
   .app-header {

@@ -39,7 +39,7 @@ const Meta = () => {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Ubuntu:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Ubuntu:wght@400;500;700&Ubuntu+Mono:wght@400;700&display=swap"
         rel="stylesheet"
       />
       {/* Global Site Tag (gtag.js) - Google Analytics */}
