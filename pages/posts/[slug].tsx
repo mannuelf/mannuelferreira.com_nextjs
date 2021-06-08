@@ -1,14 +1,18 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
+import Head from 'next/head';
+import ReactMarkdown from 'react-markdown';
+import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import matter from 'gray-matter';
+
+import { CMS_NAME } from '@lib/constants';
+import { getPostBySlug, getAllPosts } from '@lib/api';
 import Container from '@components/container';
+import Layout from '@components/Layout/layout';
 import PostBody from '@components/post-body';
 import PostHeader from '@components/post-header';
-import Layout from '@components/Layout/layout';
-import { getPostBySlug, getAllPosts } from '@lib/api';
 import PostTitle from '@components/post-title';
-import Head from 'next/head';
-import { CMS_NAME } from '@lib/constants';
-import markdownToHtml from '@lib/markdownToHtml';
 
 type Props = {
   post: Post;
@@ -16,8 +20,18 @@ type Props = {
   preview?: boolean | undefined;
 };
 
-const Post = ({ post, morePosts, preview }: Props) => {
+const CodeBlock = ({ language, value }: CodeBlockProps) => {
+  return (
+    <SyntaxHighlighter language={language} style={dracula}>
+      {value}
+    </SyntaxHighlighter>
+  );
+};
+
+const Post = ({ post }: Props) => {
   const router = useRouter();
+
+  const renderWithCode = post.content.content;
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -43,7 +57,11 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 date={post.date}
                 author={post.author}
               />
-              <PostBody content={post.content} />
+              <ReactMarkdown
+                className="markdown-body"
+                source={renderWithCode}
+                renderers={{ code: CodeBlock }}
+              />
             </article>
           </>
         )}
@@ -71,7 +89,7 @@ export async function getStaticProps({ params }: Params) {
     'coverImage',
   ]);
 
-  const content = await markdownToHtml(post.content || '');
+  const content = matter(post.content || '');
 
   return {
     props: {
