@@ -26,7 +26,7 @@ export const theme = {
     spanishGray: "#999999",
     white: "#FFFFFF",
     spaceCadetDark: "#28284F",
-    spaceCadet: "#2D2B56",
+    spaceCadet: "#2D2B55",
     hanPurple: "#5E36F4",
     lightestGrey: "#F8F8F8",
     cultured: "#E1EFFF",

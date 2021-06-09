@@ -5,9 +5,9 @@ module.exports = {
       boxShadow: {},
       colors: {
         purple: {
-          light: '#5E36F4',
-          DEFAULT: '#5E36F4',
-          dark: '#5E36F4',
+          light: '#2D2B55',
+          DEFAULT: '#2D2B55',
+          dark: '#2D2B55',
         },
       },
       container: {

@@ -8,11 +8,12 @@ const StyledAppHeader = styled.header`
   flex-direction: row;
   flex-wrap: nowrap;
   height: 48px;
+  line-height: 48px;
   background-color: #28284f;
 `;
 
 const Header = () => (
-  <StyledAppHeader className="header sm:pr-6 md:pb-4">
+  <StyledAppHeader>
     <Container>
       <Logo />
     </Container>
