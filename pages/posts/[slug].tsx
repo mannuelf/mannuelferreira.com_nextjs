@@ -31,8 +31,6 @@ const CodeBlock = ({ language, value }: CodeBlockProps) => {
 const Post = ({ post }: Props) => {
   const router = useRouter();
 
-  const renderWithCode = post.content.content;
-
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
@@ -59,7 +57,7 @@ const Post = ({ post }: Props) => {
               />
               <ReactMarkdown
                 className="markdown-body"
-                source={renderWithCode}
+                source={post.content}
                 renderers={{ code: CodeBlock }}
               />
             </article>
@@ -89,7 +87,7 @@ export async function getStaticProps({ params }: Params) {
     'coverImage',
   ]);
 
-  const content = matter(post.content || '');
+  const content = matter.stringify(post.content, {});
 
   return {
     props: {

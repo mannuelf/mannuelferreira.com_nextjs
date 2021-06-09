@@ -4,7 +4,7 @@ import Container from '@components/container';
 
 const Footer = () => {
   return (
-    <footer className="app-footer p-10">
+    <footer className="app-footer pt-10 pb-10">
       <Container>
         <div className="flex flex-wrap justify-start -mx-2">
           <FooterCopyright />

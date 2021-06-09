@@ -3,7 +3,13 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {},
-      colors: {},
+      colors: {
+        purple: {
+          light: '#5E36F4',
+          DEFAULT: '#5E36F4',
+          dark: '#5E36F4',
+        },
+      },
       container: {
         screens: {
           sm: '100%',
