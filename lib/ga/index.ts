@@ -6,7 +6,7 @@ export const pageview = (url: string) => {
 	}
 }
 
-export const event = ({ action, params }: any) => {
+export const event = ({ action, params }: Ga) => {
 	if (typeof window !== 'undefined') {
 		window.gtag('event', action, params)
 	}
