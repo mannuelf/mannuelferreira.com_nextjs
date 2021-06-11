@@ -1,4 +1,4 @@
 type Gtm = {
-	uniqueEventId: number;
-	start: bigint
-}
+  uniqueEventId: number;
+  start: bigint;
+};

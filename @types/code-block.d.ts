@@ -1,4 +1,4 @@
 type CodeBlockProps = {
-	language: string;
-	value: string;
+  language: string;
+  value: string;
 };

@@ -1,26 +1,26 @@
 const Intro = () => {
   return (
-    <section className="flex-col md:flex-col flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-      <h1 className="text-4xl font-bold leading-10 pb-5">
+    <section className='flex-col md:flex-col flex items-center md:justify-between mt-16 mb-16 md:mb-12'>
+      <h1 className='text-4xl font-bold leading-10 pb-5'>
         Hello world, my name is Mannuel Ferreira
       </h1>
       <p>
         I'm a Software Engineer, I teach Front End development at{' '}
         <a
-          href="https://www.noroff.no/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://www.noroff.no/'
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          Noroff Fagskole <i className="fa fa-external-link-alt text-sm"></i>
+          Noroff Fagskole <i className='fa fa-external-link-alt text-sm'></i>
         </a>
         , previously I'd spent my days and some times evenings helping build and
         maintain a fashion e-commerce store in South Africa{' '}
         <a
-          href="https://superbalist.com"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://superbalist.com'
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          Superbalist.com <i className="fa fa-external-link-alt text-sm"></i>
+          Superbalist.com <i className='fa fa-external-link-alt text-sm'></i>
         </a>
         .
       </p>

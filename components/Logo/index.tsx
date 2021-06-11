@@ -17,10 +17,10 @@ const StyledLogo = styled.a`
 
 const Logo = () => {
   return (
-    <StyledLogo href="/">
+    <StyledLogo href='/'>
       <img
-        src="../assets/icons/logo.svg"
-        alt="Mannuel Ferreira"
+        src='../assets/icons/logo.svg'
+        alt='Mannuel Ferreira'
         width={48}
         height={96}
       />

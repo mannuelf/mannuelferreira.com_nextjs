@@ -42,13 +42,13 @@ const Post = ({ post }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mt-20 mb-20">
+            <article className='mt-20 mb-20'>
               <Head>
                 <title>
                   {post.title} | {CMS_NAME}
                 </title>
-                <meta property="og:image" content={post.ogImage.url} />
-                <meta name="description" content={post.excerpt} />
+                <meta property='og:image' content={post.ogImage.url} />
+                <meta name='description' content={post.excerpt} />
               </Head>
               <PostHeader
                 title={post.title}
@@ -56,7 +56,7 @@ const Post = ({ post }: Props) => {
                 author={post.author}
               />
               <ReactMarkdown
-                className="markdown-body"
+                className='markdown-body'
                 source={post.content}
                 renderers={{ code: CodeBlock }}
               />

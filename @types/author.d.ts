@@ -1,4 +1,4 @@
 type Author = {
-  name: string
-  picture: string
-}
+  name: string;
+  picture: string;
+};
