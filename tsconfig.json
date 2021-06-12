@@ -30,7 +30,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "jest-setup.js",
+    "jest.setup.js",
     "jest.config.ts"
   ],
   "typeAcquisition": {
