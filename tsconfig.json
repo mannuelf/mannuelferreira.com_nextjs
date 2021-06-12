@@ -5,9 +5,11 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
-      "@lib/*": ["lib/*"],
-      "@shared/*": ["shared/*"],
       "@icons/*": ["assets/icons/*"],
+      "@lib/*": ["lib/*"],
+      "@pages": ["pages/*"],
+      "@api": ["pages/api/*"],
+      "@shared/*": ["shared/*"],
       "@types/*": ["types/*"]
     },
     "allowJs": true,
