@@ -5,10 +5,11 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
+      "@hooks/": ["hooks/*"],
       "@icons/*": ["assets/icons/*"],
       "@lib/*": ["lib/*"],
-      "@pages": ["pages/*"],
-      "@api": ["pages/api/*"],
+      "@pages/*": ["pages/*"],
+      "@api/*": ["pages/api/*"],
       "@shared/*": ["shared/*"],
       "@types/*": ["types/*"]
     },
@@ -25,7 +26,7 @@
     "strict": true
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest-setup.js"],
   "typeAcquisition": {
     "include": ["jest"]
   }
