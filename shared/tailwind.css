@@ -22,5 +22,24 @@ p a:hover {
   color: #ff9d00;
 }
 
+.markdown-body {
+  @apply text-lg leading-relaxed;
+}
+
+.markdown-body p,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body blockquote {
+  @apply my-1;
+}
+
+.markdown-body h2 {
+  @apply text-3xl mt-12 mb-4 leading-snug;
+}
+
+.markdown-body h3 {
+  @apply text-2xl mt-8 mb-4 leading-snug;
+}
+
 @tailwind components;
 @tailwind utilities;
