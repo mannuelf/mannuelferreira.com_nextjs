@@ -4,12 +4,13 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
+      "@api/*": ["pages/api/*"],
       "@components/*": ["components/*"],
       "@hooks/": ["hooks/*"],
       "@icons/*": ["assets/icons/*"],
       "@lib/*": ["lib/*"],
+      "@mocks/*": ["mocks/*"],
       "@pages/*": ["pages/*"],
-      "@api/*": ["pages/api/*"],
       "@shared/*": ["shared/*"],
       "@types/*": ["types/*"]
     },
@@ -30,7 +31,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "jest.setup.js",
+    "jest.setup.ts",
     "jest.config.ts"
   ],
   "typeAcquisition": {
