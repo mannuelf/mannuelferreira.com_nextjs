@@ -14,7 +14,7 @@ git submodules are great, they allow you to add another repository to an existin
 
 You can leverage GIT as dependency management tool, sort of like NPM is for JavaScript.
 
-It great fo decoupling code where it makes sense.
+> It's great fo decoupling code where it makes sense.
 
 I would like to keep a repository of blog posts in its own repo, so that i can pull it into any static site generator. So if i decide to move to a new JavaScript Framework its much easier.
 
