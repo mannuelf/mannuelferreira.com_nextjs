@@ -17,7 +17,7 @@ export default {
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
+  collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
@@ -54,7 +54,7 @@ export default {
   // forceCoverageMatch: [],
 
   // A path to a module which exports an async function that is triggered once before all test suites
-  // globalSetup: undefined,
+  globalSetup: '<rootDir>/test.env.ts',
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
@@ -71,23 +71,20 @@ export default {
   // ],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
+  //moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^@components(.*)$': '<rootDir>/components$1',
-    '^@pages(.*)$': '<rootDir>/pages$1',
-    '^@hooks(.*)$': '<rootDir>/hooks$1',
-    '^@lib/*': ['<rootDir>/lib$1'],
-    '^@pages/*': ['<rootDir>/pages$1'],
+    '^@api(.*)$': '<rootDir>/api$1',
     '^@api/*': ['<rootDir>/pages/api$1'],
+    '^@components(.*)$': '<rootDir>/components$1',
+    '^@components/*': ['<rootDir>/components$1'],
+    '^@hooks(.*)$': '<rootDir>/hooks$1',
+    '^@hooks/*': ['<rootDir>/hooks$1'],
+    '^@lib(.*)$': '<rootDir>/lib$1',
+    '^@lib/*': ['<rootDir>/lib$1'],
+    '^@pages(.*)$': '<rootDir>/pages$1',
+    '^@pages/*': ['<rootDir>/pages$1'],
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
