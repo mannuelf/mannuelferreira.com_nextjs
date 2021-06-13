@@ -70,7 +70,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   code {
-    font-family: 'Ubuntu mono', monospace;
+    background-color: ${theme.color.celeste};
   }
 
   .markdown-body p {
