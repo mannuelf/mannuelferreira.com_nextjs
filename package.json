@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
@@ -43,6 +43,7 @@
     "autoprefixer": "^10.2.6",
     "babel-jest": "^27.0.2",
     "jest": "^27.0.4",
+    "msw": "^0.29.0",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.2",
     "ts-node": "^10.0.0",
