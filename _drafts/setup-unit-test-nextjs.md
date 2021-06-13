@@ -1,4 +1,4 @@
-# Setup unit test for NEXTJS 
+# Setup unit test for NEXT JS
 
 ## Testing in
 
@@ -7,6 +7,10 @@
 ### ABCDE
 
 #### Resources and Research
+
+[https://hobochild.com/posts/testing.html](https://hobochild.com/posts/testing.html)
+
+[https://www.npmjs.com/package/node-mocks-http](https://www.npmjs.com/package/node-mocks-http)
 
 [https://www.kyrelldixon.com/blog/setup-jest-and-react-testing-library-with-nextjs](https://www.kyrelldixon.com/blog/setup-jest-and-react-testing-library-with-nextjs)
 
