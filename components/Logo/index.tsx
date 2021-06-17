@@ -1,30 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
-import { theme } from '@shared/GlobalStyle';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const StyledLogo = styled.a`
-  display: block;
-  background-color: transparent;
-  width: 96px;
-  color: ${theme.color.lightestGrey};
-  font-size: 2.9rem;
-  line-height: 48px;
-  margin-top: 8px;
-  img {
-    width: 100%;
-  }
-`;
+const logoSvg = '/assets/icons/logo.svg';
 
 const Logo = () => {
   return (
-    <StyledLogo href='/'>
-      <img
-        src='../assets/icons/logo.svg'
-        alt='Mannuel Ferreira'
-        width={48}
-        height={96}
-      />
-    </StyledLogo>
+    <Link passHref href='/'>
+      <a className='logo-icon'>
+        <Image src={logoSvg} alt='Mannuel Ferreira' width={96} height='auto' />
+      </a>
+    </Link>
   );
 };
 
