@@ -1,7 +1,9 @@
 import { loadEnvConfig } from '@next/env';
 import { resolve } from 'path';
 
-export default async () => {
+const testEnv = async () => {
   const envFile = resolve(__dirname, '.');
   loadEnvConfig(envFile);
 };
+
+export default testEnv;
