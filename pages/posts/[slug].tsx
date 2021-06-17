@@ -42,7 +42,7 @@ const Post = ({ post }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className='mt-20 mb-20'>
+            <article className='mt-10 md:mt-20 mb-20'>
               <Head>
                 <title>
                   {post.title} | {CMS_NAME}

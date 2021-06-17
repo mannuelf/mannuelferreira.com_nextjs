@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const logoSvg = '/assets/icons/logo.svg';
+const logoSvg =
+  'https://res.cloudinary.com/mannuel/image/upload/v1623925494/images/mf-logo.svg';
 
 const Logo = () => {
   return (
