@@ -1,13 +1,13 @@
 ---
 title: 'Syncing a forked repo in the terminal'
 excerpt: 'A fork is your very own copy of some code which you can make changes locally without fear of breaking anything upstream (more on this later). You are free to add some feature and suggest that new feature be added back to the upstream repository.'
-coverImage: '/assets/blog/dynamic-routing/cover.jpg'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
 date: '2021-06-16T15:30:00.322Z'
 author:
   name: M Ferreira
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
+  url: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
 ---
 
 GitHub allows you to contribute to open source projects by making your own copy of a repository (repo). This is called a `fork`.
