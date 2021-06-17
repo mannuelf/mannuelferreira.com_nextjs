@@ -5,7 +5,7 @@ const Intro = () => {
         Hello world, my name is Mannuel Ferreira
       </h1>
       <p>
-        I'm a Software Engineer, I teach Front End development at{' '}
+        I&apos;m a Software Engineer, I teach Front End development at
         <a
           href='https://www.noroff.no/'
           target='_blank'
@@ -13,8 +13,8 @@ const Intro = () => {
         >
           Noroff Fagskole <i className='fa fa-external-link-alt text-sm'></i>
         </a>
-        , previously I'd spent my days and some times evenings helping build and
-        maintain a fashion e-commerce store in South Africa{' '}
+        , previously I&apos;d spent my days and some times evenings helping
+        build and maintain a fashion e-commerce store in South Africa{' '}
         <a
           href='https://superbalist.com'
           target='_blank'
