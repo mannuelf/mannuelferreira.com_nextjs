@@ -1,23 +1,13 @@
 import React from 'react';
 import Logo from '@components/Logo';
-import styled from 'styled-components';
 import Container from '@components/container';
 
-const StyledAppHeader = styled.header`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  height: 48px;
-  line-height: 48px;
-  background-color: #28284f;
-`;
-
 const Header = () => (
-  <StyledAppHeader>
+  <header className='bg-purple sticky top-0 flex-none flex'>
     <Container>
       <Logo />
     </Container>
-  </StyledAppHeader>
+  </header>
 );
 
 export default Header;
