@@ -29,8 +29,8 @@ code {
   background: #28284f;
   color: #f8f8f8;
 }
-
-.app-footer a {
+.app-footer a:link,
+.app-footer a:visited {
   color: #f8f8f8;
 }
 
