@@ -16,13 +16,11 @@ A developers job is never done 🙂 .
 
 After deploying your website to Netlify (any server) naturally you run some performance tests using [WebPageSpeedTest](https://www.webpagetest.org/). You might notice and alarming red `F` or `E` in the top right of the screen. What the heck is that?
 
+## TLDR
+
 ![WebPageSpeedTest](/public/assets/blog/setup-netlify-security-headers/webpagespeedtest_0001.png)
 
-This is a `Content Security Policy` score, it shows whether any security policies are configured and to what degree. This policy protects your website from having malicious code added to it. It prevents clickjacking and cross-site scripting.
-
-This integration is all thanks [Snyk](https://snyk.io/). It helps you configure the correct security policy.
-
-## TLDR
+This is a `CSP` (Content Security Policy) score, it shows whether any security policies are configured and to what degree. The CSP provides directives to help protect your website from nefarious actions. It can help prevent clickjacking, cross-site scripting and illegal embedding of your webpage in an frame/iframe.
 
 Create a `netlify.toml` file and place this script within, deploy and test one more time.
 
