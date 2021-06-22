@@ -1,5 +1,39 @@
 @tailwind base;
 
+body {
+  font-family: 'Ubuntu', Arial, sans-serif;
+  background: #f8f8f8;
+  color: #222222;
+}
+
+code {
+  background-color: #9efefe;
+}
+
+.markdown-body p {
+  margin-bottom: 0.8em;
+}
+
+.app-header {
+  border-bottom: #222222;
+  text-align: left;
+  line-height: 48px;
+}
+
+.article-header {
+  border-bottom: #222222;
+  text-align: left;
+}
+
+.app-footer {
+  background: #28284f;
+  color: #f8f8f8;
+}
+
+.app-footer a {
+  color: #f8f8f8;
+}
+
 .logo-icon {
   top: 0em;
   display: block;

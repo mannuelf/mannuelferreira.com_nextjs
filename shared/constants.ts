@@ -6,4 +6,3 @@ export const LASTFM_SHARED_SECRET =
 export const LASTFM_METHOD = {
   TOP_ARTISTS: 'user.getTopArtists',
 };
-console.log('🙈', process.env);
