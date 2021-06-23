@@ -11,4 +11,4 @@
     X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' cloudinary.com *.cloudinary.com; font-src 'self' gstatic.com *.gstatic.com; manifest-src 'self'; style-src 'unsafe-inline' cloudfront.net *.cloudfront.net; frame-ancestors 'self'; form-action 'self'; script-src-elem 'unsafe-inline' googletagmanager.com *.googletagmanager.com"
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' cloudfront.net *.cloudfront.net cloudinary.com *.cloudinary.com; font-src 'self' gstatic.com *.gstatic.com cloudfront.net *.cloudfront.net; manifest-src 'self'; style-src 'unsafe-inline' cloudfront.net *.cloudfront.net; frame-ancestors 'self'; form-action 'self'; script-src-elem 'unsafe-inline' cloudfront.net *.cloudfront.net googletagmanager.com *.googletagmanager.com"
