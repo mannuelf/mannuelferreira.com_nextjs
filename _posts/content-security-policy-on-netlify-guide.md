@@ -1,13 +1,13 @@
 ---
 title: 'Content Security Policy on Netlify guide'
 excerpt: 'A developers job is never done 🙂 . After deploying your website to Netlify naturally you run some performance tests using WebPageSpeedTest. You might notice and alarming red `F` or `E` in the top right of the screen. What the heck is that?'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1624456617/images/netlify.png'
 date: '2021-06-23T13:45:00.322Z'
 author:
   name: 'M Ferreira'
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
+  url: 'https://res.cloudinary.com/mannuel/image/upload/v1624456617/images/netlify.png'
 ---
 
 
