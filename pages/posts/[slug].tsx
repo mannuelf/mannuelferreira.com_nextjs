@@ -6,7 +6,7 @@ import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import matter from 'gray-matter';
 
-import { CMS_NAME } from '@lib/constants';
+import { CMS_NAME, SITE_URL } from '@lib/constants';
 import { getPostBySlug, getAllPosts } from '@lib/api';
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
@@ -30,6 +30,7 @@ const CodeBlock = ({ language, value }: CodeBlockProps) => {
 
 const Post = ({ post }: Props) => {
   const router = useRouter();
+  const currentURL = `${SITE_URL}${router.asPath}`;
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -47,8 +48,23 @@ const Post = ({ post }: Props) => {
                 <title>
                   {post.title} | {CMS_NAME}
                 </title>
-                <meta property='og:image' content={post.ogImage.url} />
-                <meta name='description' content={post.excerpt} />
+                <meta
+                  property='og:image'
+                  content={post.ogImage.url}
+                  key='ogimage'
+                />
+                <meta
+                  property='og:site_name'
+                  content={CMS_NAME}
+                  key='ogsitename'
+                />
+                <meta property='og:title' content={post.title} />
+                <meta
+                  property='og:description'
+                  content={post.excerpt}
+                  key='ogdesc'
+                />
+                <meta property='og:url' content={currentURL} key='ogurl' />
               </Head>
               <PostHeader
                 title={post.title}
@@ -85,6 +101,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'ogImage',
     'coverImage',
+    'excerpt',
   ]);
 
   const content = matter.stringify(post.content, {});

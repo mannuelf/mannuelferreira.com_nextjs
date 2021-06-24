@@ -1,6 +1,6 @@
 ---
-title: 'Content Security Policy on Netlify guide'
-excerpt: 'After deploying your website to Netlify naturally you run some performance tests using WebPageSpeedTest. You might notice and alarming red `F` or `E` in the top right of the screen. What the heck is that?'
+title: 'Content Security Policy on Netlify (guide)'
+excerpt: 'After deploying your website to Netlify naturally you run some performance tests using WebPageSpeedTest. You might notice and alarming red "F" or "E" in the top right of the screen.'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1624511388/images/netlify-secure.png'
 date: '2021-06-23T13:45:00.322Z'
 author:
@@ -36,11 +36,11 @@ Created a `netlify.toml` file and placed the CSP policy like this:
 
 That is a basic starter policy it allows css, form actions, ajax requests, scripts and images from the same origin, does not allow object, frame, media.
 
-This is bare bones setup and no Google Analytics scripts or font  scripts will be allowed to execute, keep reading to for more or checkout my final [netlify.toml](https://github.com/mannuelf/mannuelferreira.com_nextjs/blob/main/netlify.toml#L15) file.
+This is bare bones setup and no Google Analytics scripts or font scripts will be allowed to execute, keep reading to for more or checkout my final [netlify.toml](https://github.com/mannuelf/mannuelferreira.com_nextjs/blob/main/netlify.toml#L15) file.
 
 ## The long story
 
-Clicking on the red `E` icon  will load the Snyk test results, which looks like this:
+Clicking on the red `E` icon will load the Snyk test results, which looks like this:
 
 ![WebPageSpeedTest](/assets/blog/content-security-policy-on-netlify-guide/webpagespeedtest_0001.png)
 
@@ -168,13 +168,12 @@ A policy that tells the browser what to do with a request, allow it or block it 
 (in order or appearance):
 
 - `X-Frame-Options` prevents **click jacking** by not allowing your webpage to be loaded in a frame or iframe. The SAMEORIGIN property allows a page to be loaded in a frame on the same origin as the page itself only. `DEPRECATED` [Read more](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html#x-frame-options-header-types)
+
   - use Content-Security-Policy: **frame-ancestors 'self'**; instead
 
 - `X-XSS-Protection` blocks any request that is deemed to be [Cross Site Scripting Attack](#CrossSiteScriptingAttack). `DEPRECATED` [Read more](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#x-xss-protection-header)
   - use Content-Security-Policy: **frame-ancestors 'self'**; instead
-  
 - `X-Content-Type-Options` protects against MIME type confusion attacks, ensures to load a resource only if the correct MIME type of is a matched against what is expected.
-  
 - `Content-Security-Policy` allows you to set a custom policy on what scripts, urls, images, fonts and resources are allowed to execute in your webpage. Any resource that is not whitelisted will not be allowed to execute.
 
 ### Tools

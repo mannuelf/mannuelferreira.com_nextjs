@@ -10,6 +10,7 @@ const Avatar = ({ name, picture }: Props) => {
   return (
     <div className='flex items-center'>
       <Image
+        unoptimized={true}
         src={picture}
         alt={name}
         width={42}

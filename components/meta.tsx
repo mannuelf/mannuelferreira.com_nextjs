@@ -1,7 +1,19 @@
 import Head from 'next/head';
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '@lib/constants';
+import { CMS_NAME, HOME_OG_IMAGE_URL, GENERIC_META } from '@lib/constants';
+import { useRouter } from 'next/router';
 
 const Meta = () => {
+  const router = useRouter();
+
+  function renderHomeMetaTag() {
+    if (router.asPath && router.asPath === '/') {
+      return (
+        <meta name='description' content={`${GENERIC_META} ${CMS_NAME}.`} />
+      );
+    }
+    return '';
+  }
+
   return (
     <Head>
       <link
@@ -24,25 +36,21 @@ const Meta = () => {
       <link
         rel='mask-icon'
         href='/favicon/safari-pinned-tab.svg'
-        color='#28284f'
+        color='#2e2b55'
       />
       <link rel='manifest' href='/favicon/site.webmanifest' />
-      <link rel='shortcut icon' href='/favicon/favicon.ico' />
+      <link rel='shortcut icon' href='/favicon/favicon-32x32.png' />
       <meta property='og:image' content={HOME_OG_IMAGE_URL} />
-      <meta name='msapplication-TileColor' content='#a03e3e' />
+      <meta name='msapplication-TileColor' content='#2e2b55' />
       <meta name='msapplication-config' content='/favicon/browserconfig.xml' />
-      <meta name='theme-color' content='#28284F' />
-      <meta
-        name='description'
-        content={`Mannuel Ferreira, Software Engineer. I enjoy building and designing applications for the web. I enjoy working with web technologies such as React, PHP, python, Node.JS, Sass, JavaScript. ${CMS_NAME}.`}
-      />
+      <meta name='theme-color' content='#2e2b55' />
+      {renderHomeMetaTag()}
       <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
       <link rel='preconnect' href='https://fonts.gstatic.com' />
       <link
         href='https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&family=Ubuntu:wght@400;500;700&Ubuntu+Mono:wght@400;700&display=swap'
         rel='stylesheet'
       />
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
       <script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
