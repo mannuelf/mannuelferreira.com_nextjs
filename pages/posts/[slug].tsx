@@ -6,7 +6,7 @@ import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import matter from 'gray-matter';
 
-import { CMS_NAME, SITE_URL } from '@lib/constants';
+import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from '@lib/constants';
 import { getPostBySlug, getAllPosts } from '@lib/api';
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
@@ -64,6 +64,9 @@ const Post = ({ post }: Props) => {
                   content={post.excerpt}
                   key='ogdesc'
                 />
+                <meta name='twitter:card' content={post.excerpt} />
+                <meta name='twitter:site' content={TWITTER_HANDLE} />
+                <meta name='twitter:creator' content={TWITTER_HANDLE} />
                 <meta property='og:url' content={currentURL} key='ogurl' />
               </Head>
               <PostHeader
