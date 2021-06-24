@@ -1,13 +1,13 @@
 ---
 title: 'Content Security Policy on Netlify guide'
 excerpt: 'After deploying your website to Netlify naturally you run some performance tests using WebPageSpeedTest. You might notice and alarming red `F` or `E` in the top right of the screen. What the heck is that?'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1624456617/images/netlify.png'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1624511388/images/netlify-secure.png'
 date: '2021-06-23T13:45:00.322Z'
 author:
   name: 'M Ferreira'
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1624456617/images/netlify.png'
+  url: 'https://res.cloudinary.com/mannuel/image/upload/v1624511388/images/netlify-secure.png'
 ---
 
 After deploy your website to Netlify (or any server) naturally you will run performance tests using [WebPageSpeedTest](https://www.webpagetest.org/). You might notice an alarming red `F` or `E` in the top right of screen.
@@ -18,7 +18,7 @@ After deploy your website to Netlify (or any server) naturally you will run perf
 
 This is a security score linked to a `CSP` (Content-Security-Policy), it shows whether any security policies are configured. The CSP provides a way to control the loading and execution of scripts and media in your webpage.
 
-Setting the correct directives will prevent clickjacking, code-injection cross-site scripting, illegal embedding of your webpage in an offsite frame/iframe and allow only valid MIME types.
+Setting the correct directives will prevent clickjacking, code-injection, cross-site scripting, illegal embedding of your webpage in an offsite frame/iframe and allow only valid MIME types.
 
 In my case, deploying to Netlify...
 
@@ -92,7 +92,7 @@ Now I can decide to allow `cloudfront.net` because I trust Netlify and it's doma
 Content-Security-Policy = "default-src 'self' cloudfront.net *.cloudfront.net; frame-ancestors 'self'; form-action 'self'"
 ```
 
-Bare in mind this list has the potential to get lengthy the more scripts you plan to allow execution, you can see how mine has grown here: [netlify.toml](https://github.com/mannuelf/mannuelferreira.com_nextjs/blob/main/netlify.toml#L15)
+Bare in mind this list has the potential to get lengthy the more scripts you plan to allow execution, you can see my: [netlify.toml](https://github.com/mannuelf/mannuelferreira.com_nextjs/blob/main/netlify.toml#L15) file.
 
 ### Rerun the test
 
