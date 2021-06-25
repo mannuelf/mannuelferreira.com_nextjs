@@ -31,15 +31,17 @@ const Post = ({ post }: Props) => {
   const components = {
     code({ node, inline, className, children, ...props }: any) {
       const match = /language-(\w+)/.exec(className || '');
+      const contents = String(children).replace(/\n$/, '');
 
       return !inline && match ? (
         <SyntaxHighlighter
           style={dracula}
           language={match[1]}
           PreTag='div'
-          children={String(children).replace(/\n$/, '')}
           {...props}
-        />
+        >
+          {contents}
+        </SyntaxHighlighter>
       ) : (
         <code className={className} {...props}>
           {children}
@@ -71,11 +73,9 @@ const Post = ({ post }: Props) => {
                 date={post.date}
                 author={post.author}
               />
-              <Markdown
-                components={components}
-                children={post.content}
-                className='markdown-body'
-              />
+              <Markdown components={components} className='markdown-body'>
+                {post.content}
+              </Markdown>
             </article>
           </>
         )}
