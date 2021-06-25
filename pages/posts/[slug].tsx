@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import Head from 'next/head';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
+import matter from 'gray-matter';
 import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import matter from 'gray-matter';
 
 import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from '@lib/constants';
 import { getPostBySlug, getAllPosts } from '@lib/api';
@@ -13,19 +12,12 @@ import Layout from '@components/Layout/layout';
 import PostBody from '@components/post-body';
 import PostHeader from '@components/post-header';
 import PostTitle from '@components/post-title';
+import MetaTags from '@components/meta-tags';
 
 type Props = {
   post: Post;
   morePosts: Post[];
   preview?: boolean | undefined;
-};
-
-const CodeBlock = ({ language, value }: CodeBlockProps) => {
-  return (
-    <SyntaxHighlighter language={language} style={dracula}>
-      {value}
-    </SyntaxHighlighter>
-  );
 };
 
 const Post = ({ post }: Props) => {
@@ -36,6 +28,25 @@ const Post = ({ post }: Props) => {
     return <ErrorPage statusCode={404} />;
   }
 
+  const components = {
+    code({ node, inline, className, children, ...props }) {
+      const match = /language-(\w+)/.exec(className || '');
+      return !inline && match ? (
+        <SyntaxHighlighter
+          style={dracula}
+          language={match[1]}
+          PreTag='div'
+          children={String(children).replace(/\n$/, '')}
+          {...props}
+        />
+      ) : (
+        <code className={className} {...props}>
+          {children}
+        </code>
+      );
+    },
+  };
+
   return (
     <Layout>
       <Container>
@@ -44,40 +55,25 @@ const Post = ({ post }: Props) => {
         ) : (
           <>
             <article className='max-w-screen-md mx-auto mt-10 md:mt-20 mb-20'>
-              <Head>
-                <title>
-                  {post.title} | {CMS_NAME}
-                </title>
-                <meta
-                  property='og:image'
-                  content={post.ogImage.url}
-                  key='ogimage'
-                />
-                <meta
-                  property='og:site_name'
-                  content={CMS_NAME}
-                  key='ogsitename'
-                />
-                <meta property='og:title' content={post.title} />
-                <meta
-                  property='og:description'
-                  content={post.excerpt}
-                  key='ogdesc'
-                />
-                <meta name='twitter:card' content={post.excerpt} />
-                <meta name='twitter:site' content={TWITTER_HANDLE} />
-                <meta name='twitter:creator' content={TWITTER_HANDLE} />
-                <meta property='og:url' content={currentURL} key='ogurl' />
-              </Head>
+              <MetaTags
+                ogImage={post.ogImage.url}
+                ogSiteName={CMS_NAME}
+                ogTitle={post.title}
+                ogDescription={post.excerpt}
+                ogTwitterCard={post.excerpt}
+                ogTwitterSite={TWITTER_HANDLE}
+                ogTwitterCreator={TWITTER_HANDLE}
+                ogUrl={currentURL}
+              />
               <PostHeader
                 title={post.title}
                 date={post.date}
                 author={post.author}
               />
-              <ReactMarkdown
+              <Markdown
+                components={components}
+                children={post.content}
                 className='markdown-body'
-                source={post.content}
-                renderers={{ code: CodeBlock }}
               />
             </article>
           </>
