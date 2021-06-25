@@ -28,15 +28,8 @@ const Post = ({ post }: Props) => {
     return <ErrorPage statusCode={404} />;
   }
 
-  type codeProps = {
-    node?: HTMLElement;
-    inline?: boolean | undefined;
-    className?: string;
-    children?: string[];
-  };
-
   const components = {
-    code({ node, inline, className, children, ...props }: codeProps) {
+    code({ node, inline, className, children, ...props }: any) {
       const match = /language-(\w+)/.exec(className || '');
 
       return !inline && match ? (
