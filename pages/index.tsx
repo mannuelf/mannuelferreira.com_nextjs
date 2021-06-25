@@ -7,7 +7,7 @@ import Head from 'next/head';
 import { CMS_NAME } from '@lib/constants';
 import LogRocket from 'logrocket';
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'development') {
   LogRocket.init(`${process.env.NEXT_PUBLIC_LOG_ROCKET_ID}/mannueferreiracom`);
 }
 
