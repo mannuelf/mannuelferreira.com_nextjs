@@ -7,25 +7,40 @@ import GITHUB from '@lib/api/github';
 type UserProps = {
   user: {
     name: string;
-    repositories: {
-      nodes: [];
-    };
+    repositories: IRepositories;
   };
 };
 
+interface IRepo {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+}
+
+interface IRepositories {
+  nodes: [IRepo];
+}
+
 function GitHub({ user }: UserProps) {
-  const [userName, setUserName] = useState('');
-  const [repoList, setRepoList] = useState(null);
+  const [userName, setUserName] = useState<UserProps | string>('');
+  const [repoList, setRepoList] = useState<IRepositories | null>(null);
 
   useEffect(() => {
     setUserName(user.name);
     setRepoList(user.repositories.nodes);
-  }, []);
+  }, [user]);
 
   return (
     <>
       <Layout>
-        <Container>hello {userName}</Container>
+        <Container>
+          hello {userName}
+          {repoList &&
+            repoList.map((repo) => {
+              return <div>{repo.id}</div>;
+            })}
+        </Container>
       </Layout>
     </>
   );
