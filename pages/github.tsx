@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from '@components/Layout/layout';
 import Container from '@components/container';
-import github from '@lib/api/github';
+import GITHUB from '@lib/api/github';
 
 type UserProps = {
   user: {
@@ -56,11 +56,11 @@ export async function getStaticProps() {
 
   try {
     const res = await axios({
-      url: github.baseUrl,
+      url: GITHUB.baseUrl,
       method: 'post',
       headers: {
         'content-type': 'application/json',
-        Authorization: github.token,
+        Authorization: GITHUB.token,
       },
       data: JSON.stringify(githubQuery),
     });
