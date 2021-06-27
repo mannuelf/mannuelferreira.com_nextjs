@@ -2,7 +2,7 @@
 title: 'Syncing a forked repo in the terminal'
 excerpt: 'A fork is your very own copy of some code which you can make changes locally without fear of breaking anything upstream (more on this later). You are free to add some feature and suggest that new feature be added back to the upstream repository.'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623933444/images/github-article.png'
-date: '2021-06-16T15:30:00.322Z'
+date: '2020-05-16T15:30:00.322Z'
 author:
   name: M Ferreira
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
@@ -62,7 +62,7 @@ The connection to `upstream` is not configured by default, you have to tell your
 issue this command:
 
 ```bash
-git remote add upstream https://github.com/mannuelf/DefinitelyTyped 
+git remote add upstream https://github.com/mannuelf/DefinitelyTyped
 ```
 
 then check your config:
