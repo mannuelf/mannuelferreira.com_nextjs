@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "@netlify/plugin-nextjs": "^3.4.2",
+    "@netlify/plugin-nextjs": "^3.5.0",
     "axios": "^0.21.1",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
