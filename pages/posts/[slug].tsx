@@ -13,6 +13,7 @@ import PostBody from '@components/post-body';
 import PostHeader from '@components/post-header';
 import PostTitle from '@components/post-title';
 import MetaTags from '@components/meta-tags';
+import Image from 'next/image';
 
 type Props = {
   post: Post;
