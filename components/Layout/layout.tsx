@@ -1,4 +1,3 @@
-import Alert from '../alert';
 import Footer from '../Footer/footer';
 import Header from '../header';
 import Meta from '../meta';
