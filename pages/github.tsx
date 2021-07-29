@@ -23,12 +23,10 @@ interface IRepositories {
 }
 
 function GitHub({ user }: UserProps) {
-  const [userName, setUserName] = useState<UserProps | string>('');
-  const [repoList, setRepoList] = useState<IRepositories | null>(null);
+  const [userName, setUserName] = useState<string>('');
 
   useEffect(() => {
     setUserName(user.name);
-    setRepoList(user.repositories.nodes);
   }, [user]);
 
   return (
@@ -36,10 +34,6 @@ function GitHub({ user }: UserProps) {
       <Layout>
         <Container>
           hello {userName}
-          {repoList &&
-            repoList.map((repo) => {
-              return <div>{repo.id}</div>;
-            })}
         </Container>
       </Layout>
     </>
@@ -56,7 +50,7 @@ export async function getStaticProps() {
     {
       viewer {
         name
-        repositories(first: 10) {
+        repositories(first: 20) {
           nodes {
             name
             description
@@ -72,7 +66,7 @@ export async function getStaticProps() {
   try {
     const res = await axios({
       url: GITHUB.baseUrl,
-      method: 'post',
+      method: 'POST',
       headers: {
         'content-type': 'application/json',
         Authorization: GITHUB.token,
