@@ -3,6 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -85,6 +86,8 @@ export default {
     '^@lib/*': ['<rootDir>/lib$1'],
     '^@pages(.*)$': '<rootDir>/pages$1',
     '^@pages/*': ['<rootDir>/pages$1'],
+    '^@shared(.*)$': '<rootDir>/shared$1',
+    '^@shared/*': ['<rootDir>/shared$1'],
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
