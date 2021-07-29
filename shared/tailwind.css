@@ -35,6 +35,7 @@ code {
 }
 
 .logo-icon {
+  position: relative;
   top: 0em;
   display: block;
   width: 96px;
