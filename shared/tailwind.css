@@ -10,7 +10,8 @@ code {
   background-color: #9efefe;
 }
 
-.markdown-body p {
+.markdown-body p,
+p {
   margin-bottom: 0.8em;
 }
 
