@@ -9,7 +9,8 @@ const Logo = () => {
           src='https://res.cloudinary.com/mannuel/image/upload/v1623925494/images/mf-logo.svg'
           alt='Mannuel Ferreira'
           unoptimized={true}
-          layout='fill'
+          width={96}
+          height={64}
         />
       </a>
     </Link>
