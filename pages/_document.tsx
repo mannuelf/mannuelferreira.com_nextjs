@@ -1,4 +1,4 @@
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '@lib/constants';
+import { CMS_NAME, HOME_OG_IMAGE_URL } from '@shared/constants';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
