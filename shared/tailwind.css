@@ -97,6 +97,7 @@ p a {
 }
 
 .markdown-body blockquote {
+  word-break: break-word;
   border-left: 4px;
   border-style: solid;
   border-color: #ff9d00;
