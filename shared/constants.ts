@@ -5,3 +5,4 @@ export const CMS_NAME = 'Mannuel Ferreira';
 export const HOME_OG_IMAGE_URL = '';
 export const TWITTER_HANDLE = 'manidf';
 export const SITE_URL = 'https://mannuelferreira.com';
+export const EMAIL = 'mannuel@themwebs.me';
