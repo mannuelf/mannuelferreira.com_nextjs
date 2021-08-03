@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { CMS_NAME, HOME_OG_IMAGE_URL, GENERIC_META } from '@lib/constants';
+import { CMS_NAME, HOME_OG_IMAGE_URL, GENERIC_META } from '@shared/constants';
 import { useRouter } from 'next/router';
 
 const Meta = () => {

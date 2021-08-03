@@ -1,8 +1,7 @@
-export const LASTFM_BASE_URL = process.env.NEXT_PUBLIC_LASTFM_API_URL;
-export const LASTFM_API_KEY = process.env.NEXT_PUBLIC_LASTFM_API_KEY;
-export const LASTFM_USER = process.env.NEXT_PUBLIC_LASTFM_REGISTERED_TO;
-export const LASTFM_SHARED_SECRET =
-  process.env.NEXT_PUBLIC_LASTFM_SHARED_SECRET;
-export const LASTFM_METHOD = {
-  TOP_ARTISTS: 'user.getTopArtists',
-};
+export const GITHUB_URL = 'https://github.com/mannuelf';
+export const GENERIC_META =
+  'Mannuel Ferreira, Software Engineer. I enjoy building and designing applications for the web. I enjoy working with web technologies such as React, PHP, python, Node.JS, Sass, JavaScript.';
+export const CMS_NAME = 'Mannuel Ferreira';
+export const HOME_OG_IMAGE_URL = '';
+export const TWITTER_HANDLE = 'manidf';
+export const SITE_URL = 'https://mannuelferreira.com';
