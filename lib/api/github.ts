@@ -1,7 +1,7 @@
 const GITHUB = {
-  baseUrl: 'https://api.github.com/graphql',
-  username: 'mannuelf',
-  token: `bearer ${process.env.NEXT_PUBLIC_GITHUB_AUTH}`
-}
+  baseUrl: `${process.env.GITHUB_GRAPHQL_ENDPOINT}`,
+  username: `${process.env.GITHUB_USERNAME}`,
+  token: `bearer ${process.env.GITHUB_AUTH}`,
+};
 
 export default GITHUB;

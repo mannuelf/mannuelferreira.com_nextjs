@@ -32,15 +32,11 @@ function GitHub({ user }: UserProps) {
   return (
     <>
       <Layout>
-        <Container>
-          hello {userName}
-        </Container>
+        <Container>hello {userName}</Container>
       </Layout>
     </>
   );
 }
-
-export default GitHub;
 
 export async function getStaticProps() {
   let user;
@@ -75,7 +71,7 @@ export async function getStaticProps() {
     });
     user = res.data.data.viewer;
   } catch (error) {
-    console.log('🚨', error);
+    console.error('🚨', error);
   }
 
   return {
@@ -84,3 +80,5 @@ export async function getStaticProps() {
     },
   };
 }
+
+export default GitHub;
