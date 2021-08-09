@@ -7,51 +7,45 @@ import PageTitle from '@components/page-title';
 import Container from '@components/container';
 
 type Props = {
-  music: TopArtists | null;
+  music: TopArtists;
   error: string;
-  loading: boolean;
 };
 
-const Music = ({ music, loading, error }: Props) => {
+const Music = ({ music, error }: Props) => {
   const [data, setData] = useState<Props>([]);
-  const [isLoading, setIsLoading] = useState<Props>(true);
   const [isError, setIsError] = useState<Props>('');
 
   useEffect(() => {
-    setIsLoading(loading);
     setIsError(error);
     setData(music);
-  }, [music, loading]);
+  }, [music, error]);
 
-  console.log(typeof data, data);
+  if (error)
+    return (
+      <Layout>
+        <Container>
+          <h1>Error: {error}</h1>
+        </Container>
+      </Layout>
+    );
 
-  if (loading) {
-    return <h1>Loading</h1>;
-  }
-
-  if (error) {
-    return <h1>Error: {error}</h1>;
-  }
-
+  console.log('music', music);
   return (
     <Layout>
       <Container>
         <PageTitle>Music</PageTitle>
-        {!data
-          ? 'loading...'
-          : data.topartists.artist.map((artist: Artist) => {
-              return (
-                <div key={artist.mbid}>
-                  <Image
-                    src={artist.image[3]['#text']}
-                    alt={artist.name}
-                    width={256}
-                    height={256}
-                  />
-                  <h1>{artist.name}</h1>
-                </div>
-              );
-            })}
+        {music &&
+          music.topartists.artist.map((artist: Artist) => (
+            <div key={artist.mbid}>
+              <Image
+                src={artist.image[3]['#text']}
+                alt={artist.name}
+                width={256}
+                height={256}
+              />
+              <h1>{artist.name}</h1>
+            </div>
+          ))}
       </Container>
     </Layout>
   );
@@ -61,16 +55,13 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext,
 ) => {
   let music;
-  let loading = true;
   let error = '';
 
   try {
     const res = await axios(`${process.env.npm_package_proxy}/api/music`);
     music = await res.data;
-    loading = false;
   } catch (error) {
     error = error;
-    loading = false;
     console.error(`Ooops ${error}`);
   }
 
@@ -78,7 +69,6 @@ export const getStaticProps: GetStaticProps = async (
     props: {
       music,
       error,
-      loading,
     },
     revalidate: 60,
   };

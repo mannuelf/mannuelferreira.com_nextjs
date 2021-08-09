@@ -6,8 +6,18 @@ const LAST_FM = {
   user: `${process.env.LASTFM_REGISTERED_TO}`,
   share_secret: `${process.env.LASTFM_SHARED_SECRET}`,
   methods: {
-    get_top_artists: 'user.getTopArtists',
-    get_token: 'auth.getToken',
+    user: {
+      info: 'user.getInfo',
+      top_artists: 'user.getTopArtists',
+      top_tracks: 'user.getTopTracks',
+      top_albums: 'user.getTopAlbums',
+      loved_tracks: 'user.getLovedTracks',
+      weekly_album_chart: 'user.getWeeklyAlbumChart',
+      weekly_artist_chart: 'user.getWeeklyArtistChart',
+    },
+    auth: {
+      token: 'auth.getToken',
+    },
   },
   format: {
     json: 'json',
@@ -15,7 +25,8 @@ const LAST_FM = {
   },
 };
 
-export const AUTH_ENDPOINT = `${LAST_FM.base_url}/2.0/?method=${LAST_FM.methods.get_token}&api_key=${LAST_FM.api_key}&format=json`;
-export const ARTIST_ENDPOINT = `${LAST_FM.base_url}/2.0/?method=${LAST_FM.methods.get_top_artists}&user=${LAST_FM.user}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
+export const AUTH_ENDPOINT = `${LAST_FM.base_url}/2.0/?method=${LAST_FM.methods.auth.token}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
+
+export const ARTIST_ENDPOINT = `${LAST_FM.base_url}/2.0/?method=${LAST_FM.methods.user.top_artists}&user=${LAST_FM.user}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
 
 export default LAST_FM;

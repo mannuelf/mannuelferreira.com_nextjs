@@ -1,3 +1,24 @@
+interface User {
+  user: {
+    playlists: string;
+    playcount: string;
+    gender: string;
+    name: string;
+    subscriber: string;
+    url: string;
+    country: string;
+    image: Image[];
+    registered: {
+      unixtime: string;
+      '#text': number;
+    };
+    type: string;
+    age: string;
+    bootstrap: string;
+    realname: string;
+  };
+}
+
 interface TopArtists {
   topartists: {
     artist: Artist[];
@@ -12,12 +33,12 @@ type Artist = {
   mbid: number;
   url: string;
   playcount: number;
-  image: ArtistImage[];
+  image: Image[];
   name: string;
   streamable: number;
 };
 
-type ArtistImage = {
+type Image = {
   size: string;
   '#text': string;
 };
