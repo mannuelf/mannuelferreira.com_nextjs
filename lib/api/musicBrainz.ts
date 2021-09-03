@@ -1,5 +1,5 @@
-import {CMS_NAME, EMAIL} from '@shared/constants';
-import axios, { AxiosRequestConfig } from 'axios';
+import { CMS_NAME, EMAIL } from '@shared/constants';
+import axios from 'axios';
 
 export function getAllArtistImages(data: []): void {
   const { topartists } = data;
@@ -18,8 +18,16 @@ export async function returnArtistImageUrls(artists: []) {
   for (let i = 0; i < artists.length; i++) {
     if (artists[i]['image'] && artists[i]['mbid']) {
       try {
-        const response = await axios.get<AxiosRequestConfig>(`${baseUrl}/${artists[i]['mbid']}/${format}`, [headers: { 'User-Agent:': `${CMS_NAME}/0.0.1 (${EMAIL})` }]);
-        const result =  await response.data.relations;
+        const options = {
+          method: 'GET',
+          url: `${baseUrl}/${artists[i]['mbid']}/${format}`,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'User-Agent': 'mannuelferreira.com/0.0.1 mannuel@themwebs.me',
+          },
+        };
+        const response = await axios.get<any[]>(options.url, options);
+        const result = await response.data.relations;
 
         console.log('🚀', result);
         /*for (let j = 0; j < result.length; i++) {
