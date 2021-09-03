@@ -57,7 +57,7 @@ const Post = ({ post }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className='max-w-screen-md mx-auto mt-10 md:mt-20 mb-20'>
+            <article className='max-w-screen-md mx-auto mb-20'>
               <MetaTags
                 ogImage={post.ogImage.url}
                 ogSiteName={CMS_NAME}

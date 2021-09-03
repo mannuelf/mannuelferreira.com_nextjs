@@ -1,6 +1,6 @@
 const Intro = () => {
   return (
-    <section className='flex flex-col md:flex-col md:justify-between mt-16 mb-16 md:mb-12 max-w-screen-md'>
+    <section className='flex flex-col md:flex-col md:justify-between mb-16 md:mb-12 max-w-screen-md'>
       <h1 className='text-5xl font-bold leading-13 pb-5'>Hello world.</h1>
       <p className='text-2xl leading-10'>
         I&apos;m a Software Engineer teaching Front End development at

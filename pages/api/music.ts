@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
+import { getAllArtistImages } from '@lib/api/musicBrainz';
 
 const handler = async (
   req: NextApiRequest,
@@ -10,6 +11,7 @@ const handler = async (
     try {
       const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
       const { data } = await response;
+      getAllArtistImages(data);
       res.status(200).json(data);
     } catch (error) {
       console.error(`${error}`);

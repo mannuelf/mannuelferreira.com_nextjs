@@ -9,16 +9,19 @@ import Container from '@components/container';
 type Props = {
   music: TopArtists;
   error: string;
+  photos: string[];
 };
 
-const Music = ({ music, error }: Props) => {
-  const [data, setData] = useState<Props>([]);
-  const [isError, setIsError] = useState<Props>('');
+const Music = ({ music, photos, error }: Props) => {
+  const [data, setData] = useState([]);
+  const [isError, setIsError] = useState('');
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     setIsError(error);
     setData(music);
-  }, [music, error]);
+    setImages(photos);
+  }, [music, error, photos]);
 
   if (error)
     return (
@@ -29,23 +32,27 @@ const Music = ({ music, error }: Props) => {
       </Layout>
     );
 
-  console.log('music', music);
   return (
     <Layout>
       <Container>
         <PageTitle>Music</PageTitle>
-        {music &&
-          music.topartists.artist.map((artist: Artist) => (
-            <div key={artist.mbid}>
-              <Image
-                src={artist.image[3]['#text']}
-                alt={artist.name}
-                width={256}
-                height={256}
-              />
-              <h1>{artist.name}</h1>
-            </div>
-          ))}
+        <div className='grid grid-flow-row-dense grid-cols-4 grid-rows-4 gap-0 auto-cols-max'>
+          {music &&
+            music?.map((artist: Artist, index: number) => (
+              <div key={index} className='static relative'>
+                <Image
+                  className='absolute bottom-0 left-0'
+                  src={artist.image[3]['#text']}
+                  alt={artist.name}
+                  width={256}
+                  height={256}
+                />
+                <div className='absolute bottom-0 left-0'>
+                  <h2>{artist.name}</h2>
+                </div>
+              </div>
+            ))}
+        </div>
       </Container>
     </Layout>
   );
@@ -56,10 +63,10 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   let music;
   let error = '';
-
+  let photos: string[] = [];
   try {
-    const res = await axios(`${process.env.npm_package_proxy}/api/music`);
-    music = await res.data;
+    const response = await axios(`${process.env.npm_package_proxy}/api/music`);
+    music = await response.data.topartists.artist;
   } catch (error) {
     error = error;
     console.error(`Ooops ${error}`);
@@ -69,8 +76,9 @@ export const getStaticProps: GetStaticProps = async (
     props: {
       music,
       error,
+      photos,
     },
-    revalidate: 60,
+    revalidate: 10000,
   };
 };
 

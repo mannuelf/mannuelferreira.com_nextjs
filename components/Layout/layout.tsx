@@ -12,7 +12,7 @@ const Layout = ({ preview, children }: Props) => {
     <>
       <Meta />
       <Header />
-      <main>{children}</main>
+      <main className='mt-16'>{children}</main>
       <Footer />
     </>
   );
