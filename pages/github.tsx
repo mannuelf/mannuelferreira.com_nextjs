@@ -60,7 +60,7 @@ export async function getStaticProps() {
   };
 
   try {
-    const res = await axios({
+    /*const res = await axios({
       url: GITHUB.baseUrl,
       method: 'POST',
       headers: {
@@ -69,7 +69,7 @@ export async function getStaticProps() {
       },
       data: JSON.stringify(githubQuery),
     });
-    user = res.data.data.viewer;
+    user = res.data.data.viewer;*/
   } catch (error) {
     console.error('🚨', error);
   }
