@@ -32,7 +32,7 @@ function GitHub({ user }: UserProps) {
   return (
     <>
       <Layout>
-        <Container>hello {userName}</Container>
+        <Container>hello {!!userName ? userName : ''}</Container>
       </Layout>
     </>
   );
@@ -76,7 +76,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      user,
+      user: '',
     },
   };
 }
