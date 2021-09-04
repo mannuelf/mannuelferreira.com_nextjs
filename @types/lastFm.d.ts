@@ -36,7 +36,7 @@ type Artist = {
   image: Image[];
   name: string;
   streamable: number;
-  cover: [];
+  cover: ArtistImage;
 };
 
 type Image = {
@@ -50,6 +50,12 @@ type Attribs = {
   user: string;
   total: number;
   totalPages: number;
+};
+
+type ArtistImage = {
+  name: string;
+  photo: string;
+  attribution: string;
 };
 
 enum LastFmErrors {
