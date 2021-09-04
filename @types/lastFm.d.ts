@@ -36,6 +36,7 @@ type Artist = {
   image: Image[];
   name: string;
   streamable: number;
+  cover: [];
 };
 
 type Image = {
