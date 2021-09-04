@@ -2,8 +2,8 @@
 
 body {
   font-family: 'Ubuntu', Arial, sans-serif;
-  background: #f8f8f8;
-  color: #222222;
+  background: #f1f1f1;
+  color: #444;
 }
 
 code {
@@ -13,12 +13,6 @@ code {
 .markdown-body p,
 p {
   margin-bottom: 0.8em;
-}
-
-.app-header {
-  border-bottom: #222222;
-  text-align: left;
-  line-height: 48px;
 }
 
 .article-header {
