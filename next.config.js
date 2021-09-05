@@ -11,7 +11,6 @@ module.exports = {
     ],
   },
   typescript: {
-    // I will undo this
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
 };

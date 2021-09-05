@@ -98,17 +98,17 @@ export const getStaticProps: GetStaticProps = async (
 
     const toMerge: [] = [...music, ...photos];
     let set = new Set();
-
-    let mergedArtistInfo: any = toMerge.filter((artist: ArtistImage) => {
+    let addArtistImage: any = toMerge.filter((artist: ArtistImage) => {
       if (!set.has(artist.name)) {
         set.add(artist.name);
-        for (let item of music) {
-          delete item['image'];
-          if (artist.name === item['name']) {
+        for (let i = 0; i < music.length; i++) {
+          delete music[i]['image']; // remove placeholder img (lastFm)
+          let cover: TopArtists | any = music[i];
+          if (artist.name === music[i]['name']) {
             let result: any = photos.filter(
               (photo: ArtistImage) => photo.name === artist.name,
             );
-            item['cover'] = result[0];
+            cover['cover'] = result[0];
           }
         }
         return true;
@@ -116,7 +116,7 @@ export const getStaticProps: GetStaticProps = async (
       return false;
     }, set);
 
-    music = mergedArtistInfo;
+    music = addArtistImage;
   } catch (error) {
     error = error;
   }
