@@ -127,7 +127,6 @@ export const getStaticProps: GetStaticProps = async (
       music,
       error,
     },
-    revalidate: 40,
   };
 };
 

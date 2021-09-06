@@ -10,6 +10,7 @@ module.exports = {
       'upload.wikimedia.org'
     ],
   },
+  generateBuildId: () => 'build',
   typescript: {
     ignoreBuildErrors: false,
   },
