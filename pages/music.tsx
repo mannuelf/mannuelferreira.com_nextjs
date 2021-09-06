@@ -20,7 +20,7 @@ const Music = ({ music, error }: Props) => {
     setData(music);
   }, [music, error]);
 
-  if (error)
+  if (isError)
     return (
       <Layout>
         <Container>
@@ -44,7 +44,7 @@ const Music = ({ music, error }: Props) => {
             data?.map((artist: Artist, index: number) => (
               <div
                 key={index}
-                className='static relative h-72 bg-purple-dark'
+                className='static relative h-80 md:h-72 bg-purple-dark'
                 style={{
                   backgroundSize: 'cover',
                   backgroundPosition: 'top center',
@@ -92,6 +92,8 @@ export const getStaticProps: GetStaticProps = async (
   let error: string = '';
 
   try {
+    console.log(`${process.env.npm_package_proxy}/api/music`);
+
     const response = await axios(`${process.env.npm_package_proxy}/api/music`);
     console.log('component fetch...');
     music = await response.data.topartists.artist;
