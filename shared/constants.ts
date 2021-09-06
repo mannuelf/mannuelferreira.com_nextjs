@@ -6,3 +6,7 @@ export const HOME_OG_IMAGE_URL = '';
 export const TWITTER_HANDLE = 'manidf';
 export const SITE_URL = 'https://mannuelferreira.com';
 export const EMAIL = 'mannuel@themwebs.me';
+export const LOGO_SPOTIFY =
+  'https://res.cloudinary.com/mannuel/image/upload/v1630704755/images/Spotify_Logo.svg';
+export const LOGO_LASTFM =
+  'https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg';

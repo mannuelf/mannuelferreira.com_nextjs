@@ -93,6 +93,7 @@ export const getStaticProps: GetStaticProps = async (
 
   try {
     const response = await axios(`${process.env.npm_package_proxy}/api/music`);
+    console.log('component fetch...');
     music = await response.data.topartists.artist;
     photos = await response.data.images;
 
@@ -126,7 +127,7 @@ export const getStaticProps: GetStaticProps = async (
       music,
       error,
     },
-    revalidate: 86400,
+    revalidate: 40,
   };
 };
 

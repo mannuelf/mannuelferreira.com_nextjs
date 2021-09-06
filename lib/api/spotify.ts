@@ -1,5 +1,6 @@
 const SPOTIFY = {
-  api_key: `${process.env.LASTFM_API_KEY}`,
+  client_id: `${process.env.SPOTIFY_CLIENT_ID}`,
+  client_secret: `${process.env.SPOTIFY_CLIENT_SECRET}`,
 };
 
 export default SPOTIFY;

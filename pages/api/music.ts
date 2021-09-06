@@ -10,6 +10,7 @@ const handler = async (
   if (req.method === 'GET') {
     try {
       const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
+      console.log('Music fetching...');
       const { data } = await response;
       data['images'] = artistImages;
       res.status(200).json(data);
