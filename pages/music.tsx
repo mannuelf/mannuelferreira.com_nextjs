@@ -5,7 +5,8 @@ import axios from 'axios';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import Container from '@components/container';
-import { getTopArtists } from '@lib/api/lastFm';
+import artistImages from '@lib/api/artistImages';
+import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
 
 type Props = {
   music: TopArtists;
@@ -88,6 +89,16 @@ const Music = ({ music, error }: Props) => {
       </Container>
     </Layout>
   );
+};
+export const getTopArtists = async (): Promise<TopArtists> => {
+  try {
+    const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
+    const { data } = await response;
+    data['images'] = artistImages;
+    return data;
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
 };
 
 export const getStaticProps: GetStaticProps = async (
