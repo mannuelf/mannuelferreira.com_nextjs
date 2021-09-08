@@ -24,6 +24,7 @@ interface TopArtists {
     artist: Artist[];
     '@attr': Attribs;
   };
+  images: ArtistImage;
 }
 
 type Artist = {

@@ -7,7 +7,7 @@ module.exports = {
       'fastly.net',
       '*.fastly.net',
       'lastfm.freetls.fastly.net',
-      'upload.wikimedia.org'
+      'upload.wikimedia.org',
     ],
   },
   generateBuildId: () => 'build',

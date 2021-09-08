@@ -5,6 +5,7 @@ import axios from 'axios';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import Container from '@components/container';
+import { getTopArtists } from '../pages/api/music';
 
 type Props = {
   music: TopArtists;
@@ -68,6 +69,11 @@ const Music = ({ music, error }: Props) => {
         </div>
         <div className='border-t pt-4 mt-8 mb-16'>
           <p>
+            Images thanks to Wikimedia Commons{' '}
+            <a href='https://creativecommons.org/licenses/by/3.0'>3.0</a> and{' '}
+            <a href='https://creativecommons.org/licenses/by/2.0'>2.0</a>.
+          </p>
+          <p>
             All data courtesy of the{' '}
             <a href='https://www.last.fm/api/intro'>LastFm API</a>.
           </p>
@@ -92,12 +98,9 @@ export const getStaticProps: GetStaticProps = async (
   let error: string = '';
 
   try {
-    console.log(`${process.env.npm_package_proxy}/api/music`);
-
-    const response = await axios(`${process.env.npm_package_proxy}/api/music`);
-    console.log('component fetch...');
-    music = await response.data.topartists.artist;
-    photos = await response.data.images;
+    const response: TopArtists | any = await getTopArtists();
+    music = response.topartists.artist;
+    photos = response.images;
 
     const toMerge: [] = [...music, ...photos];
     let set = new Set();
@@ -105,7 +108,7 @@ export const getStaticProps: GetStaticProps = async (
       if (!set.has(artist.name)) {
         set.add(artist.name);
         for (let i = 0; i < music.length; i++) {
-          delete music[i]['image']; // remove placeholder img (lastFm)
+          delete music[i]['image']; // - star img from lastFm
           let cover: TopArtists | any = music[i];
           if (artist.name === music[i]['name']) {
             let result: any = photos.filter(

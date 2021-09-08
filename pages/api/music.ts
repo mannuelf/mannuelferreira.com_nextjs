@@ -5,19 +5,23 @@ import artistImages from '@lib/api/artistImages';
 
 const handler = async (
   req: NextApiRequest,
-  res: NextApiResponse<TopArtists>,
-) => {
+  res: NextApiResponse,
+): Promise<void> => {
   if (req.method === 'GET') {
-    try {
-      const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
-      console.log('Music fetching...');
-      const { data } = await response;
-      data['images'] = artistImages;
-      res.status(200).json(data);
-    } catch (error) {
-      console.error(`${error}`);
-      throw new Error(`${error}`);
-    }
+    const data = await getTopArtists();
+    res.status(200).json(data);
+  }
+};
+
+export const getTopArtists = async (): Promise<TopArtists> => {
+  try {
+    const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
+    const { data } = await response;
+    data['images'] = artistImages;
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error(`${error}`);
   }
 };
 
