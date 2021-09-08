@@ -5,7 +5,7 @@ import axios from 'axios';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import Container from '@components/container';
-import { getTopArtists } from '../pages/api/music';
+import { getTopArtists } from '@lib/api/lastFm';
 
 type Props = {
   music: TopArtists;
