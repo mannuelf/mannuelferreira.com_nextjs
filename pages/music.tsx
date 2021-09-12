@@ -1,5 +1,10 @@
 import React, { useEffect, useState, FC, SetStateAction } from 'react';
-import { GetStaticProps, GetStaticPropsContext } from 'next';
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  GetStaticProps,
+  GetStaticPropsContext,
+} from 'next';
 import Image from 'next/image';
 import axios from 'axios';
 import Layout from '@components/Layout/layout';
@@ -90,6 +95,7 @@ const Music = ({ music, error }: Props) => {
     </Layout>
   );
 };
+
 export const getTopArtists = async (): Promise<TopArtists> => {
   try {
     const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
@@ -101,8 +107,8 @@ export const getTopArtists = async (): Promise<TopArtists> => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext,
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext,
 ) => {
   let music: [] = [];
   let photos: [] = [];
