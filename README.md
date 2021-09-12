@@ -5,3 +5,15 @@
 > Mannuel Ferreira
 
 [www.mannuelferreira.com](https://www.mannuelferreira.com)
+
+## Install dependencies
+
+```
+yarn
+```
+
+### Local dev
+
+```
+yarn start:dev
+```
