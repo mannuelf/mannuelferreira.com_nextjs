@@ -18,7 +18,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "classnames": "2.3.1",
     "concurrently": "^6.2.1",
-    "date-fns": "2.23.0",
+    "date-fns": "2.24.0",
     "dotenv": "^10.0.0",
     "gray-matter": "4.0.3",
     "logrocket": "^2.0.0",
