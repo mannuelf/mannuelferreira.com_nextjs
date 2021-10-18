@@ -6,7 +6,7 @@
     "paths": {
       "@api/*": ["pages/api/*"],
       "@components/*": ["components/*"],
-      "@hooks/": ["hooks/*"],
+      "@hooks/*": ["hooks/*"],
       "@icons/*": ["assets/icons/*"],
       "@lib/*": ["lib/*"],
       "@mocks/*": ["mocks/*"],
