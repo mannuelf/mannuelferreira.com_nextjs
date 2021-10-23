@@ -1,5 +1,5 @@
 ---
-title: 'ultimate-guide-to-documenting-components-using-docz'
+title: 'Ultimate guide to documenting components using docz'
 excerpt: ''
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
 date: '2021-10-17T06:45:00.322Z'
@@ -10,17 +10,171 @@ ogImage:
   url: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
 ---
 
+I often push writing documentation to the end of my development cycle. It may be the last thing I do once I have finished building a feature. I may document how to get started, properties of the components or api integration docs. This is not ideal because at times with best intentions I might never get round to actually completing the documentation process. I mean I wrote such good code it1s self documenting right? Kidding myslef. 
+
 ## What is docz?
 
-Writing documentation is often pushed to the end of the backlog. I'm a busy developer I have to ship that new money making feature ASAP, first to market wins as they say. Sadly documenting features is often left as an after thought or never done at all.
+What if I said you could build your documentation at exactly the same time as you build that feature. And have the documentation site live update in real time as you add new props to that React component, sounds amazing right. This is where Docz shines.
 
-Setting up a separate documentation site is laborious. I once spent a couple days at work building a static documentation site for our front end. It was a pain we had to create a new repository for it, setup the build tools, set up the deployment pipeline. We were using kubernetes which complicated the matter further.
+![docz](/assets/blog/ultimate-guide-to-documenting-components-using-docz/docz-site.png)
 
-docz is a static site builder that helps you build documentation site along side your existing front end in the same repo, in the same folder.
+[Docz](https://www.docz.site) is an Open Source, zero config, easy to customize static site generator with the goal of removing the pains of creating documentation websites in your team or side project.
 
-docz is your new best friend. I recently added docz to a side project, I have to say the experience was painless and rather fun. docz is an open source documentation site builder designed with simplicity at its core.
+## How does it work?
 
-All the complications of setting up build tools to develop, run and deploy a static website have a been abstracted away into three simple npm commands.
+Leveraging the power of Gatsby, docz builds a mobile first, SEO friendly static website along-side your projects. 
+
+- You write a markdown file
+- docz renders an HTML page for it
+
+It renders components live with MDX and has TypeScript support, to mention two of my favourite features. I wont go into too much depth here as there are great articles about this written by [Mohmed](https://aviyel.com/post/1161/this-free-tool-lets-you-create-world-class-documentation-for-react-components) and [Hillary](https://aviyel.com/post/1178/the-do-s-and-don-ts-of-front-end-documentation).
+
+
+Instead I will guide you through how I integrated docz into my side project [Machine](https://react-drum-machine.netlify.app) a drum machine built with React. 
+
+![Machine](/assets/blog/ultimate-guide-to-documenting-components-using-docz/machine.png)
+
+I've always wanted to build a site to document my React components but I always thought I didn't have enough time... enter docz.
+
+
+## Installing docz in a monorepo
+
+### Setting the scene
+
+I have a monorepo with a React frontend (SPA) and an Apollo GraphQL backend. All is driven by Yarn workspaces.
+
+#### Project structure
+
+```bash
+📁 client
+📁 server
+   package.json
+   ...
+```
+
+### Decisions option A or B
+
+#### Option A
+
+First decision I needed to make was do I want integrate docz within my existing frontend folder. This possible with docz, then I could follow React feature based architecture pattern by having the component, mdx file, unit test all in one folder, like this:
+
+```bash
+📁 client
+     feature
+       Machine
+         Machine.mdx
+         Machine.tsx
+         Machine.spec.ts
+  ...
+```
+
+#### Option B
+
+I could choose to create a separate folder call it `documentation`, `docs`, `docz` and have a standalone website which I tell Yarn Workspaces about.
+
+This is the option I went with, I like the separation of concerns, this is matter pf personal taste you go with what you like.
+
+
+```bash
+📁 client
+📁 documentation
+     Machine.mdx
+     doczrc.js
+     package.json
+📁 server
+   package.json
+   ...
+```
+
+
+## Installation
+
+
+```bash
+mkdir documentation
+cd documentation
+```
+
+create package.json with Yarn
+
+```bash
+yarn init -y
+```
+
+Install docz and react and react-dom both @ version 16.8.0 as per the docz docs. I also included rimraf so I can delete the compiled .docz build directly from time to time. 
+
+```bash
+yarn add docz react@16.8.0 react-dom@16.8.0 rimraf
+```
+
+### Configurations
+
+### package.json 
+
+- set docz to run on port 3002 and 3003 as the React client is already using port 3000
+- you may notice I have also installed [@nejcm/docz-theme-extended](https://github.com/nejcm/docz-theme-extende), its great do this.
+
+```json
+{
+  ...
+  "private": true,
+  "scripts": {
+    "docz:build": "docz build",
+    "docz:dev": " docz dev --port=3002",
+    "docz:serve": "docz build && docz serve --port=3003",
+    "docz:clean": "rimraf .docz"
+  },
+  "dependencies": {
+    "@nejcm/docz-theme-extended": "^2.0.14",
+    "docz": "^2.3.1",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
+    "rimraf": "^3.0.2"
+  }
+}
+```
+
+In the root of `documentation` folder create a doczrc.js configuration file.
+
+- enable typescript features
+
+```js
+export default {
+  typescript: true,
+}
+```
+
+- customize theme, set to dark mode by default, add dark and light logo
+- configure the side menu with Groups and sube nav items
+
+```js
+export default {
+  typescript: true,
+  themeConfig: {
+    mode: 'dark',
+    logo: {
+      src: {
+        light: 'path/to/logo'
+        dark: 'path/to/logo'
+      },
+      width: 260,
+    },
+    menu: {
+      search: false,
+      headings: {
+        rightSide: true,
+        scrollspy: true,
+        depth: 3,
+      },
+    },
+  },
+  menuDisplayName: {},
+  groups: { /* insert nav groups, these are the neat headings above the nav groups */},
+  menu: [ /* create your nav structure here, see link below*/ ],
+}
+```
+
+For brevity I have emptied some of the objects, you can see a complete version [here](https://github.com/mannuelf/react-drums/blob/main/documentation/doczrc.js)
 
 ```bash
 yarn docz:dev
@@ -76,4 +230,5 @@ Port number not changeable, if running react-create-app change that to 3001
 
 ### References
 
+- [docz.site](https://docz.site)
 - [docz.site](https://docz.site)
