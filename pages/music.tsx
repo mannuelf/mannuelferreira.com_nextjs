@@ -100,6 +100,8 @@ export const getTopArtists = async (): Promise<TopArtists> => {
   try {
     const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
     const { data } = await response;
+    console.log(data);
+    
     data['images'] = artistImages;
     return data;
   } catch (error) {
