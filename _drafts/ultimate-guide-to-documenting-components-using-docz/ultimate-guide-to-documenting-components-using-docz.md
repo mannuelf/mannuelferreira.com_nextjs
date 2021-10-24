@@ -7,7 +7,7 @@ author:
   name: 'M Ferreira'
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
+  url: 'https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/docz-site.png'
 ---
 
 Writing documentation is necessary but is often left as an after thought and only completed near the end of the software development life cycle. In my experience It may be the last thing I do once I have finished building a feature. Things I may document include how to get started in life contributing to a repository, document properties of the components and api endpoints. Waiting to the end of the development cycle is not ideal because at times with best intentions I might never get around to actually writing the documentation.
@@ -20,7 +20,7 @@ What if I said you could build your React documentation at exactly the same time
 
 I am able to build React components alongside my documentation website, and have the documentation site live update in real time as I add new props to said React component. Sounds amazing right! This is where Docz shines with the power of mdx and React docz can pull in a live React component.
 
-![docz](/assets/blog/ultimate-guide-to-documenting-components-using-docz/docz-site.png)
+![docz](https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/docz-site.png)
 
 ## How does it work?
 
@@ -31,8 +31,7 @@ Leveraging the power of Gatsby, docz builds a mobile first, SEO friendly static 
 - the React component should have comments in the interface and type declarations as seen below
 - docz renders an HTML page for it in a separate website.
 
-/client/src/components/common/Button.tsx
-
+📁 client/src/components/common/Button.tsx
 ```tsx
 import React from 'react';
 
@@ -102,7 +101,7 @@ I wont go into too much depth here as there are great articles about this writte
 
 Instead I will guide you through how I integrated docz into my side project [Machine](https://react-drum-machine.netlify.app) a drum machine built with React.
 
-![Machine](/assets/blog/ultimate-guide-to-documenting-components-using-docz/machine.png)
+![Machine](https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/machine.png)
 
 I've always wanted to build a site to document my React components but I always thought I didn't have enough time... enter docz.
 
@@ -146,6 +145,7 @@ This possible with docz, docz will find all mdx files existing in the project an
          Machine.spec.ts
   ...
 ```
+
 [Click here](https://github.com/mannuelf/react-docz-alamode) to view tiny example on GitHub.
 
 #### Option B
@@ -165,6 +165,7 @@ I could choose to create a third folder call it `documentation` and have a stand
    package.json
    ...
 ```
+
 [Click here](https://github.com/mannuelf/react-drums) to view on GitHub.
 
 Option B is the what I went with. I like the separation of concerns, this is matter of personal taste you go with what you like. It also made it easier to deploy in the monorepo context on Netlify.
@@ -315,7 +316,7 @@ module.exports = {
 
 With all the above correctly configured I have this to show for it:
 
-![docz](/assets/blog/ultimate-guide-to-documenting-components-using-docz/machine-docz.png)
+![docz](https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/machine-docz.png)
 
 ### Document first component
 
@@ -398,7 +399,7 @@ I have 3 services in this monorepo now, the Machine (client), the documentation 
 
 Configure Netlify deployment context to point to the documentation folder and run the correct build command.
 
-![netlify](/assets/blog/ultimate-guide-to-documenting-components-using-docz/netlify.png)
+![netlify](https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/netlify.png)
 
 Run the build command to create a production build of docz. Docz will create a `.docz` and in my case place a `public` folder inside which is what users will see.
 
@@ -428,4 +429,4 @@ yarn docz:build
 yarn docz:serve
 ```
 
-Thank you docz.
+Thank you docz, whether you are building single page apps, websites or apis docz is easily integrated int your workflow give it a try 🚀.
