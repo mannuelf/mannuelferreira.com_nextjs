@@ -15,6 +15,10 @@ p {
   margin-bottom: 0.8em;
 }
 
+.markdown-body p img {
+  width: 100%;
+}
+
 .article-header {
   border-bottom: #222222;
   text-align: left;

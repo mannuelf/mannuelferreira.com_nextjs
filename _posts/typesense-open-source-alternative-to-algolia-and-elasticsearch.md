@@ -1,18 +1,23 @@
 ---
 title: 'Typesense and open-source alternative to Algolia and Elasticsearch'
-excerpt: ''
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
-date: '2021-06-22T06:45:00.322Z'
+excerpt: 'Building a custom search into your application can be a deeply technical and expensive endeavor in terms of man hours and subscription fees for said software. Typesense is aiming to fix those pains with it’s Open-Sourced solution to web search Typesense.'
+coverImage: '/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png'
+date: '2021-10-21T22:05:00.322Z'
 author:
   name: 'M Ferreira'
   picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
+  url: '/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png'
 ---
 
 ## What is it
 
-Typesense an open-source alternative to Algolia and Elasticsearch
+Typesense an open-source alternative to Algolia and Elasticsearch.
+
+![typsense](/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png)
+
+> TLDR - Show me the code [Click here](https://github.com/mannuelf/typesense-algolia-search-comparison/tree/main/typesense-client)
+
 
 One key feature of any website or web application is the ability to search the data or content within the system. A fast and accurate search experience can improve discoverability, conversions and the overall user experience.
 
@@ -22,13 +27,13 @@ Typesense is a fast typo tolerant search engine boasting a sub-50ms search that 
 
 ## A few notable features include:
 
-### Typo tolerance 
+### Typo tolerance
 
 Typesense will automatically try to correct your typos. Typo tolerance is configurable on a per field basis.
 
-### Multi-tenant API Keys 
+### Multi-tenant API Keys
 
-Security through API keys, which allows you to restrict access to specific sets of data, not all apps need to have access to all your data. 
+Security through API keys, which allows you to restrict access to specific sets of data, not all apps need to have access to all your data.
 
 ### Geo search
 
@@ -46,9 +51,9 @@ Setting up a search experience in your web application is now trivial thanks to 
 
 ### UI component libraries
 
-If that wasn’t cool enough to further smooth the road, Typesense has UI Component adapters to help you build your UI. The Typesense Instant Search Adapter is based on Algolia open-sourced instantsearch.js. If you have experience with Algolias adapter it makes the switch to Typesense all that much smoother. 
+If that wasn’t cool enough to further smooth the road, Typesense has UI Component adapters to help you build your UI. The Typesense Instant Search Adapter is based on Algolia open-sourced instantsearch.js. If you have experience with Algolias adapter it makes the switch to Typesense all that much smoother.
 
-### The adapter comes in 4 flavours: 
+### The adapter comes in 4 flavours:
 
 - Instantsearch.js
 - react-instantsearch
