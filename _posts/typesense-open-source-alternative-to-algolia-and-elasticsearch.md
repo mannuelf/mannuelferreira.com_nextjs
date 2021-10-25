@@ -1,6 +1,6 @@
 ---
 title: 'Typesense an open-source alternative to Algolia and Elasticsearch'
-excerpt: 'Building a custom search into your application can be a deeply technical and expensive endeavor in terms of man hours and subscription fees for said software. Typesense is aiming to fix those pains with it’s Open-Sourced solution to web search Typesense.'
+excerpt: 'Building a custom search into your application can be a deeply technical and expensive endeavor in terms of build hours and license fees. Typesense is aiming to fix those pains with it’s Open-Sourced solution to web search Typesense.'
 coverImage: '/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png'
 date: '2021-10-21T22:05:00.322Z'
 author:
@@ -66,6 +66,10 @@ If that wasn’t cool enough to further smooth the road, Typesense has UI Compon
 This demo should run on your localhost only. Have fun 🚀
 
 ### Typesense React Client
+
+> Fork it [Click here](https://github.com/mannuelf/typesense-algolia-search-comparison/tree/main/typesense-client)
+
+What you will see:
 
 ![typsense](/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/demosite.png)
 
