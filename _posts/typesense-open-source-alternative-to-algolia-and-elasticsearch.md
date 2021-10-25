@@ -1,5 +1,5 @@
 ---
-title: 'Typesense and open-source alternative to Algolia and Elasticsearch'
+title: 'Typesense an open-source alternative to Algolia and Elasticsearch'
 excerpt: 'Building a custom search into your application can be a deeply technical and expensive endeavor in terms of man hours and subscription fees for said software. Typesense is aiming to fix those pains with it’s Open-Sourced solution to web search Typesense.'
 coverImage: '/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png'
 date: '2021-10-21T22:05:00.322Z'
@@ -68,6 +68,7 @@ This demo should run on your localhost only. Have fun 🚀
 ### Typesense React Client
 
 ![typsense](/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/demosite.png)
+
 > ✨ Bootstrapped with [Create Snowpack App (CSA)](https://www.snowpack.dev).
 
 ### Prerequisites
