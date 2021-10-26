@@ -16,7 +16,9 @@ Typesense an open-source alternative to Algolia and Elasticsearch.
 
 ![typsense](/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png)
 
-> TLDR - Show me the code [Click here](https://github.com/mannuelf/typesense-algolia-search-comparison/tree/main/typesense-client)
+## TLDR
+
+> Show me the code [Click here](https://github.com/mannuelf/typesense-algolia-search-comparison/tree/main/typesense-client)
 
 Otherwise keep reading.
 

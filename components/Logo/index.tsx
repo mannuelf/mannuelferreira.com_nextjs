@@ -6,7 +6,7 @@ const Logo = () => {
     <Link passHref href='/'>
       <a className='logo-icon'>
         <Image
-          src='https://res.cloudinary.com/mannuel/image/upload/v1623925494/images/mf-logo.svg'
+          src='/assets/icons/mf-logo.svg'
           alt='Mannuel Ferreira'
           unoptimized={true}
           width={96}
