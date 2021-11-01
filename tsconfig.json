@@ -4,29 +4,54 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@api/*": ["pages/api/*"],
-      "@components/*": ["components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@icons/*": ["assets/icons/*"],
-      "@lib/*": ["lib/*"],
-      "@mocks/*": ["mocks/*"],
-      "@pages/*": ["pages/*"],
-      "@shared/*": ["shared/*"],
-      "@types/*": ["types/*"]
+      "@api/*": [
+        "pages/api/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ],
+      "@icons/*": [
+        "assets/icons/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@mocks/*": [
+        "mocks/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ],
+      "@types/*": [
+        "types/*"
+      ]
     },
     "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "incremental": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -35,6 +60,8 @@
     "jest.config.ts"
   ],
   "typeAcquisition": {
-    "include": ["jest"]
+    "include": [
+      "jest"
+    ]
   }
 }
