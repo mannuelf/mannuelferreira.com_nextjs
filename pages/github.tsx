@@ -3,6 +3,7 @@ import axios from 'axios';
 import Layout from '@components/Layout/layout';
 import Container from '@components/container';
 import GITHUB from '@lib/api/github';
+import PageTitle from '../components/page-title';
 
 type UserProps = {
   user: {
@@ -24,15 +25,27 @@ interface IRepositories {
 
 function GitHub({ user }: UserProps) {
   const [userName, setUserName] = useState<string>('');
+  const [repos, setRepos] = useState<IRepo[]>();
 
   useEffect(() => {
     setUserName(user.name);
+    setRepos(user.repositories.nodes);
   }, [user]);
 
   return (
     <>
       <Layout>
-        <Container>hello {!!userName ? userName : ''}</Container>
+        <Container>
+          <section>
+            <PageTitle>Github</PageTitle>
+            <h2 className='mb-8 text-4xl md:text-4xl font-bold tracking-tighter leading-tight'>
+              {userName ? userName : ''}
+            </h2>
+            {repos
+              ? repos.map((repo) => <h3 key={repo.name}>{repo.name}</h3>)
+              : null}
+          </section>
+        </Container>
       </Layout>
     </>
   );
@@ -46,7 +59,7 @@ export async function getStaticProps() {
     {
       viewer {
         name
-        repositories(first: 20) {
+        repositories(last: 20) {
           nodes {
             name
             description
@@ -60,7 +73,7 @@ export async function getStaticProps() {
   };
 
   try {
-    /*const res = await axios({
+    const res = await axios({
       url: GITHUB.baseUrl,
       method: 'POST',
       headers: {
@@ -69,14 +82,16 @@ export async function getStaticProps() {
       },
       data: JSON.stringify(githubQuery),
     });
-    user = res.data.data.viewer;*/
+
+    user = res.data.data.viewer;
+    console.log('🚀', user);
   } catch (error) {
-    console.error('🚨', error);
+    console.error('🚨', error.message);
   }
 
   return {
     props: {
-      user: '',
+      user: user,
     },
   };
 }
