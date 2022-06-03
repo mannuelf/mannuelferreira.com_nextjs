@@ -1,3 +1,4 @@
+import React, { PropsWithChildren } from 'react';
 import Container from './container';
 import cn from 'classnames';
 import { GITHUB_URL } from '@shared/constants';
@@ -6,7 +7,7 @@ type Props = {
   preview?: boolean;
 };
 
-const Alert = ({ preview }: Props) => {
+const Alert: React.FC<Props> = (preview) => {
   return (
     <div
       className={cn('border-b', {
