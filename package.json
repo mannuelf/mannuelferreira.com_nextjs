@@ -31,7 +31,7 @@
     "react-dom": "^18.1.0",
     "react-markdown": "^8.0.3",
     "react-syntax-highlighter": "^15.4.5",
-    "snyk": "^1.868.0"
+    "snyk": "^1.947.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
