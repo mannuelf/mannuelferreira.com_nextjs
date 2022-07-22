@@ -12,7 +12,7 @@
     "cypress": "cypress open"
   },
   "dependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.18.5",
     "@fortawesome/fontawesome-free": "^6.1.1",
     "@netlify/plugin-nextjs": "^4.8.0",
     "axios": "^0.27.2",
