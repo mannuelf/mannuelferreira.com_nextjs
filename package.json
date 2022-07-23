@@ -14,7 +14,7 @@
   "dependencies": {
     "@babel/core": "^7.18.5",
     "@fortawesome/fontawesome-free": "^6.1.1",
-    "@netlify/plugin-nextjs": "^4.8.0",
+    "@netlify/plugin-nextjs": "^4.11.1",
     "axios": "^0.27.2",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
