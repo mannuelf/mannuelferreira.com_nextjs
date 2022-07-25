@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL, GENERIC_META } from '@shared/constants';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 const Meta = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ const Meta = () => {
       {renderHomeMetaTag()}
       <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
 
-      <script
+      <Script
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
