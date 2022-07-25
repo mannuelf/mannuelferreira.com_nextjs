@@ -3,7 +3,7 @@
   publish = ".next"
 
 [[plugins]]
-  package = "@netlify/plugin-nextjs@latest"
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/*"
