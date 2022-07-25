@@ -1,4 +1,7 @@
 module.exports = {
+  experimental: {
+    nextScriptWorkers: true,
+  },
   images: {
     domains: [
       'res.cloudinary.com',
