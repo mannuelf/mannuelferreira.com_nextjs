@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL, GENERIC_META } from '@shared/constants';
 import { useRouter } from 'next/router';
-import Script from 'next/script';
 
 const Meta = () => {
   const router = useRouter();
@@ -47,19 +46,6 @@ const Meta = () => {
       <meta name='theme-color' content='#2e2b55' />
       {renderHomeMetaTag()}
       <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
-
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
-            });
-          `,
-        }}
-      />
     </Head>
   );
 };
