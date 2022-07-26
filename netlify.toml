@@ -1,9 +1,18 @@
 [build]
-  command = "CI= npm run build"
+  command = "next build"
+  base = "."
   publish = ".next"
+
+[build.environment]
+  NEXT_USE_NETLIFY_EDGE = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/_next/static/*"
+  to = "/static/:splat"
+  status = 200
 
 [[headers]]
   for = "/*"
