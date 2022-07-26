@@ -1,5 +1,5 @@
 module.exports = {
-  // https://https://github.com/tailwindlabs/tailwindcss/discussions/6019#discussioncomment-1609444
+  // https://github.com/tailwindlabs/tailwindcss/discussions/6019#discussioncomment-1609444
   content: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
     extend: {
