@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next",
     "start:dev": "concurrently \"yarn dev\" \"yarn typecheck -w\"",
-    "build": "next build && next export",
+    "build": "next build",
     "build:css": "tailwindcss --minify styles/global.css -o public/css/tailwind.min.css",
     "lint": "next lint",
     "start": "next start",
