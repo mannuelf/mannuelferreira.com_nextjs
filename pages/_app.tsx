@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { AppProps } from 'next/app';
-import '../styles/global.css';
+import '../public/css/tailwind.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import * as ga from '@lib/ga';
 
