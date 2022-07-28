@@ -84,7 +84,6 @@ export async function getStaticProps() {
     });
 
     user = res.data.data.viewer;
-    console.log('🚀', user);
   } catch (error) {
     console.error('🚨', error);
   }
