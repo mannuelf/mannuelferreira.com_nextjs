@@ -1,8 +1,8 @@
+import ReactGA from 'react-ga4';
 export const pageview = (url: string) => {
   if (typeof window !== 'undefined') {
-    window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
-      page_path: url,
-    });
+    ReactGA.initialize(`${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
+    ReactGA.send({ hitType: 'pageview', page: `${url}` });
   }
 };
 

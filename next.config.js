@@ -12,7 +12,7 @@ const nextConfig = {
       'upload.wikimedia.org',
     ],
   },
-  generateBuildId: () => Date.now(),
+  generateBuildId: () => `${Date.now()}`,
   typescript: {
     ignoreBuildErrors: false,
   },
