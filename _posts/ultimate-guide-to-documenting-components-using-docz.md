@@ -14,6 +14,10 @@ Writing documentation is necessary but is often left as an after thought and onl
 
 What if I said you could build your React documentation at exactly the same time as you build that feature. Let's talk about Docz the solution to all my documentation problems.
 
+[Click here](https://react-drum-machine.netlify.app/) to view live demo of drum machine.
+
+[Click here](https://react-drum-docz.netlify.app/) to view live demo of the Docz site.
+
 ## What is docz?
 
 [Docz](https://www.docz.site) is an Open Source, zero config, easy to customize static site generator with the goal of removing the pains of creating documentation websites.
@@ -103,6 +107,7 @@ I wont go into too much depth here as there are great articles about this writte
 Instead I will guide you through how I integrated docz into my side project [Machine](https://react-drum-machine.netlify.app) a drum machine built with React.
 
 ![Machine](https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/machine.png)
+[Click here](https://react-drum-machine.netlify.app/) to view live demo.
 
 I've always wanted to build a site to document my React components but I always thought I didn't have enough time... enter docz.
 
@@ -318,6 +323,7 @@ module.exports = {
 With all the above correctly configured I have this to show for it:
 
 ![docz](https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/machine-docz.png)
+[Click here](https://react-drum-docz.netlify.app/) to view live demo.
 
 ### Document first component
 
