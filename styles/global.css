@@ -115,3 +115,8 @@ p a {
   list-style: decimal;
   @apply ml-5;
 }
+
+.markdown-body a:link,
+.markdown-body a:visited {
+  color: orange;
+}
