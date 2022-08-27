@@ -93,6 +93,6 @@ These tiny black dots are the rivets that neeed melting off, this was the most t
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/legion-14.jpg)
 
-This process took 5hrs, spread out over 2 sessions of 2.5hrs, If I werer to do it again I am sure it would be much faster and easier.
+This process took 5hrs, spread out over 2 sessions of 2.5hrs, If I were to do it again I am sure it would be much faster and easier. This was great fun doing some hardware work on computers is fun once in a while.
 
 Thanks for scrolling, see you next time.
