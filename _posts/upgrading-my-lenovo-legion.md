@@ -45,7 +45,7 @@ Oh yes, bumping RAM up to 16GB's
 ### Soldering iron
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/soldering-iron.jpg)
-The only non-destructive way to detatch the keyboard from the plastic Lenovo chassis is by melting tiny little rivets off one at a time.
+> The only non-destructive way to detatch the keyboard from the plastic Lenovo chassis is by melting tiny little rivets off one at a time.
 
 ### Before, dusty fans needed a clean
 
@@ -55,7 +55,7 @@ Throughout the process I took pictures and labeled screws, do this, or bad thing
 ### That has to go in there
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/legion-01.jpg)
-At this point I was questioning my lifes choices.
+> At this point I was questioning my lifes choices.
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/legion-02.jpg)
 
@@ -75,7 +75,7 @@ At this point I was questioning my lifes choices.
 See that black wrapping, and silver chassis, well the keyboard is under that, protected by many plastic rivets.
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/legion-07.jpg)
-These tiny black dots are the rivets that neeed melting off, this was the most time consuming task of all.
+> These tiny black dots are the rivets that neeed melting off, this was the most time consuming task of all.
 
 ### Tadaaa, keyboard off
 
