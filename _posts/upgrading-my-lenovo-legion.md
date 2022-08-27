@@ -14,7 +14,10 @@ ogImage:
 
 Right ok, so I spilled water on on my keyboard on my favourite laptop and rendered it useless. I had to buy a new keyboard and replace it.
 
-Why would you do that especially after watching this scary [YouTube](https://youtu.be/x3djdGr2yM4) video. Take it to a guy "they" said. I kinda dig computer and I think its fun, and it was great fun, well not the soldering part that was torture.
+Why would you do that especially after watching this scary [YouTube](https://youtu.be/x3djdGr2yM4) video.
+> Take it to a guy "they" said. 
+
+I dig computers, programming all things related and this was great fun to do, well not the soldering part that was torture.
 
 ## What you will need
 
@@ -29,7 +32,7 @@ Why would you do that especially after watching this scary [YouTube](https://you
 ### New Keybaord
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/keyboard.jpg)
-Feeling pretty pleased with myself at this point, only paid $28 for this repalacement keyboard.
+> Feeling pretty pleased with myself at this point, only paid $28 for this replacement keyboard.
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/keyboard2.jpg)
 Looks very close to the real thing.
