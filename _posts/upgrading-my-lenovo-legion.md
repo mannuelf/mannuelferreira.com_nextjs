@@ -52,7 +52,7 @@ Throughout the process I took pictures and labeled screws, do this, or bad thing
 ### That has to go in there
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/legion-01.jpg)
-At this point I was questing my lifes choices.
+At this point I was questioning my lifes choices.
 
 ![lenovo-legion-keyboard-replacement](/assets/blog/upgrading-my-lenovo-legion/legion-02.jpg)
 
