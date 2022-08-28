@@ -2,8 +2,6 @@
 
 import generateSitemap from './scripts/sitemap-generator.mjs';
 
-generateSitemap();
-
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -22,7 +20,6 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   webpack: (config, { isServer }) => {
-    console.log('************NEXT.CONFIG*************', isServer);
     if (isServer) {
       generateSitemap();
     }
