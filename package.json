@@ -3,9 +3,9 @@
   "version": "0.1.1",
   "scripts": {
     "dev": "next",
-    "start:dev": "concurrently \"yarn dev\" \"yarn typecheck -w\"",
+    "start:dev": "concurrently \"npm run build:css\" \"npm run dev\" \"npm run typecheck -w\"",
     "build": "next build",
-    "build:css": "tailwindcss --minify styles/global.css -o public/css/tailwind.min.css",
+    "build:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css",
     "lint": "next lint",
     "start": "next start",
     "typecheck": "tsc"
