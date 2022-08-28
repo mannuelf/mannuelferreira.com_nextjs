@@ -26,6 +26,10 @@ p {
   text-align: left;
 }
 
+.app-desktop-menu {
+  left: 0;
+}
+
 .app-footer {
   background: #28284f;
   color: #f8f8f8;
