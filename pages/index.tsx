@@ -5,11 +5,6 @@ import Layout from '@components/Layout/layout';
 import { getAllPosts } from '@lib/api';
 import Head from 'next/head';
 import { CMS_NAME } from '@shared/constants';
-import LogRocket from 'logrocket';
-
-if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'development') {
-  LogRocket.init(`${process.env.NEXT_PUBLIC_LOG_ROCKET_ID}/mannueferreiracom`);
-}
 
 type Props = {
   allPosts: Post[];
