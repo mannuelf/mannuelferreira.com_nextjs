@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+
+import generateSitemap from './scripts/sitemap-generator.mjs';
+
+generateSitemap();
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -16,6 +21,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  webpack: (config, { isServer }) => {
+    console.log('************NEXT.CONFIG*************', isServer)
+    generateSitemap();
+    return config;
+  }
 };
 
-module.exports = nextConfig;
+export default nextConfig;
