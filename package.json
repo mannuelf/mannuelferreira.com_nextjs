@@ -35,7 +35,7 @@
     "react-markdown": "^8.0.3",
     "react-syntax-highlighter": "^15.5.0",
     "snyk": "^1.981.0",
-    "vercel": "^27.3.0"
+    "vercel": "^28.2.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",

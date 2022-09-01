@@ -20,6 +20,7 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   webpack: (config, { isServer }) => {
+    // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
     if (isServer) {
       generateSitemap();
     }
