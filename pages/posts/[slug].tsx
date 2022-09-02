@@ -9,7 +9,6 @@ import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
 import { getPostBySlug, getAllPosts } from '@lib/api';
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
-import PostBody from '@components/post-body';
 import PostHeader from '@components/post-header';
 import PostTitle from '@components/post-title';
 import MetaTags from '@components/meta-tags';
