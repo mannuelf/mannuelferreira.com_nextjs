@@ -1,9 +1,9 @@
 import Container from '@components/container';
 import MoreStories from '@components/more-stories';
-import Intro from '@components/intro';
 import Layout from '@components/Layout/layout';
 import { getAllPosts } from '@lib/api';
 import Head from 'next/head';
+import Image from 'next/image';
 import { CMS_NAME } from '@shared/constants';
 
 type Props = {
@@ -18,8 +18,18 @@ const Index = ({ allPosts }: Props) => {
           <title>{CMS_NAME}</title>
         </Head>
         <Container>
-          <Intro />
-          {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+          <div className='flex flex-grow justify-center'>
+            <div className='basis-3/6 justify-self-auto overflow-hidden'>
+              <Image
+                width={220}
+                layout='fill'
+                src='https://res.cloudinary.com/mannuel/image/upload/v1636496492/images/mee.jpg'
+                alt='Mannuel Ferreira'
+              />
+            </div>
+            <div className='basis-3/6 justify-self-auto'>Aside</div>
+          </div>
+          {allPosts.length > 0 && <MoreStories posts={allPosts.slice(0, 4)} />}
         </Container>
       </Layout>
     </>

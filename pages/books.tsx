@@ -2,7 +2,7 @@ import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import Head from 'next/head';
 
-const ReadIt = () => {
+const Books = () => {
   return (
     <>
       <Layout>
@@ -10,7 +10,7 @@ const ReadIt = () => {
           <title>{'Read It'}</title>
         </Head>
         <Container>
-          <h1>Read It</h1>
+          <h1>Books</h1>
           <p>A list of my favourite reads.</p>
         </Container>
       </Layout>
@@ -18,7 +18,7 @@ const ReadIt = () => {
   );
 };
 
-export default ReadIt;
+export default Books;
 
 export const getStaticProps = async () => {
   const data = {}
