@@ -6,12 +6,18 @@ type Props = {
   fixed: boolean;
 };
 
-const menuItems = [
-  { href: '/', text: 'Home' },
-  { href: '/articles', text: 'Articles' },
-  { href: '/past', text: 'Past' },
-  { href: '/present', text: 'Present' },
-  { href: '/books', text: 'Books' },
+type MenuItems = {
+  href: string;
+  text: string;
+  enabled: boolean;
+}[];
+
+const menuItems: MenuItems = [
+  { href: '/', text: 'Home', enabled: true },
+  { href: '/articles', text: 'Articles', enabled: true },
+  { href: '/past', text: 'Past', enabled: true },
+  { href: '/present', text: 'Present', enabled: true },
+  { href: '/books', text: 'Books', enabled: true },
 ];
 
 const NavBar = ({ fixed }: Props) => {
