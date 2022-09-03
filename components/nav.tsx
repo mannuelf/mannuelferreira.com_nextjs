@@ -18,11 +18,11 @@ export default function Navbar({ fixed }) {
   return (
     <>
       <nav className='relative flex flex-wrap items-center justify-between px-0 py-0 mb-0'>
-        <div className='container px-0 mx-auto flex flex-wrap items-center justify-between'>
-          <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+        <div className='container flex flex-wrap items-center justify-between px-0 mx-auto'>
+          <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
             <Logo customClass='grow-none' />
             <button
-              className='text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
+              className='block px-3 py-1 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none'
               type='button'
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
@@ -43,7 +43,7 @@ export default function Navbar({ fixed }) {
               {menuItems.map((menu) => (
                 <li key={menu.text}>
                   <Link href={menu.href}>
-                    <a className='text-white p-2 rounded-md text-base font-normal'>
+                    <a className='block pt-4 pb-4 text-base font-normal text-white rounded-md'>
                       {menu.text}
                     </a>
                   </Link>

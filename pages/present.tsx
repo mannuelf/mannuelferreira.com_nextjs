@@ -12,8 +12,8 @@ const Present = () => {
         </Head>
         <Container>
           <PageTitle>Present</PageTitle>
-          <div className='border-t pt-4 mt-8 mb-8'>
-            <p className='text-lg'>Comgin soon...</p>
+          <div className='pt-4 mt-8 mb-8 border-t'>
+            <p className='text-lg'>Coming soon...</p>
           </div>
         </Container>
       </Layout>
