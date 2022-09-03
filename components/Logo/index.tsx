@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Logo = ({customClass}) => {
+type Props = {
+  customClass: string;
+};
+
+const Logo = ({ customClass }: Props) => {
   return (
     <Link passHref href='/'>
       <a className={customClass}>

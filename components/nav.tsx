@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import Link from 'next/link';
 
+type Props = {
+  fixed: boolean;
+};
+
 const menuItems = [
   { href: '/', text: 'Home' },
   { href: '/articles', text: 'Articles' },
@@ -10,7 +14,7 @@ const menuItems = [
   { href: '/books', text: 'Books' },
 ];
 
-export default function Navbar({ fixed }) {
+const NavBar = ({ fixed }: Props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   useEffect(() => setNavbarOpen(false), []);
@@ -55,4 +59,6 @@ export default function Navbar({ fixed }) {
       </nav>
     </>
   );
-}
+};
+
+export default NavBar;
