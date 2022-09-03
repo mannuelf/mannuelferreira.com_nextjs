@@ -47,7 +47,7 @@ const NavBar = ({ fixed }: Props) => {
               {menuItems.map((menu) => (
                 <li key={menu.text}>
                   <Link href={menu.href}>
-                    <a className='block pt-4 pb-4 text-base font-normal text-white rounded-md'>
+                    <a className='block pt-4 pb-4 text-base font-normal text-white md:px-4 rounded-md'>
                       {menu.text}
                     </a>
                   </Link>
