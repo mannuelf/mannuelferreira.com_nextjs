@@ -30,10 +30,10 @@ const Index = ({ allPosts }: Props) => {
           <title>{CMS_NAME}</title>
         </Head>
         <Container>
-          <section className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-32'>
+          <section className='mb-20 grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div className='items-center'>
               <Image
-                className='w-54 h-54 rounded-full'
+                className='rounded-full w-54 h-54'
                 width='224'
                 height='224'
                 src='https://res.cloudinary.com/mannuel/image/upload/v1636496492/images/mee.jpg'
@@ -47,7 +47,7 @@ const Index = ({ allPosts }: Props) => {
                       href={nav.href}
                       key={nav.title}
                     >
-                      <a className='border-b-4 border-purple-900 mb-4'>
+                      <a className='mb-6 border-b-4 border-purple-900'>
                         <h2 className='text-3xl font-medium'>{nav.title}</h2>
                         <p>{nav.text}</p>
                       </a>
@@ -56,6 +56,7 @@ const Index = ({ allPosts }: Props) => {
                 : null}
             </div>
           </section>
+
           {allPosts.length > 0 && <MoreStories posts={allPosts.slice(0, 4)} />}
         </Container>
       </Layout>
