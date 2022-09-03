@@ -1,10 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Logo = () => {
+type Props = {
+  customClass: string;
+};
+
+const Logo = ({ customClass }: Props) => {
   return (
     <Link passHref href='/'>
-      <a className='logo-icon'>
+      <a className={customClass}>
         <Image
           src='/assets/icons/mf-logo.svg'
           alt='Mannuel Ferreira'

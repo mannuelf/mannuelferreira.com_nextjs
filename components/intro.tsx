@@ -36,7 +36,6 @@ const Intro = () => {
         with Docker, Kubernetes, Linux, AWS, Google Cloud, Heroku, Netlify &amp;
         Vercel.
       </p>
-      <p>Looking ahead I am quite interested in React Native and DENO.</p>
     </section>
   );
 };
