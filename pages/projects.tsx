@@ -3,15 +3,15 @@ import Layout from '@components/Layout/layout';
 import Head from 'next/head';
 import PageTitle from '@components/page-title';
 
-const Past = () => {
+const Projects = () => {
   return (
     <>
       <Layout>
         <Head>
-          <title>{'Past'}</title>
+          <title>{'Projects'}</title>
         </Head>
         <Container>
-          <PageTitle>Past</PageTitle>
+          <PageTitle>Projects</PageTitle>
           <div className='border-t pt-4 mt-8 mb-8'>
             <p className='text-lg'>Coming soon...</p>
           </div>
@@ -21,7 +21,7 @@ const Past = () => {
   );
 };
 
-export default Past;
+export default Projects;
 
 export const getStaticProps = async () => {
   const data = {};
