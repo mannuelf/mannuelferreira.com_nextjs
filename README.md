@@ -7,7 +7,7 @@
 ## Install dependencies
 
 ```
-npm install
+pnpm install
 ```
 
 ### Local dev
