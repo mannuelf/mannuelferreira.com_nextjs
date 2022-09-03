@@ -1,11 +1,11 @@
 import React from 'react';
 import Container from '@components/container';
-import Navigation from './navigation';
+import NavBar from './nav';
 
 const Header = () => (
   <header className='bg-purple top-0 flex-none flex z-10'>
     <Container>
-      <Navigation/>
+      <NavBar fixed={true}/>
     </Container>
   </header>
 );
