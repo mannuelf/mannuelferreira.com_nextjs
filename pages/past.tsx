@@ -1,7 +1,7 @@
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import Head from 'next/head';
-import Intro from '@components/intro';
+import PageTitle from '@components/page-title';
 
 const Past = () => {
   return (
@@ -11,9 +11,10 @@ const Past = () => {
           <title>{'Past'}</title>
         </Head>
         <Container>
-          <h1>Past</h1>
-          <Intro/>
-          <p>My professional history as it happened.</p>
+          <PageTitle>Past</PageTitle>
+          <div className='border-t pt-4 mt-8 mb-8'>
+            <p className='text-lg'>Well here we are...</p>
+          </div>
         </Container>
       </Layout>
     </>
@@ -23,7 +24,7 @@ const Past = () => {
 export default Past;
 
 export const getStaticProps = async () => {
-  const data = {}
+  const data = {};
 
   return {
     props: { data },

@@ -1,17 +1,20 @@
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import Head from 'next/head';
+import PageTitle from '@components/page-title';
 
 const Books = () => {
   return (
     <>
       <Layout>
         <Head>
-          <title>{'Read It'}</title>
+          <title>{'Books'}</title>
         </Head>
         <Container>
-          <h1>Books</h1>
-          <p>A list of my favourite reads.</p>
+          <PageTitle>Books</PageTitle>
+          <div className='border-t pt-4 mt-8 mb-8'>
+            <p className='text-lg'>Coming soon...</p>
+          </div>
         </Container>
       </Layout>
     </>
@@ -21,7 +24,7 @@ const Books = () => {
 export default Books;
 
 export const getStaticProps = async () => {
-  const data = {}
+  const data = {};
 
   return {
     props: { data },

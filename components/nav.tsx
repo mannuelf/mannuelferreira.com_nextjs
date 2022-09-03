@@ -20,11 +20,7 @@ export default function Navbar({ fixed }) {
       <nav className='relative flex flex-wrap items-center justify-between px-0 py-0 mb-0'>
         <div className='container px-0 mx-auto flex flex-wrap items-center justify-between'>
           <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
-            <Link href='/'>
-              <a className='font-bold leading-relaxed inline-block whitespace-nowrap uppercase text-white'>
-                <Logo customClass='grow-none' />
-              </a>
-            </Link>
+            <Logo customClass='grow-none' />
             <button
               className='text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
               type='button'

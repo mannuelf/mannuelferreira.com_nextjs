@@ -1,6 +1,7 @@
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import Head from 'next/head';
+import PageTitle from '@components/page-title';
 
 const Present = () => {
   return (
@@ -10,8 +11,10 @@ const Present = () => {
           <title>{'Present'}</title>
         </Head>
         <Container>
-          <h1>Present</h1>
-          <p>Today I am working as Nordic developer for SATS ASA in Oslo.</p>
+          <PageTitle>Present</PageTitle>
+          <div className='border-t pt-4 mt-8 mb-8'>
+            <p className='text-lg'>Comgin soon...</p>
+          </div>
         </Container>
       </Layout>
     </>
@@ -21,7 +24,7 @@ const Present = () => {
 export default Present;
 
 export const getStaticProps = async () => {
-  const data = {}
+  const data = {};
 
   return {
     props: { data },
