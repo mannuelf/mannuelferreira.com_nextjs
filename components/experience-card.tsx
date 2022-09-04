@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ExperienceCardProps } from './experience-card.types';
 
-const ExperienceCard = ({ title, date, logo }) => {
+const ExperienceCard = ({ title, date, logo }: ExperienceCardProps) => {
   return (
     <>
       <div className='p-4 bg-white rounded'>

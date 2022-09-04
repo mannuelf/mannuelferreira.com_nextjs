@@ -24,7 +24,7 @@ const Experience = () => {
           <section className='grid-rows-4 text-center mb-20 grid grid-cols-1 md:grid-cols-2 gap-4'>
             {ExperienceCardItems
               ? ExperienceCardItems.map(
-                  (experience: ExperienceCardProps[0]) => (
+                  (experience) => (
                     <ExperienceCard key={experience.title} {...experience} />
                   ),
                 )

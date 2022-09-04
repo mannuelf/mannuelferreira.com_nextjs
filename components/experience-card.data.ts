@@ -1,6 +1,4 @@
-import { ExperienceCardProps } from './experience-card.types';
-
-export const ExperienceCardItems: ExperienceCardProps = [
+export const ExperienceCardItems = [
   {
     title: 'Nordic Web Developer',
     date: '2021 - PRESENT',
