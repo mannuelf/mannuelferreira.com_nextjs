@@ -3,9 +3,9 @@ import Container from '@components/container';
 import NavBar from './nav';
 
 const Header = () => (
-  <header className='bg-purple top-0 flex-none flex z-10'>
+  <header className='top-0 z-10 flex flex-none bg-purple'>
     <Container>
-      <NavBar fixed={true}/>
+      <NavBar position={'relative'}/>
     </Container>
   </header>
 );

@@ -1,33 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import Link from 'next/link';
+import { MenuItem, NavProps } from './nav.types';
+import menuItems from './nav.data';
 
-type Props = {
-  fixed: boolean;
-};
-
-type MenuItems = {
-  href: string;
-  text: string;
-  enabled: boolean;
-}[];
-
-const menuItems: MenuItems = [
-  { href: '/', text: 'Home', enabled: true },
-  { href: '/articles', text: 'Articles', enabled: true },
-  { href: '/past', text: 'Past', enabled: true },
-  { href: '/present', text: 'Present', enabled: true },
-  { href: '/books', text: 'Books', enabled: true },
-];
-
-const NavBar = ({ fixed }: Props) => {
+const NavBar = ({ position }: NavProps) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   useEffect(() => setNavbarOpen(false), []);
 
   return (
     <>
-      <nav className='relative flex flex-wrap items-center justify-between px-0 py-0 mb-0'>
+      <nav
+        className={`${position} flex flex-wrap items-center justify-between px-0 py-0 mb-0`}
+      >
         <div className='container flex flex-wrap items-center justify-between px-0 mx-auto'>
           <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
             <Logo customClass='grow-none' />
@@ -50,15 +36,17 @@ const NavBar = ({ fixed }: Props) => {
                 navbarOpen ? 'mb-8' : ''
               }`}
             >
-              {menuItems.map((menu) => (
-                <li key={menu.text}>
-                  <Link href={menu.href}>
-                    <a className='block pt-4 pb-4 text-base font-normal text-white md:px-4 rounded-md'>
-                      {menu.text}
-                    </a>
-                  </Link>
-                </li>
-              ))}
+              {menuItems
+                ? menuItems.map((menu: MenuItem) => (
+                    <li key={menu.text}>
+                      <Link href={menu.href}>
+                        <a className='block pt-4 pb-4 text-base font-normal text-white md:px-4 rounded-md'>
+                          {menu.text}
+                        </a>
+                      </Link>
+                    </li>
+                  ))
+                : null}
             </ul>
           </div>
         </div>
