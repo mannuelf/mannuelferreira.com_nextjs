@@ -19,9 +19,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { phase, isServer }) => {
     // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
-    if (isServer) {
+    if (phase === 'PHASE_DEVELOPMENT_SERVER' && isServer) {
       generateSitemap();
     }
     return config;

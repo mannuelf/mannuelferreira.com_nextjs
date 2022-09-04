@@ -3,17 +3,17 @@ import Layout from '@components/Layout/layout';
 import Head from 'next/head';
 import PageTitle from '@components/page-title';
 
-const Past = () => {
+const Experience = () => {
   return (
     <>
       <Layout>
         <Head>
-          <title>{'Past'}</title>
+          <title>{'Experience'}</title>
         </Head>
         <Container>
-          <PageTitle>Past</PageTitle>
-          <div className='border-t pt-4 mt-8 mb-8'>
-            <p className='text-lg'>Coming soon...</p>
+          <PageTitle>Experience</PageTitle>
+          <div className='pt-4 mt-8 mb-8 border-t'>
+            <p className='text-lg'>I have worked with many incredible people on awesome products over the years.</p>
           </div>
         </Container>
       </Layout>
@@ -21,7 +21,7 @@ const Past = () => {
   );
 };
 
-export default Past;
+export default Experience;
 
 export const getStaticProps = async () => {
   const data = {};

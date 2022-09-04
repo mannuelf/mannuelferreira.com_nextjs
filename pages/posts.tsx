@@ -9,16 +9,16 @@ type Props = {
   allPosts: Post[];
 };
 
-const Index = ({ allPosts }: Props) => {
+const Posts = ({ allPosts }: Props) => {
   return (
     <>
       <Layout>
         <Head>
-          <title>{'Articles'}</title>
+          <title>{'Posts'}</title>
         </Head>
         <Container>
-          <PageTitle>Articles</PageTitle>
-          <div className='border-t pt-4 mt-8 mb-8'>
+          <PageTitle>Posts</PageTitle>
+          <div className='pt-4 mt-8 mb-8 border-t'>
             <p className='text-lg'></p>
           </div>
           {allPosts.length > 0 && <MoreStories posts={allPosts} />}
@@ -28,7 +28,7 @@ const Index = ({ allPosts }: Props) => {
   );
 };
 
-export default Index;
+export default Posts;
 
 export const getStaticProps = async () => {
   const allPosts = getAllPosts([
