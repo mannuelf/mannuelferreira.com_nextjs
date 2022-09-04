@@ -27,7 +27,7 @@ const pageSideNav: pageSideNavProps = [
     enabled: false,
   },
   { title: 'Books', text: "Books I've read and recommend", href: 'books', enabled: false},
-];
+].filter(nav => nav.enabled);
 
 const Index = ({ allPosts }: Props) => {
   return (
