@@ -5,29 +5,39 @@ import { getAllPosts } from '@lib/api';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CMS_NAME } from '@shared/constants';
+import { AVATAR_ME, CMS_NAME } from '@shared/constants';
 
 type Props = {
   allPosts: Post[];
 };
 
 type pageSideNavProps = {
-  title:string;
+  title: string;
   text: string;
   href: string;
   enabled: boolean;
 }[];
 
 const pageSideNav: pageSideNavProps = [
-  { title: 'Experience', text: 'My professional history', href: 'experience', enabled: true },
+  {
+    title: 'Experience',
+    text: 'My professional history',
+    href: 'experience',
+    enabled: true,
+  },
   {
     title: 'Side projects',
     text: 'Side projects and experiments with code',
     href: 'side-projects',
     enabled: false,
   },
-  { title: 'Books', text: "Books I've read and recommend", href: 'books', enabled: false},
-];
+  {
+    title: 'Books',
+    text: "Books I've read and recommend",
+    href: 'books',
+    enabled: false,
+  },
+].filter(item => item.enabled);
 
 const Index = ({ allPosts }: Props) => {
   return (
@@ -43,8 +53,8 @@ const Index = ({ allPosts }: Props) => {
                 className='rounded-full w-54 h-54'
                 width='224'
                 height='224'
-                src='https://res.cloudinary.com/mannuel/image/upload/v1636496492/images/mee.jpg'
-                alt='Mannuel Ferreira'
+                src={AVATAR_ME}
+                alt={CMS_NAME}
               />
             </div>
             <div>
@@ -60,7 +70,6 @@ const Index = ({ allPosts }: Props) => {
                 : null}
             </div>
           </section>
-
           {allPosts.length > 0 && <MoreStories posts={allPosts.slice(0, 4)} />}
         </Container>
       </Layout>
