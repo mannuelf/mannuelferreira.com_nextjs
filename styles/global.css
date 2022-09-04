@@ -53,7 +53,8 @@ p {
 
 p a {
   display: inline-block;
-  color: #2d2b56;
+  border-bottom: 1px solid #2d2b56;
+  color: #222222;
   word-break: break-word;
 }
 
@@ -122,5 +123,6 @@ p a {
 
 .markdown-body a:link,
 .markdown-body a:visited {
-  color: orange;
+  color: #222222;
+  border-bottom: 1px solid orange;
 }
