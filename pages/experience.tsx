@@ -17,7 +17,7 @@ const Experience = () => {
           <PageTitle>Experience</PageTitle>
           <div className='pt-4 mt-8 mb-8 border-t'>
             <p className='text-lg'>
-              I have worked with many incredible people on awesome products over
+              I am grateful to have worked with many incredible people on awesome products over
               the years.
             </p>
           </div>

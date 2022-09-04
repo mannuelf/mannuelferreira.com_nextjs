@@ -47,8 +47,8 @@ const Index = ({ allPosts }: Props) => {
           <title>{CMS_NAME}</title>
         </Head>
         <Container>
-          <section className='mb-20 grid grid-cols-1 md:grid-cols-2 gap-4'>
-            <div className='items-center'>
+          <section className='content-center mb-20 grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <div className='items-center justify-self-center'>
               <Image
                 className='rounded-full w-54 h-54'
                 width='224'

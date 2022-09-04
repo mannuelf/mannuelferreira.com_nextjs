@@ -10,7 +10,7 @@ export const ExperienceCardItems = [
     },
   },
   {
-    title: 'Frontend Development Lecturer',
+    title: 'Front-end Development Lecturer',
     date: '2019 - 2021',
     logo: {
       title: 'Noroff Fagskole',
@@ -30,7 +30,7 @@ export const ExperienceCardItems = [
     },
   },
   {
-    title: 'Frontend Developer',
+    title: 'Front-end Developer',
     date: '2014 -2016',
     logo: {
       title: 'World Wide Creative',
