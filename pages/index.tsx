@@ -21,19 +21,19 @@ type pageSideNavProps = {
 const pageSideNav: pageSideNavProps = [
   {
     title: 'Experience',
-    text: 'My professional history',
+    text: 'My professional history as it happened.',
     href: 'experience',
     enabled: true,
   },
   {
     title: 'Side projects',
-    text: 'Side projects and experiments with code',
+    text: 'Side projects and experiments with code.',
     href: 'side-projects',
     enabled: false,
   },
   {
     title: 'Books',
-    text: "Books I've read and recommend",
+    text: "Books I've read and recommend.",
     href: 'books',
     enabled: false,
   },
@@ -57,13 +57,18 @@ const Index = ({ allPosts }: Props) => {
                 alt={CMS_NAME}
               />
             </div>
+
             <div>
+              <div>
+                <h1 className='text-5xl font-medium'>{CMS_NAME}</h1>
+                <p className='text-2xl font-light'>Software/Web Developer</p>
+              </div>
               {pageSideNav
                 ? pageSideNav.map((nav) => (
                     <Link href={nav.href} key={nav.title}>
-                      <a className='mb-6 border-b-4 border-purple-900'>
+                      <a className='mb-6 border-b-4 hover:bg-white border-purple-900'>
                         <h2 className='text-3xl font-medium'>{nav.title}</h2>
-                        <p>{nav.text}</p>
+                        <p className='text-base font-light'>{nav.text}</p>
                       </a>
                     </Link>
                   ))
