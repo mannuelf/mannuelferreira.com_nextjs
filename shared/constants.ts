@@ -10,3 +10,5 @@ export const LOGO_SPOTIFY =
   'https://res.cloudinary.com/mannuel/image/upload/v1630704755/images/Spotify_Logo.svg';
 export const LOGO_LASTFM =
   'https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg';
+export const AVATAR_ME =
+  'https://res.cloudinary.com/mannuel/image/upload/v1636496492/images/mee.jpg';
