@@ -11,15 +11,22 @@ type Props = {
   allPosts: Post[];
 };
 
-const pageSideNav = [
-  { title: 'Past', text: 'My professional history', href: 'past' },
-  { title: 'Present', text: 'What I am up to today', href: 'present' },
+type pageSideNavProps = {
+  title:string;
+  text: string;
+  href: string;
+  enabled: boolean;
+}[];
+
+const pageSideNav: pageSideNavProps = [
+  { title: 'Experience', text: 'My professional history', href: 'experience', enabled: true },
   {
     title: 'Side projects',
     text: 'Side projects and experiments with code',
-    href: 'projects',
+    href: 'side-projects',
+    enabled: false,
   },
-  { title: 'Books', text: "Books I've read and reccommend", href: 'books' },
+  { title: 'Books', text: "Books I've read and recommend", href: 'books', enabled: false},
 ];
 
 const Index = ({ allPosts }: Props) => {
