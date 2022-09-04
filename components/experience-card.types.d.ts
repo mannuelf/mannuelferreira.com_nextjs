@@ -4,7 +4,7 @@ export type ExperienceCardProps = {
   logo: Logo;
 }[];
 
-type Logo = {
+export type Logo = {
   title: string;
   href: string;
   width: number;

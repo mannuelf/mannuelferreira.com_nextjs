@@ -1,8 +1,8 @@
 import Container from '@components/container';
-import Layout from '@components/Layout/layout';
-import Head from 'next/head';
-import PageTitle from '@components/page-title';
 import ExperienceCard from '@components/experience-card';
+import Head from 'next/head';
+import Layout from '@components/Layout/layout';
+import PageTitle from '@components/page-title';
 import { ExperienceCardItems } from '@components/experience-card.data';
 import { ExperienceCardProps } from '@components/experience-card.types';
 

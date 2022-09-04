@@ -1,9 +1,7 @@
 import Image from 'next/image';
-
-console.log('ExperienceCard');
+import { ExperienceCardProps } from './experience-card.types';
 
 const ExperienceCard = ({ title, date, logo }) => {
-  console.log(title, date, logo);
   return (
     <>
       <div className='p-4 bg-white rounded'>
@@ -12,7 +10,7 @@ const ExperienceCard = ({ title, date, logo }) => {
         <Image
           width={logo.width}
           height={logo.height}
-          objectFit="cover"
+          objectFit='cover'
           src={logo.href}
           alt={logo.title}
         />
