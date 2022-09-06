@@ -1,13 +1,13 @@
 ---
 title: 'Typesense and open-source alternative to Algolia and Elasticsearch'
 excerpt: ''
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png'
 date: '2021-06-22T06:45:00.322Z'
 author:
   name: 'M Ferreira'
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
+  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
+  url: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png'
 ---
 
 ## What is it
@@ -22,13 +22,13 @@ Typesense is a fast typo tolerant search engine boasting a sub-50ms search that 
 
 ## A few notable features include:
 
-### Typo tolerance 
+### Typo tolerance
 
 Typesense will automatically try to correct your typos. Typo tolerance is configurable on a per field basis.
 
-### Multi-tenant API Keys 
+### Multi-tenant API Keys
 
-Security through API keys, which allows you to restrict access to specific sets of data, not all apps need to have access to all your data. 
+Security through API keys, which allows you to restrict access to specific sets of data, not all apps need to have access to all your data.
 
 ### Geo search
 
@@ -46,9 +46,9 @@ Setting up a search experience in your web application is now trivial thanks to 
 
 ### UI component libraries
 
-If that wasn’t cool enough to further smooth the road, Typesense has UI Component adapters to help you build your UI. The Typesense Instant Search Adapter is based on Algolia open-sourced instantsearch.js. If you have experience with Algolias adapter it makes the switch to Typesense all that much smoother. 
+If that wasn’t cool enough to further smooth the road, Typesense has UI Component adapters to help you build your UI. The Typesense Instant Search Adapter is based on Algolia open-sourced instantsearch.js. If you have experience with Algolias adapter it makes the switch to Typesense all that much smoother.
 
-### The adapter comes in 4 flavours: 
+### The adapter comes in 4 flavours:
 
 - Instantsearch.js
 - react-instantsearch

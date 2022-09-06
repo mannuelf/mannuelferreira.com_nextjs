@@ -1,13 +1,13 @@
 ---
 title: 'Terminal for productivity'
 excerpt: 'If you are are software developer building websites you most likely are writing backend code, frontend code, configuring databases, servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language you are coding.'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623934028/images/terminal-article.png'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623934028/images/terminal-article.png'
 date: '2020-02-01T05:35:07.322Z'
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
+  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1623934028/images/terminal-article.png'
+  url: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623934028/images/terminal-article.png'
 ---
 
 If you are are software developer building websites you most likely are writing backend code, frontend code, configuring databases, servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language you are coding.

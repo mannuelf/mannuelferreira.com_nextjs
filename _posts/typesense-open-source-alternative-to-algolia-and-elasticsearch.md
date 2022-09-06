@@ -5,7 +5,7 @@ coverImage: 'https://www.mannuelferreira.com/assets/blog/typesense-open-source-a
 date: '2021-10-21T22:05:00.322Z'
 author:
   name: 'M Ferreira'
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
+  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
 ogImage:
   url: 'https://www.mannuelferreira.com/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png'
 ---

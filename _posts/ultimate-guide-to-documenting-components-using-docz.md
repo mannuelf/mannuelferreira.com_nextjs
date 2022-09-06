@@ -1,11 +1,11 @@
 ---
 title: 'Ultimate guide to documenting components using docz'
 excerpt: 'Leveraging the power of Gatsby, docz builds a mobile first, SEO friendly static website along-side your projects.'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1623933965/images/git-article.png'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png'
 date: '2021-12-01T09:45:00.322Z'
 author:
   name: 'M Ferreira'
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
+  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
 ogImage:
   url: 'https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/docz-site.png'
 ---

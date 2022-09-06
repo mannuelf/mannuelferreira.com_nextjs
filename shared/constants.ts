@@ -11,4 +11,4 @@ export const LOGO_SPOTIFY =
 export const LOGO_LASTFM =
   'https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg';
 export const AVATAR_ME =
-  'https://res.cloudinary.com/mannuel/image/upload/v1636496492/images/mee.jpg';
+  'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1636496492/images/mee.jpg';

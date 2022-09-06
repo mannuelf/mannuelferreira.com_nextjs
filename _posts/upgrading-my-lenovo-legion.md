@@ -1,16 +1,16 @@
 ---
 title: 'Upgrading my Lenovo Legion'
 excerpt: 'I had such a great time upgrading my laptop I felt I had to share my experience of it with you all.'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1661487899/legion/main-cover.jpg'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661487899/legion/main-cover.jpg'
 date: '2022-08-26T06:25:00.322Z'
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/v1604067445/images/mee.jpg'
+  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1661487899/legion/main-cover.jpg'
+  url: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661487899/legion/main-cover.jpg'
 ---
 
-![Lenovo Legion Y530](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/main-cover.jpg)
+![Lenovo Legion Y530](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/main-cover.jpg)
 
 Right ok, so I spilled water on on my keyboard on my favourite laptop and rendered it useless. I had to buy a new keyboard and replace it.
 
@@ -28,79 +28,79 @@ Why would you do that especially after watching this scary [YouTube](https://you
 
 ### New Keyboard
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/keyboard.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/keyboard.jpg)
 Feeling pretty pleased with myself at this point, only paid $28 for this replacement keyboard.
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/keyboard2.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/keyboard2.jpg)
 Looks very close to the real thing.
 
 ### MAC Memory 16BG's
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/memory.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/memory.jpg)
 Oh yes, bumping RAM up to 16GB's
 
 ### Soldering iron
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/soldering-iron.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/soldering-iron.jpg)
 The only non-destructive way to detach the keyboard from the plastic Lenovo chassis is by melting tiny little rivets off one at a time.
 
 ### Before, dusty fans needed a clean
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/open-before.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/open-before.jpg)
 Throughout the process I took pictures and labeled screws, do this, or bad things may happen later.
 
 ### That has to go in there
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-01.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-01.jpg)
 At this point I was questing my lifes choices.
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-02.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-02.jpg)
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-03.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-03.jpg)
 
 ### Fans and headsink off
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-04.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-04.jpg)
 
 ### Motherboard off
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-05.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-05.jpg)
 
 ### Screen detatched
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-06.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-06.jpg)
 See that black wrapping, and silver chassis, well the keyboard is under that, protected by many plastic rivets.
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-07.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-07.jpg)
 These tiny black dots are the rivets that need melting off, this was the most time consuming task of all.
 
 ### Tadaaa, keyboard off
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-08.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-08.jpg)
 
 ### Goodbye old friend
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-09.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-09.jpg)
 
 ### Is that it? had no idea what I was looking at thinking maybe I should have taken it to a guy.
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-10.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-10.jpg)
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-11.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-11.jpg)
 
 > All of this must be put back together again
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-12.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-12.jpg)
 
 > Careful don't touch anything
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-13.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-13.jpg)
 
 > Nearing the end...
 
 ### End scene, everything back together again
 
-![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/v1661362090/legion/legion-14.jpg)
+![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-14.jpg)
 
 This process took 5hrs, spread out over 2 sessions of 2.5hrs, If I were to do it again I am sure it would be much faster and easier.
 
