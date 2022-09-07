@@ -13,5 +13,5 @@ pnpm install
 ### Local dev
 
 ```
-npm run dev
+npm run start:dev
 ```

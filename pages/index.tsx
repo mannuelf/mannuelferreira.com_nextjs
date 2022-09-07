@@ -37,14 +37,14 @@ const pageSideNav: pageSideNavProps = [
     href: 'books',
     enabled: false,
   },
-].filter(item => item.enabled);
+].filter((item) => item.enabled);
 
 const Index = ({ allPosts }: Props) => {
   return (
     <>
       <Layout>
         <Head>
-          <title>{CMS_NAME}</title>
+          <title>Home | {CMS_NAME}</title>
         </Head>
         <Container>
           <section className='content-center mb-20 grid grid-cols-1 md:grid-cols-2 gap-4'>
