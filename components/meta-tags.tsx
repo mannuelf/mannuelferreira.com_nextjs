@@ -16,7 +16,7 @@ export default function MetaTags({
   ogSiteName,
   ogTitle,
   ogDescription,
-  ogTwitterCard,
+  ogTwitterCard = 'summary_large_image',
   ogTwitterCreator,
   ogTwitterSite,
   ogUrl,
