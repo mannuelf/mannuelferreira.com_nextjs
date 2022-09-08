@@ -62,7 +62,7 @@ const Post = ({ post }: Props) => {
                 ogSiteName={CMS_NAME}
                 ogTitle={post.title}
                 ogDescription={post.excerpt}
-                ogTwitterCard={post.excerpt}
+                ogTwitterCard={'summary_large_image'}
                 ogTwitterSite={TWITTER_HANDLE}
                 ogTwitterCreator={TWITTER_HANDLE}
                 ogUrl={currentURL}
