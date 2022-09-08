@@ -12,7 +12,7 @@ const Projects = () => {
         </Head>
         <Container>
           <PageTitle>Projects</PageTitle>
-          <div className='border-t pt-4 mt-8 mb-8'>
+          <div className='pt-4 mt-8 mb-8 border-t'>
             <p className='text-lg'>Coming soon...</p>
           </div>
         </Container>
