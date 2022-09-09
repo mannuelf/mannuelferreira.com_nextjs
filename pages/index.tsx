@@ -47,7 +47,7 @@ const Index = ({ allPosts }: Props) => {
           <title>{`Home - ${CMS_NAME}`}</title>
         </Head>
         <Container>
-          <section className='content-center mb-4 grid grid-cols-1 md:grid-cols-2 gap-4'>
+          <section className='content-center mb-8 grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div className='items-center justify-self-center'>
               <Image
                 className='rounded-full w-54 h-54'
@@ -60,7 +60,7 @@ const Index = ({ allPosts }: Props) => {
 
             <div>
               <div className='mb-2 text-center md:text-left '>
-                 <h1 className='text-5xl font-medium'>{CMS_NAME}</h1>
+                <h1 className='text-5xl font-medium'>{CMS_NAME}</h1>
                 <p className='text-2xl font-light'>Software Engineer</p>
               </div>
               {pageSideNav
