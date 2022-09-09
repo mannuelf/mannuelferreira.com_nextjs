@@ -6,6 +6,8 @@
 
 ## Install dependencies
 
+(optional) Install PNPM [here](https://pnpm.io/).
+
 ```
 pnpm install
 ```
@@ -13,5 +15,5 @@ pnpm install
 ### Local dev
 
 ```
-npm run start:dev
+pnpm run start:dev
 ```
