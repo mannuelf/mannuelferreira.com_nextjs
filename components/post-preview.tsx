@@ -11,16 +11,16 @@ type Props = {
 
 const PostPreview = ({ title, date, excerpt, author, slug }: Props) => {
   return (
-    <div className='bg-white p-5 m-0'>
-      <h3 className='text-3xl mb-3 font-medium leading-snug'>
-        <Link as={`/posts/${slug}`} href='/posts/[slug]'>
-          <a className='hover:text-purple-900'>{title}</a>
-        </Link>
-      </h3>
-      <div className='text-lg mb-4 text-gray-600'>
-        <DateFormatter dateString={date} />
-      </div>
-      <p className='text-lg leading-relaxed mb-1'>{excerpt}</p>
+    <div className='p-5 m-0 bg-white border-2 border-white hover:border-l-purple rounded-md transition-all'>
+      <Link as={`/posts/${slug}`} href='/posts/[slug]'>
+        <a className='hover:text-purple'>
+          <h3 className='mb-3 text-3xl font-medium leading-snug'>{title}</h3>
+          <div className='mb-4 text-lg text-gray-600'>
+            <DateFormatter dateString={date} />
+          </div>
+          <p className='mb-1 text-lg leading-relaxed'>{excerpt}</p>
+        </a>
+      </Link>
     </div>
   );
 };
