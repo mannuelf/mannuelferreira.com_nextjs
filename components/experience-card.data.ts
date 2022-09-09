@@ -7,6 +7,7 @@ export const ExperienceCardItems = [
       href: 'https://res.cloudinary.com/mannuel/image/upload/v1662272848/mfcom/logo-sats.svg',
       height: 50,
       width: 160,
+      weblink: 'https://sats.no',
     },
   },
   {
@@ -17,6 +18,7 @@ export const ExperienceCardItems = [
       href: 'https://res.cloudinary.com/mannuel/image/upload/v1662272673/mfcom/Logo-Noroff.png',
       height: 60,
       width: 190,
+      weblink: 'https://noroff.no',
     },
   },
   {
@@ -27,6 +29,7 @@ export const ExperienceCardItems = [
       href: 'https://res.cloudinary.com/mannuel/image/upload/v1662272676/mfcom/superbalist-com-logo.svg',
       height: 27,
       width: 276,
+      weblink: 'https://superbalist.com',
     },
   },
   {
@@ -37,6 +40,7 @@ export const ExperienceCardItems = [
       href: 'https://res.cloudinary.com/mannuel/image/upload/v1662272680/mfcom/Logo-WWC.png',
       height: 79,
       width: 62,
+      weblink: 'https://wwc.co.za',
     },
   },
   {
@@ -47,6 +51,7 @@ export const ExperienceCardItems = [
       href: 'https://res.cloudinary.com/mannuel/image/upload/v1662274385/mfcom/Logo-OSIRIS.png',
       height: 50,
       width: 176,
+      weblink: 'https://www.osiristrading.com',
     },
   },
   {
@@ -57,6 +62,7 @@ export const ExperienceCardItems = [
       href: 'https://res.cloudinary.com/mannuel/image/upload/v1662273030/mfcom/Logo-element.png',
       height: 84,
       width: 144,
+      weblink: 'https://element.co.za',
     },
   },
 ];

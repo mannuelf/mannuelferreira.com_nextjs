@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ExperienceCardProps } from './experience-card.types';
 
 const ExperienceCard = ({ title, date, logo }: ExperienceCardProps) => {
@@ -14,6 +15,14 @@ const ExperienceCard = ({ title, date, logo }: ExperienceCardProps) => {
           src={logo.href}
           alt={logo.title}
         />
+        <div className='pt-4'>
+          <Link href={logo.weblink}>
+            <a target='_blank'>
+              {logo.title}{' '}
+              <i className='text-sm fa-solid fa-arrow-up-right-from-square'></i>
+            </a>
+          </Link>
+        </div>
       </div>
     </>
   );

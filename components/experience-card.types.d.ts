@@ -9,4 +9,5 @@ export type Logo = {
   href: string;
   width: number;
   height: number;
+  weblink: string;
 };
