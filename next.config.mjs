@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const { v4: uuidv4 } = require('uuid');
+import { v4 as uuidv4 } from 'uuid';
 import generateSitemap from './scripts/sitemap-generator.mjs';
 
 const nextConfig = {
