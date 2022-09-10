@@ -1,6 +1,6 @@
 export const GITHUB_URL = 'https://github.com/mannuelf';
 export const GENERIC_META =
-  'Mannuel Ferreira, Software Engineer. I enjoy building and designing applications for the web. I enjoy working with web technologies such as React, PHP, python, Node.JS, Sass, JavaScript.';
+  'Hello world! I am Mannuel Ferreira, Software Engineer. I enjoy building and designing applications for the web. I enjoy working with web technologies such as JavaScript, React, python, Node.JS, Deno, CSS, Sass CSS-in-JS... it\'s all quite intersting to me.';
 export const CMS_NAME = 'Mannuel Ferreira';
 export const HOME_OG_IMAGE_URL = '';
 export const TWITTER_HANDLE = 'manidf';

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-import {v4 as uuid4} 'uuid';
+const { v4: uuidv4 } = require('uuid');
 import generateSitemap from './scripts/sitemap-generator.mjs';
 
 const nextConfig = {
@@ -16,7 +16,7 @@ const nextConfig = {
       'upload.wikimedia.org',
     ],
   },
-  generateBuildId: async () => uuid4(),
+  generateBuildId: async () => uuidv4(),
   typescript: {
     ignoreBuildErrors: false,
   },
