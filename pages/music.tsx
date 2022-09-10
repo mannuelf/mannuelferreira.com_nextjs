@@ -1,10 +1,5 @@
-import React, { useEffect, useState, FC, SetStateAction } from 'react';
-import {
-  GetServerSideProps,
-  GetServerSidePropsContext,
-  GetStaticProps,
-  GetStaticPropsContext,
-} from 'next';
+import React, { useEffect, useState } from 'react';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
 import axios from 'axios';
 import Layout from '@components/Layout/layout';
@@ -24,8 +19,9 @@ const Music = ({ music, error }: Props) => {
 
   useEffect(() => {
     setIsError(error);
-    setData(music);
+    setData(music.topartists.artist);
   }, [music, error]);
+
 
   if (isError)
     return (
@@ -47,31 +43,34 @@ const Music = ({ music, error }: Props) => {
           </p>
         </div>
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
-          {data &&
-            data?.map((artist: Artist, index: number) => (
-              <div
-                key={index}
-                className='static relative h-80 md:h-72 bg-purple-dark'
-                style={{
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'top center',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundImage: `url(${artist.cover.photo})`,
-                }}
-              >
-                <div className='absolute bottom-0 left-0 pb-0'>
-                  <h2 className='text-3xl font-light text-white pl-2 pb-2'>
-                    {artist.name}
-                  </h2>
-                  <h3 className='text-4xl font-normal text-white w-min p-2 bg-black bg-opacity-60'>
-                    {artist.playcount}
-                    <span className='text-xs font-light text-white pl-2 '>
-                      plays
-                    </span>
-                  </h3>
+          {data
+            ? data?.map((artist: Artist, index: number) => (
+                <div
+                  key={index}
+                  className='static relative h-80 md:h-72 bg-purple-dark'
+                  style={{
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'top center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundImage: `url(${artistImages.filter(
+                      (photo) => photo.name.includes(artist.name) ?? photo.photo,
+                    )})`,
+                  }}
+                >
+                  <div className='absolute bottom-0 left-0 pb-0'>
+                    <h2 className='text-3xl font-light text-white pl-2 pb-2'>
+                      {artist.name}
+                    </h2>
+                    <h3 className='text-4xl font-normal text-white w-min p-2 bg-black bg-opacity-60'>
+                      {artist.playcount ? artist.playcount : null}
+                      <span className='text-xs font-light text-white pl-2 '>
+                        plays
+                      </span>
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            : null}
         </div>
         <div className='border-t pt-4 mt-8 mb-16'>
           <p>
@@ -98,9 +97,10 @@ const Music = ({ music, error }: Props) => {
 
 export const getTopArtists = async (): Promise<TopArtists> => {
   try {
-    const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
-    const { data } = await response;
+    const response = await axios({ url: ARTIST_ENDPOINT, method: 'GET' });
+    const { data } = response;
     data['images'] = artistImages;
+
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -116,8 +116,8 @@ export const getServerSideProps: GetServerSideProps = async (
 
   try {
     const response: TopArtists | any = await getTopArtists();
-    music = response.topartists.artist;
-    photos = response.images;
+    music = response ?? response.topartists.artist;
+    photos = response ?? response.images;
 
     const toMerge: [] = [...music, ...photos];
     let set = new Set();

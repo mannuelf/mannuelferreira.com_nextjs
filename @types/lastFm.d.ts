@@ -57,6 +57,7 @@ type ArtistImage = {
   name: string;
   photo: string;
   attribution: string;
+  playcount: number;
 };
 
 enum LastFmErrors {
