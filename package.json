@@ -1,7 +1,7 @@
 {
   "name": "mannuel-ferreira",
   "version": "0.1.1",
-  "module": "module",
+  "module": "nodenext",
   "scripts": {
     "dev": "next",
     "start:dev": "concurrently \"npm run watch:css\" \"npm run dev\" \"npm run typecheck -w\"",
