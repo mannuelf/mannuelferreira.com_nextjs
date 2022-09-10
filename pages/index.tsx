@@ -5,7 +5,7 @@ import { getAllPosts } from '@lib/api';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AVATAR_ME, CMS_NAME } from '@shared/constants';
+import { AVATAR_ME, CMS_NAME, GENERIC_META } from '@shared/constants';
 
 type Props = {
   allPosts: Post[];
@@ -45,6 +45,7 @@ const Index = ({ allPosts }: Props) => {
       <Layout>
         <Head>
           <title>{`Home - ${CMS_NAME}`}</title>
+          <meta name='description' content={GENERIC_META} />
         </Head>
         <Container>
           <section className='content-center mb-8 grid grid-cols-1 md:grid-cols-2 gap-4'>

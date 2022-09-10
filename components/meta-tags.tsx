@@ -23,9 +23,7 @@ export default function MetaTags({
 }: Props) {
   return (
     <Head>
-      <title>
-        {`${ogTitle} | ${ogSiteName}`}
-      </title>
+      <title>{`${ogTitle} | ${ogSiteName}`}</title>
       <meta property='og:image' content={ogImage} key='ogimage' />
       <meta property='og:site_name' content={ogSiteName} key='ogsitename' />
       <meta property='og:title' content={ogTitle} />
