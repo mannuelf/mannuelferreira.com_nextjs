@@ -12,7 +12,8 @@ export const LOGO_SPOTIFY =
   'https://res.cloudinary.com/mannuel/image/upload/v1630704755/images/Spotify_Logo.svg';
 export const LOGO_LASTFM =
   'https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg';
-export const LOGO_LARCASTS = 'https://res.cloudinary.com/mannuel/image/upload/v1662894592/images/logo-laracast.svg';
+export const LOGO_LARCASTS =
+  'https://res.cloudinary.com/mannuel/image/upload/v1662894592/images/logo-laracast.svg';
 export const URL_LARACASTS = 'https://laracasts.com/@mannuelf';
 export const URL_GITHUB_PROFILE = 'https://github.com/mannuelf';
 export const URL_MICROSOFT_PROFILE =

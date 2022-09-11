@@ -12,7 +12,7 @@ import Image from 'next/image';
 
 const FooterSocial = () => {
   return (
-    <div className='w-full text-left sm:w-1/2 md:w-1/3 lg:1/3 xl:1/3 sm:pl-0 md:pl-0 lg:pl-10'>
+    <div className='w-full text-left md:w-1/2'>
       <h3 className='pb-3 text-2xl font-medium'>Follow me</h3>
       <ul className='flex'>
         <li className='pr-4'>
