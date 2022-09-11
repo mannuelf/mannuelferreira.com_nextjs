@@ -18,6 +18,8 @@ export const getTopArtists = async (): Promise<TopArtists> => {
     const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
     const { data } = await response;
     data['images'] = artistImages;
+    console.log('getTopArtists', response);
+    
     return data;
   } catch (error) {
     throw new Error(`${error}`);
