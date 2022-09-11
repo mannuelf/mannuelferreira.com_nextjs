@@ -1,5 +1,5 @@
 ---
-title: 'Hyper terminal by Vercel'
+title: 'Hyper a terminal by Vercel'
 excerpt: 'I have started using Hyper a terminal built by Vercel, I think you might like it too. Here is why...'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1662873007/images/hyper-post-cover.png'
 date: '2022-09-11T07:18:00.322Z'
@@ -10,7 +10,7 @@ ogImage:
   url: 'https://res.cloudinary.com/mannuel/image/upload/v1662873007/images/hyper-post-cover.png'
 ---
 
-They say 
+They say
 
 > Tools maketh the engineer
 
@@ -35,7 +35,7 @@ module.exports = {
   // choose either `'stable'` for receiving highly polished,
   // or `'canary'` for less polished but more frequent updates
   updateChannel: "stable",
-  ... 
+  ...
   plugins: [
     "hyper-snazzy",
     "hyperlinks",
@@ -44,7 +44,7 @@ module.exports = {
   ],
   ...
 }
-``` 
+```
 
 note: you should move your config to a central location "config".
 
@@ -57,9 +57,9 @@ note: you should move your config to a central location "config".
 
 Hyper has a plugin ecosystem you can install plugins and most importantly themes very easily.
 
-### A CLI 
+### A CLI
 
-Hyper has CLI to help you install those [plugins](https://hyper.is/plugins) and themes, command below will install the Shades of purple theme. 
+Hyper has CLI to help you install those [plugins](https://hyper.is/plugins) and themes, command below will install the Shades of purple theme.
 
 ```bash
 $ hyper i shades_of_purple
@@ -67,7 +67,7 @@ $ hyper i shades_of_purple
 
 ### It's not a resource hog
 
-It's low usage on memory is great. 
+It's low usage on memory is great.
 
 I used to use Iterm2 on mac and found that a bit hungry on memory. Hyper is winning.
 
@@ -80,6 +80,6 @@ Who's got time to learn [TMUX](https://tmuxcheatsheet.com) amirite! (actually tm
 
 ![split-tabs](https://res.cloudinary.com/mannuel/image/upload/v1662875027/images/hyper-split-screen.png)
 
-In summary if you spend a lot time in the terminal like I do, you will love Hyper, it's fast, configurable, plugin'able (is that even a word) and finally it looks amazing the font rendering is smooth smooth smooth. 
+In summary if you spend a lot time in the terminal like I do, you will love Hyper, it's fast, configurable, plugin'able (is that even a word) and finally it looks amazing the font rendering is smooth smooth smooth.
 
-Thanks for reading, consider sharing this post with your friends 🥳 
+Thanks for reading, consider sharing this post with your friends 🥳
