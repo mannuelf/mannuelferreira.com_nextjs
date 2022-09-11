@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       boxShadow: {},
       colors: {
+        orange: {
+          DEFAULT: '#FF9D00',
+        },
         purple: {
           light: '#2D2B55',
           DEFAULT: '#2D2B55',
