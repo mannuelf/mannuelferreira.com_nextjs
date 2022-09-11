@@ -1,7 +1,7 @@
 const FooterCopyright = () => {
   return (
-    <div className='w-full sm:w-full md:w-full lg:flex-1 xl:flex-1 pb-10 text-left'>
-      <h3 className='text-2xl font-medium pb-3'>Thank you for visiting</h3>
+    <div className='w-full pt-10 text-left sm:w-full md:w-full lg:flex-1 xl:flex-1'>
+      <h3 className='pb-3 text-2xl font-medium'>Thank you for visiting</h3>
       <ul className='footer-copyright leading-8'>
         <li className='border-b border-gray-600'>
           Made with <i className='far fa-heart'></i> by Mannuel Ferreira.

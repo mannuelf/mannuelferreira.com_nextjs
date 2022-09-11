@@ -14,6 +14,15 @@ const FooterSocial = () => {
         </li>
         <li className='pr-4'>
           <a
+            href='https://docs.microsoft.com/en-us/users/mannuelferreira'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <i className='fab fa-windows text-3xl'></i>
+          </a>
+        </li>
+        <li className='pr-4'>
+          <a
             href='https://codepen.io/mannuelf'
             target='_blank'
             rel='noopener noreferrer'
