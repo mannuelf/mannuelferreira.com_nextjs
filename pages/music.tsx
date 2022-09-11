@@ -107,39 +107,13 @@ export const getTopArtists = async (): Promise<TopArtists> => {
   }
 };
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   let music: [] = [];
-  let photos: [] = [];
   let error: string = '';
 
   try {
-    const response: TopArtists | any = await getTopArtists();
+    const response: TopArtists = await getTopArtists();
     music = response ?? response.topartists.artist;
-    photos = response ?? response.images;
-
-    const toMerge: [] = [...music, ...photos];
-    let set = new Set();
-    let addArtistImage: any = toMerge.filter((artist: ArtistImage) => {
-      if (!set.has(artist.name)) {
-        set.add(artist.name);
-        for (let i = 0; i < music.length; i++) {
-          delete music[i]['image']; // - star img from lastFm
-          let cover: TopArtists | any = music[i];
-          if (artist.name === music[i]['name']) {
-            let result: any = photos.filter(
-              (photo: ArtistImage) => photo.name === artist.name,
-            );
-            cover['cover'] = result[0];
-          }
-        }
-        return true;
-      }
-      return false;
-    }, set);
-
-    music = addArtistImage;
   } catch (error) {
     error = error;
   }
