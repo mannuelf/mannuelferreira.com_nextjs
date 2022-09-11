@@ -1,60 +1,86 @@
+import {
+  LOGO_LARCASTS,
+  URL_CODEPEN_PROFILE,
+  URL_GITHUB_PROFILE,
+  URL_LARACASTS,
+  URL_LINKEDIN_PROFILE,
+  URL_MICROSOFT_PROFILE,
+  URL_TWITTER_PROFILE,
+  URL_YOUTUBE_CHANNEL,
+} from '@shared/constants';
+import Image from 'next/image';
+
 const FooterSocial = () => {
   return (
-    <div className='w-full sm:w-1/2 md:w-1/3 lg:1/3 xl:1/3 text-left sm:pl-0 md:pl-0 lg:pl-10'>
-      <h3 className='text-2xl font-medium pb-3'>Follow me</h3>
+    <div className='w-full text-left sm:w-1/2 md:w-1/3 lg:1/3 xl:1/3 sm:pl-0 md:pl-0 lg:pl-10'>
+      <h3 className='pb-3 text-2xl font-medium'>Follow me</h3>
       <ul className='flex'>
         <li className='pr-4'>
           <a
-            href='https://github.com/mannuelf'
+            href={URL_TWITTER_PROFILE}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <i className='fab fa-github text-3xl'></i>
+            <i className='text-3xl fab fa-twitter'></i>
           </a>
         </li>
         <li className='pr-4'>
           <a
-            href='https://docs.microsoft.com/en-us/users/mannuelferreira'
+            href={URL_LINKEDIN_PROFILE}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <i className='fab fa-windows text-3xl'></i>
+            <i className='text-3xl fab fa-linkedin'></i>
+          </a>
+        </li>
+
+        <li className='pr-4'>
+          <a
+            href={URL_GITHUB_PROFILE}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <i className='text-3xl fab fa-github'></i>
           </a>
         </li>
         <li className='pr-4'>
           <a
-            href='https://codepen.io/mannuelf'
+            href={URL_MICROSOFT_PROFILE}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <i className='fab fa-codepen text-3xl'></i>
+            <i className='text-3xl fab fa-windows'></i>
           </a>
         </li>
         <li className='pr-4'>
           <a
-            href='https://twitter.com/manidf'
+            href={URL_CODEPEN_PROFILE}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <i className='fab fa-twitter text-3xl'></i>
+            <i className='text-3xl fab fa-codepen'></i>
+          </a>
+        </li>
+        <li className='pr-4'>
+          <a href={URL_LARACASTS} target='_blank' rel='noopener noreferrer'>
+            <span>
+              <Image
+                src={LOGO_LARCASTS}
+                alt='Larcasts'
+                width={28}
+                height={28}
+                layout='fixed'
+              />
+            </span>
           </a>
         </li>
         <li className='pr-4'>
           <a
-            href='https://www.linkedin.com/in/mannuelferreira/'
+            href={URL_YOUTUBE_CHANNEL}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <i className='fab fa-linkedin text-3xl'></i>
-          </a>
-        </li>
-        <li className='pr-4'>
-          <a
-            href='https://www.youtube.com/mannuelferreira'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <i className='fab fa-youtube text-3xl'></i>
+            <i className='text-3xl fab fa-youtube'></i>
           </a>
         </li>
       </ul>
