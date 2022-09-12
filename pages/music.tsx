@@ -110,16 +110,15 @@ export const getTopArtists = async (): Promise<TopArtists> => {
 
 export const getArtistCoverImage = async (): Promise<any> => {
   try {
+    const artistId = '678d88b2-87b0-403b-b63d-5da7465aecc3';
     const response = await axios({
       url:
-        'http://webservice.fanart.tv/v3/music/678d88b2-87b0-403b-b63d-5da7465aecc3/?api_key=' +
+        'http://webservice.fanart.tv/v3/music/' + artistId + '?api_key=' +
         FANART_TV.api_key,
       method: 'GET',
     });
 
     const { data } = response;
-    console.log(data);
-
     return data;
   } catch (error) {
     console.log(error);
