@@ -22,7 +22,6 @@ const Music = ({ music, error }: Props) => {
     setData(music.topartists.artist);
   }, [music, error]);
 
-
   if (isError)
     return (
       <Layout>
@@ -36,7 +35,7 @@ const Music = ({ music, error }: Props) => {
     <Layout>
       <Container>
         <PageTitle>Music</PageTitle>
-        <div className='border-t pt-4 mt-8 mb-8'>
+        <div className='pt-4 mt-8 mb-8 border-t'>
           <p className='text-lg'>
             I love music, I have been tracking my habits with lastFm, according
             to their data these are my all time favourites.
@@ -53,17 +52,18 @@ const Music = ({ music, error }: Props) => {
                     backgroundPosition: 'top center',
                     backgroundRepeat: 'no-repeat',
                     backgroundImage: `url(${artistImages.filter(
-                      (photo) => photo.name.includes(artist.name) ?? photo.photo,
+                      (photo) =>
+                        photo.name.includes(artist.name) ?? photo.photo,
                     )})`,
                   }}
                 >
                   <div className='absolute bottom-0 left-0 pb-0'>
-                    <h2 className='text-3xl font-light text-white pl-2 pb-2'>
+                    <h2 className='pb-2 pl-2 text-3xl font-light text-white'>
                       {artist.name}
                     </h2>
-                    <h3 className='text-4xl font-normal text-white w-min p-2 bg-black bg-opacity-60'>
+                    <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
                       {artist.playcount ? artist.playcount : null}
-                      <span className='text-xs font-light text-white pl-2 '>
+                      <span className='pl-2 text-xs font-light text-white '>
                         plays
                       </span>
                     </h3>
@@ -72,7 +72,7 @@ const Music = ({ music, error }: Props) => {
               ))
             : null}
         </div>
-        <div className='border-t pt-4 mt-8 mb-16'>
+        <div className='pt-4 mt-8 mb-16 border-t'>
           <p>
             Images thanks to Wikimedia Commons{' '}
             <a href='https://creativecommons.org/licenses/by/3.0'>3.0</a> and{' '}

@@ -1,18 +1,34 @@
 import Container from '@components/container';
 import ExperienceCard from '@components/experience-card';
-import Head from 'next/head';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import { ExperienceCardItems } from '@components/experience-card.data';
 import { ExperienceCardProps } from '@components/experience-card.types';
+import {
+  CMS_NAME,
+  GENERIC_META,
+  META_EXPERIENCE,
+  SITE_URL,
+  TWITTER_CARD_POSTS,
+  TWITTER_HANDLE,
+} from '@shared/constants';
+import MetaTags from '@components/meta-tags';
+
 
 const Experience = () => {
   return (
     <>
       <Layout>
-        <Head>
-          <title>{'Experience'}</title>
-        </Head>
+        <MetaTags
+          ogTitle={'Books'}
+          ogImage={TWITTER_CARD_POSTS}
+          ogDescription={META_EXPERIENCE}
+          ogUrl='https://mannuelferreira.com/experience'
+          ogSiteName={CMS_NAME}
+          ogTwitterCard='summary_large_image'
+          ogTwitterSite={TWITTER_HANDLE}
+          ogTwitterCreator={TWITTER_HANDLE}
+        />
         <Container>
           <PageTitle>Experience</PageTitle>
           <div className='pt-4 mt-8 mb-8 border-t'>

@@ -23,3 +23,10 @@ export const URL_TWITTER_PROFILE = 'https://twitter.com/manidf';
 export const URL_LINKEDIN_PROFILE =
   'https://www.linkedin.com/in/mannuelferreira/';
 export const URL_YOUTUBE_CHANNEL = 'https://www.youtube.com/mannuelferreira';
+export const TWITTER_CARD_HOME = 'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/home-post-cover.png'
+export const TWITTER_CARD_POSTS = 'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/posts-post-cover.png'
+export const TWITTER_CAR_BOOKS = 'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/books-post-cover.png'
+export const TWITTER_CARD_EXPERIENCE = 'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/experience-post-cover.png'
+export const META_POSTS = 'I enjoy learning about new technologies, programming techniques and languages, this where I will save my notes.'
+export const META_BOOKS = 'A list of books I have read, enjoyed and recommend.'
+export const META_EXPERIENCE = 'I am grateful to have worked with many incredible people on awesome products & projects over the years. These pages are a look back in time and a reminder for me to stop stressing and enjoy every moment now.'

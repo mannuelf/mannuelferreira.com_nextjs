@@ -50,7 +50,7 @@ const Index = ({ allPosts }: Props) => {
     <>
       <Layout>
         <MetaTags
-          ogTitle={CMS_NAME}
+          ogTitle={'Home'}
           ogImage={AVATAR_ME}
           ogDescription={GENERIC_META}
           ogUrl={SITE_URL}
