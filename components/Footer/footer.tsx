@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className='app-footer pt-10 pb-10'>
       <Container>
-        <div className='flex flex-wrap justify-start -mx-2'>
+        <div className='flex flex-wrap justify-start mx-2'>
           <FooterSocial />
           <FooterCopyright />
         </div>
