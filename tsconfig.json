@@ -24,14 +24,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "incremental": true
+    "incremental": true,
+    "typeRoots": ["./types"]
   },
   "exclude": ["node_modules"],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "jest.setup.ts",
-    "jest.config.ts"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

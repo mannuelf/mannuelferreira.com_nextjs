@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import axios from 'axios';
 import Layout from '@components/Layout/layout';
@@ -7,6 +7,7 @@ import PageTitle from '@components/page-title';
 import Container from '@components/container';
 import artistImages from '@lib/api/artistImages';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
+import { FANART_TV } from '@lib/api/fanarttv';
 
 type Props = {
   music: TopArtists;
@@ -107,12 +108,34 @@ export const getTopArtists = async (): Promise<TopArtists> => {
   }
 };
 
+export const getArtistCoverImage = async (): Promise<any> => {
+  try {
+    const response = await axios({
+      url:
+        'http://webservice.fanart.tv/v3/music/678d88b2-87b0-403b-b63d-5da7465aecc3/?api_key=' +
+        FANART_TV.api_key,
+      method: 'GET',
+    });
+
+    const { data } = response;
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getServerSideProps: GetServerSideProps = async () => {
   let music: [] = [];
   let error: string = '';
+  let artistCoverImage;
 
   try {
     const response: TopArtists = await getTopArtists();
+    const responseArtistCoverImage = await getArtistCoverImage();
+    artistCoverImage =
+      responseArtistCoverImage ?? responseArtistCoverImage.data;
     music = response ?? response.topartists.artist;
   } catch (error) {
     error = error;
@@ -121,6 +144,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       music,
+      artistCoverImage,
       error,
     },
   };

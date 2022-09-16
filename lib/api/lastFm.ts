@@ -29,6 +29,7 @@ const LAST_FM = {
 };
 
 export const AUTH_ENDPOINT = `${LAST_FM.base_url}/2.0/?method=${LAST_FM.methods.auth.token}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
+
 export const ARTIST_ENDPOINT = `${LAST_FM.base_url}/2.0/?method=${LAST_FM.methods.user.top_artists}&user=${LAST_FM.user}&limit=20&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
 
 export const getTopArtists = async (): Promise<TopArtists> => {
