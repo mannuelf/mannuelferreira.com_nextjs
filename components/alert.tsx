@@ -16,7 +16,7 @@ const Alert: React.FC<Props> = (preview) => {
       })}
     >
       <Container>
-        <div className='py-2 text-center text-sm'>
+        <div className='py-2 text-sm text-center'>
           The source code for this blog is{' '}
           <a
             href={`${GITHUB_URL}`}

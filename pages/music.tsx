@@ -9,21 +9,23 @@ import artistImages from '@lib/api/artistImages';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
 import { FANART_TV } from '@lib/api/fanarttv';
 
+import testData from './testdata';
+
 type Props = {
-  music: TopArtists;
-  error: string;
+  data: TopArtists;
+  error: [];
 };
 
-const Music = ({ music, error }: Props) => {
-  const [data, setData] = useState<any | []>([]);
-  const [isError, setIsError] = useState('');
+const Music = ({ data, error }: Props) => {
+  const [artists, setArtists] = useState<Artist[] | []>([]);
+  const [isError, setIsError] = useState([]);
 
   useEffect(() => {
     setIsError(error);
-    setData(music.topartists.artist);
-  }, [music, error]);
+    setArtists(data);
+  }, [data, error]);
 
-  if (isError)
+  if (isError.length > 0)
     return (
       <Layout>
         <Container>
@@ -43,19 +45,17 @@ const Music = ({ music, error }: Props) => {
           </p>
         </div>
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
-          {data
-            ? data?.map((artist: Artist, index: number) => (
+          {isError.length > 0 ? <div>{error}</div> : null}
+          {artists.length > 0
+            ? artists[0].map((artist: Artist) => (
                 <div
-                  key={index}
+                  key={artist.mbid}
                   className='static relative h-80 md:h-72 bg-purple-dark'
                   style={{
                     backgroundSize: 'cover',
                     backgroundPosition: 'top center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundImage: `url(${artistImages.filter(
-                      (photo) =>
-                        photo.name.includes(artist.name) ?? photo.photo,
-                    )})`,
+                    backgroundImage: `url(${artist.image})`,
                   }}
                 >
                   <div className='absolute bottom-0 left-0 pb-0'>
@@ -96,54 +96,82 @@ const Music = ({ music, error }: Props) => {
   );
 };
 
+let errors = [];
+
 export const getTopArtists = async (): Promise<TopArtists> => {
   try {
     const response = await axios({ url: ARTIST_ENDPOINT, method: 'GET' });
     const { data } = response;
-    data['images'] = artistImages;
-
     return data;
   } catch (error) {
-    throw new Error(`${error}`);
+    errors.push(error);
   }
 };
 
-export const getArtistCoverImage = async (): Promise<any> => {
+export const getFanartTvData = async (mbid: string): Promise<any> => {
   try {
-    const artistId = '678d88b2-87b0-403b-b63d-5da7465aecc3';
+    const artistId = mbid;
     const response = await axios({
-      url:
-        'http://webservice.fanart.tv/v3/music/' + artistId + '?api_key=' +
-        FANART_TV.api_key,
+      url: FANART_TV.base_url + artistId + '?api_key=' + FANART_TV.api_key,
       method: 'GET',
     });
-
     const { data } = response;
+
     return data;
   } catch (error) {
-    console.log(error);
+    errors.push(error);
   }
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let music: [] = [];
-  let error: string = '';
-  let artistCoverImage;
+  let data: [] = [];
+  let error = [];
 
   try {
-    const response: TopArtists = await getTopArtists();
-    const responseArtistCoverImage = await getArtistCoverImage();
-    artistCoverImage =
-      responseArtistCoverImage ?? responseArtistCoverImage.data;
-    music = response ?? response.topartists.artist;
+    const topArtists: TopArtists = await getTopArtists();
+
+    const artists: Artist[] = topArtists.topartists.artist;
+
+    const allMbids: string[] = artists.map((artist) => artist.mbid);
+
+    let fanArtTvResult = [];
+    for (const mbid of allMbids) {
+      fanArtTvResult.push(await getFanartTvData(mbid));
+    }
+
+    const findArtistImage = (mbid: string): string => {
+      let imageUrl = '';
+      fanArtTvResult.find((artist) => {
+        if (artist.mbid_id === mbid) {
+          return artist.artistbackground.map((backgroundImage) => {
+            imageUrl = backgroundImage.url;
+            return backgroundImage.url;
+          });
+        }
+      });
+      return imageUrl;
+    };
+
+    const cleanArtists = artists.flatMap((artist: Artist) => {
+      return {
+        ...artist,
+        image: findArtistImage(artist.mbid),
+      };
+    });
+    console.log(
+      '-----------------------------------------------------/n',
+      cleanArtists,
+    );
+
+    data.push(cleanArtists);
   } catch (error) {
-    error = error;
+    errors.push(error);
+    error = errors;
   }
 
   return {
     props: {
-      music,
-      artistCoverImage,
+      data,
       error,
     },
   };
