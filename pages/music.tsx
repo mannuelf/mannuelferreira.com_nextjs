@@ -9,6 +9,7 @@ import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
 import { FANART_TV } from '@lib/api/fanarttv';
 
 import testData from './testdata';
+import { FanArtArtistResponse } from '../types/fanarttv';
 
 type Props = {
   data: Artist[];
@@ -95,28 +96,23 @@ const Music = ({ data, error }: Props) => {
   );
 };
 
-let errors: [] = [];
-let serverCount = 0;
-
-export const getTopArtists = async (): Promise<TopArtists> => {
+export const getTopArtists = async () => {
   try {
-    const response = await axios({ url: ARTIST_ENDPOINT, method: 'GET' });
-    const { data } = response;
+    const { data } = await axios.get<TopArtistsResponse>(ARTIST_ENDPOINT);
     return data;
   } catch (error) {
-    errors.push(error);
+    throw new Error(`${error}`);
   }
 };
 
-export const getFanartTvData = async (mbid: string): Promise<any> => {
+export const getFanartTvData = async (mbid: string) => {
   try {
-    const { data } = await axios({
-      url: FANART_TV.base_url + mbid + '?api_key=' + FANART_TV.api_key,
-      method: 'GET',
-    });
+    const { data } = await axios.get<FanArtArtistResponse>(
+      FANART_TV.base_url + mbid + '?api_key=' + FANART_TV.api_key,
+    );
     return data;
   } catch (error) {
-    errors.push(error);
+    throw new Error(`${error}`);
   }
 };
 
@@ -124,39 +120,35 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let data: [] = [];
   let error: [] = [];
 
-  serverCount++
-  console.log('serverCount', serverCount);
-  
   try {
-    const topArtists: TopArtists = await getTopArtists();
-    const artists: Artist[] = topArtists.topartists.artist;
-    const allMbids: string[] = artists.map((artist) => artist.mbid);
+    const topArtists: TopArtistsResponse = await getTopArtists();
+    const artists = topArtists.topartists.artist;
+    const allMbids = artists.map((artist) => artist.mbid);
 
-    let fanArtTvResult = [];
+    let fanArtTvResult: FanArtArtistResponse[] = [];
 
-    let artistCount = 0;
-    console.log('> artistCount', artistCount);
     for (const mbid in allMbids) {
-      artistCount++;
-      fanArtTvResult.push(await getFanartTvData(mbid));
+      try {
+        fanArtTvResult.push(await getFanartTvData(mbid));
+      } catch (error) {
+        console.log('fuckit', error);
+      }
     }
-    console.log('< artistCount', artistCount);
-    
 
     const findArtistImage = (mbid: string): string => {
       let imageUrl = '';
       fanArtTvResult.find((artist) => {
         if (artist.mbid_id === mbid) {
-          return artist.artistbackground.map((backgroundImage) => {
-            imageUrl = backgroundImage.url;
-            return backgroundImage.url;
+          return artist.artistbackground.map((bgImg) => {
+            imageUrl = bgImg.url;
+            return bgImg.url;
           });
         }
       });
       return imageUrl;
     };
 
-    const cleanArtists: Artist[] = artists.map((artist: Artist) => {
+    const cleanArtists = artists.map((artist: Artist) => {
       return {
         ...artist,
         image: findArtistImage(artist.mbid),
@@ -165,8 +157,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     data.push(cleanArtists);
   } catch (error) {
-    errors.push(error);
-    error = errors;
+    error = error;
   }
 
   return {

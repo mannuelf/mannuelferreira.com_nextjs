@@ -1,7 +1,4 @@
-e
-    3
-    3
-    3                                              xport interface Albumcover {
+export interface Albumcover {
   id: string;
   url: string;
   likes: string;
@@ -50,7 +47,7 @@ export interface Musicbanner {
   likes: string;
 }
 
-export interface RootObject {
+export interface FanArtArtistResponse {
   name: string;
   mbid_id: string;
   albums: Albums;
