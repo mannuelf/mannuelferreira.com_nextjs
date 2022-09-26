@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { GetServerSideProps } from 'next';
-import Image from 'next/image';
-import axios from 'axios';
-import Layout from '@components/Layout/layout';
-import PageTitle from '@components/page-title';
-import Container from '@components/container';
+import { useEffect, useState } from 'react';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
 import { FANART_TV } from '@lib/api/fanarttv';
-
-import testData from './testdata';
 import { FanArtArtistResponse } from '../types/fanarttv';
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
+import Container from '@components/container';
+import Image from 'next/image';
+import Layout from '@components/Layout/layout';
+import PageTitle from '@components/page-title';
 
 type Props = {
   data: Artist[];
@@ -50,7 +48,7 @@ const Music = ({ data, error }: Props) => {
             ? artists[0].map((artist: Artist) => (
                 <div
                   key={artist.mbid}
-                  className='static relative h-80 md:h-72 bg-purple-dark'
+                  className='relative h-80 md:h-72 bg-purple-dark'
                   style={{
                     backgroundSize: 'cover',
                     backgroundPosition: 'top center',
@@ -75,12 +73,10 @@ const Music = ({ data, error }: Props) => {
         </div>
         <div className='pt-4 mt-8 mb-16 border-t'>
           <p>
-            Images thanks to Wikimedia Commons{' '}
-            <a href='https://creativecommons.org/licenses/by/3.0'>3.0</a> and{' '}
-            <a href='https://creativecommons.org/licenses/by/2.0'>2.0</a>.
+            Images thanks to <a href='https://fanart.tv/'>fanart.tv</a> API.
           </p>
           <p>
-            All data courtesy of the{' '}
+            All music listening data courtesy of the{' '}
             <a href='https://www.last.fm/api/intro'>LastFm API</a>.
           </p>
           <Image
@@ -107,9 +103,8 @@ export const getTopArtists = async () => {
 
 export const getFanartTvData = async (mbid: string) => {
   try {
-    const { data } = await axios.get<FanArtArtistResponse>(
-      FANART_TV.base_url + mbid + '?api_key=' + FANART_TV.api_key,
-    );
+    const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
+    const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -117,25 +112,25 @@ export const getFanartTvData = async (mbid: string) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let data: Artist[] = [];
   let error: [] = [];
+  let data: Artist[] = [];
 
   try {
-    const topArtists: TopArtistsResponse = await getTopArtists();
-    const artists = topArtists.topartists.artist;
-    const allMbids = artists.map((artist) => artist.mbid);
+    const allArtists = await getTopArtists();
+    const artists = allArtists.topartists.artist;
+    const allMbIds = artists.map((artist) => artist.mbid);
 
     let fanArtTvResult: FanArtArtistResponse[] = [];
 
-    for (const mbid in allMbids) {
+    for (const mbId in allMbIds) {
       try {
-        fanArtTvResult.push(await getFanartTvData(mbid));
+        fanArtTvResult.push(await getFanartTvData(mbId));
       } catch (error) {
-        console.log('fuckit', error);
+        console.log('fuck it', error);
       }
     }
 
-    const findArtistImage = (mbid: string): string => {
+    const getArtistImage = (mbid: string): string => {
       let imageUrl = '';
       fanArtTvResult.find((artist) => {
         if (artist.mbid_id === mbid) {
@@ -148,14 +143,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const cleanArtists = artists.map((artist: Artist) => {
-      return {
-        ...artist,
-        image: findArtistImage(artist.mbid),
-      };
-    });
+    const setArtists = artists.flatMap((artist) => ({
+      ...artist,
+      image: getArtistImage(artist.mbid),
+    }));
 
-    data.push(cleanArtists);
+    data.push(setArtists);
   } catch (error) {
     error = error;
   }
