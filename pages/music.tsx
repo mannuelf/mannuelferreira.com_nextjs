@@ -117,7 +117,7 @@ export const getFanartTvData = async (mbid: string) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let data: [] = [];
+  let data: Artist[] = [];
   let error: [] = [];
 
   try {
@@ -139,9 +139,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
       let imageUrl = '';
       fanArtTvResult.find((artist) => {
         if (artist.mbid_id === mbid) {
-          return artist.artistbackground.map((bgImg) => {
-            imageUrl = bgImg.url;
-            return bgImg.url;
+          return artist.artistbackground.map((artistBackground) => {
+            imageUrl = artistBackground.url;
+            return imageUrl;
           });
         }
       });
