@@ -5,19 +5,18 @@ import axios from 'axios';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import Container from '@components/container';
-import artistImages from '@lib/api/artistImages';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
 import { FANART_TV } from '@lib/api/fanarttv';
 
 import testData from './testdata';
 
 type Props = {
-  data: TopArtists;
+  data: Artist[];
   error: [];
 };
 
 const Music = ({ data, error }: Props) => {
-  const [artists, setArtists] = useState<Artist[] | []>([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
   const [isError, setIsError] = useState([]);
 
   useEffect(() => {
@@ -96,7 +95,8 @@ const Music = ({ data, error }: Props) => {
   );
 };
 
-let errors = [];
+let errors: [] = [];
+let serverCount = 0;
 
 export const getTopArtists = async (): Promise<TopArtists> => {
   try {
@@ -110,13 +110,10 @@ export const getTopArtists = async (): Promise<TopArtists> => {
 
 export const getFanartTvData = async (mbid: string): Promise<any> => {
   try {
-    const artistId = mbid;
-    const response = await axios({
-      url: FANART_TV.base_url + artistId + '?api_key=' + FANART_TV.api_key,
+    const { data } = await axios({
+      url: FANART_TV.base_url + mbid + '?api_key=' + FANART_TV.api_key,
       method: 'GET',
     });
-    const { data } = response;
-
     return data;
   } catch (error) {
     errors.push(error);
@@ -125,19 +122,26 @@ export const getFanartTvData = async (mbid: string): Promise<any> => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   let data: [] = [];
-  let error = [];
+  let error: [] = [];
 
+  serverCount++
+  console.log('serverCount', serverCount);
+  
   try {
     const topArtists: TopArtists = await getTopArtists();
-
     const artists: Artist[] = topArtists.topartists.artist;
-
     const allMbids: string[] = artists.map((artist) => artist.mbid);
 
     let fanArtTvResult = [];
-    for (const mbid of allMbids) {
+
+    let artistCount = 0;
+    console.log('> artistCount', artistCount);
+    for (const mbid in allMbids) {
+      artistCount++;
       fanArtTvResult.push(await getFanartTvData(mbid));
     }
+    console.log('< artistCount', artistCount);
+    
 
     const findArtistImage = (mbid: string): string => {
       let imageUrl = '';
@@ -152,16 +156,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const cleanArtists = artists.flatMap((artist: Artist) => {
+    const cleanArtists: Artist[] = artists.map((artist: Artist) => {
       return {
         ...artist,
         image: findArtistImage(artist.mbid),
       };
     });
-    console.log(
-      '-----------------------------------------------------/n',
-      cleanArtists,
-    );
 
     data.push(cleanArtists);
   } catch (error) {
