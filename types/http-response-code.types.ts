@@ -1,4 +1,4 @@
-enum HttpResponseCode {
+export enum HttpResponse {
   'CONTINUE' = 100,
   'SUCCESS' = 200,
   'BAD_REQUEST' = 400,
