@@ -19,7 +19,7 @@ interface User {
   };
 }
 
-interface TopArtists {
+interface TopArtistsResponse {
   topartists: {
     artist: Artist[];
     '@attr': Attribs;

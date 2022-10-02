@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import Image from 'next/image';
-import axios from 'axios';
+import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
-import Container from '@components/container';
-import artistImages from '@lib/api/artistImages';
+import { FANART_TV } from 'lib/api/fanarttv';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
+import axios, { AxiosError } from 'axios';
+import { GetServerSideProps } from 'next';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { FanArtArtistResponse } from '../types/fanarttv';
+import { defined } from '@shared/defined';
 
 type Props = {
-  music: TopArtists;
-  error: string;
+  data: Artist[];
+  error: [];
 };
 
-const Music = ({ music, error }: Props) => {
-  const [data, setData] = useState<any | []>([]);
-  const [isError, setIsError] = useState('');
+const Music = ({ data, error }: Props) => {
+  const [artists, setArtists] = useState<Artist[]>([]);
+  const [isError, setIsError] = useState([]);
 
   useEffect(() => {
     setIsError(error);
-    setData(music.topartists.artist);
-  }, [music, error]);
+    setArtists(data);
+  }, [data, error]);
 
-  if (isError)
+  if (isError.length > 0)
     return (
       <Layout>
         <Container>
@@ -42,19 +44,17 @@ const Music = ({ music, error }: Props) => {
           </p>
         </div>
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
-          {data
-            ? data?.map((artist: Artist, index: number) => (
+          {isError.length > 0 ? <div>{error}</div> : null}
+          {artists.length > 0
+            ? artists.map((artist: Artist) => (
                 <div
-                  key={index}
-                  className='static relative h-80 md:h-72 bg-purple-dark'
+                  key={artist.mbid}
+                  className='relative h-80 md:h-72 bg-purple-dark'
                   style={{
                     backgroundSize: 'cover',
                     backgroundPosition: 'top center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundImage: `url(${artistImages.filter(
-                      (photo) =>
-                        photo.name.includes(artist.name) ?? photo.photo,
-                    )})`,
+                    backgroundImage: `url(${artist.image})`,
                   }}
                 >
                   <div className='absolute bottom-0 left-0 pb-0'>
@@ -74,79 +74,111 @@ const Music = ({ music, error }: Props) => {
         </div>
         <div className='pt-4 mt-8 mb-16 border-t'>
           <p>
-            Images thanks to Wikimedia Commons{' '}
-            <a href='https://creativecommons.org/licenses/by/3.0'>3.0</a> and{' '}
-            <a href='https://creativecommons.org/licenses/by/2.0'>2.0</a>.
+            Music listening data from API of{' '}
+            <a href='https://www.last.fm/api/intro'>
+              <Image
+                src='https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg'
+                unoptimized={true}
+                width={90}
+                height={30}
+                alt='LastFm Logo'
+              />
+            </a>
           </p>
           <p>
-            All data courtesy of the{' '}
-            <a href='https://www.last.fm/api/intro'>LastFm API</a>.
+            Photos from <a href='https://fanart.tv/'>fanart.tv</a> API.
           </p>
-          <Image
-            src='https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg'
-            unoptimized={true}
-            width={90}
-            height={30}
-            alt='LastFm Logo'
-          />
         </div>
       </Container>
     </Layout>
   );
 };
 
-export const getTopArtists = async (): Promise<TopArtists> => {
+export const getTopArtists = async () => {
   try {
-    const response = await axios({ url: ARTIST_ENDPOINT, method: 'GET' });
-    const { data } = response;
-    data['images'] = artistImages;
-
+    const { data } = await axios.get<TopArtistsResponse>(ARTIST_ENDPOINT);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
   }
 };
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
-  let music: [] = [];
-  let photos: [] = [];
-  let error: string = '';
+export const getFanartTvData = async (mbid: string) => {
+  let result: FanArtArtistResponse = {
+    name: '',
+    mbid_id: '',
+    albums: undefined,
+    hdmusiclogo: [],
+    artistbackground: [],
+    musiclogo: [],
+    artistthumb: [],
+    musicbanner: [],
+  };
+
+  const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
+  const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
+  result = data;
+  return result;
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  let error: [] = [];
+  let pageArtists: Artist[] = [];
 
   try {
-    const response: TopArtists | any = await getTopArtists();
-    music = response ?? response.topartists.artist;
-    photos = response ?? response.images;
+    const allArtists = await getTopArtists();
+    const artists = allArtists.topartists.artist;
+    const allMbIds = artists.map((artist) => artist.mbid);
 
-    const toMerge: [] = [...music, ...photos];
-    let set = new Set();
-    let addArtistImage: any = toMerge.filter((artist: ArtistImage) => {
-      if (!set.has(artist.name)) {
-        set.add(artist.name);
-        for (let i = 0; i < music.length; i++) {
-          delete music[i]['image']; // - star img from lastFm
-          let cover: TopArtists | any = music[i];
-          if (artist.name === music[i]['name']) {
-            let result: any = photos.filter(
-              (photo: ArtistImage) => photo.name === artist.name,
-            );
-            cover['cover'] = result[0];
-          }
+    let fanArtTvResult: FanArtArtistResponse[] = [];
+
+    const responses = await Promise.allSettled(
+      allMbIds.map(async (mbId) => {
+        const res = await axios.get(
+          `https://webservice.fanart.tv/v3/music/${mbId}?api_key=${FANART_TV.api_key}`,
+        );
+        if (res.status === 200) {
+          return res.data;
         }
-        return true;
-      }
-      return false;
-    }, set);
+        return {
+          ...res.data,
+        };
+      }),
+    );
 
-    music = addArtistImage;
+    fanArtTvResult = responses
+      .map(({ value }: any) => {
+        return value;
+      })
+      .filter(defined);
+
+    const getArtistImage = (mbid: string): string => {
+      let imageUrl = '';
+      fanArtTvResult.find((artist) => {
+        if (artist.mbid_id === mbid) {
+          artist.artistbackground?.map((artistBackground) => {
+            imageUrl = artistBackground.url;
+          });
+        }
+      });
+      return imageUrl;
+    };
+
+    const imagesUpdated = artists.map<Artist>((artist: Artist) => {
+      return {
+        ...artist,
+        image: getArtistImage(artist.mbid),
+      } as Artist;
+    }) as any;
+
+    pageArtists.push(imagesUpdated);
   } catch (error) {
     error = error;
   }
 
   return {
     props: {
-      music,
+      data: pageArtists[0],
       error,
     },
   };
