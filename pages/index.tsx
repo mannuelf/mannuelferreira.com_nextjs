@@ -12,6 +12,7 @@ import {
   TWITTER_HANDLE,
 } from '@shared/constants';
 import MetaTags from '@components/meta-tags';
+import { TWITTER_CARD_HOME } from '../shared/constants';
 
 type Props = {
   allPosts: Post[];
@@ -51,7 +52,7 @@ const Index = ({ allPosts }: Props) => {
       <Layout>
         <MetaTags
           ogTitle={'Home'}
-          ogImage={AVATAR_ME}
+          ogImage={TWITTER_CARD_HOME}
           ogDescription={GENERIC_META}
           ogUrl={SITE_URL}
           ogSiteName={CMS_NAME}

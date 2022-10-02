@@ -1,19 +1,6 @@
 import Head from 'next/head';
-import { CMS_NAME, HOME_OG_IMAGE_URL, GENERIC_META } from '@shared/constants';
-import { useRouter } from 'next/router';
 
 const Meta = () => {
-  const router = useRouter();
-
-  function renderHomeMetaTag() {
-    if (router.asPath && router.asPath === '/') {
-      return (
-        <meta name='description' content={`${GENERIC_META} ${CMS_NAME}.`} />
-      );
-    }
-    return '';
-  }
-
   return (
     <Head>
       <link
@@ -40,11 +27,9 @@ const Meta = () => {
       />
       <link rel='manifest' href='/favicon/site.webmanifest' />
       <link rel='shortcut icon' href='/favicon/favicon-32x32.png' />
-      <meta property='og:image' content={HOME_OG_IMAGE_URL} />
       <meta name='msapplication-TileColor' content='#2e2b55' />
       <meta name='msapplication-config' content='/favicon/browserconfig.xml' />
       <meta name='theme-color' content='#2e2b55' />
-      {renderHomeMetaTag()}
       <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
     </Head>
   );
