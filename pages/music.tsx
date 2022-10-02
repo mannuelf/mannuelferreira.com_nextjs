@@ -3,12 +3,13 @@ import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import { FANART_TV } from '@lib/api/fanarttv';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
-import { HttpResponse } from '@types/http-response-code.types';
+import { HttpResponse } from 'types/http-response-code.types';
 import axios, { AxiosError } from 'axios';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { FanArtArtistResponse } from '../types/fanarttv';
+import { FanArtArtistResponse, Artistbackground } from '../types/fanarttv';
+import { isObject } from '../shared/isObject';
 
 type Props = {
   data: Artist[];
@@ -113,14 +114,11 @@ export const getFanartTvData = async (mbid: string) => {
     artistthumb: [],
     musicbanner: [],
   };
-  try {
-    const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
-    const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
-    result = data;
-    return result;
-  } catch (error) {
-    throw new Error('Error');
-  }
+
+  const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
+  const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
+  result = data;
+  return result;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -134,71 +132,57 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     let fanArtTvResult: FanArtArtistResponse[] = [];
 
-    // allMbIds.forEach(
-    //   async (mbId) =>
-    //     await getFanartTvData(mbId)
-    //       .then((data) => {
-    //         fanArtTvResult.push(data);
-    //       })
-    //       .catch((err) => {
-    //         console.log('🔥', err);
-    //       }),
-    //   // fanArtTvResult.push(await getFanartTvData(mbId)),
-    // );
-    for (const mbId of allMbIds) {
-      console.log('🏹', mbId);
-
-      await getFanartTvData(mbId)
-        .then((datam) => {
-          // console.log(datam);
-          return fanArtTvResult.push(datam);
-        })
-        .catch((err) => {
-          console.log('err', err);
-        });
-
-      // Promise.all([getFanartTvData(mbId)])
-      //   .then((data) => {
-      //     console.log('PromiseAll', data);
-      //     fanArtTvResult = [...data];
-      //   })
-      //   .catch((err) => {
-      //     console.log('err', err);
-      //   });
-    }
-
-    console.log(
-      '😃 fanArtTvResult',
-      fanArtTvResult.length,
-      JSON.stringify(fanArtTvResult),
+    const responses = await Promise.allSettled(
+      allMbIds.map(async (mbId) => {
+        const res = await axios.get(
+          `https://webservice.fanart.tv/v3/music/${mbId}?api_key=4846d7c46056aaab8b4122e3b7fe4d65`,
+        );
+        if (res.status === 200) {
+          return res.data;
+        }
+        return {
+          ...res.data,
+        };
+      }),
     );
+
+    fanArtTvResult = responses
+      .map(({ value }: any) => {
+        console.log(
+          'value ------------------------------------------------------------------------------------------ \n',
+          value,
+        );
+        return value;
+      })
+      .filter(isObject);
 
     const getArtistImage = (mbid: string): string => {
       let imageUrl = '';
       fanArtTvResult.find((artist) => {
         if (artist.mbid_id === mbid) {
-          return artist.artistbackground.map((artistBackground) => {
-            return artistBackground.url;
+          artist.artistbackground?.map((artistBackground) => {
+            imageUrl = artistBackground.url;
           });
         }
       });
       return imageUrl;
     };
 
-    const [setArtist]: Artist[] = artists.flatMap((artist) => ({
-      ...artist,
-      image: getArtistImage(artist.mbid),
-    }));
+    const imagesUpdated = artists.map<Artist>((artist: Artist) => {
+      return {
+        ...artist,
+        image: getArtistImage(artist.mbid),
+      } as Artist;
+    }) as any;
 
-    pageArtists.push(setArtist);
-    console.log('🍾 pageArtists', pageArtists);
+    pageArtists.push(imagesUpdated);
   } catch (error) {
     error = error;
   }
 
   return {
     props: {
-      data: pageArtists,
+      data: pageArtists[0],
       error,
     },
   };
