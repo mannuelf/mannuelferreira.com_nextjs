@@ -13,7 +13,7 @@ const handler = async (
   }
 };
 
-export const getTopArtists = async (): Promise<TopArtists> => {
+export const getTopArtists = async (): Promise<TopArtistsResponse> => {
   try {
     const response = axios({ url: ARTIST_ENDPOINT, method: 'GET' });
     const { data } = await response;
