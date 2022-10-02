@@ -136,7 +136,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const responses = await Promise.allSettled(
       allMbIds.map(async (mbId) => {
         const res = await axios.get(
-          `https://webservice.fanart.tv/v3/music/${mbId}?api_key=4846d7c46056aaab8b4122e3b7fe4d65`,
+          `https://webservice.fanart.tv/v3/music/${mbId}?api_key=${FANART_TV.api_key}`,
         );
         if (res.status === 200) {
           return res.data;
