@@ -1,15 +1,13 @@
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
-import { FANART_TV } from '@lib/api/fanarttv';
+import { FANART_TV } from 'lib/api/fanarttv';
 import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
-import { HttpResponse } from 'types/http-response-code.types';
 import axios, { AxiosError } from 'axios';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { FanArtArtistResponse, Artistbackground } from '../types/fanarttv';
-import { isObject } from '../shared/isObject';
+import { FanArtArtistResponse } from '../types/fanarttv';
 import { defined } from '@shared/defined';
 
 type Props = {
