@@ -75,19 +75,20 @@ const Music = ({ data, error }: Props) => {
         </div>
         <div className='pt-4 mt-8 mb-16 border-t'>
           <p>
-            Images thanks to <a href='https://fanart.tv/'>fanart.tv</a> API.
+            Music listening data from API of{' '}
+            <a href='https://www.last.fm/api/intro'>
+              <Image
+                src='https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg'
+                unoptimized={true}
+                width={90}
+                height={30}
+                alt='LastFm Logo'
+              />
+            </a>
           </p>
           <p>
-            All music listening data courtesy of the{' '}
-            <a href='https://www.last.fm/api/intro'>LastFm API</a>.
+            Photos from <a href='https://fanart.tv/'>fanart.tv</a> API.
           </p>
-          <Image
-            src='https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg'
-            unoptimized={true}
-            width={90}
-            height={30}
-            alt='LastFm Logo'
-          />
         </div>
       </Container>
     </Layout>
@@ -148,10 +149,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     fanArtTvResult = responses
       .map(({ value }: any) => {
-        console.log(
-          'value ------------------------------------------------------------------------------------------ \n',
-          value,
-        );
         return value;
       })
       .filter(isObject);
