@@ -27,6 +27,24 @@ interface TopArtistsResponse {
   images: ArtistImage;
 }
 
+interface GetWeeklyAlbumChartResponse {
+  weeklyalbumchart: Weeklyalbumchart;
+}
+
+interface Weeklyalbumchart {
+  album: Album[];
+  '@attr': WeeklyalbumchartAttr;
+}
+
+interface WeeklyalbumchartAttr {
+  from: string;
+  user: string;
+  to: string;
+}
+interface AlbumAttr {
+  rank: string;
+}
+
 type Artist = {
   '@attr': {
     rank: number;

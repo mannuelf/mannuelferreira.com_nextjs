@@ -2,7 +2,7 @@ import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import { FANART_TV } from 'lib/api/fanarttv';
-import { ARTIST_ENDPOINT } from '@lib/api/lastFm';
+import { ARTIST_ENDPOINT, WEEKLY_ALBUM_CHART } from '@lib/api/lastFm';
 import axios, { AxiosError } from 'axios';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
@@ -45,7 +45,7 @@ const Music = ({ data, error }: Props) => {
         </div>
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
           {isError.length > 0 ? <div>{error}</div> : null}
-          {artists.length > 0
+          {artists
             ? artists.map((artist: Artist) => (
                 <div
                   key={artist.mbid}
@@ -103,22 +103,16 @@ export const getTopArtists = async () => {
   }
 };
 
-export const getFanartTvData = async (mbid: string) => {
-  let result: FanArtArtistResponse = {
-    name: '',
-    mbid_id: '',
-    albums: undefined,
-    hdmusiclogo: [],
-    artistbackground: [],
-    musiclogo: [],
-    artistthumb: [],
-    musicbanner: [],
-  };
-
-  const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
-  const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
-  result = data;
-  return result;
+export const getWeeklyAlbumChart = async () => {
+  try {
+    const { data } = await axios.get<GetWeeklyAlbumChartResponse>(
+      WEEKLY_ALBUM_CHART,
+    );
+    console.log('🔥 DATA >>', data);
+    return data;
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -130,13 +124,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const artists = allArtists.topartists.artist;
     const allMbIds = artists.map((artist) => artist.mbid);
 
+    // const allWeeklyAlbumChart = await getWeeklyAlbumChart();
+    // console.log('🔥 >>', allWeeklyAlbumChart);
+
     let fanArtTvResult: FanArtArtistResponse[] = [];
 
-    const responses = await Promise.allSettled(
+    const myTopArtists = await Promise.allSettled(
       allMbIds.map(async (mbId) => {
         const res = await axios.get(
-          `https://webservice.fanart.tv/v3/music/${mbId}?api_key=${FANART_TV.api_key}`,
+          `${FANART_TV.base_url}/${mbId}?api_key=${FANART_TV.api_key}`,
         );
+        console.log('🔥 res >>', res);
+
         if (res.status === 200) {
           return res.data;
         }
@@ -145,9 +144,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
         };
       }),
     );
-
-    fanArtTvResult = responses
-      .map(({ value }: any) => {
+    console.log('🔥 myTopArtists >>', myTopArtists);
+    fanArtTvResult = myTopArtists
+      .map(({ value }: any): FanArtArtistResponse => {
         return value;
       })
       .filter(defined);
@@ -178,7 +177,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      data: pageArtists[0],
+      data: pageArtists[0] ?? pageArtists[0],
       error,
     },
   };
