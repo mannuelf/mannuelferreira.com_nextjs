@@ -47,9 +47,12 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
             to their data these are my all time favourites.
           </p>
         </div>
-        <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
-          {isError.length > 0 ? <div>{error}</div> : null}
+        <div className='pb-2'>
           <h2 className='text-xl font-medium'>Weekly Album Charts</h2>
+          <p>This week I have listend to:</p>
+        </div>
+        <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
+          {isError.length > 0 ? <div>{error}</div> : null}
           {weeklyAlbums.length > 0
             ? weeklyAlbums.map((album: WeeklyAlbum) => (
                 <div
@@ -63,6 +66,9 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
                   }}
                 >
                   <div className='absolute bottom-0 left-0 pb-0'>
+                    <h2 className='pb-2 pl-2 text-xl font-light text-white'>
+                      {album.artist['#text']}
+                    </h2>
                     <h2 className='pb-2 pl-2 text-3xl font-light text-white'>
                       {album.name}
                     </h2>
@@ -77,7 +83,15 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
               ))
             : null}
           <hr />
+        </div>
+        <div className='pb-2'>
           <h2 className='text-xl font-medium'>Top Artists</h2>
+          <p>
+            All time listening records from when I enabled lastFm on my devices
+          </p>
+        </div>
+        <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
+          {isError.length > 0 ? <div>{error}</div> : null}
           {artists.length > 0
             ? artists.map((artist: Artist) => (
                 <div
@@ -207,14 +221,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const getAlbumImage = (artistMbid: string, albumMbid?: string): string => {
       let imageUrl = '';
+      if (albumMbid === '') {
+        // TODO: if no album art id return an empty strign for now
+        return imageUrl;
+      }
       fanArtTvResult.find((artist, index) => {
-        // console.log(artist.albums);
+        console.log('🔥', artist.albums);
         if (artist.mbid_id === artistMbid) {
-          console.log(albumMbid);
-
-          artist.albums?.map((album) => {
-            console.log(album);
-          });
+          console.log('🆘', albumMbid);
         }
       });
       return imageUrl;
