@@ -27,14 +27,24 @@ interface TopArtistsResponse {
   images: ArtistImage;
 }
 
-interface GetWeeklyAlbumChartResponse {
+interface WeeklyAlbumChartResponse {
   weeklyalbumchart: Weeklyalbumchart;
 }
 
 interface Weeklyalbumchart {
-  album: Album[];
+  album: WeeklyAlbum[];
   '@attr': WeeklyalbumchartAttr;
 }
+
+type WeeklyAlbum = {
+  artist: { mbid: string; '#text': string };
+  mbid: string;
+  url: string;
+  name: string;
+  '@attr': { rank: string };
+  playcount: string;
+  image?: '';
+};
 
 interface WeeklyalbumchartAttr {
   from: string;

@@ -47,10 +47,31 @@ export interface Musicbanner {
   likes: string;
 }
 
+export type AlbumCover = {
+  id: string;
+  url: string;
+  likes: string;
+};
+
+export type CdArt = {
+  id: string;
+  url: string;
+  likes: string;
+  disc: string;
+  size: string;
+};
+
+export type Albums = {
+  [key: string]: {
+    albumcover: AlbumCover[];
+    cdart: CdArt[];
+  };
+};
+
 export interface FanArtArtistResponse {
   name: string;
   mbid_id: string;
-  albums: Albums;
+  albums: Albums[];
   hdmusiclogo: Hdmusiclogo[];
   artistbackground: Artistbackground[];
   musiclogo: Musiclogo[];
