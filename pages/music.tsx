@@ -28,7 +28,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
     setWeeklyAlbums(weeklyAlbumChart);
   }, [data, error, weeklyAlbumChart]);
 
-  if (isError.length > 0)
+  if (isError.length > 0) {
     return (
       <Layout>
         <Container>
@@ -36,6 +36,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
         </Container>
       </Layout>
     );
+  }
 
   return (
     <Layout>
@@ -225,12 +226,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
         // TODO: if no album art id return an empty strign for now
         return imageUrl;
       }
-      fanArtTvResult.find((artist, index) => {
-        console.log('🔥', artist.albums);
-        if (artist.mbid_id === artistMbid) {
-          console.log('🆘', albumMbid);
-        }
-      });
+      // fanArtTvResult.find((artist, index) => {
+      //   console.log('🔥', artist.albums);
+      //   if (artist.mbid_id === artistMbid) {
+      //     console.log('🆘', albumMbid);
+      //   }
+      // });
       return imageUrl;
     };
 
