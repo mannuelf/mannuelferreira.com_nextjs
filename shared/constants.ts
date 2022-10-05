@@ -29,7 +29,7 @@ export const TWITTER_CARD_HOME =
 export const TWITTER_CARD_MUSIC =
   'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/music-post-cover.png';
 export const TWITTER_CARD_POSTS =
-  'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/posts-post-cover.png';
+  'https://res.cloudinary.com/mannuel/image/upload/v1664946422/images/music-post-cover.png';
 export const TWITTER_CAR_BOOKS =
   'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/books-post-cover.png';
 export const TWITTER_CARD_EXPERIENCE =

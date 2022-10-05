@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { FanArtArtistResponse, Album } from '../types/fanarttv';
 import { defined } from '@shared/defined';
 import MetaTags from '@components/meta-tags';
+import Link from 'next/link';
 import {
   CMS_NAME,
   META_MUSIC,
@@ -59,16 +60,35 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
         ogTwitterCreator={TWITTER_HANDLE}
       />
       <Container>
-        <PageTitle>Music</PageTitle>
-        <div className='pt-4 mt-8 mb-8 border-t'>
+        <PageTitle>Scrobbles</PageTitle>
+        <div className='pt-4 mt-8 mb-16 border-t'>
           <p className='text-lg'>
-            I love music, I have been tracking my habits with lastFm, according
-            to their data these are my all time favourites.
+            I love music and have been tracking my listening habits with lastFm
+            since 2009. I have always wanted to play with their data, that is
+            what this page is about and of course to share what I have been
+            listening to with you all.
+          </p>
+          <p>
+            My scrobbles update live directly from the{' '}
+            <a href='https://www.last.fm/api/intro'>
+              <Image
+                src='https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg'
+                unoptimized={true}
+                width={90}
+                height={30}
+                alt='LastFm Logo'
+              />
+            </a>{' '}
+            API. My <a href='https://www.last.fm/user/mannuelf'>profile</a> on
+            lastfm.
+          </p>
+          <p>
+            Photos from <a href='https://fanart.tv/'>fanart.tv</a> API.
           </p>
         </div>
         <div className='pb-2'>
-          <h2 className='text-xl font-medium'>Weekly Album Charts</h2>
-          <p>This week I have listend to:</p>
+          <h2 className='text-2xl font-medium'>Weekly Album Charts</h2>
+          <p>Scrobbles this week</p>
         </div>
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
           {isError.length > 0 ? <div>{error}</div> : null}
@@ -86,10 +106,14 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
                 >
                   <div className='absolute bottom-0 left-0 pb-0'>
                     <h2 className='pb-2 pl-2 text-xl font-light text-white'>
-                      {album.artist['#text']}
+                      <Link href={album.url}>
+                        <a>{album.artist['#text']}</a>
+                      </Link>
                     </h2>
                     <h2 className='pb-2 pl-2 text-3xl font-light text-white'>
-                      {album.name}
+                      <Link href={album.url}>
+                        <a>{album.name}</a>
+                      </Link>
                     </h2>
                     <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
                       {album.playcount ? album.playcount : null}
@@ -104,10 +128,8 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
           <hr />
         </div>
         <div className='pb-2'>
-          <h2 className='text-xl font-medium'>Top Artists</h2>
-          <p>
-            All time listening records from when I enabled lastFm on my devices
-          </p>
+          <h2 className='text-2xl font-medium'>Top 100 Artists</h2>
+          <p>Scrobbles since 2009</p>
         </div>
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
           {isError.length > 0 ? <div>{error}</div> : null}
@@ -125,7 +147,9 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
                 >
                   <div className='absolute bottom-0 left-0 pb-0'>
                     <h2 className='pb-2 pl-2 text-3xl font-light text-white'>
-                      {artist.name}
+                      <Link href={artist.url}>
+                        <a>{artist.name}</a>
+                      </Link>
                     </h2>
                     <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
                       {artist.playcount ? artist.playcount : null}
@@ -137,25 +161,6 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
                 </div>
               ))
             : null}
-        </div>
-        <div className='pt-4 mt-8 mb-16 border-t'>
-          <p>
-            My scrobbles from the{' '}
-            <a href='https://www.last.fm/api/intro'>
-              <Image
-                src='https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg'
-                unoptimized={true}
-                width={90}
-                height={30}
-                alt='LastFm Logo'
-              />
-            </a>{' '}
-            API. My <a href='https://www.last.fm/user/mannuelf'>profile</a> on
-            lastfm.
-          </p>
-          <p>
-            Photos from <a href='https://fanart.tv/'>fanart.tv</a> API.
-          </p>
         </div>
       </Container>
     </Layout>
