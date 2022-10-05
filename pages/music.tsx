@@ -64,7 +64,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
         <div className='pt-4 mt-8 mb-16 border-t'>
           <p className='text-lg'>
             I love music and have been tracking my listening habits with lastFm
-            since 2009. I have always wanted to play with their data, that is
+            since 2008. I have always wanted to play with their data, that is
             what this page is about and of course to share what I have been
             listening to with you all.
           </p>
@@ -129,7 +129,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
         </div>
         <div className='pb-2'>
           <h2 className='text-2xl font-medium'>Top 100 Artists</h2>
-          <p>Scrobbles since 2009</p>
+          <p>Scrobbles since 2008</p>
         </div>
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
           {isError.length > 0 ? <div>{error}</div> : null}
