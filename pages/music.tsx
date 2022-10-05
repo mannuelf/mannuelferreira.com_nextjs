@@ -9,6 +9,14 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FanArtArtistResponse, Album } from '../types/fanarttv';
 import { defined } from '@shared/defined';
+import MetaTags from '@components/meta-tags';
+import {
+  CMS_NAME,
+  META_MUSIC,
+  MUSIC_URL,
+  TWITTER_CARD_MUSIC,
+  TWITTER_HANDLE,
+} from '@shared/constants';
 
 type Props = {
   weeklyAlbumChart: WeeklyAlbum[];
@@ -40,6 +48,16 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
 
   return (
     <Layout>
+      <MetaTags
+        ogTitle={'Home'}
+        ogImage={TWITTER_CARD_MUSIC}
+        ogDescription={META_MUSIC}
+        ogUrl={MUSIC_URL}
+        ogSiteName={CMS_NAME}
+        ogTwitterCard='summary_large_image'
+        ogTwitterSite={TWITTER_HANDLE}
+        ogTwitterCreator={TWITTER_HANDLE}
+      />
       <Container>
         <PageTitle>Music</PageTitle>
         <div className='pt-4 mt-8 mb-8 border-t'>
