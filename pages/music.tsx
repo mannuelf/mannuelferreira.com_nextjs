@@ -249,12 +249,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
         // TODO: if no album art id return an empty strign for now
         return imageUrl;
       }
-      // fanArtTvResult.find((artist, index) => {
-      //   console.log('🔥', artist.albums);
-      //   if (artist.mbid_id === artistMbid) {
-      //     console.log('🆘', albumMbid);
-      //   }
-      // });
+      fanArtTvResult.find((artist, index) => {
+        // console.log('🔥 fanArtTvResult', artist.albums);
+        console.log('🍉 whatsit', typeof artist.albums, artist.albums);
+        for (const fTvAlbumMbid in artist.albums) {
+          console.log('🌅 album:', fTvAlbumMbid);
+
+        }
+        // if (artist.mbid_id === artistMbid) {
+        //   console.log('�', albumMbid);
+        // }
+      });
       return imageUrl;
     };
 
