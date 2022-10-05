@@ -50,7 +50,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
   return (
     <Layout>
       <MetaTags
-        ogTitle={'Home'}
+        ogTitle={'Music'}
         ogImage={TWITTER_CARD_MUSIC}
         ogDescription={META_MUSIC}
         ogUrl={MUSIC_URL}
@@ -131,7 +131,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
           <h2 className='text-2xl font-medium'>Top 100 Artists</h2>
           <p>Scrobbles since 2008</p>
         </div>
-        <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0'>
+        <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
           {isError.length > 0 ? <div>{error}</div> : null}
           {artists.length > 0
             ? artists.map((artist: Artist) => (
