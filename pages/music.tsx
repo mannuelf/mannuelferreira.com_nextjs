@@ -11,13 +11,7 @@ import { FanArtArtistResponse, Album } from '../types/fanarttv';
 import { defined } from '@shared/defined';
 import MetaTags from '@components/meta-tags';
 import Link from 'next/link';
-import {
-  CMS_NAME,
-  META_MUSIC,
-  MUSIC_URL,
-  TWITTER_CARD_MUSIC,
-  TWITTER_HANDLE,
-} from '@shared/constants';
+import { CMS_NAME, META_MUSIC, MUSIC_URL, TWITTER_CARD_MUSIC, TWITTER_HANDLE } from '@shared/constants';
 
 type Props = {
   weeklyAlbumChart: WeeklyAlbum[];
@@ -63,10 +57,9 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
         <PageTitle>Scrobbles</PageTitle>
         <div className='pt-4 mt-8 mb-16 border-t'>
           <p className='text-lg'>
-            I love music and have been tracking my listening habits with lastFm
-            since 2008. I have always wanted to play with their data, that is
-            what this page is about and of course to share what I have been
-            listening to with you all.
+            I love music and have been tracking my listening habits with lastFm since 2008. I have always wanted to play
+            with their data, that is what this page is about and of course to share what I have been listening to with
+            you all.
           </p>
           <p>
             My scrobbles update live directly from the{' '}
@@ -79,8 +72,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
                 alt='LastFm Logo'
               />
             </a>{' '}
-            API. My <a href='https://www.last.fm/user/mannuelf'>profile</a> on
-            lastfm.
+            API. My <a href='https://www.last.fm/user/mannuelf'>profile</a> on lastfm.
           </p>
           <p>
             Photos from <a href='https://fanart.tv/'>fanart.tv</a> API.
@@ -117,9 +109,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
                     </h2>
                     <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
                       {album.playcount ? album.playcount : null}
-                      <span className='pl-2 text-xs font-light text-white '>
-                        plays
-                      </span>
+                      <span className='pl-2 text-xs font-light text-white '>plays</span>
                     </h3>
                   </div>
                 </div>
@@ -153,9 +143,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
                     </h2>
                     <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
                       {artist.playcount ? artist.playcount : null}
-                      <span className='pl-2 text-xs font-light text-white '>
-                        plays
-                      </span>
+                      <span className='pl-2 text-xs font-light text-white '>plays</span>
                     </h3>
                   </div>
                 </div>
@@ -167,7 +155,7 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
   );
 };
 
-export const getTopArtists = async () => {
+export const getTopArtists = async (): Promise<TopArtistsResponse> => {
   try {
     const { data } = await axios.get<TopArtistsResponse>(ARTIST_ENDPOINT);
     return data;
@@ -176,18 +164,16 @@ export const getTopArtists = async () => {
   }
 };
 
-export const getWeeklyAlbumChart = async () => {
+export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> => {
   try {
-    const { data } = await axios.get<WeeklyAlbumChartResponse>(
-      WEEKLY_ALBUM_CHART,
-    );
+    const { data } = await axios.get<WeeklyAlbumChartResponse>(WEEKLY_ALBUM_CHART);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
   }
 };
 
-export const getFanartTvData = async (mbid: string) => {
+export const getFanartTvData = async (mbid: string): Promise<FanArtArtistResponse> => {
   const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
   const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
   return data;
@@ -199,23 +185,21 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let myWeeklyAlbumChart: Weeklyalbumchart[] = [];
 
   try {
-    const allArtists = await getTopArtists();
-    const artists = allArtists.topartists.artist;
-    const allMbIds = artists.map((artist) => artist.mbid);
+    const allArtists: TopArtistsResponse = await getTopArtists();
+    const artists: Artist[] = allArtists.topartists.artist;
+    const allMbIds: string[] = artists.map((artist: Artist) => artist.mbid);
 
-    const allWeeklyAlbumChart = await getWeeklyAlbumChart();
+    const allWeeklyAlbumChart: WeeklyAlbumChartResponse = await getWeeklyAlbumChart();
     const albums = allWeeklyAlbumChart.weeklyalbumchart.album;
-    const allAlbumsMbids = albums.map(
-      (album: WeeklyAlbum) => album.artist.mbid,
-    );
+    const allAlbumsMbids = albums.map((album: WeeklyAlbum) => album);
+
+    // console.log('㊗️ allABMids', allAlbumsMbids.length, allAlbumsMbids);
 
     let fanArtTvResult: FanArtArtistResponse[] = [];
 
     const fanartTvResponses = await Promise.allSettled(
       allMbIds.map(async (mbId) => {
-        const res = await axios.get(
-          `https://webservice.fanart.tv/v3/music/${mbId}?api_key=${FANART_TV.api_key}`,
-        );
+        const res = await axios.get(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`);
         if (res.status === 200) {
           return res.data;
         }
@@ -227,13 +211,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     fanArtTvResult = fanartTvResponses
       .map(({ value }: any) => {
+        console.log(value);
+
         return value;
       })
       .filter(defined);
 
-    const getArtistImage = (mbid: string): string => {
+    const getArtistImage = (mbid: string, albumMbId?: string, albumName?: string): string => {
       let imageUrl = '';
+
       fanArtTvResult.find((artist) => {
+        // console.log('🌛', artist.mbid_id === mbid, albumMbId);
         if (artist.mbid_id === mbid) {
           artist.artistbackground?.map((artistBackground) => {
             imageUrl = artistBackground.url;
@@ -243,41 +231,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const getAlbumImage = (artistMbid: string, albumMbid?: string): string => {
-      let imageUrl = '';
-      if (albumMbid === '') {
-        // TODO: if no album art id return an empty strign for now
-        return imageUrl;
-      }
-      fanArtTvResult.find((artist, index) => {
-        // console.log('🔥 fanArtTvResult', artist.albums);
-        console.log('🍉 whatsit', typeof artist.albums, artist.albums);
-        for (const fTvAlbumMbid in artist.albums) {
-          console.log('🌅 album:', fTvAlbumMbid);
-
-        }
-        // if (artist.mbid_id === artistMbid) {
-        //   console.log('�', albumMbid);
-        // }
-      });
-      return imageUrl;
-    };
-
     const topArtistsWithImages = artists.map<Artist>((artist: Artist) => {
       return {
         ...artist,
         image: getArtistImage(artist.mbid),
-      } as Artist;
-    }) as any;
+      };
+    });
 
-    const weeklyAlbumChartWithImages = albums.map<WeeklyAlbum>(
-      (album: WeeklyAlbum) => {
-        return {
-          ...album,
-          image: getAlbumImage(album.artist.mbid, album.mbid),
-        } as WeeklyAlbum;
-      },
-    ) as any;
+    const weeklyAlbumChartWithImages = albums.map<WeeklyAlbum>((album: WeeklyAlbum) => {
+      //  console.log(album);
+      return {
+        ...album,
+        image: getArtistImage(album.artist.mbid, album.mbid, album.name),
+      };
+    });
 
     myTopArtists.push(topArtistsWithImages);
     myWeeklyAlbumChart.push(weeklyAlbumChartWithImages);

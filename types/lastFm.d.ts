@@ -43,7 +43,7 @@ type WeeklyAlbum = {
   name: string;
   '@attr': { rank: string };
   playcount: string;
-  image?: '';
+  image?: string;
 };
 
 interface WeeklyalbumchartAttr {
