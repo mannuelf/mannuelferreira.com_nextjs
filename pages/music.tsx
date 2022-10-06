@@ -12,6 +12,7 @@ import { defined } from '@shared/defined';
 import MetaTags from '@components/meta-tags';
 import Link from 'next/link';
 import { CMS_NAME, META_MUSIC, MUSIC_URL, TWITTER_CARD_MUSIC, TWITTER_HANDLE } from '@shared/constants';
+import { MUSICBRAINZ } from '@lib/api/musicbrainz-cover-art';
 
 type Props = {
   weeklyAlbumChart: WeeklyAlbum[];
@@ -173,6 +174,18 @@ export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> =
   }
 };
 
+export const getCoverArt = async (albumMbId: string): Promise<MusicBrainzCoverArt.RootObject> => {
+  try {
+    const response = await axios.get<MusicBrainzCoverArt.RootObject>(`${MUSICBRAINZ.base_url}${albumMbId}`);
+
+    console.log('data', data);
+
+    return data;
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
 export const getFanartTvData = async (mbid: string): Promise<FanArtArtistResponse> => {
   const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
   const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
@@ -194,6 +207,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const allAlbumsMbids = albums.map((album: WeeklyAlbum) => album);
 
     // console.log('㊗️ allABMids', allAlbumsMbids.length, allAlbumsMbids);
+    allAlbumsMbids.forEach((album) => {
+      getCoverArt(album.mbid);
+    });
 
     let fanArtTvResult: FanArtArtistResponse[] = [];
 
@@ -211,8 +227,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     fanArtTvResult = fanartTvResponses
       .map(({ value }: any) => {
-        console.log(value);
-
+        // console.log(value);
         return value;
       })
       .filter(defined);
