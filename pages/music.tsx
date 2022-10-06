@@ -3,7 +3,7 @@ import Layout from '@components/Layout/layout';
 import PageTitle from '@components/page-title';
 import { FANART_TV } from 'lib/api/fanarttv';
 import { ARTIST_ENDPOINT, WEEKLY_ALBUM_CHART } from '@lib/api/lastFm';
-import axios, { AxiosError } from 'axios';
+import axios, { Axios, AxiosError, AxiosResponse } from 'axios';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -156,6 +156,11 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
   );
 };
 
+/**
+ * LastFM
+ * https://www.last.fm/api/show/user.getTopArtists
+ * @returns TopArtistsResponse Top artists listens for all time.
+ */
 export const getTopArtists = async (): Promise<TopArtistsResponse> => {
   try {
     const { data } = await axios.get<TopArtistsResponse>(ARTIST_ENDPOINT);
@@ -165,6 +170,11 @@ export const getTopArtists = async (): Promise<TopArtistsResponse> => {
   }
 };
 
+/**
+ * LastFM
+ * https://www.last.fm/api/show/user.getWeeklyAlbumChart
+ * @returns WeeklyAlbumChartResponse All albums I listened to last week
+ */
 export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> => {
   try {
     const { data } = await axios.get<WeeklyAlbumChartResponse>(WEEKLY_ALBUM_CHART);
@@ -174,18 +184,32 @@ export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> =
   }
 };
 
-export const getCoverArt = async (albumMbId: string): Promise<MusicBrainzCoverArt.RootObject> => {
+/**
+ * Musicbrainz: GET Album Artwork
+ * https://beta.musicbrainz.org/doc/Cover_Art_Archive/API
+ * @param albumMbId
+ * @returns Images for given ID
+ */
+export const getAlbumCoverArt = async (albumMbId: string) => {
   try {
-    const response = await axios.get<MusicBrainzCoverArt.RootObject>(`${MUSICBRAINZ.base_url}${albumMbId}`);
-
-    console.log('data', data);
-
+    if (albumMbId === '') return;
+    const response: AxiosResponse<MusicBrainzCoverArt.RootObject> = await axios.get(
+      `${MUSICBRAINZ.base_url}/release/${albumMbId}`,
+    );
+    const { data } = response;
     return data;
-  } catch (error) {
-    throw new Error(`${error}`);
+  } catch (error: any) {
+    console.log(`For album cover ${albumMbId} - ${error.message}`);
+    // throw new Error(`${error}`);
   }
 };
 
+/**
+ *
+ * @param mbid
+ * @returns Array of Artist images and text from Fanarttv
+ * https://fanart.tv/api-docs/api-v3/
+ */
 export const getFanartTvData = async (mbid: string): Promise<FanArtArtistResponse> => {
   const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
   const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
@@ -194,8 +218,8 @@ export const getFanartTvData = async (mbid: string): Promise<FanArtArtistRespons
 
 export const getServerSideProps: GetServerSideProps = async () => {
   let error: [] = [];
-  let myTopArtists: Artist[] = [];
-  let myWeeklyAlbumChart: Weeklyalbumchart[] = [];
+  let myTopArtists = [];
+  let myWeeklyAlbumChart = [];
 
   try {
     const allArtists: TopArtistsResponse = await getTopArtists();
@@ -206,13 +230,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const albums = allWeeklyAlbumChart.weeklyalbumchart.album;
     const allAlbumsMbids = albums.map((album: WeeklyAlbum) => album);
 
-    // console.log('㊗️ allABMids', allAlbumsMbids.length, allAlbumsMbids);
-    allAlbumsMbids.forEach((album) => {
-      getCoverArt(album.mbid);
-    });
-
-    let fanArtTvResult: FanArtArtistResponse[] = [];
-
+    /**
+     * Get and set data for Top Artist Grid
+     */
     const fanartTvResponses = await Promise.allSettled(
       allMbIds.map(async (mbId) => {
         const res = await axios.get(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`);
@@ -224,19 +244,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
         };
       }),
     );
-
-    fanArtTvResult = fanartTvResponses
+    let fanArtTvResult: FanArtArtistResponse[] = fanartTvResponses
       .map(({ value }: any) => {
-        // console.log(value);
         return value;
       })
       .filter(defined);
 
-    const getArtistImage = (mbid: string, albumMbId?: string, albumName?: string): string => {
+    const getTopArtistImage = (mbid: string): string => {
       let imageUrl = '';
-
       fanArtTvResult.find((artist) => {
-        // console.log('🌛', artist.mbid_id === mbid, albumMbId);
         if (artist.mbid_id === mbid) {
           artist.artistbackground?.map((artistBackground) => {
             imageUrl = artistBackground.url;
@@ -249,18 +265,43 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const topArtistsWithImages = artists.map<Artist>((artist: Artist) => {
       return {
         ...artist,
-        image: getArtistImage(artist.mbid),
+        image: getTopArtistImage(artist.mbid),
       };
     });
+
+    /**
+     * Get and set data for Weekly Album Chart
+     */
+    let musicBrainzResponse = await Promise.allSettled(
+      allAlbumsMbids.map(async (album) => await getAlbumCoverArt(album.mbid)),
+    );
+    let musicBrainzResult: MusicBrainzCoverArt.RootObject[] = musicBrainzResponse
+      .map(({ value }: any) => {
+        return value;
+      })
+      .filter(defined);
+
+    const getAlbumChartImage = (artistMbid: string, albumMbid: string, albumName?: string) => {
+      let imageUrl = '';
+
+      musicBrainzResult.find((album) => {
+        if (album.release.includes(albumMbid)) {
+          imageUrl = album.images?.map((image) => image.image).toString();
+        }
+      });
+      return imageUrl;
+    };
 
     const weeklyAlbumChartWithImages = albums.map<WeeklyAlbum>((album: WeeklyAlbum) => {
-      //  console.log(album);
       return {
         ...album,
-        image: getArtistImage(album.artist.mbid, album.mbid, album.name),
+        image: getAlbumChartImage(album.artist.mbid, album.mbid, album.name),
       };
     });
 
+    /**
+     * Set all page data to respect props to be given to component
+     */
     myTopArtists.push(topArtistsWithImages);
     myWeeklyAlbumChart.push(weeklyAlbumChartWithImages);
   } catch (error) {
