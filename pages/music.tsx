@@ -13,6 +13,7 @@ import MetaTags from '@components/meta-tags';
 import Link from 'next/link';
 import { CMS_NAME, META_MUSIC, MUSIC_URL, TWITTER_CARD_MUSIC, TWITTER_HANDLE } from '@shared/constants';
 import { MUSICBRAINZ } from '@lib/api/musicbrainz-cover-art';
+import { MusicCard } from './musicCard';
 
 type Props = {
   weeklyAlbumChart: WeeklyAlbum[];
@@ -87,33 +88,15 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
           {isError.length > 0 ? <div>{error}</div> : null}
           {weeklyAlbums.length > 0
             ? weeklyAlbums.map((album: WeeklyAlbum) => (
-                <div
+                <MusicCard
+                  playCount={album.playcount.toString()}
+                  playTitle={album.name}
+                  subTitle={''}
+                  title={album.name}
+                  siteUrl={album.artist['#text']}
+                  imageUrl={''}
                   key={album.name}
-                  className='relative h-80 md:h-72 bg-purple-dark'
-                  style={{
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'top center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundImage: `url(${album.image})`,
-                  }}
-                >
-                  <div className='absolute bottom-0 left-0 pb-0'>
-                    <h2 className='pb-2 pl-2 text-xl font-light text-white'>
-                      <Link href={album.url}>
-                        <a>{album.artist['#text']}</a>
-                      </Link>
-                    </h2>
-                    <h2 className='pb-2 pl-2 text-3xl font-light text-white'>
-                      <Link href={album.url}>
-                        <a>{album.name}</a>
-                      </Link>
-                    </h2>
-                    <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
-                      {album.playcount ? album.playcount : null}
-                      <span className='pl-2 text-xs font-light text-white '>plays</span>
-                    </h3>
-                  </div>
-                </div>
+                />
               ))
             : null}
           <hr />
@@ -126,28 +109,15 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
           {isError.length > 0 ? <div>{error}</div> : null}
           {artists.length > 0
             ? artists.map((artist: Artist) => (
-                <div
-                  key={artist.mbid}
-                  className='relative h-80 md:h-72 bg-purple-dark'
-                  style={{
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'top center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundImage: `url(${artist.image})`,
-                  }}
-                >
-                  <div className='absolute bottom-0 left-0 pb-0'>
-                    <h2 className='pb-2 pl-2 text-3xl font-light text-white'>
-                      <Link href={artist.url}>
-                        <a>{artist.name}</a>
-                      </Link>
-                    </h2>
-                    <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
-                      {artist.playcount ? artist.playcount : null}
-                      <span className='pl-2 text-xs font-light text-white '>plays</span>
-                    </h3>
-                  </div>
-                </div>
+                <MusicCard
+                  playCount={artist.playcount.toString()}
+                  playTitle={artist.name}
+                  subTitle={''}
+                  title={artist.name}
+                  siteUrl={artist.url}
+                  imageUrl={artist.image}
+                  key={artist.name}
+                />
               ))
             : null}
         </div>
