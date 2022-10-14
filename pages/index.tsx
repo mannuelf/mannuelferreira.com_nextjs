@@ -4,13 +4,7 @@ import Layout from '@components/Layout/layout';
 import { getAllPosts } from '@lib/api';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  AVATAR_ME,
-  CMS_NAME,
-  GENERIC_META,
-  SITE_URL,
-  TWITTER_HANDLE,
-} from '@shared/constants';
+import { AVATAR_ME, CMS_NAME, GENERIC_META, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
 import MetaTags from '@components/meta-tags';
 import { TWITTER_CARD_HOME } from '../shared/constants';
 
@@ -63,13 +57,7 @@ const Index = ({ allPosts }: Props) => {
         <Container>
           <section className='content-center mb-8 grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div className='items-center justify-self-center'>
-              <Image
-                className='rounded-full w-54 h-54'
-                width='224'
-                height='224'
-                src={AVATAR_ME}
-                alt={CMS_NAME}
-              />
+              <Image className='rounded-full w-54 h-54' width='224' height='224' src={AVATAR_ME} alt={CMS_NAME} />
             </div>
 
             <div>
@@ -99,14 +87,7 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ]);
+  const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt']);
 
   return {
     props: { allPosts },

@@ -1,18 +1,18 @@
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
+import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
-import { FANART_TV } from 'lib/api/fanarttv';
 import { ARTIST_ENDPOINT, WEEKLY_ALBUM_CHART } from '@lib/api/lastFm';
-import axios, { Axios, AxiosError, AxiosResponse } from 'axios';
+import { MUSICBRAINZ } from '@lib/api/musicbrainz-cover-art';
+import { CMS_NAME, META_MUSIC, MUSIC_URL, TWITTER_CARD_MUSIC, TWITTER_HANDLE } from '@shared/constants';
+import { defined } from '@shared/defined';
+import axios, { AxiosResponse } from 'axios';
+import { FANART_TV } from 'lib/api/fanarttv';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { FanArtArtistResponse, Album } from '../types/fanarttv';
-import { defined } from '@shared/defined';
-import MetaTags from '@components/meta-tags';
-import Link from 'next/link';
-import { CMS_NAME, META_MUSIC, MUSIC_URL, TWITTER_CARD_MUSIC, TWITTER_HANDLE } from '@shared/constants';
-import { MUSICBRAINZ } from '@lib/api/musicbrainz-cover-art';
+
+import { FanArtArtistResponse } from '../types/fanarttv';
 import { MusicCard } from './musicCard';
 
 type Props = {
@@ -87,15 +87,15 @@ const Music = ({ data, error, weeklyAlbumChart }: Props) => {
         <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
           {isError.length > 0 ? <div>{error}</div> : null}
           {weeklyAlbums.length > 0
-            ? weeklyAlbums.map((album: WeeklyAlbum) => (
+            ? weeklyAlbums.map((album: WeeklyAlbum, index) => (
                 <MusicCard
                   playCount={album.playcount.toString()}
                   playTitle={album.name}
-                  subTitle={''}
+                  subTitle={album.artist['#text']}
                   title={album.name}
                   siteUrl={album.artist['#text']}
-                  imageUrl={''}
-                  key={album.name}
+                  imageUrl={album.image ? album.image : ''}
+                  key={index}
                 />
               ))
             : null}
@@ -254,9 +254,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const getAlbumChartImage = (artistMbid: string, albumMbid: string, albumName?: string) => {
       let imageUrl = '';
 
+      // console.log(
+      //   'musicBrainzResult --------------------------------------------------------\n',
+      //   JSON.stringify(musicBrainzResult),
+      // );
+
       musicBrainzResult.find((album) => {
+        // console.log('album --------------------------------------------------------\n', album);
+        // console.log('artistMbid --------------------------------------------------------\n', artistMbid);
+        // console.log('artistMbid --------------------------------------------------------\n', albumName);
+
         if (album.release.includes(albumMbid)) {
-          imageUrl = album.images?.map((image) => image.image).toString();
+          let thumbs = album.images?.map((image) => image.thumbnails).filter(defined);
+          console.log('thumbs --------------------------------------------------------\n', imageUrl);
+
+          imageUrl = thumbs.find((thumb) => thumb['500'])?.[500].toString()
+            ? thumbs.find((thumb) => thumb['500'])?.[500].toString()
+            : '';
+          console.log('imageUrl --------------------------------------------------------\n', imageUrl);
         }
       });
       return imageUrl;
