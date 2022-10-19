@@ -24,12 +24,12 @@ const MusicCard = ({ title, playCount, subTitle, siteUrl, imageUrl }: MusicCard)
       >
         <div className='absolute bottom-0 left-0 pb-0'>
           <h2 className='pb-2 pl-2 text-xl font-light text-white'>
-            <Link href={imageUrl}>
+            <Link href={imageUrl ?? ''}>
               <a>{subTitle}</a>
             </Link>
           </h2>
           <h2 className='pb-2 pl-2 text-3xl font-light text-white'>
-            <Link href={siteUrl}>
+            <Link href={siteUrl ?? '#'}>
               <a>{title}</a>
             </Link>
           </h2>
