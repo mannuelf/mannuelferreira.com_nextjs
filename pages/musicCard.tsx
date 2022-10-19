@@ -9,7 +9,7 @@ type MusicCard = {
   imageUrl: string;
 };
 
-export const MusicCard = ({ title, playCount, subTitle, siteUrl, imageUrl }: MusicCard) => {
+const MusicCard = ({ title, playCount, subTitle, siteUrl, imageUrl }: MusicCard) => {
   return (
     <div key={title} className='relative bg-purple-dark'>
       <div
@@ -42,3 +42,5 @@ export const MusicCard = ({ title, playCount, subTitle, siteUrl, imageUrl }: Mus
     </div>
   );
 };
+
+export default MusicCard;
