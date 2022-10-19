@@ -20,7 +20,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { FanArtArtistResponse } from '../types/fanarttv';
-import { MusicCard } from './musicCard';
+import MusicCard from './musicCard';
 import { LOGO_LASTFM, URL_FANARTTV, URL_LASTFM_PROFILE, URL_COVERART_ARCHIVE } from '../shared/constants';
 
 type Props = {
