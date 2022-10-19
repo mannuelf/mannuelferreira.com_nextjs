@@ -10,8 +10,6 @@ type MusicCard = {
 };
 
 export const MusicCard = ({ title, playCount, playTitle, subTitle, siteUrl, imageUrl }: MusicCard) => {
-  console.log('🅰️>', imageUrl);
-
   return (
     <div
       key={title}
@@ -36,7 +34,7 @@ export const MusicCard = ({ title, playCount, playTitle, subTitle, siteUrl, imag
         </h2>
         <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
           {playCount ? playCount : null}
-          <span className='pl-2 text-xs font-light text-white '>plays</span>
+          <span className='pl-2 text-xs font-light text-white'>plays</span>
         </h3>
       </div>
     </div>
