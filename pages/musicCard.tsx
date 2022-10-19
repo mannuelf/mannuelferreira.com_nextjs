@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 type MusicCard = {
   playCount: string;
@@ -10,7 +9,7 @@ type MusicCard = {
   imageUrl: string;
 };
 
-export const MusicCard = ({ title, playCount, playTitle, subTitle, siteUrl, imageUrl }: MusicCard) => {
+export const MusicCard = ({ title, playCount, subTitle, siteUrl, imageUrl }: MusicCard) => {
   return (
     <div key={title} className='relative bg-purple-dark'>
       <div
