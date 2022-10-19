@@ -14,6 +14,8 @@ const nextConfig = {
       '*.fastly.net',
       'lastfm.freetls.fastly.net',
       'upload.wikimedia.org',
+      'coverartarchive.org',
+      'assets.fanart.tv',
     ],
   },
   generateBuildId: async () => uuidv4(),

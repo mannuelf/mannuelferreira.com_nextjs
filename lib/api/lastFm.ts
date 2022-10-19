@@ -26,7 +26,7 @@ const LAST_FM = {
 };
 
 export const AUTH_ENDPOINT = `${LAST_FM.base_url}?method=${LAST_FM.methods.auth.token}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
-export const ARTIST_ENDPOINT = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.top_artists}&user=${LAST_FM.user}&limit=1&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
+export const ARTIST_ENDPOINT = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.top_artists}&user=${LAST_FM.user}&limit=50&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
 export const WEEKLY_ALBUM_CHART = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.weekly_album_chart}&user=${LAST_FM.user}&limit=50&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
 
 export default LAST_FM;

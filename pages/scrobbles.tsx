@@ -4,7 +4,14 @@ import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
 import { ARTIST_ENDPOINT, WEEKLY_ALBUM_CHART } from '@lib/api/lastFm';
 import { MUSICBRAINZ } from '@lib/api/musicbrainz-cover-art';
-import { CMS_NAME, META_MUSIC, MUSIC_URL, TWITTER_CARD_MUSIC, TWITTER_HANDLE } from '@shared/constants';
+import {
+  CMS_NAME,
+  META_MUSIC,
+  MUSIC_URL,
+  TWITTER_CARD_MUSIC,
+  TWITTER_HANDLE,
+  URL_LASTFM_API_DOCS,
+} from '@shared/constants';
 import { defined } from '@shared/defined';
 import axios, { AxiosResponse } from 'axios';
 import { FANART_TV } from 'lib/api/fanarttv';
@@ -14,6 +21,7 @@ import { useEffect, useState } from 'react';
 
 import { FanArtArtistResponse } from '../types/fanarttv';
 import { MusicCard } from './musicCard';
+import { LOGO_LASTFM, URL_FANARTTV, URL_LASTFM_PROFILE, URL_COVERART_ARCHIVE } from '../shared/constants';
 
 type Props = {
   weeklyAlbumChart: WeeklyAlbum[];
@@ -21,7 +29,7 @@ type Props = {
   error: [];
 };
 
-const Music = ({ topArtists, error, weeklyAlbumChart }: Props) => {
+const Scrobbles = ({ topArtists, error, weeklyAlbumChart }: Props) => {
   const [artists, setArtists] = useState<Artist[]>([]);
   const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
 
@@ -33,20 +41,10 @@ const Music = ({ topArtists, error, weeklyAlbumChart }: Props) => {
     setWeeklyAlbums(weeklyAlbumChart);
   }, [topArtists, error, weeklyAlbumChart]);
 
-  if (isError.length > 0) {
-    return (
-      <Layout>
-        <Container>
-          <h1>Error: {isError}</h1>
-        </Container>
-      </Layout>
-    );
-  }
-
   return (
     <Layout>
       <MetaTags
-        ogTitle={'Music'}
+        ogTitle={'Scrobbles'}
         ogImage={TWITTER_CARD_MUSIC}
         ogDescription={META_MUSIC}
         ogUrl={MUSIC_URL}
@@ -64,64 +62,66 @@ const Music = ({ topArtists, error, weeklyAlbumChart }: Props) => {
             you all.
           </p>
           <p>
-            My scrobbles update live directly from the{' '}
-            <a href='https://www.last.fm/api/intro'>
-              <Image
-                src='https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg'
-                unoptimized={true}
-                width={90}
-                height={30}
-                alt='LastFm Logo'
-              />
+            My scrobbles updates from the {''}
+            <a href={URL_LASTFM_API_DOCS} target='_blank' rel='noopener noreferrer'>
+              <Image src={LOGO_LASTFM} unoptimized={true} width={90} height={30} alt='LastFm Logo' />
             </a>{' '}
-            API. My <a href='https://www.last.fm/user/mannuelf'>profile</a> on lastfm.
+            API. My <a href={URL_LASTFM_PROFILE}>profile</a> on lastfm. Some photos from{' '}
+            <a href={URL_FANARTTV} target='_blank' rel='noopener noreferrer'>
+              fanart.tv
+            </a>{' '}
+            API. Some from{' '}
+            <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
+              Musicbrainz Cover Art Archive
+            </a>
+            .
           </p>
-          <p>
-            Photos from <a href='https://fanart.tv/'>fanart.tv</a> API.
-          </p>
-        </div>
-        <div className='pb-2'>
-          <h2 className='text-2xl font-medium'>Weekly Album Charts</h2>
-          <p>Scrobbles this week</p>
-        </div>
-        <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
-          {isError.length > 0 ? <div>{error}</div> : null}
-          {weeklyAlbums.length > 0
-            ? weeklyAlbums.map((album: WeeklyAlbum, index) => (
-                <MusicCard
-                  playCount={album.playcount.toString()}
-                  playTitle={album.name}
-                  subTitle={album.artist['#text']}
-                  title={album.name}
-                  siteUrl={album.artist['#text']}
-                  imageUrl={album.image ? album.image : ''}
-                  key={index}
-                />
-              ))
-            : null}
-          <hr />
-        </div>
-        <div className='pb-2'>
-          <h2 className='text-2xl font-medium'>Top 100 Artists</h2>
-          <p>Scrobbles since 2008</p>
-        </div>
-        <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
-          {isError.length > 0 ? <div>{error}</div> : null}
-          {artists.length > 0
-            ? artists.map((artist: Artist) => (
-                <MusicCard
-                  playCount={artist.playcount.toString()}
-                  playTitle={artist.name}
-                  subTitle={''}
-                  title={artist.name}
-                  siteUrl={artist.url}
-                  imageUrl={artist.image}
-                  key={artist.name}
-                />
-              ))
-            : null}
         </div>
       </Container>
+      <div className='container'>
+        <div className='w-screen'>
+          {isError.length > 0 ? <div>{error}</div> : null}
+          <div className='pb-2 pl-4'>
+            <h2 className='text-2xl font-medium'>Weekly Album Charts</h2>
+            <p>Scrobbles this week</p>
+          </div>
+          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
+            {weeklyAlbums.length > 0
+              ? weeklyAlbums.map((album: WeeklyAlbum, index) => (
+                  <MusicCard
+                    playCount={album.playcount.toString()}
+                    playTitle={album.name}
+                    subTitle={album.artist['#text']}
+                    title={album.name}
+                    siteUrl={album.artist['#text']}
+                    imageUrl={album.image ? album.image : ''}
+                    key={index}
+                  />
+                ))
+              : null}
+            <hr />
+          </div>
+          <div className='pb-2 pl-4'>
+            <h2 className='text-2xl font-medium'>Top 100 Artists</h2>
+            <p>Scrobbles since 2008</p>
+          </div>
+          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
+            {artists.length > 0
+              ? artists.map((artist: Artist) => (
+                  <MusicCard
+                    playCount={artist.playcount.toString()}
+                    playTitle={artist.name}
+                    subTitle={''}
+                    title={artist.name}
+                    siteUrl={artist.url}
+                    imageUrl={artist.image}
+                    key={artist.name}
+                  />
+                ))
+              : null}
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };
@@ -213,7 +213,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const fanartTvResponses = await Promise.allSettled(
       allMbIds.map(async (mbId) => {
         const res = await axios.get(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`);
-        if (res.status === HttpResponseCode.SUCCESS) {
+        if (res.status === 200) {
           return res.data;
         }
         return {
@@ -261,13 +261,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const getAlbumChartImage = (artistMbid: string, albumMbid: string, albumName?: string) => {
       let imageUrl = '';
       musicBrainzResult.find((album) => {
-        console.log(albumName, artistMbid, album);
         if (album.release.includes(albumMbid)) {
           album.images
             .map((image) => {
-              // console.log(image.front);
               if (image.front) {
-                // console.log(image.thumbnails);
                 return image.thumbnails;
               }
               return imageUrl;
@@ -284,8 +281,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     };
 
     const weeklyAlbumChartWithImages = albums.map<WeeklyAlbum>((album: WeeklyAlbum) => {
-      // console.log('weeklyACWI:', album);
-
       return {
         ...album,
         image: getAlbumChartImage(album.artist.mbid, album.mbid, album.name),
@@ -310,4 +305,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-export default Music;
+export default Scrobbles;
