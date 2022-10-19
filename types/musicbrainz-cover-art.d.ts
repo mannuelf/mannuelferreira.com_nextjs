@@ -22,5 +22,7 @@ declare module MusicBrainzCoverArt {
   export interface RootObject {
     images: Image[];
     release: string;
+    artistName?: string;
+    albumTitle?: string;
   }
 }
