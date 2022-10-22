@@ -116,7 +116,7 @@ declare module LastFmRecentTracks {
   export interface Track {
     artist: Artist;
     streamable: string;
-    image: Image[];
+    image?: '';
     mbid: string;
     album: Album;
     name: string;

@@ -330,10 +330,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     });
 
-    const recentTracksWithImages = tracks.map((track) => {
+    const recentTracksWithImages = tracks.map<LastFmRecentTracks.Track>((track) => {
       return {
         ...track,
-        image: '',
+        image: getAlbumChartImage(track.album.mbid, track.mbid, track.name),
       };
     });
 
