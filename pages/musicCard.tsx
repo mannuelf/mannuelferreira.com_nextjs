@@ -1,20 +1,22 @@
 import Link from 'next/link';
 
 type MusicCard = {
-  playCount: string;
+  imageUrl?: string;
+  mbid?: string;
+  nowplaying?: boolean;
+  playCount?: string;
   playTitle: string;
+  siteUrl: string;
   subTitle: string;
   title: string;
-  siteUrl: string;
-  imageUrl: string;
 };
 
-const MusicCard = ({ title, playCount, subTitle, siteUrl, imageUrl }: MusicCard) => {
+const MusicCard = ({ imageUrl, mbid, nowplaying, playCount, playTitle, siteUrl, subTitle, title }: MusicCard) => {
   return (
     <div key={title} className='relative bg-purple-dark'>
       <div
-        key={title}
-        className='relative h-80 md:h-85 bg-purple-dark'
+        key={title + mbid}
+        className={` ${nowplaying ? 'nowplaying ' : ''}relative h-80 md:h-85 bg-purple-dark`}
         style={{
           backgroundSize: 'cover',
           backgroundPosition: 'top center',

@@ -31,9 +31,8 @@ p {
 }
 
 .app-footer {
-  background: #28284f
-    url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg')
-    no-repeat bottom right;
+  background: #28284f url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg') no-repeat
+    bottom right;
   color: #f8f8f8;
 }
 .app-footer a:link,
@@ -127,4 +126,8 @@ p a {
 .markdown-body a:visited {
   color: #222222;
   border-bottom: 1px solid orange;
+}
+
+.nowplaying {
+  border: 4px solid red;
 }
