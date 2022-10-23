@@ -204,16 +204,23 @@ export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> =
  * @param artistName
  * @returns ```{ images: [], release: ''}```
  */
-export const getAlbumCoverArt = async (albumMbId: string, artistName: string) => {
+export const getAlbumCoverArt = async (albumMbId: string, artistName?: string | any, albumName?: string) => {
   try {
+    console.log(
+      `🏹: ${artistName ? artistName : undefined} + album ${albumName ? albumName : undefined} + ${
+        albumMbId ? albumMbId : undefined
+      }`,
+    );
+
     const response: AxiosResponse<MusicBrainzCoverArt.RootObject> = await axios.get(
       `${MUSICBRAINZ.base_url}/release/${albumMbId}`,
     );
     const { data, status } = response;
     return data;
   } catch (error: any) {
-    const errMessage = `Artist: ${artistName} , album cover ${albumMbId} - ${error.message}`;
-    // console.log(errMessage);
+    const errMessage = `for artist: ${artistName} + album ${albumName} + ${albumMbId} ERROR: ${error.message}`;
+    console.log(errMessage);
+
     throw new Error(errMessage);
   }
 };
@@ -243,12 +250,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const allWeeklyAlbumChart: WeeklyAlbumChartResponse = await getWeeklyAlbumChart();
     const albums = allWeeklyAlbumChart.weeklyalbumchart.album;
+    const weeklyAlbumMbids = albums.map((album: WeeklyAlbum) => album);
     const allAlbumsMbids = albums.map((album: WeeklyAlbum) => album);
 
     const allRecentTracks: LastFmRecentTracks.RecentTracksResponse = await getRecentTracks();
     const { recenttracks } = allRecentTracks;
     const tracks = recenttracks.track;
-    const allTrackAlbumMbids = tracks.map((track) => track.album.mbid);
+
+    // const allAlbumMbids = [...weeklyAlbumMbids, ...tracks];
 
     /**
      * Get and set data for Top Artist Grid
@@ -282,26 +291,25 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const topArtistsWithImages = artists.map<Artist>((artist: Artist) => {
-      return {
-        ...artist,
-        image: getTopArtistImage(artist.mbid),
-      };
-    });
-
     /**
      * Get and set data for Weekly Album Chart
      */
     let musicBrainzResponse = await Promise.allSettled(
       allAlbumsMbids.map(async (album) => await getAlbumCoverArt(album.mbid, album.artist['#text'])),
     );
-    let musicBrainzResult: MusicBrainzCoverArt.RootObject[] = musicBrainzResponse
+    let musicBrainzResult: MusicBrainzCoverArt.RootObject[] = await musicBrainzResponse
       .map(({ value }: any) => {
         return value;
       })
       .filter(defined);
 
-    const getAlbumChartImage = (artistMbid: string, albumMbid: string, albumName?: string) => {
+    const getAlbumCoverImage = (artistMbid: string, albumMbid: string, albumName?: string, artistName?: string) => {
+      console.log(
+        `artistMbid: ${artistMbid ? artistMbid : undefined}, albumMid: ${
+          albumMbid ? albumMbid : undefined
+        }, albumName: ${albumName ? albumName : undefined}, artist: ${artistName ? artistName : undefined}`,
+      );
+
       let imageUrl = '';
       musicBrainzResult.find((album) => {
         if (album.release.includes(albumMbid)) {
@@ -323,17 +331,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const weeklyAlbumChartWithImages = albums.map<WeeklyAlbum>((album: WeeklyAlbum) => {
+    const topArtistsWithImages = artists.map((artist) => {
       return {
-        ...album,
-        image: getAlbumChartImage(album.artist.mbid, album.mbid, album.name),
+        ...artist,
+        image: getTopArtistImage(artist.mbid),
       };
     });
 
-    const recentTracksWithImages = tracks.map<LastFmRecentTracks.Track>((track) => {
+    const weeklyAlbumChartWithImages = albums.map((album) => {
+      return {
+        ...album,
+        image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist['#text']),
+      };
+    });
+
+    const recentTracksWithImages = tracks.map((track) => {
       return {
         ...track,
-        image: getAlbumChartImage(track.album.mbid, track.mbid, track.name),
+        image: getAlbumCoverImage(track.artist.mbid, track.album.mbid, track.album['#text'], track.artist['#text']),
       };
     });
 

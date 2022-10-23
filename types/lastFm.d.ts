@@ -48,8 +48,8 @@ type WeeklyAlbum = {
 
 interface WeeklyalbumchartAttr {
   from: string;
-  user: string;
   to: string;
+  user: string;
 }
 interface AlbumAttr {
   rank: string;
@@ -59,13 +59,14 @@ type Artist = {
   '@attr': {
     rank: number;
   };
-  mbid: number;
-  url: string;
-  playcount: number;
-  image: Image[];
-  name: string;
-  streamable: number;
+  album: Album;
   cover: ArtistImage;
+  image: Image[];
+  mbid: number;
+  name: string;
+  playcount: number;
+  streamable: number;
+  url: string;
 };
 
 type Image = {
@@ -116,7 +117,7 @@ declare module LastFmRecentTracks {
   export interface Track {
     artist: Artist;
     streamable: string;
-    image?: '';
+    image: '';
     mbid: string;
     album: Album;
     name: string;
