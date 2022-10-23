@@ -6,6 +6,9 @@ body {
   font-family: 'Ubuntu', Arial, sans-serif;
   background: #f1f1f1;
   color: #444;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -31,9 +34,8 @@ p {
 }
 
 .app-footer {
-  background: #28284f
-    url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg')
-    no-repeat bottom right;
+  background: #28284f url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg') no-repeat
+    bottom right;
   color: #f8f8f8;
 }
 .app-footer a:link,
