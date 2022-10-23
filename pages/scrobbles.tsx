@@ -25,22 +25,24 @@ import MusicCard from './musicCard';
 import { LOGO_LASTFM, URL_FANARTTV, URL_LASTFM_PROFILE, URL_COVERART_ARCHIVE } from '../shared/constants';
 
 type Props = {
-  weeklyAlbumChart: WeeklyAlbum[];
-  topArtists: Artist[];
   error: [];
+  recentTracks: LastFmRecentTracks.Track[];
+  topArtists: Artist[];
+  weeklyAlbumChart: WeeklyAlbum[];
 };
 
-const Scrobbles = ({ topArtists, error, weeklyAlbumChart }: Props) => {
+const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props) => {
   const [artists, setArtists] = useState<Artist[]>([]);
   const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
-
+  const [allRecentTracks, setAllRecentTrack] = useState<LastFmRecentTracks.Track[]>([]);
   const [isError, setIsError] = useState([]);
 
   useEffect(() => {
     setIsError(error);
     setArtists(topArtists);
     setWeeklyAlbums(weeklyAlbumChart);
-  }, [topArtists, error, weeklyAlbumChart]);
+    setAllRecentTrack(recentTracks);
+  }, [error, recentTracks, topArtists, weeklyAlbumChart]);
 
   return (
     <Layout>
