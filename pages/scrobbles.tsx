@@ -23,6 +23,7 @@ import { useEffect, useState } from 'react';
 import { FanArtArtistResponse } from '../types/fanarttv';
 import MusicCard from './musicCard';
 import { LOGO_LASTFM, URL_FANARTTV, URL_LASTFM_PROFILE, URL_COVERART_ARCHIVE } from '../shared/constants';
+import { RECENT_TRACKS } from '@lib/api/lastFm';
 
 type Props = {
   error: [];
@@ -80,7 +81,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
             . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you know of another
             API{' '}
             <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
-              let me know about it
+              let me know about it 🤙
             </a>
             .
           </p>
@@ -89,6 +90,26 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
       <div className='container'>
         <div className='w-screen'>
           {isError.length > 0 ? <div>{error}</div> : null}
+          <div className='pb-2 pl-4'>
+            <h2 className='text-2xl font-medium'>Recent Tracks 🎹</h2>
+            <p>Listened to today</p>
+          </div>
+          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
+            {allRecentTracks.length > 0
+              ? allRecentTracks.map((track: LastFmRecentTracks.Track, index) => (
+                  <MusicCard
+                    imageUrl={track.image ? track.image : ''}
+                    nowplaying={track['@attr'] ? Boolean(track['@attr'].nowplaying) : ''}
+                    playTitle={track.name}
+                    siteUrl={track.url}
+                    subTitle={track.artist['#text']}
+                    title={track.name}
+                    key={index}
+                  />
+                ))
+              : null}
+            <hr />
+          </div>
           <div className='pb-2 pl-4'>
             <h2 className='text-2xl font-medium'>Weekly Album Charts</h2>
             <p>Scrobbles this week</p>
@@ -132,6 +153,20 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
       </div>
     </Layout>
   );
+};
+
+/**
+ * GET: Recent Tracks - LastFM
+ * Docs: https://www.last.fm/api/show/user.getRecentTracks
+ * @returns RecentTracksResponse All tracks I listened to today.
+ */
+export const getRecentTracks = async (): Promise<LastFmRecentTracks.RecentTracksResponse> => {
+  try {
+    const { data } = await axios.get<LastFmRecentTracks.RecentTracksResponse>(RECENT_TRACKS);
+    return data;
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
 };
 
 /**
@@ -203,6 +238,7 @@ export const getFanartTvData = async (mbid: string): Promise<FanArtArtistRespons
 
 export const getServerSideProps: GetServerSideProps = async () => {
   let error: [] = [];
+  let myRecentTracks = [];
   let myTopArtists = [];
   let myWeeklyAlbumChart = [];
 
@@ -213,7 +249,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const allWeeklyAlbumChart: WeeklyAlbumChartResponse = await getWeeklyAlbumChart();
     const albums = allWeeklyAlbumChart.weeklyalbumchart.album;
-    const allAlbumsMbids = albums.map((album: WeeklyAlbum) => album);
+    const allAlbums = albums.map((album: WeeklyAlbum) => album);
+
+    const allRecentTracks: LastFmRecentTracks.RecentTracksResponse = await getRecentTracks();
+    const { recenttracks } = allRecentTracks;
+    const tracks = recenttracks.track;
+    const trackAlbums = recenttracks.track.map((track) => track.album);
+
+    const combinedAlbums = [...allAlbums, ...trackAlbums];
 
     /**
      * Get and set data for Top Artist Grid
@@ -258,7 +301,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
      * Get and set data for Weekly Album Chart
      */
     let musicBrainzResponse = await Promise.allSettled(
-      allAlbumsMbids.map(async (album) => await getAlbumCoverArt(album.mbid, album.artist['#text'])),
+      combinedAlbums.map(async (album) => await getAlbumCoverArt(album.mbid, album.artist['#text'])),
     );
     let musicBrainzResult: MusicBrainzCoverArt.RootObject[] = musicBrainzResponse
       .map(({ value }: any) => {
@@ -296,20 +339,29 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     });
 
+    const recentTracksWithImages = tracks.map((track) => {
+      return {
+        ...track,
+        image: getAlbumCoverImage(track.artist.mbid, track.album.mbid, track.album['#text'], track.artist['#text']),
+      };
+    });
+
     /**
      * Set all page data to respect props to be given to component
      */
     myTopArtists.push(topArtistsWithImages);
     myWeeklyAlbumChart.push(weeklyAlbumChartWithImages);
+    myRecentTracks.push(recentTracksWithImages);
   } catch (error) {
     error = error;
   }
 
   return {
     props: {
-      weeklyAlbumChart: myWeeklyAlbumChart[0],
-      topArtists: myTopArtists[0],
       error,
+      recentTracks: myRecentTracks[0],
+      topArtists: myTopArtists[0],
+      weeklyAlbumChart: myWeeklyAlbumChart[0],
     },
   };
 };

@@ -130,3 +130,7 @@ p a {
   color: #222222;
   border-bottom: 1px solid orange;
 }
+
+.nowplaying {
+  border: 4px inset #ff9d00;
+}
