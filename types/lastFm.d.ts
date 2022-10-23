@@ -92,17 +92,17 @@ type ArtistImage = {
 declare module LastFmRecentTracks {
   export interface Artist {
     mbid: string;
-    #text: string;
+    '#text': string;
   }
 
   export interface Image {
     size: string;
-    #text: string;
+    '#text': string;
   }
 
   export interface Album {
     mbid: string;
-    #text: string;
+    '#text': string;
   }
 
   export interface Attr {
@@ -111,7 +111,7 @@ declare module LastFmRecentTracks {
 
   export interface Date {
     uts: string;
-    #text: string;
+    '#text': string;
   }
 
   export interface Track {

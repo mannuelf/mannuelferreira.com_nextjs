@@ -99,7 +99,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
               ? allRecentTracks.map((track: LastFmRecentTracks.Track, index) => (
                   <MusicCard
                     imageUrl={track.image ? track.image : ''}
-                    nowplaying={track['@attr'] ? Boolean(track['@attr'].nowplaying) : ''}
+                    nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
                     playTitle={track.name}
                     siteUrl={track.url}
                     subTitle={track.artist['#text']}

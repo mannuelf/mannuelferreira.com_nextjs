@@ -3,11 +3,11 @@ import Link from 'next/link';
 type MusicCard = {
   imageUrl?: string;
   mbid?: string;
-  nowplaying?: boolean;
+  nowplaying?: string;
   playCount?: string;
   playTitle: string;
   siteUrl: string;
-  subTitle: string;
+  subTitle?: string;
   title: string;
 };
 
