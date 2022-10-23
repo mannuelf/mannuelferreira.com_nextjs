@@ -93,7 +93,7 @@ const Scrobbles = ({ topArtists, error, weeklyAlbumChart }: Props) => {
                     playTitle={album.name}
                     subTitle={album.artist['#text']}
                     title={album.name}
-                    siteUrl={album.artist['#text']}
+                    siteUrl={album.url}
                     imageUrl={album.image ? album.image : ''}
                     key={index}
                   />
@@ -258,10 +258,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
       })
       .filter(defined);
 
-    const getAlbumChartImage = (artistMbid: string, albumMbid: string, albumName?: string) => {
+    const getAlbumCoverImage = (artistMbId: string, albumMbId: string, albumTitle?: string, artistName?: string) => {
       let imageUrl = '';
+      if (albumMbId === '') return '';
       musicBrainzResult.find((album) => {
-        if (album.release.includes(albumMbid)) {
+        if (album.release.includes(albumMbId)) {
           album.images
             .map((image) => {
               if (image.front) {
@@ -283,7 +284,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const weeklyAlbumChartWithImages = albums.map<WeeklyAlbum>((album: WeeklyAlbum) => {
       return {
         ...album,
-        image: getAlbumChartImage(album.artist.mbid, album.mbid, album.name),
+        image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist['#text']),
       };
     });
 
