@@ -48,8 +48,8 @@ type WeeklyAlbum = {
 
 interface WeeklyalbumchartAttr {
   from: string;
-  user: string;
   to: string;
+  user: string;
 }
 interface AlbumAttr {
   rank: string;
@@ -59,13 +59,14 @@ type Artist = {
   '@attr': {
     rank: number;
   };
-  mbid: number;
-  url: string;
-  playcount: number;
-  image: Image[];
-  name: string;
-  streamable: number;
+  album: Album;
   cover: ArtistImage;
+  image: Image[];
+  mbid: number;
+  name: string;
+  playcount: number;
+  streamable: number;
+  url: string;
 };
 
 type Image = {
@@ -87,6 +88,61 @@ type ArtistImage = {
   attribution: string;
   playcount: number;
 };
+
+declare module LastFmRecentTracks {
+  export interface Artist {
+    mbid: string;
+    #text: string;
+  }
+
+  export interface Image {
+    size: string;
+    #text: string;
+  }
+
+  export interface Album {
+    mbid: string;
+    #text: string;
+  }
+
+  export interface Attr {
+    nowplaying: string;
+  }
+
+  export interface Date {
+    uts: string;
+    #text: string;
+  }
+
+  export interface Track {
+    artist: Artist;
+    streamable: string;
+    image: '';
+    mbid: string;
+    album: Album;
+    name: string;
+    '@attr': Attr;
+    url: string;
+    date: Date;
+  }
+
+  export interface Attr2 {
+    user: string;
+    totalPages: string;
+    page: string;
+    perPage: string;
+    total: string;
+  }
+
+  export interface Recenttracks {
+    track: Track[];
+    '@attr': Attr2;
+  }
+
+  export interface RecentTracksResponse {
+    recenttracks: Recenttracks;
+  }
+}
 
 enum LastFmErrors {
   'InvalidService' = 2,
