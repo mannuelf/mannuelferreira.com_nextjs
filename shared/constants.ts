@@ -8,13 +8,13 @@ export const HOME_OG_IMAGE_URL = AVATAR_ME;
 export const LOGO_LARCASTS = 'https://res.cloudinary.com/mannuel/image/upload/v1662894592/images/logo-laracast.svg';
 export const LOGO_LASTFM = 'https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg';
 export const LOGO_SPOTIFY = 'https://res.cloudinary.com/mannuel/image/upload/v1630704755/images/Spotify_Logo.svg';
-export const META_BOOKS = 'A list of books I have read, enjoyed and recommend.';
+export const META_BOOKS = 'A list of books I have read, enjoyed and can recommend.';
 export const META_EXPERIENCE =
   'I am grateful to have worked with many incredible people on awesome products & projects over the years. These pages are a look back in time and a reminder for me to stop stressing and enjoy every moment now.';
 export const META_MUSIC = 'A list of artists, albums and songs that I enjoyed and hope you might too.';
 export const META_POSTS =
   'I enjoy learning about new technologies, programming techniques and languages, this where I will save my notes.';
-export const MUSIC_URL = 'https://mannuelferreira.com/music';
+export const MUSIC_URL = 'https://mannuelferreira.com/scrobbles';
 export const SITE_URL = 'https://mannuelferreira.com';
 export const TWITTER_CARD_BOOKS =
   'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/books-post-cover.png';
