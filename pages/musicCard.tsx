@@ -14,7 +14,7 @@ const MusicCard = ({ title, playCount, subTitle, siteUrl, imageUrl }: MusicCard)
     <div key={title} className='relative bg-purple-dark'>
       <div
         key={title}
-        className='relative h-80 md:h-85 bg-purple-dark'
+        className='relative h-96 bg-purple-dark'
         style={{
           backgroundSize: 'cover',
           backgroundPosition: 'top center',

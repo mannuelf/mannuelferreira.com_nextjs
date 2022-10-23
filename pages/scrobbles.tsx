@@ -11,6 +11,7 @@ import {
   TWITTER_CARD_MUSIC,
   TWITTER_HANDLE,
   URL_LASTFM_API_DOCS,
+  URL_TWITTER_PROFILE,
 } from '@shared/constants';
 import { defined } from '@shared/defined';
 import axios, { AxiosResponse } from 'axios';
@@ -73,6 +74,11 @@ const Scrobbles = ({ topArtists, error, weeklyAlbumChart }: Props) => {
             API. Some from{' '}
             <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
               Musicbrainz Cover Art Archive
+            </a>
+            . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you know of another
+            API{' '}
+            <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
+              let me know about it
             </a>
             .
           </p>
