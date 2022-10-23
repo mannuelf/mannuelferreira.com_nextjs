@@ -210,16 +210,15 @@ export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> =
  * @param artistName
  * @returns ```{ images: [], release: ''}```
  */
-export const getAlbumCoverArt = async (albumMbId: string, artistName: string) => {
+export const getAlbumCoverArt = async (albumMbId: string) => {
   try {
     const response: AxiosResponse<MusicBrainzCoverArt.RootObject> = await axios.get(
       `${MUSICBRAINZ.base_url}/release/${albumMbId}`,
     );
-    const { data, status } = response;
+    const { data } = response;
     return data;
   } catch (error: any) {
-    const errMessage = `Artist: ${artistName} , album cover ${albumMbId} - ${error.message}`;
-    // console.log(errMessage);
+    const errMessage = `😞 Album cover ${albumMbId} - ${error.message}`;
     throw new Error(errMessage);
   }
 };
@@ -301,7 +300,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
      * Get and set data for Weekly Album Chart
      */
     let musicBrainzResponse = await Promise.allSettled(
-      combinedAlbums.map(async (album) => await getAlbumCoverArt(album.mbid, album.artist['#text'])),
+      combinedAlbums.map(async (album) => await getAlbumCoverArt(album.mbid)),
     );
     let musicBrainzResult: MusicBrainzCoverArt.RootObject[] = musicBrainzResponse
       .map(({ value }: any) => {
