@@ -1,4 +1,4 @@
-declare module MusicBrainzCoverArt {
+export declare module MusicBrainzCoverArt {
   export interface Thumbnails {
     1200: string;
     250: string;

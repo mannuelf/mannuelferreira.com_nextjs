@@ -2,8 +2,6 @@ import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
-import { ARTIST_ENDPOINT, WEEKLY_ALBUM_CHART } from '@lib/api/lastFm';
-import { MUSICBRAINZ } from '@lib/api/musicbrainz-cover-art';
 import {
   CMS_NAME,
   META_MUSIC,
@@ -15,15 +13,25 @@ import {
 } from '@shared/constants';
 import { defined } from '@shared/defined';
 import axios, { AxiosResponse } from 'axios';
-import { FANART_TV } from 'lib/api/fanarttv';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import { FanArtArtistResponse } from '../types/fanarttv';
+import { FANART_TV } from '@lib/fanarttv/fanarttv';
+import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
+import { ARTIST_ENDPOINT, RECENT_TRACKS, USER, WEEKLY_ALBUM_CHART } from '@lib/lastFm/lastFm';
+import {
+  Artist,
+  LastFmRecentTracks,
+  TopArtistsResponse,
+  WeeklyAlbum,
+  WeeklyAlbumChartResponse,
+} from '@lib/lastFm/lastFm.types';
+import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
+import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
+import { LOGO_LASTFM, URL_COVERART_ARCHIVE, URL_FANARTTV, URL_LASTFM_PROFILE } from '../shared/constants';
 import MusicCard from './musicCard';
-import { LOGO_LASTFM, URL_FANARTTV, URL_LASTFM_PROFILE, URL_COVERART_ARCHIVE } from '../shared/constants';
-import { RECENT_TRACKS } from '@lib/api/lastFm';
+import LastFm from '@lib/lastFm';
 
 type Props = {
   error: [];
@@ -33,10 +41,10 @@ type Props = {
 };
 
 const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props) => {
-  const [artists, setArtists] = useState<Artist[]>([]);
-  const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
   const [allRecentTracks, setAllRecentTrack] = useState<LastFmRecentTracks.Track[]>([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
   const [isError, setIsError] = useState([]);
+  const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
 
   useEffect(() => {
     setIsError(error);
@@ -154,6 +162,10 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
     </Layout>
   );
 };
+
+const lastFm = LastFm;
+const userInfo = lastFm;
+console.log('*️⃣', userInfo);
 
 /**
  * GET: Recent Tracks - LastFM
@@ -281,7 +293,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       let imageUrl = '';
       fanArtTvResult.find((artist) => {
         if (artist.mbid_id === mbid) {
-          artist.artistbackground?.map((artistBackground) => {
+          artist.artistbackground?.map((artistBackground: Artistbackground) => {
             imageUrl = artistBackground.url;
           });
         }

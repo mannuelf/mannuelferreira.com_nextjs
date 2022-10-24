@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   user: {
     playlists: string;
     playcount: string;
@@ -19,7 +19,7 @@ interface User {
   };
 }
 
-interface TopArtistsResponse {
+export interface TopArtistsResponse {
   topartists: {
     artist: Artist[];
     '@attr': Attribs;
@@ -27,16 +27,16 @@ interface TopArtistsResponse {
   images: ArtistImage;
 }
 
-interface WeeklyAlbumChartResponse {
+export interface WeeklyAlbumChartResponse {
   weeklyalbumchart: Weeklyalbumchart;
 }
 
-interface Weeklyalbumchart {
+export interface Weeklyalbumchart {
   album: WeeklyAlbum[];
   '@attr': WeeklyalbumchartAttr;
 }
 
-type WeeklyAlbum = {
+export type WeeklyAlbum = {
   artist: { mbid: string; '#text': string };
   mbid: string;
   url: string;
@@ -46,35 +46,35 @@ type WeeklyAlbum = {
   image?: string;
 };
 
-interface WeeklyalbumchartAttr {
+export interface WeeklyalbumchartAttr {
   from: string;
   to: string;
   user: string;
 }
-interface AlbumAttr {
+
+export interface AlbumAttr {
   rank: string;
 }
 
-type Artist = {
+export type Artist = {
   '@attr': {
     rank: number;
   };
-  album: Album;
   cover: ArtistImage;
-  image: Image[];
-  mbid: number;
+  image?: string;
+  mbid: string;
   name: string;
   playcount: number;
   streamable: number;
   url: string;
 };
 
-type Image = {
+export type Image = {
   size: string;
   '#text': string;
 };
 
-type Attribs = {
+export type Attribs = {
   page: number;
   perPage: number;
   user: string;
@@ -82,14 +82,14 @@ type Attribs = {
   totalPages: number;
 };
 
-type ArtistImage = {
+export type ArtistImage = {
   name: string;
   photo: string;
   attribution: string;
   playcount: number;
 };
 
-declare module LastFmRecentTracks {
+export declare module LastFmRecentTracks {
   export interface Artist {
     mbid: string;
     '#text': string;
@@ -144,7 +144,7 @@ declare module LastFmRecentTracks {
   }
 }
 
-enum LastFmErrors {
+export enum LastFmErrors {
   'InvalidService' = 2,
   'InvalidMethod' = 3,
   'AuthenticationFailed' = 4,
