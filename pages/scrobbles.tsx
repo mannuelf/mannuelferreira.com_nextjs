@@ -20,31 +20,25 @@ import { useEffect, useState } from 'react';
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
 import { ARTIST_ENDPOINT, RECENT_TRACKS, USER, WEEKLY_ALBUM_CHART } from '@lib/lastFm/lastFm';
-import {
-  Artist,
-  LastFmRecentTracks,
-  TopArtistsResponse,
-  WeeklyAlbum,
-  WeeklyAlbumChartResponse,
-} from '@lib/lastFm/lastFm.types';
+import { LastFm } from '@lib/lastFm/lastFm.types';
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
 import { LOGO_LASTFM, URL_COVERART_ARCHIVE, URL_FANARTTV, URL_LASTFM_PROFILE } from '../shared/constants';
 import MusicCard from './musicCard';
-import LastFm from '@lib/lastFm';
+import LastFmApi from '@lib/lastFm';
 
 type Props = {
   error: [];
-  recentTracks: LastFmRecentTracks.Track[];
-  topArtists: Artist[];
-  weeklyAlbumChart: WeeklyAlbum[];
+  recentTracks: LastFm.Track[];
+  topArtists: LastFm.Artist[];
+  weeklyAlbumChart: LastFm.WeeklyAlbum[];
 };
 
 const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props) => {
-  const [allRecentTracks, setAllRecentTrack] = useState<LastFmRecentTracks.Track[]>([]);
-  const [artists, setArtists] = useState<Artist[]>([]);
+  const [allRecentTracks, setAllRecentTrack] = useState<LastFm.Track[]>([]);
+  const [artists, setArtists] = useState<LastFm.Artist[]>([]);
   const [isError, setIsError] = useState([]);
-  const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
+  const [weeklyAlbums, setWeeklyAlbums] = useState<LastFm.WeeklyAlbum[]>([]);
 
   useEffect(() => {
     setIsError(error);
@@ -104,7 +98,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
             {allRecentTracks.length > 0
-              ? allRecentTracks.map((track: LastFmRecentTracks.Track, index) => (
+              ? allRecentTracks.map((track, index) => (
                   <MusicCard
                     imageUrl={track.image ? track.image : ''}
                     nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
@@ -124,7 +118,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
             {weeklyAlbums.length > 0
-              ? weeklyAlbums.map((album: WeeklyAlbum, index) => (
+              ? weeklyAlbums.map((album, index) => (
                   <MusicCard
                     playCount={album.playcount.toString()}
                     playTitle={album.name}
@@ -144,7 +138,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
             {artists.length > 0
-              ? artists.map((artist: Artist) => (
+              ? artists.map((artist) => (
                   <MusicCard
                     playCount={artist.playcount.toString()}
                     playTitle={artist.name}
@@ -163,18 +157,20 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
   );
 };
 
-const lastFm = LastFm;
-const userInfo = lastFm;
-console.log('*️⃣', userInfo);
+const lastFm = LastFmApi();
+(async () => {
+  const mannuel = await lastFm.getInfo('mannuelf');
+  console.log(mannuel);
+})();
 
 /**
  * GET: Recent Tracks - LastFM
  * Docs: https://www.last.fm/api/show/user.getRecentTracks
  * @returns RecentTracksResponse All tracks I listened to today.
  */
-export const getRecentTracks = async (): Promise<LastFmRecentTracks.RecentTracksResponse> => {
+export const getRecentTracks = async (): Promise<LastFm.RecentTracksResponse> => {
   try {
-    const { data } = await axios.get<LastFmRecentTracks.RecentTracksResponse>(RECENT_TRACKS);
+    const { data } = await axios.get<LastFm.RecentTracksResponse>(RECENT_TRACKS);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -193,9 +189,9 @@ export const getRecentTracks = async (): Promise<LastFmRecentTracks.RecentTracks
   images: []
   ```
  */
-export const getTopArtists = async (): Promise<TopArtistsResponse> => {
+export const getTopArtists = async (): Promise<LastFm.TopArtistsResponse> => {
   try {
-    const { data } = await axios.get<TopArtistsResponse>(ARTIST_ENDPOINT);
+    const { data } = await axios.get<LastFm.TopArtistsResponse>(ARTIST_ENDPOINT);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -207,9 +203,9 @@ export const getTopArtists = async (): Promise<TopArtistsResponse> => {
  * Docs: https://www.last.fm/api/show/user.getWeeklyAlbumChart
  * @returns WeeklyAlbumChartResponse All albums I listened to last week
  */
-export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> => {
+export const getWeeklyAlbumChart = async (): Promise<LastFm.WeeklyAlbumChartResponse> => {
   try {
-    const { data } = await axios.get<WeeklyAlbumChartResponse>(WEEKLY_ALBUM_CHART);
+    const { data } = await axios.get<LastFm.WeeklyAlbumChartResponse>(WEEKLY_ALBUM_CHART);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -254,15 +250,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let myWeeklyAlbumChart = [];
 
   try {
-    const allArtists: TopArtistsResponse = await getTopArtists();
-    const artists: Artist[] = allArtists.topartists.artist;
-    const allMbIds: string[] = artists.map((artist: Artist) => artist.mbid);
+    const allArtists = await getTopArtists();
+    const artists = allArtists.topartists.artist;
+    const allMbIds: string[] = artists.map((artist) => artist.mbid);
 
-    const allWeeklyAlbumChart: WeeklyAlbumChartResponse = await getWeeklyAlbumChart();
+    const allWeeklyAlbumChart = await getWeeklyAlbumChart();
     const albums = allWeeklyAlbumChart.weeklyalbumchart.album;
-    const allAlbums = albums.map((album: WeeklyAlbum) => album);
+    const allAlbums = albums.map((album) => album);
 
-    const allRecentTracks: LastFmRecentTracks.RecentTracksResponse = await getRecentTracks();
+    const allRecentTracks = await getRecentTracks();
     const { recenttracks } = allRecentTracks;
     const tracks = recenttracks.track;
     const trackAlbums = recenttracks.track.map((track) => track.album);
@@ -343,7 +339,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const weeklyAlbumChartWithImages = albums.map<WeeklyAlbum>((album: WeeklyAlbum) => {
+    const weeklyAlbumChartWithImages = albums.map((album) => {
       return {
         ...album,
         image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist['#text']),
