@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from '@components/Layout/layout';
 import Container from '@components/container';
-import GITHUB from '@lib/api/github';
 import PageTitle from '../components/page-title';
+import GITHUB from '@lib/github/github';
 
 type UserProps = {
   user: {
@@ -41,9 +41,7 @@ function GitHub({ user }: UserProps) {
             <h2 className='mb-8 text-4xl md:text-4xl font-bold tracking-tighter leading-tight'>
               {userName ? userName : ''}
             </h2>
-            {repos
-              ? repos.map((repo) => <h3 key={repo.name}>{repo.name}</h3>)
-              : null}
+            {repos ? repos.map((repo) => <h3 key={repo.name}>{repo.name}</h3>) : null}
           </section>
         </Container>
       </Layout>
