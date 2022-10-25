@@ -71,11 +71,12 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             you all.
           </p>
           <p>
-            My scrobbles update from the {''}
+            My scrobbles from {''}
             <a href={URL_LASTFM_API_DOCS} target='_blank' rel='noopener noreferrer'>
-              <Image src={LOGO_LASTFM} unoptimized={true} width={90} height={30} alt='LastFm Logo' />
-            </a>{' '}
-            API. Total plays: <span className='font-medium text-3xl text-fuchsia-700 '>{user?.playcount}</span>.
+              <Image src={LOGO_LASTFM} unoptimized={true} width={120} height={36} alt='LastFm Logo' />
+            </a>
+            {'  '}
+            API. Total plays: <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
           </p>
           <p>
             Some photos from{' '}
@@ -96,8 +97,8 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <h2 className='text-2xl'></h2>
         </div>
       </Container>
-      <div className='container'>
-        <div className='w-screen'>
+      <div className='container mx-auto'>
+        <div>
           {isError.length > 0 ? <div>{error}</div> : null}
           <div className='pb-2 pl-4'>
             <h2 className='text-2xl font-medium'>Recent Tracks 🎹</h2>
@@ -140,7 +141,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <hr />
           </div>
           <div className='pb-2 pl-4'>
-            <h2 className='text-2xl font-medium'>Top 100 Artists</h2>
+            <h2 className='text-2xl font-medium'>Top 200 Artists</h2>
             <p>Scrobbles since 2008</p>
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
