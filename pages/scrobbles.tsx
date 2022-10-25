@@ -71,28 +71,29 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             you all.
           </p>
           <p>
-            My scrobbles updates from the {''}
+            My scrobbles update from the {''}
             <a href={URL_LASTFM_API_DOCS} target='_blank' rel='noopener noreferrer'>
               <Image src={LOGO_LASTFM} unoptimized={true} width={90} height={30} alt='LastFm Logo' />
             </a>{' '}
-            API. My <a href={URL_LASTFM_PROFILE}>profile</a> on lastfm. Some photos from{' '}
+            API. Total plays: <span className='font-medium text-3xl text-fuchsia-700 '>{user?.playcount}</span>.
+          </p>
+          <p>
+            Some photos from{' '}
             <a href={URL_FANARTTV} target='_blank' rel='noopener noreferrer'>
               fanart.tv
             </a>{' '}
-            API. Some from{' '}
+            API, some from{' '}
             <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
               Musicbrainz Cover Art Archive
             </a>
             . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you know of another
             API{' '}
             <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
-              let me know about it 🤙
+              let me know about it
             </a>
-            .
+            .🤙
           </p>
-          <h2 className='text-2xl'>
-            Total Scrobbles: <span className='font-medium'>{user?.playcount}</span>
-          </h2>
+          <h2 className='text-2xl'></h2>
         </div>
       </Container>
       <div className='container'>

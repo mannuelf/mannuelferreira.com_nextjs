@@ -47,6 +47,7 @@ export declare namespace LastFm {
     playcount: number;
     streamable: number;
     url: string;
+    '#text': string;
   };
 
   export type Attribs = {
