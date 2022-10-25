@@ -7,7 +7,7 @@ const LastFmApi = function LastFmApi() {
     const response = await fetch(`${USER}`)
       .then((res) => res.json())
       .then((json) => json)
-      .catch((error) => console.log('🚩', error));
+      .catch((error) => console.log('🔥', error));
     return response;
   };
 

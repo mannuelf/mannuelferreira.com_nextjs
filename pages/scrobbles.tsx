@@ -32,20 +32,23 @@ type Props = {
   recentTracks: LastFm.Track[];
   topArtists: LastFm.Artist[];
   weeklyAlbumChart: LastFm.WeeklyAlbum[];
+  userProfile: LastFm.User;
 };
 
-const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props) => {
+const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumChart }: Props) => {
   const [allRecentTracks, setAllRecentTrack] = useState<LastFm.Track[]>([]);
   const [artists, setArtists] = useState<LastFm.Artist[]>([]);
   const [isError, setIsError] = useState([]);
   const [weeklyAlbums, setWeeklyAlbums] = useState<LastFm.WeeklyAlbum[]>([]);
+  const [user, setUser] = useState<LastFm.User>();
 
   useEffect(() => {
     setIsError(error);
     setArtists(topArtists);
     setWeeklyAlbums(weeklyAlbumChart);
     setAllRecentTrack(recentTracks);
-  }, [error, recentTracks, topArtists, weeklyAlbumChart]);
+    setUser(userProfile);
+  }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart]);
 
   return (
     <Layout>
@@ -87,6 +90,9 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
             </a>
             .
           </p>
+          <h2 className='text-2xl'>
+            Total Scrobbles: <span className='font-medium'>{user?.playcount}</span>
+          </h2>
         </div>
       </Container>
       <div className='container'>
@@ -156,12 +162,6 @@ const Scrobbles = ({ error, recentTracks, topArtists, weeklyAlbumChart }: Props)
     </Layout>
   );
 };
-
-const lastFm = LastFmApi();
-(async () => {
-  const mannuel = await lastFm.getInfo('mannuelf');
-  console.log(mannuel);
-})();
 
 /**
  * GET: Recent Tracks - LastFM
@@ -249,6 +249,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let myTopArtists = [];
   let myWeeklyAlbumChart = [];
 
+  const lastFm = LastFmApi();
+
+  const getUser = async () => {
+    const data = await lastFm.getInfo('mannuelf');
+    const { user } = data;
+    return user;
+  };
+
   try {
     const allArtists = await getTopArtists();
     const artists = allArtists.topartists.artist;
@@ -297,7 +305,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const topArtistsWithImages = artists.map<Artist>((artist: Artist) => {
+    const topArtistsWithImages = artists.map((artist) => {
       return {
         ...artist,
         image: getTopArtistImage(artist.mbid),
@@ -369,6 +377,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       recentTracks: myRecentTracks[0],
       topArtists: myTopArtists[0],
       weeklyAlbumChart: myWeeklyAlbumChart[0],
+      userProfile: await getUser(),
     },
   };
 };
