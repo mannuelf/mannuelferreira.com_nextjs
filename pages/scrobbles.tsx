@@ -254,14 +254,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const lastFm = LastFmApi();
 
   const getUser = async () => {
-    const data = await lastFm.getInfo('mannuelf');
+    const data = await lastFm.getInfo();
     const { user } = data;
     return user;
   };
 
+  const getTopArtists = async () => {
+    const data = await lastFm.getTopArtists();
+    const { topartists } = data;
+    return topartists;
+  };
+
   try {
-    const allArtists = await getTopArtists();
-    const artists = allArtists.topartists.artist;
+    const allArtists = getTopArtists();
+    const artists = (await allArtists).artist;
     const allMbIds: string[] = artists.map((artist) => artist.mbid);
 
     const allWeeklyAlbumChart = await getWeeklyAlbumChart();

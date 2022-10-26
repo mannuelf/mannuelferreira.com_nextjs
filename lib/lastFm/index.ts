@@ -1,18 +1,25 @@
 import fetch from 'node-fetch';
-import { USER } from './lastFm';
+import { ARTIST_ENDPOINT, USER } from './lastFm';
 import { LastFm } from './lastFm.types';
 
+const getData = async (url: string) =>
+  await fetch(`${url}`)
+    .then((res) => res.json())
+    .then((json) => json)
+    .catch((error) => console.log('🔥', error));
+
 const LastFmApi = function LastFmApi() {
-  const getInfo = async (user: string): Promise<LastFm.UserResponse> => {
-    const response = await fetch(`${USER}`)
-      .then((res) => res.json())
-      .then((json) => json)
-      .catch((error) => console.log('🔥', error));
-    return response;
+  const getTopArtists = (): Promise<LastFm.TopArtistsResponse> => {
+    return getData(`${ARTIST_ENDPOINT}`);
+  };
+
+  const getInfo = (): Promise<LastFm.UserResponse> => {
+    return getData(`${USER}`);
   };
 
   return {
     getInfo,
+    getTopArtists,
   };
 };
 
