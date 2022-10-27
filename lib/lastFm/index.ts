@@ -1,14 +1,7 @@
-import fetch from 'node-fetch';
-
 import { ARTIST_ENDPOINT, USER } from './config';
-import { UserResponse, TopArtistsResponse } from './lastFm.types';
 
-const getData = async (url: string) =>
-  await fetch(`${url}`)
-    .then((res) => res.json())
-    .then((json) => json)
-    .catch((error) => console.log('🔥', error))
-    .finally(() => {});
+import { getData } from './getData';
+import { UserResponse, TopArtistsResponse } from './lastFm.types';
 
 const LastFmApi = function LastFmApi() {
   const getTopArtists = (): Promise<TopArtistsResponse> => {
