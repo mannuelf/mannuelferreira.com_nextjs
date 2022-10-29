@@ -1,22 +1,64 @@
+export interface AuthResponse {
+  token: string;
+}
+
+export interface TopAlbumsResponse {
+  topalbums: TopAlbums;
+}
+
+export interface UserResponse {
+  user: User;
+}
+
+export interface RecentTracksResponse {
+  recenttracks: RecentTracks;
+}
+
+export interface RecentTracks {
+  track: Track[];
+  '@attr': Attr2;
+}
+
+export interface LoveTracksResponse {
+  lovedtracks: LovedTracks;
+}
+
+export interface LovedTracks {
+  track: Track[];
+  '@attr': Attr;
+}
+export interface FriendsResponse {
+  friends: Friends;
+}
+
+export interface Friends {
+  '@attr': Attr;
+  user: User[];
+}
+
 export interface TopArtistsResponse {
-  topartists: {
-    artist: Artist[];
-    '@attr': Attribs;
-  };
-  images: ArtistImage;
+  topartists: TopArtists;
+}
+
+export interface TopArtists {
+  artist: Artist[];
+  '@attr': Attr2;
 }
 
 export interface WeeklyAlbumChartResponse {
-  weeklyalbumchart: Weeklyalbumchart;
+  weeklyalbumchart: WeeklyAlbumchart;
 }
 
-export interface Weeklyalbumchart {
+export interface WeeklyAlbumchart {
   album: WeeklyAlbum[];
   '@attr': WeeklyalbumchartAttr;
 }
 
 export type WeeklyAlbum = {
-  artist: { mbid: string; '#text': string };
+  artist: {
+    mbid: string;
+    '#text': string;
+  };
   mbid: string;
   url: string;
   name: string;
@@ -49,20 +91,20 @@ export type Artist = {
   '#text': string;
 };
 
-export type Attribs = {
+export interface Attribs {
   page: number;
   perPage: number;
   user: string;
   total: number;
   totalPages: number;
-};
+}
 
-export type ArtistImage = {
+export interface ArtistImage {
   name: string;
   photo: string;
   attribution: string;
   playcount: number;
-};
+}
 
 export interface Album {
   mbid: string;
@@ -98,13 +140,9 @@ export interface Attr2 {
   total: string;
 }
 
-export interface Recenttracks {
+export interface RecentTracks {
   track: Track[];
   '@attr': Attr2;
-}
-
-export interface RecentTracksResponse {
-  recenttracks: Recenttracks;
 }
 
 export interface Image {
@@ -136,8 +174,9 @@ export interface User {
   type: string;
 }
 
-export interface UserResponse {
-  user: User;
+export interface TopAlbums {
+  album: Album[];
+  '@attr': Attr2;
 }
 
 export enum Errors {

@@ -19,28 +19,36 @@ import { useEffect, useState } from 'react';
 
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
-import { ARTIST_ENDPOINT, RECENT_TRACKS, USER, WEEKLY_ALBUM_CHART } from '@lib/lastFm/config';
-import { LastFm } from '@lib/lastFm/lastFm.types';
+import LastFmApi from '@lib/lastFm';
+import { TOP_ARTIST_URL, RECENT_TRACKS_URL, WEEKLY_ALBUM_CHART_URL } from '@lib/lastFm/config';
+import {
+  Artist,
+  RecentTracksResponse,
+  TopArtistsResponse,
+  Track,
+  User,
+  WeeklyAlbum,
+  WeeklyAlbumChartResponse,
+} from '@lib/lastFm/lastFm.types';
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
-import { LOGO_LASTFM, URL_COVERART_ARCHIVE, URL_FANARTTV, URL_LASTFM_PROFILE } from '../shared/constants';
+import { LOGO_LASTFM, URL_COVERART_ARCHIVE, URL_FANARTTV } from '../shared/constants';
 import MusicCard from './musicCard';
-import LastFmApi from '@lib/lastFm';
 
 type Props = {
   error: [];
-  recentTracks: LastFm.Track[];
-  topArtists: LastFm.Artist[];
-  weeklyAlbumChart: LastFm.WeeklyAlbum[];
-  userProfile: LastFm.User;
+  recentTracks: Track[];
+  topArtists: Artist[];
+  weeklyAlbumChart: WeeklyAlbum[];
+  userProfile: User;
 };
 
 const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumChart }: Props) => {
-  const [allRecentTracks, setAllRecentTrack] = useState<LastFm.Track[]>([]);
-  const [artists, setArtists] = useState<LastFm.Artist[]>([]);
+  const [allRecentTracks, setAllRecentTrack] = useState<Track[]>([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
   const [isError, setIsError] = useState([]);
-  const [weeklyAlbums, setWeeklyAlbums] = useState<LastFm.WeeklyAlbum[]>([]);
-  const [user, setUser] = useState<LastFm.User>();
+  const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
     setIsError(error);
@@ -170,9 +178,9 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
  * Docs: https://www.last.fm/api/show/user.getRecentTracks
  * @returns RecentTracksResponse All tracks I listened to today.
  */
-export const getRecentTracks = async (): Promise<LastFm.RecentTracksResponse> => {
+export const getRecentTracks = async (): Promise<RecentTracksResponse> => {
   try {
-    const { data } = await axios.get<LastFm.RecentTracksResponse>(RECENT_TRACKS);
+    const { data } = await axios.get<RecentTracksResponse>(RECENT_TRACKS_URL);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -191,9 +199,9 @@ export const getRecentTracks = async (): Promise<LastFm.RecentTracksResponse> =>
   images: []
   ```
  */
-export const getTopArtists = async (): Promise<LastFm.TopArtistsResponse> => {
+export const getTopArtists = async (): Promise<TopArtistsResponse> => {
   try {
-    const { data } = await axios.get<LastFm.TopArtistsResponse>(ARTIST_ENDPOINT);
+    const { data } = await axios.get<TopArtistsResponse>(TOP_ARTIST_URL);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -205,9 +213,9 @@ export const getTopArtists = async (): Promise<LastFm.TopArtistsResponse> => {
  * Docs: https://www.last.fm/api/show/user.getWeeklyAlbumChart
  * @returns WeeklyAlbumChartResponse All albums I listened to last week
  */
-export const getWeeklyAlbumChart = async (): Promise<LastFm.WeeklyAlbumChartResponse> => {
+export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> => {
   try {
-    const { data } = await axios.get<LastFm.WeeklyAlbumChartResponse>(WEEKLY_ALBUM_CHART);
+    const { data } = await axios.get<WeeklyAlbumChartResponse>(WEEKLY_ALBUM_CHART_URL);
     return data;
   } catch (error) {
     throw new Error(`${error}`);
@@ -313,7 +321,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const topArtistsWithImages = artists.map((artist) => {
+    const topArtistsWithImages = artists.map((artist: Artist) => {
       return {
         ...artist,
         image: getTopArtistImage(artist.mbid),
