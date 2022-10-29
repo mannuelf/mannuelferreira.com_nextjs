@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import '@fortawesome/fontawesome-free/css/all.css';
 import LogRocket from 'logrocket';
 import Script from 'next/script';
