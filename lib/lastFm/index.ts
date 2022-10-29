@@ -1,4 +1,12 @@
-import { AUTH_URL, RECENT_TRACKS_URL, TOP_ALBUMS_URL, TOP_ARTIST_URL, USER_URL } from './config';
+import {
+  AUTH_URL,
+  RECENT_TRACKS_URL,
+  TOP_ALBUMS_URL,
+  TOP_ARTIST_URL,
+  TOP_TRACKS,
+  USER_URL,
+  WEEKLY_ALBUM_CHART_URL,
+} from './config';
 
 import fetchData from './fetchData';
 import {
@@ -7,7 +15,9 @@ import {
   RecentTracksResponse,
   TopAlbumsResponse,
   TopArtistsResponse,
+  TopTrackResponse,
   UserResponse,
+  WeeklyAlbumChartResponse,
 } from './lastFm.types';
 
 const LastFmApi = function LastFmApi() {
@@ -35,6 +45,14 @@ const LastFmApi = function LastFmApi() {
     return fetchData(`${TOP_ARTIST_URL}`);
   };
 
+  const getTopTracks = (): Promise<TopTrackResponse> => {
+    return fetchData(`${TOP_TRACKS}`);
+  };
+
+  const getWeeklyAlbumChart = (): Promise<WeeklyAlbumChartResponse> => {
+    return fetchData(`${WEEKLY_ALBUM_CHART_URL}`);
+  };
+
   return {
     auth,
     getLovedTracks,
@@ -42,6 +60,8 @@ const LastFmApi = function LastFmApi() {
     getRecentTracks,
     getTopAlbums,
     getTopArtists,
+    getTopTracks,
+    getWeeklyAlbumChart,
   };
 };
 

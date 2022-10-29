@@ -14,6 +14,15 @@ export interface TopAlbumsResponse {
   topalbums: TopAlbums;
 }
 
+export interface TopTrackResponse {
+  toptracks: TopTracks;
+}
+
+export interface TopTracks {
+  track: Track[];
+  '@attr': Attr2;
+}
+
 export interface UserResponse {
   user: User;
 }
@@ -54,12 +63,12 @@ export interface TopArtists {
 }
 
 export interface WeeklyAlbumChartResponse {
-  weeklyalbumchart: WeeklyAlbumchart;
+  weeklyalbumchart: WeeklyAlbumChart;
 }
 
-export interface WeeklyAlbumchart {
+export interface WeeklyAlbumChart {
   album: WeeklyAlbum[];
-  '@attr': WeeklyalbumchartAttr;
+  '@attr': WeeklyalbumChartAttr;
 }
 
 export type WeeklyAlbum = {
@@ -75,7 +84,7 @@ export type WeeklyAlbum = {
   image?: string;
 };
 
-export interface WeeklyalbumchartAttr {
+export interface WeeklyalbumChartAttr {
   from: string;
   to: string;
   user: string;

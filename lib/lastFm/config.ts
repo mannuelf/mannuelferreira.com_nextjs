@@ -19,6 +19,8 @@ const config = {
       top_tracks: 'user.getTopTracks',
       weekly_album_chart: 'user.getWeeklyAlbumChart',
       weekly_artist_chart: 'user.getWeeklyArtistChart',
+      weekly_chart_list: 'user.getWeeklyChartList',
+      weekly_track_chart_list: 'user.getWeeklyTrackChart',
     },
   },
   registered_to: `${process.env.LASTFM_REGISTERED_TO}`,
@@ -31,7 +33,11 @@ export const LOVED_TRACKS_URL = `${config.base_url}?method=${config.methods.user
 export const RECENT_TRACKS_URL = `${config.base_url}?method=${config.methods.user.recent_tracks}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 export const TOP_ALBUMS_URL = `${config.base_url}?method=${config.methods.user.top_albums}&user=${config.user}&api_key=${config.api_key}&format=${config.format.json}`;
 export const TOP_ARTIST_URL = `${config.base_url}?method=${config.methods.user.top_artists}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
+export const TOP_TRACKS = `${config.base_url}?method=${config.methods.user.top_tracks}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 export const USER_URL = `${config.base_url}?method=${config.methods.user.getInfo}&user=${config.user}&api_key=${config.api_key}&format=${config.format.json}`;
 export const WEEKLY_ALBUM_CHART_URL = `${config.base_url}?method=${config.methods.user.weekly_album_chart}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
+export const WEEKLY_ARTIST_CHART_URL = `${config.base_url}?method=${config.methods.user.weekly_chart_list}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
+export const WEEKLY_CHART_LIST_URL = `${config.base_url}?method=${config.methods.user.weekly_chart_list}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
+export const WEEKLY_TRACK_CHART_LIST_URL = `${config.base_url}?method=${config.methods.user.weekly_track_chart_list}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 
 export default config;
