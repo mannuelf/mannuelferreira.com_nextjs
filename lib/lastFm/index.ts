@@ -1,5 +1,6 @@
 import {
   AUTH_URL,
+  LOVED_TRACKS_URL,
   RECENT_TRACKS_URL,
   TOP_ALBUMS_URL,
   TOP_ARTIST_URL,
@@ -36,9 +37,14 @@ const LastFmApi = function LastFmApi() {
   };
 
   const getLovedTracks = (): Promise<LovedTracksResponse> => {
-    return fetchData(`${RECENT_TRACKS_URL}`);
+    return fetchData(`${LOVED_TRACKS_URL}`);
   };
 
+  /**
+   * GET: Recent Tracks - LastFM
+   * docs: https://www.last.fm/api/show/user.getRecentTracks
+   * @returns RecentTracksResponse.
+   */
   const getRecentTracks = (): Promise<RecentTracksResponse> => {
     return fetchData(`${RECENT_TRACKS_URL}`);
   };

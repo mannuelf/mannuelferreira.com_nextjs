@@ -183,20 +183,6 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
 };
 
 /**
- * GET: Recent Tracks - LastFM
- * Docs: https://www.last.fm/api/show/user.getRecentTracks
- * @returns RecentTracksResponse All tracks I listened to today.
- */
-export const getRecentTracks = async (): Promise<RecentTracksResponse> => {
-  try {
-    const { data } = await axios.get<RecentTracksResponse>(RECENT_TRACKS_URL);
-    return data;
-  } catch (error) {
-    throw new Error(`${error}`);
-  }
-};
-
-/**
  * GET: Top Artists: LastFM
  * Docs: https://www.last.fm/api/show/user.getTopArtists
  * @returns
@@ -276,6 +262,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return user;
   };
 
+  const getLovedTracks = async () => {
+    const data = await lastFm.getLovedTracks();
+    const { lovedtracks } = data;
+    return lovedtracks;
+  };
+
+  const getRecentTracks = async () => {
+    const data = await lastFm.getRecentTracks();
+    const { recenttracks } = data;
+    return recenttracks;
+  };
+
   const getTopArtists = async () => {
     const data = await lastFm.getTopArtists();
     const { topartists } = data;
@@ -292,9 +290,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const allAlbums = albums.map((album) => album);
 
     const allRecentTracks = await getRecentTracks();
-    const { recenttracks } = allRecentTracks;
-    const tracks = recenttracks.track;
-    const trackAlbums = recenttracks.track.map((track) => track.album);
+    const tracks = allRecentTracks.track;
+    const trackAlbums = tracks.map((track) => track.album);
 
     const combinedAlbums = [...allAlbums, ...trackAlbums];
 
@@ -403,6 +400,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       topArtists: myTopArtists[0],
       weeklyAlbumChart: myWeeklyAlbumChart[0],
       userProfile: await getUser(),
+      lovedTracks: await getLovedTracks(),
     },
   };
 };
