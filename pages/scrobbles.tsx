@@ -158,7 +158,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <hr />
           </div>
           <div className='pb-2 pl-4'>
-            <h2 className='text-2xl font-medium'>Top 200 Artists</h2>
+            <h2 className='text-2xl font-medium'>Top Artists</h2>
             <p>Scrobbles since 2008</p>
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
@@ -183,27 +183,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
 };
 
 /**
- * GET: Top Artists: LastFM
- * Docs: https://www.last.fm/api/show/user.getTopArtists
- * @returns
- * ```
- * topartists: {
-    artist: Artist[];
-    '@attr': Attribs;
-  };
-  images: []
-  ```
- */
-export const getTopArtists = async (): Promise<TopArtistsResponse> => {
-  try {
-    const { data } = await axios.get<TopArtistsResponse>(TOP_ARTIST_URL);
-    return data;
-  } catch (error) {
-    throw new Error(`${error}`);
-  }
-};
-
-/**
+ * TODO: extract this to npm package
  * GET: Album Cover Artwork
  * @param albumMbId
  * @param artistName
@@ -223,6 +203,7 @@ export const getAlbumCoverArt = async (albumMbId: string) => {
 };
 
 /**
+ * TODO: extract to npm package
  * GET: FanartTv data
  * Docs: https://fanart.tv/api-docs/api-v3/
  * @param mbid
@@ -275,25 +256,25 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   try {
-    const allArtists = await getTopArtists();
-    const artists = allArtists.artist;
-    const allMbIds: string[] = artists.map((artist) => artist.mbid);
+    const getArtists = await getTopArtists();
+    const artists = getArtists.artist;
+    const artistMbIds: string[] = artists.map((artist) => artist.mbid);
 
-    const allWeeklyAlbumChart = await getWeeklyAlbumChart();
-    const albums = allWeeklyAlbumChart.album;
-    const allAlbums = albums.map((album) => album);
+    const getWeeklyAlbums = await getWeeklyAlbumChart();
+    const albums = getWeeklyAlbums.album;
+    const weeklyAlbums = albums.map((album) => album);
 
-    const allRecentTracks = await getRecentTracks();
-    const tracks = allRecentTracks.track;
-    const trackAlbums = tracks.map((track) => track.album);
+    const getAllRecentTracks = await getRecentTracks();
+    const recentTracks = getAllRecentTracks.track;
+    const recentTracksAlbums = recentTracks.map((track) => track.album);
 
-    const combinedAlbums = [...allAlbums, ...trackAlbums];
+    const combinedAlbums = [...weeklyAlbums, ...recentTracksAlbums];
 
     /**
      * Get and set data for Top Artist Grid
      */
     const fanartTvResponses = await Promise.allSettled(
-      allMbIds.map(async (mbId) => {
+      artistMbIds.map(async (mbId) => {
         const res = await axios.get(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`);
         if (res.status === 200) {
           return res.data;
@@ -370,7 +351,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     });
 
-    const recentTracksWithImages = tracks.map((track) => {
+    const recentTracksWithImages = recentTracks.map((track) => {
       return {
         ...track,
         image: getAlbumCoverImage(track.artist.mbid, track.album.mbid, track.album['#text'], track.artist['#text']),
