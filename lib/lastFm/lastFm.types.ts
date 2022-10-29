@@ -205,6 +205,25 @@ export interface TopAlbums {
   '@attr': Attr2;
 }
 
+export interface WeeklyArtistChartResponse {
+  weeklyartistchart: WeeklyArtistChart;
+}
+
+export interface WeeklyArtistChart {
+  artist: Artist[];
+  '@attr': Attr2;
+}
+
+export interface Attr1 {
+  rank: string;
+}
+
+export interface Attr2 {
+  from: string;
+  user: string;
+  to: string;
+}
+
 export enum Errors {
   'InvalidService' = 2,
   'InvalidMethod' = 3,
