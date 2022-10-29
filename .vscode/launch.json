@@ -9,7 +9,11 @@
       "request": "launch",
       "runtimeArgs": ["run-script", "start:dev"],
       "runtimeExecutable": "npm",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "!${workspaceFolder}/node_modules/**/*.js",
+        "!${workspaceFolder}/.vercel/**/**/*.js",
+        "!${workspaceFolder}/.next/**/**/*.js"
+      ],
       "type": "node"
     }
   ]
