@@ -13,8 +13,6 @@ type UserProps = {
 };
 
 const ScrobblesIntro = ({ user }: UserProps) => {
-  console.log('🔥 ', user);
-
   return (
     <>
       <div className='pt-4 mt-8 mb-16 border-t'>
