@@ -20,7 +20,7 @@ const config = {
       weekly_album_chart: 'user.getWeeklyAlbumChart',
       weekly_artist_chart: 'user.getWeeklyArtistChart',
       weekly_chart_list: 'user.getWeeklyChartList',
-      weekly_track_chart_list: 'user.getWeeklyTrackChart',
+      weekly_track_chart: 'user.getWeeklyTrackChart',
     },
   },
   registered_to: `${process.env.LASTFM_REGISTERED_TO}`,
@@ -38,6 +38,6 @@ export const USER_URL = `${config.base_url}?method=${config.methods.user.getInfo
 export const WEEKLY_ALBUM_CHART_URL = `${config.base_url}?method=${config.methods.user.weekly_album_chart}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 export const WEEKLY_ARTIST_CHART_URL = `${config.base_url}?method=${config.methods.user.weekly_chart_list}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 export const WEEKLY_CHART_LIST_URL = `${config.base_url}?method=${config.methods.user.weekly_chart_list}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
-export const WEEKLY_TRACK_CHART_LIST_URL = `${config.base_url}?method=${config.methods.user.weekly_track_chart_list}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
+export const WEEKLY_TRACK_CHART_URL = `${config.base_url}?method=${config.methods.user.weekly_track_chart}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 
 export default config;

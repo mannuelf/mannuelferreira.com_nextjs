@@ -224,6 +224,59 @@ export interface Attr2 {
   to: string;
 }
 
+export interface WeeklyChartListResponse {
+  weeklychartlist: WeeklyChartList;
+}
+
+export interface WeeklyChartList {
+  chart: WeeklyChartListChart[];
+  '@attr': WeeklyChartListAttr;
+}
+
+export interface WeeklyChartListChart {
+  '#text': string;
+  from: string;
+  to: string;
+}
+
+export interface WeeklyChartListAttr {
+  user: string;
+}
+
+export interface WeeklyTrackChartResponse {
+  weeklytrackchart: WeeklyTrackChart;
+}
+
+export interface WeeklyTrackChart {
+  track: Track[];
+  '@attr': WeeklyTrackChartAttr2;
+}
+
+export interface WeeklyTrackChartTrack {
+  artist: WeeklyTrackChartArtist;
+  image: Image[];
+  mbid: string;
+  url: string;
+  name: string;
+  '@attr': Attr;
+  playcount: string;
+}
+
+export interface WeeklyTrackChartArtist {
+  mbid: string;
+  '#text': string;
+}
+
+export interface WeeklyTrackChartAttr {
+  rank: string;
+}
+
+export interface WeeklyTrackChartAttr2 {
+  from: string;
+  user: string;
+  to: string;
+}
+
 export enum Errors {
   'InvalidService' = 2,
   'InvalidMethod' = 3,
