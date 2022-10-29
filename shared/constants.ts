@@ -4,6 +4,8 @@ export const EMAIL = 'mannuel@themwebs.me';
 export const GENERIC_META =
   'Hello world! Mannuel Ferreira here, Software Engineer. Building and designing software is all quite interesting to me. I enjoy working with web technologies like JavaScript, React, python, Node.JS, Deno, CSS, Sass CSS-in-JS, algorithms, data structures, what ever it takes to get the job done';
 export const GITHUB_URL = 'https://github.com/mannuelf';
+export const GOOGLE_FONTS_URL =
+  'https://fonts.google.com/share?selection.family=Fira%20Sans:wght@400;500%7CUbuntu:wght@400;500;700';
 export const HOME_OG_IMAGE_URL = AVATAR_ME;
 export const LOGO_LARCASTS = 'https://res.cloudinary.com/mannuel/image/upload/v1662894592/images/logo-laracast.svg';
 export const LOGO_LASTFM = 'https://res.cloudinary.com/mannuel/image/upload/v1630704533/images/Lastfm_logo.svg';

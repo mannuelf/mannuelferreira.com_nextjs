@@ -1,4 +1,4 @@
-import { CMS_NAME } from '@shared/constants';
+import { CMS_NAME, GOOGLE_FONTS_URL } from '@shared/constants';
 
 const FooterCopyright = () => {
   return (
@@ -6,27 +6,17 @@ const FooterCopyright = () => {
       <h3 className='pb-3 text-2xl font-medium'>Thank you for visiting</h3>
       <ul className='footer-copyright leading-8'>
         <li>
-          Made with <i className='far fa-heart'></i> by {CMS_NAME}. Hosted on[Vercel with Next.js.
+          Made with <i className='far fa-heart'></i> by {CMS_NAME}. Hosted on Vercel with Next.js.
         </li>
         <li>
           Fonts:{' '}
-          <a
-            href='https://fonts.google.com/share?selection.family=Fira%20Sans:wght@400;500%7CUbuntu:wght@400;500;700'
-            rel='noopener noreferrer'
-            target='_blank'
-            className='underline'
-          >
+          <a href={GOOGLE_FONTS_URL} rel='noopener noreferrer' target='_blank' className='underline'>
             Ubuntu, Fira.
           </a>
         </li>
         <li>
           Icons:{' '}
-          <a
-            href='https://fontawesome.com'
-            rel='noopener noreferrer'
-            target='_blank'
-            className='underline'
-          >
+          <a href='https://fontawesome.com' rel='noopener noreferrer' target='_blank' className='underline'>
             Font Awesome 5.
           </a>
         </li>
