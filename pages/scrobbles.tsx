@@ -69,9 +69,10 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
         {user ? (
           <div className='pt-4 mt-8 mb-16 border-t'>
             <p className='text-lg'>
-              My love for collecting music has brought me to keep using lastFm. I have been tracking my listening habits
-              with lastFm since 2008. I have always wanted to play with the data, that is what this page is about. I of
-              course want to share what I have been listening to with you all.
+              My love for collecting music has brought me to keep using lastFm. I have been tracking
+              my listening habits with lastFm since 2008. I have always wanted to play with the
+              data, that is what this page is about. I of course want to share what I have been
+              listening to with you all.
             </p>
             <p>
               If code is what interests you read it{' '}
@@ -87,13 +88,20 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <p>
               My scrobbles from {''}
               <a href={URL_LASTFM_API_DOCS} target='_blank' rel='noopener noreferrer'>
-                <Image src={LOGO_LASTFM} unoptimized={true} width={120} height={36} alt='LastFm Logo' />
+                <Image
+                  src={LOGO_LASTFM}
+                  unoptimized={true}
+                  width={120}
+                  height={36}
+                  alt='LastFm Logo'
+                />
               </a>
               {'  '}
               API.{' '}
               {user ? (
                 <>
-                  Total plays: <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
+                  Total plays:{' '}
+                  <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
                 </>
               ) : null}
             </p>
@@ -106,8 +114,8 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
               <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
                 Musicbrainz Cover Art Archive
               </a>
-              . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you know of another
-              API{' '}
+              . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If
+              you know of another API{' '}
               <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
                 let me know about it
               </a>
@@ -226,34 +234,54 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const lastFm = LastFmApi();
 
-  const auth = await lastFm.auth('', config.method.auth, 0);
+  const auth = await lastFm.auth('', config.method.auth, '', 0);
 
   const getUser = async () => {
-    const data = await lastFm.getInfo(config.method.user.getInfo, config.username, 12);
+    const data = await lastFm.getInfo(config.method.user.getInfo, config.username, 'overall', 12);
     const { user } = data;
     return user;
   };
 
   const getLovedTracks = async () => {
-    const data = await lastFm.getLovedTracks(config.method.user.loved_tracks, config.username, 12);
+    const data = await lastFm.getLovedTracks(
+      config.method.user.loved_tracks,
+      config.username,
+      'overall',
+      24,
+    );
     const { lovedtracks } = data;
     return lovedtracks;
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(config.method.user.recent_tracks, config.username, 12);
+    const data = await lastFm.getRecentTracks(
+      config.method.user.recent_tracks,
+      config.username,
+      '',
+      24,
+    );
     const { recenttracks } = data;
     return recenttracks;
   };
 
   const getTopArtists = async () => {
-    const data = await lastFm.getTopArtists(config.method.user.top_artists, config.username, 12);
+    const data = await lastFm.getTopArtists(
+      config.method.user.top_artists,
+      config.username,
+      'overall',
+      104,
+    );
     const { topartists } = data;
     return topartists;
   };
 
   const getWeeklyAlbumChart = async () => {
-    const data = await lastFm.getWeeklyAlbumChart(config.method.user.weekly_album_chart, config.username, 12);
+    const data = await lastFm.getWeeklyAlbumChart(
+      config.method.user.weekly_album_chart,
+      config.username,
+      'overall',
+      24,
+    );
     const { weeklyalbumchart } = data;
     return weeklyalbumchart;
   };
@@ -324,7 +352,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
       })
       .filter(defined);
 
-    const getAlbumCoverImage = (artistMbId: string, albumMbId: string, albumTitle?: string, artistName?: string) => {
+    const getAlbumCoverImage = (
+      artistMbId: string,
+      albumMbId: string,
+      albumTitle?: string,
+      artistName?: string,
+    ) => {
       let imageUrl = '';
       if (albumMbId === '') return '';
       musicBrainzResult.find((album) => {
@@ -357,7 +390,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const recentTracksWithImages = recentTracks.map((track) => {
       return {
         ...track,
-        image: getAlbumCoverImage(track.artist.mbid, track.album.mbid, track.album['#text'], track.artist['#text']),
+        image: getAlbumCoverImage(
+          track.artist.mbid,
+          track.album.mbid,
+          track.album['#text'],
+          track.artist['#text'],
+        ),
       };
     });
 

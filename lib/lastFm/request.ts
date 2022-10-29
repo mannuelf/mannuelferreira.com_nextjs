@@ -1,12 +1,18 @@
 import fetch, { RequestInit } from 'node-fetch';
 import config from './config';
 
-const request = async <Parameters, Response>(method: string, user: string = '', limit?: number): Promise<Response> => {
+const request = async <Parameters, Response>(
+  method: string,
+  user: string = '',
+  period: string = '',
+  limit?: number,
+): Promise<Response> => {
   const url = `
-      ${config.base_url}?method=${method}${user ? '&user=' : ''}${user}${limit ? '&limit=' : ''}${limit}&api_key=${
+      ${config.base_url}?method=${method}${user ? '&user=' : ''}${user}${
+    user ? '&user=' : ''
+  }${user}${period ? '&period=' : ''}${period}&${limit ? '&limit=' : ''}${limit}&api_key=${
     config.api_key
   }&format=${config.format.json}`;
-  console.log('🍓 url', url);
 
   return await fetch(url, {
     headers: {
