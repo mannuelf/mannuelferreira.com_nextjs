@@ -3,6 +3,7 @@ import { AUTH_URL, RECENT_TRACKS_URL, TOP_ALBUMS_URL, TOP_ARTIST_URL, USER_URL }
 import fetchData from './fetchData';
 import {
   AuthResponse,
+  LovedTracksResponse,
   RecentTracksResponse,
   TopAlbumsResponse,
   TopArtistsResponse,
@@ -16,6 +17,10 @@ const LastFmApi = function LastFmApi() {
 
   const getInfo = (): Promise<UserResponse> => {
     return fetchData(`${USER_URL}`);
+  };
+
+  const getLovedTracks = (): Promise<LovedTracksResponse> => {
+    return fetchData(`${RECENT_TRACKS_URL}`);
   };
 
   const getRecentTracks = (): Promise<RecentTracksResponse> => {
@@ -32,6 +37,7 @@ const LastFmApi = function LastFmApi() {
 
   return {
     auth,
+    getLovedTracks,
     getInfo,
     getRecentTracks,
     getTopAlbums,

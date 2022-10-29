@@ -27,6 +27,7 @@ const config = {
 };
 
 export const AUTH_URL = `${config.base_url}?method=${config.methods.auth.token}&api_key=${config.api_key}&format=${config.format.json}`;
+export const LOVED_TRACKS_URL = `${config.base_url}?method=${config.methods.user.loved_tracks}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 export const RECENT_TRACKS_URL = `${config.base_url}?method=${config.methods.user.recent_tracks}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 export const TOP_ALBUMS_URL = `${config.base_url}?method=${config.methods.user.top_albums}&user=${config.user}&api_key=${config.api_key}&format=${config.format.json}`;
 export const TOP_ARTIST_URL = `${config.base_url}?method=${config.methods.user.top_artists}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;

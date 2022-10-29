@@ -2,6 +2,14 @@ export interface AuthResponse {
   token: string;
 }
 
+export interface LovedTracksResponse {
+  lovedtracks: LovedTracks;
+}
+
+export interface LovedTracks {
+  track: Track[];
+  '@attr': Attr;
+}
 export interface TopAlbumsResponse {
   topalbums: TopAlbums;
 }
