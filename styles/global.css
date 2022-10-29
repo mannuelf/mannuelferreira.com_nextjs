@@ -17,10 +17,11 @@ code {
 .markdown-body p,
 p {
   margin-bottom: 0.8em;
+  @apply text-lg;
 }
 
 .markdown-body p img {
-  width: 100%;
+  @apply w-full;
 }
 
 .article-header {

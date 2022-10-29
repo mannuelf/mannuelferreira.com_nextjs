@@ -204,20 +204,6 @@ export const getTopArtists = async (): Promise<TopArtistsResponse> => {
 };
 
 /**
- * GET: Weekly Album Charts - LastFM
- * Docs: https://www.last.fm/api/show/user.getWeeklyAlbumChart
- * @returns WeeklyAlbumChartResponse All albums I listened to last week
- */
-export const getWeeklyAlbumChart = async (): Promise<WeeklyAlbumChartResponse> => {
-  try {
-    const { data } = await axios.get<WeeklyAlbumChartResponse>(WEEKLY_ALBUM_CHART_URL);
-    return data;
-  } catch (error) {
-    throw new Error(`${error}`);
-  }
-};
-
-/**
  * GET: Album Cover Artwork
  * @param albumMbId
  * @param artistName
@@ -256,6 +242,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const lastFm = LastFmApi();
 
+  const auth = lastFm.auth();
+
   const getUser = async () => {
     const data = await lastFm.getInfo();
     const { user } = data;
@@ -280,13 +268,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return topartists;
   };
 
+  const getWeeklyAlbumChart = async () => {
+    const data = await lastFm.getWeeklyAlbumChart();
+    const { weeklyalbumchart } = data;
+    return weeklyalbumchart;
+  };
+
   try {
-    const allArtists = getTopArtists();
-    const artists = (await allArtists).artist;
+    const allArtists = await getTopArtists();
+    const artists = allArtists.artist;
     const allMbIds: string[] = artists.map((artist) => artist.mbid);
 
     const allWeeklyAlbumChart = await getWeeklyAlbumChart();
-    const albums = allWeeklyAlbumChart.weeklyalbumchart.album;
+    const albums = allWeeklyAlbumChart.album;
     const allAlbums = albums.map((album) => album);
 
     const allRecentTracks = await getRecentTracks();
