@@ -4,23 +4,25 @@ import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
 import {
   CMS_NAME,
+  LOGO_LASTFM,
   META_MUSIC,
   MUSIC_URL,
   TWITTER_CARD_MUSIC,
   TWITTER_HANDLE,
+  URL_COVERART_ARCHIVE,
+  URL_FANARTTV,
   URL_LASTFM_API_DOCS,
   URL_TWITTER_PROFILE,
 } from '@shared/constants';
 import { defined } from '@shared/defined';
 import axios, { AxiosResponse } from 'axios';
 import { GetServerSideProps } from 'next';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
 import LastFmApi from '@lib/lastFm';
-import { TOP_ARTIST_URL, RECENT_TRACKS_URL, WEEKLY_ALBUM_CHART_URL } from '@lib/lastFm/config';
+import { RECENT_TRACKS_URL, TOP_ARTIST_URL, WEEKLY_ALBUM_CHART_URL } from '@lib/lastFm/config';
 import {
   Artist,
   RecentTracksResponse,
@@ -32,8 +34,8 @@ import {
 } from '@lib/lastFm/lastFm.types';
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
-import { LOGO_LASTFM, URL_COVERART_ARCHIVE, URL_FANARTTV } from '../shared/constants';
-import MusicCard from './musicCard';
+import Image from 'next/image';
+import ScrobblesCard from './scrobblesCard';
 
 type Props = {
   error: [];
@@ -72,38 +74,45 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
       />
       <Container>
         <PageTitle>Scrobbles</PageTitle>
-        <div className='pt-4 mt-8 mb-16 border-t'>
-          <p className='text-lg'>
-            I love music and have been tracking my listening habits with lastFm since 2008. I have always wanted to play
-            with their data, that is what this page is about and of course to share what I have been listening to with
-            you all.
-          </p>
-          <p>
-            My scrobbles from {''}
-            <a href={URL_LASTFM_API_DOCS} target='_blank' rel='noopener noreferrer'>
-              <Image src={LOGO_LASTFM} unoptimized={true} width={120} height={36} alt='LastFm Logo' />
-            </a>
-            {'  '}
-            API. Total plays: <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
-          </p>
-          <p>
-            Some photos from{' '}
-            <a href={URL_FANARTTV} target='_blank' rel='noopener noreferrer'>
-              fanart.tv
-            </a>{' '}
-            API, some from{' '}
-            <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
-              Musicbrainz Cover Art Archive
-            </a>
-            . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you know of another
-            API{' '}
-            <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
-              let me know about it
-            </a>
-            .🤙
-          </p>
-          <h2 className='text-2xl'></h2>
-        </div>
+        {user ? (
+          <div className='pt-4 mt-8 mb-16 border-t'>
+            <p className='text-lg'>
+              I love music and have been tracking my listening habits with lastFm since 2008. I have always wanted to
+              play with their data, that is what this page is about and of course to share what I have been listening to
+              with you all.
+            </p>
+            <p>
+              My scrobbles from {''}
+              <a href={URL_LASTFM_API_DOCS} target='_blank' rel='noopener noreferrer'>
+                <Image src={LOGO_LASTFM} unoptimized={true} width={120} height={36} alt='LastFm Logo' />
+              </a>
+              {'  '}
+              API.{' '}
+              {user ? (
+                <>
+                  Total plays: <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
+                </>
+              ) : null}
+            </p>
+            <p>
+              Some photos from{' '}
+              <a href={URL_FANARTTV} target='_blank' rel='noopener noreferrer'>
+                fanart.tv
+              </a>{' '}
+              API, some from{' '}
+              <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
+                Musicbrainz Cover Art Archive
+              </a>
+              . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you know of another
+              API{' '}
+              <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
+                let me know about it
+              </a>
+              .🤙
+            </p>
+            <h2 className='text-2xl'></h2>
+          </div>
+        ) : null}
       </Container>
       <div className='container mx-auto'>
         <div className=''>
@@ -115,7 +124,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
             {allRecentTracks.length > 0
               ? allRecentTracks.map((track, index) => (
-                  <MusicCard
+                  <ScrobblesCard
                     imageUrl={track.image ? track.image : ''}
                     nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
                     playTitle={track.name}
@@ -135,7 +144,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
             {weeklyAlbums.length > 0
               ? weeklyAlbums.map((album, index) => (
-                  <MusicCard
+                  <ScrobblesCard
                     playCount={album.playcount.toString()}
                     playTitle={album.name}
                     subTitle={album.artist['#text']}
@@ -155,7 +164,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
             {artists.length > 0
               ? artists.map((artist) => (
-                  <MusicCard
+                  <ScrobblesCard
                     playCount={artist.playcount.toString()}
                     playTitle={artist.name}
                     subTitle={''}

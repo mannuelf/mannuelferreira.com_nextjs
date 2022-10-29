@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-type MusicCard = {
+type ScrobblesCard = {
   imageUrl?: string;
   mbid?: string;
   nowplaying?: string;
@@ -11,7 +11,16 @@ type MusicCard = {
   title: string;
 };
 
-const MusicCard = ({ imageUrl, mbid, nowplaying, playCount, playTitle, siteUrl, subTitle, title }: MusicCard) => {
+const ScrobblesCard = ({
+  imageUrl,
+  mbid,
+  nowplaying,
+  playCount,
+  playTitle,
+  siteUrl,
+  subTitle,
+  title,
+}: ScrobblesCard) => {
   return (
     <div key={title} className='relative bg-purple-dark'>
       <div
@@ -52,4 +61,4 @@ const MusicCard = ({ imageUrl, mbid, nowplaying, playCount, playTitle, siteUrl, 
   );
 };
 
-export default MusicCard;
+export default ScrobblesCard;
