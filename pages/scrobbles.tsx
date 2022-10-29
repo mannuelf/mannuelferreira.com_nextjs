@@ -69,9 +69,20 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
         {user ? (
           <div className='pt-4 mt-8 mb-16 border-t'>
             <p className='text-lg'>
-              I love music and have been tracking my listening habits with lastFm since 2008. I have always wanted to
-              play with their data, that is what this page is about and of course to share what I have been listening to
-              with you all.
+              My love for collecting music has brought me to keep using lastFm. I have been tracking my listening habits
+              with lastFm since 2008. I have always wanted to play with the data, that is what this page is about. I of
+              course want to share what I have been listening to with you all.
+            </p>
+            <p>
+              If code is what interests you read it{' '}
+              <a
+                href='https://github.com/mannuelf/mannuelferreira.com_nextjs/blob/main/pages/scrobbles.tsx'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                {' '}
+                <i className='fab fa-github'></i> here.
+              </a>{' '}
             </p>
             <p>
               My scrobbles from {''}
@@ -110,7 +121,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
         <div className=''>
           {isError.length > 0 ? <div>{error}</div> : null}
           <div className='pb-2 pl-4'>
-            <h2 className='text-2xl font-medium'>Recent Tracks 🎹</h2>
+            <h2 className='text-2xl font-medium'>Recent Tracks</h2>
             <p>Listened to today</p>
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
@@ -215,34 +226,34 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const lastFm = LastFmApi();
 
-  const auth = await lastFm.auth('', config.method.auth, '');
+  const auth = await lastFm.auth('', config.method.auth, 0);
 
   const getUser = async () => {
-    const data = await lastFm.getInfo(config.method.user.getInfo, config.username, 10);
+    const data = await lastFm.getInfo(config.method.user.getInfo, config.username, 12);
     const { user } = data;
     return user;
   };
 
   const getLovedTracks = async () => {
-    const data = await lastFm.getLovedTracks(config.method.user.loved_tracks, config.username, 10);
+    const data = await lastFm.getLovedTracks(config.method.user.loved_tracks, config.username, 12);
     const { lovedtracks } = data;
     return lovedtracks;
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(config.method.user.recent_tracks, config.username, 10);
+    const data = await lastFm.getRecentTracks(config.method.user.recent_tracks, config.username, 12);
     const { recenttracks } = data;
     return recenttracks;
   };
 
   const getTopArtists = async () => {
-    const data = await lastFm.getTopArtists(config.method.user.top_artists, config.username, 10);
+    const data = await lastFm.getTopArtists(config.method.user.top_artists, config.username, 12);
     const { topartists } = data;
     return topartists;
   };
 
   const getWeeklyAlbumChart = async () => {
-    const data = await lastFm.getWeeklyAlbumChart(config.method.user.weekly_album_chart, config.username, 10);
+    const data = await lastFm.getWeeklyAlbumChart(config.method.user.weekly_album_chart, config.username, 12);
     const { weeklyalbumchart } = data;
     return weeklyalbumchart;
   };
@@ -367,7 +378,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
       topArtists: myTopArtists[0],
       weeklyAlbumChart: myWeeklyAlbumChart[0],
       userProfile: await getUser(),
-      lovedTracks: await getLovedTracks(),
     },
   };
 };
