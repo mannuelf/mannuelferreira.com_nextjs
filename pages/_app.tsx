@@ -29,6 +29,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       `}
       </Script>
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
