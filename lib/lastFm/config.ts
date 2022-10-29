@@ -23,9 +23,9 @@ const config = {
       weekly_track_chart: 'user.getWeeklyTrackChart',
     },
   },
-  registered_to: `${process.env.LASTFM_REGISTERED_TO}`,
+  registered_to: `${process.env.LASTFM_USER}`,
   share_secret: `${process.env.LASTFM_SHARED_SECRET}`,
-  user: `${process.env.LASTFM_REGISTERED_TO}`,
+  user: `${process.env.LASTFM_USER}`,
 };
 
 export const AUTH_URL = `${config.base_url}?method=${config.methods.auth.token}&api_key=${config.api_key}&format=${config.format.json}`;
