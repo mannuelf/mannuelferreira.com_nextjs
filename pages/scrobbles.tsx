@@ -22,16 +22,8 @@ import { useEffect, useState } from 'react';
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
 import LastFmApi from '@lib/lastFm';
-import { RECENT_TRACKS_URL, TOP_ARTIST_URL, WEEKLY_ALBUM_CHART_URL } from '@lib/lastFm/config';
-import {
-  Artist,
-  RecentTracksResponse,
-  TopArtistsResponse,
-  Track,
-  User,
-  WeeklyAlbum,
-  WeeklyAlbumChartResponse,
-} from '@lib/lastFm/lastFm.types';
+import config from '@lib/lastFm/config';
+import { Artist, Track, User, WeeklyAlbum } from '@lib/lastFm/lastFm.types';
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
 import Image from 'next/image';
@@ -223,34 +215,34 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const lastFm = LastFmApi();
 
-  const auth = lastFm.auth();
+  const auth = await lastFm.auth('', config.method.auth);
 
   const getUser = async () => {
-    const data = await lastFm.getInfo();
+    const data = await lastFm.getInfo(config.method.user.getInfo, config.username);
     const { user } = data;
     return user;
   };
 
   const getLovedTracks = async () => {
-    const data = await lastFm.getLovedTracks();
+    const data = await lastFm.getLovedTracks(config.method.user.loved_tracks, config.username);
     const { lovedtracks } = data;
     return lovedtracks;
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks();
+    const data = await lastFm.getRecentTracks(config.method.user.recent_tracks, config.username);
     const { recenttracks } = data;
     return recenttracks;
   };
 
   const getTopArtists = async () => {
-    const data = await lastFm.getTopArtists();
+    const data = await lastFm.getTopArtists(config.method.user.top_artists, config.username);
     const { topartists } = data;
     return topartists;
   };
 
   const getWeeklyAlbumChart = async () => {
-    const data = await lastFm.getWeeklyAlbumChart();
+    const data = await lastFm.getWeeklyAlbumChart(config.method.user.weekly_album_chart, config.username);
     const { weeklyalbumchart } = data;
     return weeklyalbumchart;
   };

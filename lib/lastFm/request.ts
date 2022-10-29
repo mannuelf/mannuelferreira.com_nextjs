@@ -1,7 +1,7 @@
 import fetch, { Response } from 'node-fetch';
 import config from './config';
 
-const request = async (method: string, user: string) => {
+const request = async (method: string, user: string = '') => {
   const url = `${config.base_url}?method=${method}${user ? '&user=' : ''}${user}&api_key=${config.api_key}&format=${
     config.format.json
   }`;
