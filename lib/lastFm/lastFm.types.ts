@@ -62,6 +62,15 @@ export interface TopArtists {
   '@attr': Attr2;
 }
 
+export interface WeeklyArtistChartResponse {
+  weeklyartistchart: WeeklyArtistChart;
+}
+
+export interface WeeklyArtistChart {
+  artist: Artist[];
+  '@attr': Attr2;
+}
+
 export interface WeeklyAlbumChartResponse {
   weeklyalbumchart: WeeklyAlbumChart;
 }
