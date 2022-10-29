@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+_research
 
 # debug
 npm-debug.log*
@@ -39,3 +40,6 @@ tsconfig.tsbuildinfo
 
 # Local Netlify folder
 .netlify
+/test-results/
+/playwright-report/
+/playwright/.cache/
