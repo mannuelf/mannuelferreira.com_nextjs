@@ -1,4 +1,4 @@
-import { TOP_ARTIST_URL, TOP_ALBUMS_URL, USER_URL, AUTH_URL, RECENT_TRACKS_URL } from './config';
+import { AUTH_URL, RECENT_TRACKS_URL, TOP_ALBUMS_URL, TOP_ARTIST_URL, USER_URL } from './config';
 
 import fetchData from './fetchData';
 import {

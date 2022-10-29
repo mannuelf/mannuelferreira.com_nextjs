@@ -1,11 +1,15 @@
-const LAST_FM = {
-  app_name: `${process.env.LASTFM_APPNAME}`,
-  registered_to: `${process.env.LASTFM_REGISTERED_TO}`,
-  base_url: `${process.env.LASTFM_API_BASE_URL}`,
+const config = {
   api_key: `${process.env.LASTFM_API_KEY}`,
-  user: `${process.env.LASTFM_REGISTERED_TO}`,
-  share_secret: `${process.env.LASTFM_SHARED_SECRET}`,
+  app_name: `${process.env.LASTFM_APPNAME}`,
+  base_url: `${process.env.LASTFM_API_BASE_URL}`,
+  format: {
+    json: 'json',
+    xml: 'xml',
+  },
   methods: {
+    auth: {
+      token: 'auth.getToken',
+    },
     user: {
       getInfo: 'user.getInfo',
       loved_tracks: 'user.getLovedTracks',
@@ -16,21 +20,17 @@ const LAST_FM = {
       weekly_album_chart: 'user.getWeeklyAlbumChart',
       weekly_artist_chart: 'user.getWeeklyArtistChart',
     },
-    auth: {
-      token: 'auth.getToken',
-    },
   },
-  format: {
-    json: 'json',
-    xml: 'xml',
-  },
+  registered_to: `${process.env.LASTFM_REGISTERED_TO}`,
+  share_secret: `${process.env.LASTFM_SHARED_SECRET}`,
+  user: `${process.env.LASTFM_REGISTERED_TO}`,
 };
 
-export const AUTH_URL = `${LAST_FM.base_url}?method=${LAST_FM.methods.auth.token}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
-export const RECENT_TRACKS_URL = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.recent_tracks}&user=${LAST_FM.user}&limit=20&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
-export const TOP_ALBUMS_URL = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.top_albums}&user=${LAST_FM.user}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
-export const TOP_ARTIST_URL = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.top_artists}&user=${LAST_FM.user}&limit=20&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
-export const USER_URL = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.getInfo}&user=${LAST_FM.user}&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
-export const WEEKLY_ALBUM_CHART_URL = `${LAST_FM.base_url}?method=${LAST_FM.methods.user.weekly_album_chart}&user=${LAST_FM.user}&limit=20&api_key=${LAST_FM.api_key}&format=${LAST_FM.format.json}`;
+export const AUTH_URL = `${config.base_url}?method=${config.methods.auth.token}&api_key=${config.api_key}&format=${config.format.json}`;
+export const RECENT_TRACKS_URL = `${config.base_url}?method=${config.methods.user.recent_tracks}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
+export const TOP_ALBUMS_URL = `${config.base_url}?method=${config.methods.user.top_albums}&user=${config.user}&api_key=${config.api_key}&format=${config.format.json}`;
+export const TOP_ARTIST_URL = `${config.base_url}?method=${config.methods.user.top_artists}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
+export const USER_URL = `${config.base_url}?method=${config.methods.user.getInfo}&user=${config.user}&api_key=${config.api_key}&format=${config.format.json}`;
+export const WEEKLY_ALBUM_CHART_URL = `${config.base_url}?method=${config.methods.user.weekly_album_chart}&user=${config.user}&limit=20&api_key=${config.api_key}&format=${config.format.json}`;
 
-export default LAST_FM;
+export default config;
