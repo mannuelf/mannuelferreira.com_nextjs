@@ -21,7 +21,6 @@ const config = {
       weekly_track_chart: 'user.getWeeklyTrackChart',
     },
   },
-  share_secret: `${process.env.LASTFM_SHARED_SECRET}`,
   username: `${process.env.LASTFM_USER}`,
 };
 
