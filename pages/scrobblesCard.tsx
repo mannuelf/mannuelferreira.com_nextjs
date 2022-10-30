@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 type ScrobblesCard = {
   imageUrl?: string;
@@ -30,9 +31,17 @@ const ScrobblesCard = ({
           backgroundSize: 'cover',
           backgroundPosition: 'top center',
           backgroundRepeat: 'no-repeat',
-          backgroundImage: `url(${imageUrl})`,
         }}
       >
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={title}
+            width={500}
+            height={500}
+            className='absolute top-0 right-0 bottom-0 left-0'
+          />
+        ) : null}
         <div className='absolute bottom-0 left-0 pb-0'>
           {playCount ? (
             <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
@@ -53,7 +62,9 @@ const ScrobblesCard = ({
             </Link>
           </h2>
           {nowplaying ? (
-            <h3 className='p-2 text-3xl font-normal text-white bg-orange bg-opacity-60'>🎹 Now playing</h3>
+            <h3 className='p-2 text-3xl font-normal text-white bg-orange bg-opacity-60'>
+              🎹 Now playing
+            </h3>
           ) : null}
         </div>
       </div>
