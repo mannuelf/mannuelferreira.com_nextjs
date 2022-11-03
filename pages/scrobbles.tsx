@@ -142,7 +142,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
                     siteUrl={track.url}
                     subTitle={track.artist['#text']}
                     title={track.name}
-                    key={index}
+                    key={track.name.trim().replace(/\s/gm, '')}
                   />
                 ))
               : null}
@@ -162,7 +162,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
                     title={album.name}
                     siteUrl={album.url}
                     imageUrl={album.image ? album.image : ''}
-                    key={index}
+                    key={album.name.trim().replace(/\s/gm, '')}
                   />
                 ))
               : null}
@@ -182,7 +182,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
                     title={artist.name}
                     siteUrl={artist.url}
                     imageUrl={artist.image}
-                    key={artist.name}
+                    key={artist.name.trim().replace(/\s/gm, '')}
                   />
                 ))
               : null}
@@ -247,7 +247,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       config.method.user.loved_tracks,
       config.username,
       'overall',
-      24,
+      12,
     );
     const { lovedtracks } = data;
     return lovedtracks;
@@ -258,7 +258,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       config.method.user.recent_tracks,
       config.username,
       '',
-      24,
+      15,
     );
     const { recenttracks } = data;
     return recenttracks;

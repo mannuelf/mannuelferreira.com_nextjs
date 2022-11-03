@@ -34,7 +34,8 @@ p {
 }
 
 .app-footer {
-  background: #28284f url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg') no-repeat
+  background: #28284f
+    url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg') no-repeat
     bottom right;
   color: #f8f8f8;
 }
@@ -132,5 +133,5 @@ p a {
 }
 
 .nowplaying {
-  border: 4px inset #ff9d00;
+  border: 8px inset #ff9d00;
 }
