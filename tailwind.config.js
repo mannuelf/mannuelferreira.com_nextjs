@@ -1,14 +1,14 @@
 module.exports = {
   mode: 'jit',
   // https://github.com/tailwindlabs/tailwindcss/discussions/6019#discussioncomment-1609444
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       boxShadow: {},
       colors: {
+        yellow: {
+          DEFAULT: 'FAD000',
+        },
         orange: {
           DEFAULT: '#FF9D00',
         },
@@ -22,9 +22,9 @@ module.exports = {
         screens: {
           sm: '100%',
           md: '100%',
-          lg: '1024px',
-          xl: '1280px',
-          '2xl': '1280px',
+          lg: '1280px',
+          xl: '1366px',
+          '2xl': '1460px',
         },
       },
       fontSize: {},

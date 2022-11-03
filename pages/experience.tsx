@@ -14,13 +14,12 @@ import {
 } from '@shared/constants';
 import MetaTags from '@components/meta-tags';
 
-
 const Experience = () => {
   return (
     <>
       <Layout>
         <MetaTags
-          ogTitle={'Books'}
+          ogTitle={'Experience'}
           ogImage={TWITTER_CARD_POSTS}
           ogDescription={META_EXPERIENCE}
           ogUrl='https://mannuelferreira.com/experience'
@@ -33,8 +32,8 @@ const Experience = () => {
           <PageTitle>Experience</PageTitle>
           <div className='pt-4 mt-8 mb-8 border-t'>
             <p className='text-lg'>
-              I am grateful to have worked with many incredible people on
-              awesome products & projects over the years.
+              I am grateful to have worked with many incredible people on many awesome products &
+              projects over the years.
             </p>
           </div>
           <section className='mb-10 text-center grid-rows-4 grid grid-cols-1 md:grid-cols-2 gap-4'>

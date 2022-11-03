@@ -22,11 +22,12 @@ const ScrobblesCard = ({
   title,
 }: ScrobblesCard) => {
   return (
-    <div key={title} className='relative bg-purple-dark'>
+    <div key={title} className='relative bg-purple-dark rounded-lg'>
       <div
         key={title + mbid}
-        className={`${nowplaying ? 'nowplaying ' : ''}relative h-80 md:h-85 bg-purple-dark`}
+        className={`${nowplaying ? 'nowplaying ' : ''}relative h-80 md:h-85 rounded-lg`}
         style={{
+          overflow: 'hidden',
           backgroundSize: 'cover',
           backgroundPosition: 'top center',
           backgroundRepeat: 'no-repeat',
@@ -35,25 +36,27 @@ const ScrobblesCard = ({
       >
         <div className='absolute bottom-0 left-0 pb-0'>
           {playCount ? (
-            <h3 className='p-2 text-4xl font-normal text-white bg-black w-min bg-opacity-60'>
+            <h3 className='p-2 text-3xl font-normal text-white bg-black w-min bg-opacity-60'>
               {playCount}
-              <span className='pl-2 text-xs font-light text-white'>plays</span>
+              <span className='pl-2 text-sm font-light text-white'>plays</span>
             </h3>
           ) : null}{' '}
           {subTitle ? (
-            <h2 className='pb-2 pl-2 text-xl font-light text-white bg-black bg-opacity-50'>
+            <h2 className='pb-2 pl-2 text-l font-light text-white bg-black bg-opacity-50 rounded-tr-lg rounded-br-lg '>
               <Link href={imageUrl ?? ''}>
                 <a>{subTitle}</a>
               </Link>
             </h2>
           ) : null}
-          <h2 className='pr-2 pb-2 pl-2 text-3xl font-light text-white bg-black bg-opacity-40'>
+          <h2 className='pr-2 pb-2 pl-2 text-2xl font-light text-white bg-black bg-opacity-40 rounded-tr-lg'>
             <Link href={siteUrl ?? '#'}>
               <a>{title}</a>
             </Link>
           </h2>
           {nowplaying ? (
-            <h3 className='p-2 text-3xl font-normal text-white bg-orange bg-opacity-60'>🎹 Now playing</h3>
+            <h3 className='p-2 text-xl font-normal text-white bg-orange bg-opacity-60'>
+              🎹 Now playing
+            </h3>
           ) : null}
         </div>
       </div>

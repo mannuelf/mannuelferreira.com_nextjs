@@ -132,7 +132,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <h2 className='text-2xl font-medium'>Recent Tracks</h2>
             <p>Listened to today</p>
           </div>
-          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
+          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
             {allRecentTracks.length > 0
               ? allRecentTracks.map((track, index) => (
                   <ScrobblesCard
@@ -152,7 +152,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <h2 className='text-2xl font-medium'>Weekly Album Charts</h2>
             <p>Scrobbles this week</p>
           </div>
-          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-20'>
+          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
             {weeklyAlbums.length > 0
               ? weeklyAlbums.map((album, index) => (
                   <ScrobblesCard
@@ -172,7 +172,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <h2 className='text-2xl font-medium'>Top Artists</h2>
             <p>Scrobbles since 2008</p>
           </div>
-          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-0 pb-4'>
+          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-4'>
             {artists.length > 0
               ? artists.map((artist) => (
                   <ScrobblesCard
