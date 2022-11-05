@@ -12,7 +12,8 @@
       "skipFiles": [
         "!${workspaceFolder}/node_modules/**/*.js",
         "!${workspaceFolder}/.vercel/**/**/*.js",
-        "!${workspaceFolder}/.next/**/**/*.js"
+        "!${workspaceFolder}/.next/**/**/*.js",
+        "!${workspaceFolder}/**/*.js"
       ],
       "type": "node"
     }

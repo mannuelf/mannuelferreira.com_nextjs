@@ -126,7 +126,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
         ) : null}
       </Container>
       <div className='container mx-auto'>
-        <div className=''>
+        <div className='p-2'>
           {isError.length > 0 ? <div>{error}</div> : null}
           <div className='pb-2 pl-4'>
             <h2 className='text-2xl font-medium'>Recent Tracks</h2>
