@@ -392,14 +392,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const weeklyAlbumChartWithImages = albums.map((album) => {
+    const weeklyAlbumChartWithImages = albums.map((album: WeeklyAlbum) => {
       return {
         ...album,
         image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist['#text']),
       };
     });
 
-    const recentTracksWithImages = recentTracks.map((track) => {
+    const recentTracksWithImages = recentTracks.map((track: Track) => {
       return {
         ...track,
         image: getAlbumCoverImage(
