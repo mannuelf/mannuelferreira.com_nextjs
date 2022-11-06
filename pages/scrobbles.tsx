@@ -294,7 +294,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const getWeeklyAlbums = await getWeeklyAlbumChart();
     const albums = getWeeklyAlbums.album;
-    const weeklyAlbums = albums.map((album) => album);
+    const weeklyAlbums = albums.map((album: WeeklyAlbum) => album);
 
     const getAllRecentTracks = await getRecentTracks();
     const recentTracks = getAllRecentTracks.track;
