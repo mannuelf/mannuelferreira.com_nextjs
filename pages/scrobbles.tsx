@@ -7,11 +7,13 @@ import {
   LOGO_LASTFM,
   META_MUSIC,
   MUSIC_URL,
+  NPM_LOGO,
   TWITTER_CARD_MUSIC,
   TWITTER_HANDLE,
   URL_COVERART_ARCHIVE,
   URL_FANARTTV,
   URL_LASTFM_API_DOCS,
+  URL_LASTFM_NPM_PKG,
   URL_TWITTER_PROFILE,
 } from '@shared/constants';
 import { defined } from '@shared/defined';
@@ -83,6 +85,15 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
                 {' '}
                 <i className='fab fa-github'></i> here.
               </a>{' '}
+            </p>
+            <p>
+              I have extracted an API client to{' '}
+              <a href={URL_LASTFM_NPM_PKG} target='_blank' rel='noopener noreferrer'>
+                <span>
+                  <Image src={NPM_LOGO} alt='Larcasts' width={42} height={28} layout='fixed' />
+                </span>
+              </a>
+              , if you want to build something similar the client may help.
             </p>
             <p>
               My scrobbles from {''}
