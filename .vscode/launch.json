@@ -9,13 +9,34 @@
       "request": "launch",
       "runtimeArgs": ["run-script", "start:dev"],
       "runtimeExecutable": "npm",
+      "cwd": "${workspaceFolder}",
       "skipFiles": [
-        "!${workspaceFolder}/node_modules/**/*.js",
-        "!${workspaceFolder}/.vercel/**/**/*.js",
-        "!${workspaceFolder}/.next/**/**/*.js",
-        "!${workspaceFolder}/**/*.js"
+        "${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/.vercel/**/**/*.js",
+        "${workspaceFolder}/.next/**/**/*.js",
+        "${workspaceFolder}/**/*.js"
       ],
       "type": "node"
+    },
+    {
+      "name": "🤖 Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      },
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "${workspaceFolder}/.vercel/**/**/*.js",
+        "${workspaceFolder}/.next/**/**/*.js",
+        "${workspaceFolder}/**/*.js",
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**"
+      ]
     }
   ]
 }

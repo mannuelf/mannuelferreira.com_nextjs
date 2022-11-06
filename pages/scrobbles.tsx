@@ -21,9 +21,8 @@ import { useEffect, useState } from 'react';
 
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
-import LastFmApi from '@lib/lastFm';
-import config from '@lib/lastFm/config';
-import { Artist, Track, User, WeeklyAlbum } from '@lib/lastFm/lastFm.types';
+import LastFmApi from 'lastfm-nodejs-client';
+import type { Artist, Track, User, WeeklyAlbum } from 'lastfm-nodejs-client/dist/types';
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
 import Image from 'next/image';
@@ -226,6 +225,12 @@ export const getFanartTvData = async (mbid: string): Promise<FanArtArtistRespons
   return data;
 };
 
+export const getFanartTvAlbumData = async (mbid: string): Promise<FanArtArtistResponse> => {
+  const FANART_TV_ENDPOINT = `${FANART_TV.base_url}/albums/${mbid}?api_key=${FANART_TV.api_key}`;
+  const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
+  return data;
+};
+
 export const getServerSideProps: GetServerSideProps = async () => {
   let error: [] = [];
   let myRecentTracks = [];
@@ -233,18 +238,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let myWeeklyAlbumChart = [];
 
   const lastFm = LastFmApi();
+  const { config, method } = lastFm;
 
-  const auth = await lastFm.auth('', config.method.auth, '', 0);
+  const auth = await lastFm.auth('', method.auth, '', 0);
 
   const getUser = async () => {
-    const data = await lastFm.getInfo(config.method.user.getInfo, config.username, 'overall', 12);
+    const data = await lastFm.getInfo(method.user.getInfo, config.username, 'overall', 12);
     const { user } = data;
     return user;
   };
 
   const getLovedTracks = async () => {
     const data = await lastFm.getLovedTracks(
-      config.method.user.loved_tracks,
+      method.user.loved_tracks,
       config.username,
       'overall',
       12,
@@ -254,19 +260,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(
-      config.method.user.recent_tracks,
-      config.username,
-      '',
-      15,
-    );
+    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', 10);
     const { recenttracks } = data;
     return recenttracks;
   };
 
   const getTopArtists = async () => {
     const data = await lastFm.getTopArtists(
-      config.method.user.top_artists,
+      method.user.top_artists,
       config.username,
       'overall',
       104,
@@ -277,10 +278,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const getWeeklyAlbumChart = async () => {
     const data = await lastFm.getWeeklyAlbumChart(
-      config.method.user.weekly_album_chart,
+      method.user.weekly_album_chart,
       config.username,
       'overall',
-      24,
+      15,
     );
     const { weeklyalbumchart } = data;
     return weeklyalbumchart;
