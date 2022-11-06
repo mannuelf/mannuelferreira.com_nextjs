@@ -290,7 +290,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const getArtists = await getTopArtists();
     const artists = getArtists.artist;
-    const artistMbIds: string[] = artists.map((artist) => artist.mbid);
+    const artistMbIds: string[] = artists.map((artist: Artist) => artist.mbid);
 
     const getWeeklyAlbums = await getWeeklyAlbumChart();
     const albums = getWeeklyAlbums.album;
@@ -298,7 +298,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const getAllRecentTracks = await getRecentTracks();
     const recentTracks = getAllRecentTracks.track;
-    const recentTracksAlbums = recentTracks.map((track) => track.album);
+    const recentTracksAlbums = recentTracks.map((track: Track) => track.album);
 
     const combinedAlbums = [...weeklyAlbums, ...recentTracksAlbums];
 
