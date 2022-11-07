@@ -5,7 +5,7 @@ import {
   URL_LASTFM_API_DOCS,
   URL_TWITTER_PROFILE,
 } from '@shared/constants';
-import { User } from 'lastfm-nodejs-client-1.0.6/@types';
+import { User } from 'lastfm-nodejs-client/@types';
 import Image from 'next/image';
 
 type UserProps = {
