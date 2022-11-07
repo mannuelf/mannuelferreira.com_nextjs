@@ -26,7 +26,7 @@ specifiers:
   globby: ^13.1.2
   got: ^12.5.2
   gray-matter: 4.0.3
-  lastfm-nodejs-client: ^1.0.6
+  lastfm-nodejs-client: ^1.0.7
   logrocket: ^3.0.1
   next: ^12.3.1
   node-fetch: ^2.6.7
@@ -55,7 +55,7 @@ dependencies:
   dotenv: 16.0.3
   globby: 13.1.2
   gray-matter: 4.0.3
-  lastfm-nodejs-client: 1.0.6
+  lastfm-nodejs-client: 1.0.7
   logrocket: 3.0.1
   next: 12.3.1_qtpcxnaaarbm4ws7ughq6oxfve
   node-fetch: 2.6.7
@@ -1394,11 +1394,6 @@ packages:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
 
-  /data-uri-to-buffer/4.0.0:
-    resolution: {integrity: sha512-Vr3mLBA8qWmcuschSLAOogKgQ/Jwxulv3RNE4FXnYWRGujzrRWQI4m12fQqRkwX06C0KanhLr4hK+GydchZsaA==}
-    engines: {node: '>= 12'}
-    dev: false
-
   /date-fns/2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
@@ -1981,14 +1976,6 @@ packages:
       format: 0.2.2
     dev: false
 
-  /fetch-blob/3.2.0:
-    resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
-    engines: {node: ^12.20 || >= 14.13}
-    dependencies:
-      node-domexception: 1.0.0
-      web-streams-polyfill: 3.2.1
-    dev: false
-
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -2058,13 +2045,6 @@ packages:
   /format/0.2.2:
     resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
     engines: {node: '>=0.4.x'}
-    dev: false
-
-  /formdata-polyfill/4.0.10:
-    resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
-    engines: {node: '>=12.20.0'}
-    dependencies:
-      fetch-blob: 3.2.0
     dev: false
 
   /fraction.js/4.2.0:
@@ -2646,11 +2626,13 @@ packages:
       language-subtag-registry: 0.3.22
     dev: true
 
-  /lastfm-nodejs-client/1.0.6:
-    resolution: {integrity: sha512-tNKa2uSpQveUPXj/42FCQ1TFCJH5bejZep5v8fHX5pi4ZEam0iBJpwdTFIocxiDNAtYcmqCYzU7O9ydvaCS0yg==}
+  /lastfm-nodejs-client/1.0.7:
+    resolution: {integrity: sha512-4NWRogdLTa+U29Ea59V0mSbhMX7QwZqEyap+6yCDLjRWt8U9HbhHvPrkbwECyssa8M+Jcn/MBN1rgUllA3R3Sg==}
     dependencies:
-      node-fetch: 3.2.10
+      node-fetch: 2.6.7
       rimraf: 3.0.2
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /levn/0.4.1:
@@ -3057,11 +3039,6 @@ packages:
       - babel-plugin-macros
     dev: false
 
-  /node-domexception/1.0.0:
-    resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
-    engines: {node: '>=10.5.0'}
-    dev: false
-
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
@@ -3072,15 +3049,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: false
-
-  /node-fetch/3.2.10:
-    resolution: {integrity: sha512-MhuzNwdURnZ1Cp4XTazr69K0BTizsBroX7Zx3UgDSVcZYKF/6p0CBe4EUb/hLqmzVhl0UpYfgRljQ4yxE+iCxA==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      data-uri-to-buffer: 4.0.0
-      fetch-blob: 3.2.0
-      formdata-polyfill: 4.0.10
     dev: false
 
   /node-releases/2.0.6:
@@ -4454,11 +4422,6 @@ packages:
       is-buffer: 2.0.5
       unist-util-stringify-position: 3.0.2
       vfile-message: 3.1.2
-    dev: false
-
-  /web-streams-polyfill/3.2.1:
-    resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
-    engines: {node: '>= 8'}
     dev: false
 
   /webidl-conversions/3.0.1:

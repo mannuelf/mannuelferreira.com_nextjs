@@ -1,4 +1,3 @@
-import { User } from '@lib/lastFm/lastFm.types';
 import {
   LOGO_LASTFM,
   URL_COVERART_ARCHIVE,
@@ -6,6 +5,7 @@ import {
   URL_LASTFM_API_DOCS,
   URL_TWITTER_PROFILE,
 } from '@shared/constants';
+import { User } from 'lastfm-nodejs-client-1.0.6/@types';
 import Image from 'next/image';
 
 type UserProps = {
@@ -17,9 +17,9 @@ const ScrobblesIntro = ({ user }: UserProps) => {
     <>
       <div className='pt-4 mt-8 mb-16 border-t'>
         <p className='text-lg'>
-          I love music and have been tracking my listening habits with lastFm since 2008. I have always wanted to play
-          with their data, that is what this page is about and of course to share what I have been listening to with you
-          all.
+          I love music and have been tracking my listening habits with lastFm since 2008. I have
+          always wanted to play with their data, that is what this page is about and of course to
+          share what I have been listening to with you all.
         </p>
         <p>
           My scrobbles from {''}
@@ -30,7 +30,8 @@ const ScrobblesIntro = ({ user }: UserProps) => {
           API.{' '}
           {user ? (
             <>
-              Total plays: <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
+              Total plays:{' '}
+              <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
             </>
           ) : null}
         </p>
@@ -43,7 +44,8 @@ const ScrobblesIntro = ({ user }: UserProps) => {
           <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
             Musicbrainz Cover Art Archive
           </a>
-          . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you know of another API{' '}
+          . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you
+          know of another API{' '}
           <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
             let me know about it
           </a>

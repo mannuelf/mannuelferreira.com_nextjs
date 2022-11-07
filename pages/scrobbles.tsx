@@ -24,7 +24,7 @@ import { useEffect, useState } from 'react';
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
 import LastFmApi from 'lastfm-nodejs-client';
-import type { Artist, Track, User, WeeklyAlbum } from 'lastfm-nodejs-client/src/types';
+import type { Artist, Track, User, WeeklyAlbum } from 'lastfm-nodejs-client/@types';
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
 import Image from 'next/image';
