@@ -8,12 +8,12 @@
 
 (optional) Install PNPM [here](https://pnpm.io/).
 
-```
+```bash
 pnpm install
 ```
 
 ### Local dev
 
-```
+```bash
 pnpm run start:dev
 ```
