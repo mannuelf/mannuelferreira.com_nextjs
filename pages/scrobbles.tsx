@@ -25,7 +25,7 @@ import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
 import LastFmApi from 'lastfm-nodejs-client';
 import type { Artist, Track, User, WeeklyAlbum } from 'lastfm-nodejs-client/@types';
-import type { Image as LastFMImage } from 'lastfm-nodejs-client/@types';
+import type { Image as LastFmImage } from 'lastfm-nodejs-client/@types';
 
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
@@ -419,8 +419,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     });
 
     const recentTracksWithImages = track.map((track: Track) => {
-      const getImage: LastFMImage = track.image.find(
-        (img: LastFMImage) => img.size === 'extralarge',
+      const getImage: LastFmImage = track.image.find(
+        (img: LastFmImage) => img.size === 'extralarge',
       );
       return {
         ...track,
