@@ -22,7 +22,7 @@ const ScrobblesCard = ({
   title,
 }: ScrobblesCard) => {
   return (
-    <div key={title} className='relative  rounded-lg'>
+    <div key={title} className='relative rounded-lg'>
       <div
         key={title + mbid}
         className={`${
@@ -38,7 +38,7 @@ const ScrobblesCard = ({
       >
         <div className='absolute bottom-0 left-0 pb-0 mb-2'>
           {playCount ? (
-            <h3 className='p-2 text-3xl font-normal text-white bg-black w-min bg-opacity-60'>
+            <h3 className='p-2 text-3xl font-normal text-white bg-black w-min bg-opacity-60 rounded-tr-lg'>
               {playCount}
               <span className='pl-2 text-sm font-light text-white'>plays</span>
             </h3>
@@ -49,7 +49,7 @@ const ScrobblesCard = ({
             </h3>
           ) : null}
           {subTitle ? (
-            <h2 className='p-2 text-l font-light text-white bg-black bg-opacity-50 rounded-tr-lg '>
+            <h2 className='p-2 text-l font-light text-white bg-black bg-opacity-50 rounded-tr-lg'>
               <Link href={imageUrl ?? ''}>
                 <a>{subTitle}</a>
               </Link>

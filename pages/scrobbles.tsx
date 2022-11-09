@@ -41,7 +41,7 @@ type Props = {
 const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumChart }: Props) => {
   const [allRecentTracks, setAllRecentTrack] = useState<Track[]>([]);
   const [artists, setArtists] = useState<Artist[]>([]);
-  const [isError, setIsError] = useState([]);
+  const [isError, setIsError] = useState<[]>();
   const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
   const [user, setUser] = useState<User>();
 
@@ -52,6 +52,23 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
     setAllRecentTrack(recentTracks);
     setUser(userProfile);
   }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart]);
+
+  console.log('⚠️ ERROR', isError);
+
+  if (isError && isError?.length > 0) {
+    return (
+      <Layout>
+        <Container>
+          <PageTitle>Scrobbles</PageTitle>
+          <div className='pt-4 mt-8 mb-16 border-t'>
+            {isError.length
+              ? '😥 Error fetching data, hit CTRL+F5 once or twice, maybe thrice'
+              : null}
+          </div>
+        </Container>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -137,14 +154,13 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
       </Container>
       <div className='container mx-auto'>
         <div className='p-2'>
-          {isError.length > 0 ? <div>{error}</div> : null}
           <div className='pb-2 pl-4'>
             <h2 className='text-2xl font-medium'>Recent Tracks</h2>
             <p>Listened to today</p>
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
-            {allRecentTracks.length > 0
-              ? allRecentTracks.map((track, index) => (
+            {allRecentTracks && allRecentTracks.length
+              ? allRecentTracks.map((track) => (
                   <ScrobblesCard
                     imageUrl={track.image ? track.image : ''}
                     nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
@@ -163,8 +179,8 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <p>Scrobbles this week</p>
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
-            {weeklyAlbums.length > 0
-              ? weeklyAlbums.map((album, index) => (
+            {weeklyAlbums && weeklyAlbums.length
+              ? weeklyAlbums.map((album) => (
                   <ScrobblesCard
                     playCount={album.playcount.toString()}
                     playTitle={album.name}
@@ -183,7 +199,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <p>Scrobbles since 2008</p>
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-4'>
-            {artists.length > 0
+            {artists && artists.length
               ? artists.map((artist) => (
                   <ScrobblesCard
                     playCount={artist.playcount.toString()}
@@ -243,14 +259,13 @@ export const getFanartTvAlbumData = async (mbid: string): Promise<FanArtArtistRe
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let error: [] = [];
+  let myErrors: string[] = [];
   let myRecentTracks = [];
   let myTopArtists = [];
   let myWeeklyAlbumChart = [];
 
   const lastFm = LastFmApi();
   const { config, method } = lastFm;
-
   const auth = await lastFm.auth('', method.auth, '', 0);
 
   const getUser = async () => {
@@ -281,8 +296,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
       method.user.top_artists,
       config.username,
       'overall',
-      104,
+      200,
     );
+
     const { topartists } = data;
     return topartists;
   };
@@ -299,17 +315,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   try {
-    const getArtists = await getTopArtists();
-    const artists = getArtists.artist;
-    const artistMbIds: string[] = artists.map((artist: Artist) => artist.mbid);
+    const { artist } = await getTopArtists();
+    const artistMbIds: string[] = artist.map((artist: Artist) => artist.mbid);
 
-    const getWeeklyAlbums = await getWeeklyAlbumChart();
-    const albums = getWeeklyAlbums.album;
-    const weeklyAlbums = albums.map((album: WeeklyAlbum) => album);
+    const { album } = await getWeeklyAlbumChart();
+    const weeklyAlbums = album.map((album: WeeklyAlbum) => album);
 
-    const getAllRecentTracks = await getRecentTracks();
-    const recentTracks = getAllRecentTracks.track;
-    const recentTracksAlbums = recentTracks.map((track: Track) => track.album);
+    const { track } = await getRecentTracks();
+    const recentTracksAlbums = track.map((track: Track) => track.album);
 
     const combinedAlbums = [...weeklyAlbums, ...recentTracksAlbums];
 
@@ -318,6 +331,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
      */
     const fanartTvResponses = await Promise.allSettled(
       artistMbIds.map(async (mbId) => {
+        if (!mbId) {
+          return;
+        }
         const res = await axios.get(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`);
         if (res.status === 200) {
           return res.data;
@@ -334,6 +350,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       .filter(defined);
 
     const getTopArtistImage = (mbid: string): string => {
+      if (!mbid) return '';
       let imageUrl = '';
       fanArtTvResult.find((artist) => {
         if (artist.mbid_id === mbid) {
@@ -345,7 +362,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const topArtistsWithImages = artists.map((artist: Artist) => {
+    const topArtistsWithImages = artist.map((artist: Artist) => {
       return {
         ...artist,
         image: getTopArtistImage(artist.mbid),
@@ -392,14 +409,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
       return imageUrl;
     };
 
-    const weeklyAlbumChartWithImages = albums.map((album: WeeklyAlbum) => {
+    const weeklyAlbumChartWithImages = album.map((album: WeeklyAlbum) => {
       return {
         ...album,
         image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist['#text']),
       };
     });
 
-    const recentTracksWithImages = recentTracks.map((track: Track) => {
+    const recentTracksWithImages = track.map((track: Track) => {
       return {
         ...track,
         image: getAlbumCoverImage(
@@ -418,15 +435,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
     myWeeklyAlbumChart.push(weeklyAlbumChartWithImages);
     myRecentTracks.push(recentTracksWithImages);
   } catch (error) {
-    error = error;
+    console.log('🔥🔥🔥ERROR', error);
+    myErrors.push(error as string);
   }
 
   return {
     props: {
-      error,
-      recentTracks: myRecentTracks[0],
-      topArtists: myTopArtists[0],
-      weeklyAlbumChart: myWeeklyAlbumChart[0],
+      error: myErrors ? JSON.parse(JSON.stringify(myErrors)) : [],
+      recentTracks: myRecentTracks[0] ? JSON.parse(JSON.stringify(myRecentTracks[0])) : [],
+      topArtists: myTopArtists[0] ? JSON.parse(JSON.stringify(myTopArtists[0])) : [],
+      weeklyAlbumChart: myWeeklyAlbumChart[0]
+        ? JSON.parse(JSON.stringify(myWeeklyAlbumChart[0]))
+        : [],
       userProfile: await getUser(),
     },
   };
