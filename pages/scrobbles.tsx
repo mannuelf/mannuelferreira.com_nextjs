@@ -62,7 +62,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <PageTitle>Scrobbles</PageTitle>
           <div className='pt-4 mt-8 mb-16 border-t'>
             {isError.length
-              ? '😥 Error fetching data, hit CTRL+F5 once or twice, maybe thrice'
+              ? '😥 Error fetching data from lastFM, hit CTRL+F5 once or twice, maybe thrice, it eventually works.'
               : null}
           </div>
         </Container>
