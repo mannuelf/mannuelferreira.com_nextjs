@@ -424,7 +424,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       );
       return {
         ...track,
-        image: getImage['#text'],
+        image: getImage['#text'] ?? '',
       };
     });
 
