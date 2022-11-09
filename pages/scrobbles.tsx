@@ -164,7 +164,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             {allRecentTracks && allRecentTracks.length
               ? allRecentTracks.map((track) => (
                   <ScrobblesCard
-                    imageUrl={track.image ? track.image : ''}
+                    imageUrl={track.image ? track.image.toString() : ''}
                     nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
                     playTitle={track.name}
                     siteUrl={track.url}
