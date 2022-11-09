@@ -422,7 +422,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       const getImage = track.image.find((img: LastFmImage) => img.size === 'extralarge');
       return {
         ...track,
-        image: getImage['#text'] ?? '',
+        image: getImage ? getImage['#text'] : '',
       };
     });
 
