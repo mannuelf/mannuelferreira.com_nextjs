@@ -57,7 +57,13 @@ const Index = ({ allPosts }: Props) => {
         <Container>
           <section className='content-center mb-8 grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div className='items-center justify-self-center'>
-              <Image className='rounded-full w-54 h-54' width='224' height='224' src={AVATAR_ME} alt={CMS_NAME} />
+              <Image
+                className='rounded-full w-54 h-54'
+                width='224'
+                height='224'
+                src={AVATAR_ME}
+                alt={CMS_NAME}
+              />
             </div>
 
             <div>
@@ -84,8 +90,6 @@ const Index = ({ allPosts }: Props) => {
   );
 };
 
-export default Index;
-
 export const getStaticProps = async () => {
   const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt']);
 
@@ -93,3 +97,5 @@ export const getStaticProps = async () => {
     props: { allPosts },
   };
 };
+
+export default Index;

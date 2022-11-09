@@ -24,7 +24,7 @@ import { useEffect, useState } from 'react';
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
 import LastFmApi from 'lastfm-nodejs-client';
-import type { Artist, Track, User, WeeklyAlbum } from 'lastfm-nodejs-client/@types';
+import type { Artist, Image, Track, User, WeeklyAlbum } from 'lastfm-nodejs-client/@types';
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
 import Image from 'next/image';
@@ -286,7 +286,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', 10);
+    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', 50);
     const { recenttracks } = data;
     return recenttracks;
   };
@@ -417,14 +417,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
     });
 
     const recentTracksWithImages = track.map((track: Track) => {
+      const getImage: Image = track.image.find((img: Image) => img.size === 'extralarge');
       return {
         ...track,
-        image: getAlbumCoverImage(
-          track.artist.mbid,
-          track.album.mbid,
-          track.album['#text'],
-          track.artist['#text'],
-        ),
+        image: getImage['#text'],
       };
     });
 
@@ -441,12 +437,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      error: myErrors ? JSON.parse(JSON.stringify(myErrors)) : [],
-      recentTracks: myRecentTracks[0] ? JSON.parse(JSON.stringify(myRecentTracks[0])) : [],
-      topArtists: myTopArtists[0] ? JSON.parse(JSON.stringify(myTopArtists[0])) : [],
-      weeklyAlbumChart: myWeeklyAlbumChart[0]
-        ? JSON.parse(JSON.stringify(myWeeklyAlbumChart[0]))
-        : [],
+      error: myErrors ? myErrors : [],
+      recentTracks: myRecentTracks[0] ? myRecentTracks[0] : [],
+      topArtists: myTopArtists[0] ? myTopArtists[0] : [],
+      weeklyAlbumChart: myWeeklyAlbumChart[0] ? myWeeklyAlbumChart[0] : [],
       userProfile: await getUser(),
     },
   };
