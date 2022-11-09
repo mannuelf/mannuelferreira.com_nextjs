@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 type ScrobblesCard = {
-  imageUrl: string;
+  imageUrl?: string;
   mbid?: string;
   nowplaying?: string;
   playCount?: string;

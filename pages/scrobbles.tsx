@@ -209,7 +209,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
                     subTitle={''}
                     title={artist.name}
                     siteUrl={artist.url}
-                    imageUrl={artist.image}
+                    imageUrl={artist.image ?? ''}
                     key={artist.name.trim().replace(/\s/gm, '')}
                   />
                 ))
@@ -419,9 +419,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     });
 
     const recentTracksWithImages = track.map((track: Track) => {
-      const getImage: LastFmImage = track.image.find(
-        (img: LastFmImage) => img.size === 'extralarge',
-      );
+      const getImage = track.image.find((img: LastFmImage) => img.size === 'extralarge');
       return {
         ...track,
         image: getImage['#text'] ?? '',
