@@ -26,7 +26,7 @@ specifiers:
   globby: ^13.1.2
   got: ^12.5.2
   gray-matter: 4.0.3
-  lastfm-nodejs-client: 1.1.3
+  lastfm-nodejs-client: 1.1.4
   logrocket: ^3.0.1
   next: ^12.3.1
   node-fetch: ^2.6.7
@@ -55,7 +55,7 @@ dependencies:
   dotenv: 16.0.3
   globby: 13.1.2
   gray-matter: 4.0.3
-  lastfm-nodejs-client: 1.1.3
+  lastfm-nodejs-client: 1.1.4
   logrocket: 3.0.1
   next: 12.3.1_qtpcxnaaarbm4ws7ughq6oxfve
   node-fetch: 2.6.7
@@ -2626,8 +2626,8 @@ packages:
       language-subtag-registry: 0.3.22
     dev: true
 
-  /lastfm-nodejs-client/1.1.3:
-    resolution: {integrity: sha512-0lkbnndWw8jENkysLisQr65CRsdc5d2VgwULlEiIJ+rVjm38C3zSMCWJt/lvui1APr9Xjk1S3wZgjmlUtNWiPw==}
+  /lastfm-nodejs-client/1.1.4:
+    resolution: {integrity: sha512-3Yu5nk/hEPl4Be7CNwFhVTfXVpCidF+yWB1eL4IgkpPoomJpbKY4D8BA8V2nqAVPoajlDc1YTW6VDs5yE8w7Fw==}
     dependencies:
       node-fetch: 2.6.7
       rimraf: 3.0.2
