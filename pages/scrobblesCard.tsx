@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 type ScrobblesCard = {
@@ -37,15 +38,101 @@ const ScrobblesCard = ({
         }}
       >
         <div className='absolute bottom-0 left-0 pb-0 mb-2'>
+          <span className='grid p-2 text-xs font-light text-white rounded-br-lg'>
+            <a
+              href={`https://music.apple.com/us/search?term=${title}${' '}${subTitle}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-block mr-2'
+            >
+              <Image
+                src={'/assets/icons/icon-apple.svg'}
+                alt='Apple Music'
+                width={20}
+                height={20}
+                layout='fixed'
+              />
+            </a>
+            <a
+              href={`https://www.beatport.com/search?q=${title}${' '}${subTitle}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-block mr-2'
+            >
+              <Image
+                src={'/assets/icons/icon-beatport.svg'}
+                alt='Beatport'
+                width={20}
+                height={20}
+                layout='fixed'
+              />
+            </a>
+            <a
+              href={`https://www.deezer.com/search/${title}${' '}${subTitle}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-block mr-2'
+            >
+              <Image
+                src={'/assets/icons/icon-deezer.svg'}
+                alt='Deezer'
+                width={20}
+                height={20}
+                layout='fixed'
+              />
+            </a>
+            <a
+              href={`https://open.spotify.com/search/${title}${' '}${subTitle}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-block mr-2'
+            >
+              <Image
+                src={'/assets/icons/icon-spotify.svg'}
+                alt='Spotify'
+                width={20}
+                height={20}
+                layout='fixed'
+              />
+            </a>
+            <a
+              href={`https://listen.tidal.com/search?q=${title}${' '}${subTitle}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-block mr-2'
+            >
+              <Image
+                src={'/assets/icons/icon-tidal.svg'}
+                alt='TIDAL'
+                width={20}
+                height={20}
+                layout='fixed'
+              />
+            </a>
+            <a
+              href={`https://music.youtube.com/search?q=${title}${' '}${subTitle}`}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-block mr-2'
+            >
+              <Image
+                src={'/assets/icons/icon-youtube.svg'}
+                alt='YouTube'
+                width={20}
+                height={20}
+                layout='fixed'
+              />
+            </a>
+          </span>
           {playCount ? (
-            <h3 className='p-2 text-3xl font-normal text-white bg-black w-min bg-opacity-60 rounded-tr-lg'>
+            <h3 className='p-2 text-2xl font-normal text-white bg-black w-min bg-opacity-60 rounded-tr-lg'>
               {playCount}
               <span className='pl-2 text-sm font-light text-white'>plays</span>
             </h3>
           ) : null}{' '}
           {nowplaying ? (
-            <h3 className='p-2 text-base font-normal text-white bg-orange bg-opacity-60 rounded-tr-lg rounded-br-lg'>
-              🎹 Now playing
+            <h3 className='p-2 text-xs font-normal text-white rounded-tr-lg rounded-br-lg'>
+              🎹 Playing
             </h3>
           ) : null}
           {subTitle ? (
@@ -55,7 +142,7 @@ const ScrobblesCard = ({
               </Link>
             </h2>
           ) : null}
-          <h2 className='p-2 text-2xl font-light text-white bg-black bg-opacity-40 rounded-br-lg'>
+          <h2 className='p-2 text-xl font-semibold text-white bg-black bg-opacity-40 rounded-br-lg'>
             <Link href={siteUrl ?? '#'}>
               <a>{title}</a>
             </Link>
