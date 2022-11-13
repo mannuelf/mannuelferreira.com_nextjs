@@ -23,7 +23,7 @@ const ScrobblesCard = ({
   title,
 }: ScrobblesCard) => {
   return (
-    <div key={title} className='relative rounded-lg'>
+    <div key={title} className='scrobble-card relative rounded-lg'>
       <div
         key={title + mbid}
         className={`${
@@ -42,7 +42,7 @@ const ScrobblesCard = ({
           />
         ) : null}
         <div className='absolute bottom-0 left-0 pb-0 mb-2'>
-          <span className='grid p-2 text-xs font-light text-white rounded-br-lg'>
+          <span className='grid gap-4	p-2 text-xs font-light text-white rounded-br-lg'>
             <a
               href={`https://music.apple.com/us/search?term=${title}${' '}${subTitle}`}
               target='_blank'

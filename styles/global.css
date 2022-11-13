@@ -135,6 +135,14 @@ p a {
 /*
  * Scrobble card, overides and styles
  */
-.nowplaying {
+.scrobble-card .nowplaying {
   border: 8px inset #ff9d00;
+}
+
+.scrobble-card .h-80 {
+  height: 23rem;
+}
+
+.scrobble-card .gap-4 {
+  gap: 0.6rem;
 }
