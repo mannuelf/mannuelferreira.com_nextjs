@@ -147,6 +147,6 @@ p a {
   gap: 0.6rem;
 }
 
-.top-artist .h-80 {
+.top-artist .scrobble-card .h-80 {
   height: 20rem;
 }
