@@ -36,8 +36,8 @@ const ScrobblesCard = ({
             placeholder='blur'
             src={imageUrl}
             alt={title}
-            width={420}
-            height={420}
+            width={398}
+            height={320}
             layout={'fill'}
           />
         ) : null}
