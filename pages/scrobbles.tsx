@@ -288,7 +288,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', '50');
+    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', '52');
     const { recenttracks } = data;
     return recenttracks;
   };
