@@ -28,15 +28,19 @@ const ScrobblesCard = ({
         key={title + mbid}
         className={`${
           nowplaying ? 'nowplaying ' : ''
-        }relative h-80 md:h-85 bg-purple-dark rounded-lg`}
-        style={{
-          overflow: 'hidden',
-          backgroundSize: 'cover',
-          backgroundPosition: 'top center',
-          backgroundRepeat: 'no-repeat',
-          backgroundImage: `url(${imageUrl})`,
-        }}
+        }relative h-80 md:h-85 bg-purple-dark rounded-lg overflow-hidden`}
       >
+        {imageUrl ? (
+          <Image
+            blurDataURL={imageUrl}
+            placeholder='blur'
+            src={imageUrl}
+            alt={title}
+            width={420}
+            height={420}
+            layout={'fill'}
+          />
+        ) : null}
         <div className='absolute bottom-0 left-0 pb-0 mb-2'>
           <span className='grid p-2 text-xs font-light text-white rounded-br-lg'>
             <a

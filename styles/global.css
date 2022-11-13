@@ -132,6 +132,9 @@ p a {
   border-bottom: 1px solid orange;
 }
 
+/*
+ * Scrobble card, overides and styles
+ */
 .nowplaying {
   border: 8px inset #ff9d00;
 }

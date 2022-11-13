@@ -200,7 +200,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <h2 className='text-2xl font-medium'>Top Artists</h2>
             <p>Scrobbles since 2008</p>
           </div>
-          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-4'>
+          <div className='grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 grid-rows-4 gap-2 pb-4'>
             {artists && artists.length
               ? artists.map((artist) => (
                   <ScrobblesCard
@@ -298,7 +298,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       method.user.top_artists,
       config.username,
       'overall',
-      '200',
+      '201',
     );
 
     const { topartists } = data;
@@ -310,7 +310,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       method.user.weekly_album_chart,
       config.username,
       'overall',
-      '100',
+      '52',
     );
     const { weeklyalbumchart } = data;
     return weeklyalbumchart;
