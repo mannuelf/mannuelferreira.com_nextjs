@@ -24,7 +24,7 @@ module.exports = {
           md: '100%',
           lg: '1280px',
           xl: '1366px',
-          '2xl': '1436px',
+          '2xl': '1536px',
         },
       },
       fontSize: {},
