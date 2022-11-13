@@ -146,3 +146,7 @@ p a {
 .scrobble-card .gap-4 {
   gap: 0.6rem;
 }
+
+.top-artist .h-80 {
+  height: 20rem;
+}
