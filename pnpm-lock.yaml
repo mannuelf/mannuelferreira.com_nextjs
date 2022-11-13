@@ -26,7 +26,7 @@ specifiers:
   globby: ^13.1.2
   got: ^12.5.2
   gray-matter: 4.0.3
-  lastfm-nodejs-client: ^1.1.5
+  lastfm-nodejs-client: ^1.2.2
   logrocket: ^3.0.1
   next: ^12.3.1
   node-fetch: ^2.6.7
@@ -55,7 +55,7 @@ dependencies:
   dotenv: 16.0.3
   globby: 13.1.2
   gray-matter: 4.0.3
-  lastfm-nodejs-client: 1.1.5
+  lastfm-nodejs-client: 1.2.2
   logrocket: 3.0.1
   next: 12.3.1_qtpcxnaaarbm4ws7ughq6oxfve
   node-fetch: 2.6.7
@@ -1273,6 +1273,14 @@ packages:
   /create-require/1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: true
+
+  /cross-fetch/3.1.5:
+    resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
+    dependencies:
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -2626,10 +2634,10 @@ packages:
       language-subtag-registry: 0.3.22
     dev: true
 
-  /lastfm-nodejs-client/1.1.5:
-    resolution: {integrity: sha512-5luq0BKnn1gJhNDBf80lQMfziQZTrNUZxwN6ZFhfHTNrw7ztsk34iO4oLtAqHQwa/92sV3VMusyONMy4HxT2Nw==}
+  /lastfm-nodejs-client/1.2.2:
+    resolution: {integrity: sha512-lYZ4syrzft3Jg4TL37gZfEsKSPq77XDgQbGiPXTolYTUKojS2MDPf/TcYF6zCsQ4ioLn7rce3W49K03YGM4KxA==}
     dependencies:
-      node-fetch: 2.6.7
+      cross-fetch: 3.1.5
       rimraf: 3.0.2
     transitivePeerDependencies:
       - encoding
