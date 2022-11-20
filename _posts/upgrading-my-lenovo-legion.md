@@ -21,7 +21,7 @@ Why would you do that especially after watching this scary [YouTube](https://you
 1. Patience
 2. [Replacement keyboard](https://www.aliexpress.com/item/4000901894543.html?spm=a2g0o.order_list.0.0.21ef1802c1Rdl1) from AliExpress the [Azazel Store](https://www.aliexpress.com/item/4000901894543.html?spm=a2g0o.order_list.0.0.21ef1802c1Rdl1) to be precise.
 3. Magnetised Phillips Screw driver and credit card (to pry open the laptop once the screws have been free'd).
-4. Soldering iron (inexpensive hobby ones are fine) you only need it to melt plastic rivets (mor on this later)
+4. Soldering iron (inexpensive hobby ones are fine) you only need it to melt plastic rivets (more on this later).
 5. Patience, did I say that already.
 
 ## The dismantle
