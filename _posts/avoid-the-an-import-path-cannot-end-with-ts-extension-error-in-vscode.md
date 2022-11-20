@@ -1,6 +1,6 @@
 ---
-title: 'Deno avoid import path cannot end in a extension warning'
-excerpt: 'How to avoid the import path cannot end with a .ts extension error in vscode'
+title: 'Deno avoid import path cannot end with a .ts extension error in vscode warning'
+excerpt: 'A common error when starting out coding with Deno is this annoying awarning about not being allowed to import using file extentions.'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1668935182/images/deno-cover.png'
 date: '2022-11-20T10:25:00.322Z'
 author:
