@@ -1,6 +1,6 @@
 ---
 title: 'FactBook Explorer'
-excerpt: 'Factbook Explorer is a web app designed to help navigate statistics from the OECD iLibrary'
+excerpt: 'Factbook Explorer is a web app designed to help navigate statistics from the OECD iLibrary.'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1664734063/mfcom/factbook-explorer.png'
 date: '2022-10-04T07:18:00.322Z'
 author:
@@ -47,4 +47,4 @@ It was a group collaboration and you may see all commits and documentation here 
 
 [Read Backend](https://github.com/mannuelf/nuc-studio-1-project-backend) code here.
 
-The project is by no means feature complete I will continue on it, I will add some fancy new frontend framework as well as add more data to it. 
+The project is by no means feature complete I will continue on it, I will add some fancy new frontend framework as well as add more data to it.

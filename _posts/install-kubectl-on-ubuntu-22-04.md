@@ -1,6 +1,6 @@
 ---
 title: 'Install kubectl on Ubuntu 22.04 using bash'
-excerpt: 'Some helpful commands to install the kubectl the Kubenetes tool to help you manager your Kubernetes cluster'
+excerpt: 'Some helpful commands to install the kubectl the Kubenetes tool to help you manager your Kubernetes cluster.'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png'
 date: '2022-11-22T06:25:00.322Z'
 author:

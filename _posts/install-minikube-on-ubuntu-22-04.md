@@ -1,6 +1,6 @@
 ---
-title: 'Install Minikube on Ubuntu 22.04 using bash'
-excerpt: 'Some helpful commands to install the kubectl the Kubenetes tool to help you manager your Kubernetes cluster'
+title: 'Install Minikube on Ubuntu 22.04'
+excerpt: 'A simple guide to install minikube, help you get up and running with kubernetes on you local development environment.'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png'
 date: '2022-11-23T07:58:00.322Z'
 author:
