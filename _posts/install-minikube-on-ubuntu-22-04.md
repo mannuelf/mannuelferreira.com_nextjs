@@ -18,10 +18,10 @@ You will need Docker in order to use, or any other flavour of container/virtual 
 
 ## 1. Download the minikube binary
 
-In your terminal, make sure you at your home directory.
+In your terminal, make sure you at your home directory. Type `$HOME` hit enter:
 
 ```bash
-cd
+$HOME
 ```
 
 Install latest, stable minkikube release on x86-64 Linux
@@ -144,6 +144,8 @@ Minikube Dashboard
 minikube dashboard
 ```
 
+![Dashboard](https://res.cloudinary.com/mannuel/image/upload/v1669267625/images/minikube-dashboard.png)
+
 ```bash
 minkube pause
 ```
@@ -176,4 +178,4 @@ minikube addons list
 ...
 ```
 
-Okay wwe have established all is working, that's all for now. We will create and deploy an application.
+Okay we have established all is working, that's all for now. We will create and deploy an application in the next step.
