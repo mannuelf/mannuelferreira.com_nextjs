@@ -54,10 +54,28 @@ minikube start
 ❌  Exiting due to DRV_NOT_HEALTHY: Found driver(s) but none were healthy. See above for suggestions how to fix installed drivers.
 ```
 
-This is permission error while minikube trys to connect to Docker daemon, to fix run the following command:
+This is permission error while minikube attempts to connect to Docker daemon, to fix run the following commands:
+
+> DO NOT RUN DOCKER WITH sudo COMMAND ever.
+>
+> [Docker daemon attack surface](https://docs.docker.com/engine/security/#docker-daemon-attack-surface)
+
+Create a docker group and add your user:
 
 ```bash
-sudo usermod -aG docker $USER && newgrp docker
+sudo groupadd docker
+```
+
+Add user to the the group
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+You can also run the following command to activate the changes to groups:
+
+```bash
+newgrp docker
 ```
 
 Then run `minikube start` again:
@@ -87,7 +105,23 @@ minikube start
 
 ## 4. Test it out
 
-Now we can use `kubectl` cli tools
+Run `minkube` to see the help docs
+
+```bash
+minikube
+minikube provisions and manages local Kubernetes clusters optimized for development workflows.
+
+Basic Commands:
+  start            Starts a local Kubernetes cluster
+  status           Gets the status of a local Kubernetes cluster
+  stop             Stops a running local Kubernetes cluster
+  delete           Deletes a local Kubernetes cluster
+  dashboard        Access the Kubernetes dashboard running within the minikube cluster
+  pause            pause Kubernetes
+  unpause          unpause Kubernetes
+```
+
+Now we can use `kubectl` cli tools run `kubectl get po -A` to see the current of kubernetes cluster required to run/operate it.
 
 ```bash
 kubectl get po -A
@@ -101,3 +135,45 @@ kube-system   kube-proxy-mw44h                   1/1     Running   0          63
 kube-system   kube-scheduler-minikube            1/1     Running   0          76s
 kube-system   storage-provisioner                1/1     Running   0          75s
 ```
+
+## 5. Interacting with minikube &amp; other helpfull commands
+
+Minikube Dashboard
+
+```bash
+minikube dashboard
+```
+
+```bash
+minkube pause
+```
+
+```bash
+minikube unpause
+```
+
+```bash
+minikube stop
+```
+
+```bash
+minikube start
+```
+
+```bash
+minikube addons list
+
+|-----------------------------|----------|--------------|--------------------------------|
+|         ADDON NAME          | PROFILE  |    STATUS    |           MAINTAINER           |
+|-----------------------------|----------|--------------|--------------------------------|
+| ambassador                  | minikube | disabled     | 3rd party (Ambassador)         |
+| auto-pause                  | minikube | disabled     | Google                         |
+| cloud-spanner               | minikube | disabled     | Google                         |
+| csi-hostpath-driver         | minikube | disabled     | Kubernetes                     |
+| dashboard                   | minikube | enabled ✅   | Kubernetes                     |
+| default-storageclass        | minikube | enabled ✅   | Kubernetes                     |
+| efk                         | minikube | disabled     | 3rd party (Elastic)            |
+...
+```
+
+Okay wwe have established all is working, that's all for now. We will create and deploy an application.
