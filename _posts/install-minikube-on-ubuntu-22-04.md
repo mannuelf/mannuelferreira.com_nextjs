@@ -10,9 +10,11 @@ ogImage:
   url: 'https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png'
 ---
 
-After installing [kubectl](https://mannuelferreira.com/posts/install-kubectl-on-ubuntu-22-04) you will need Minikube.
+In a [previous post](https://mannuelferreira.com/posts/install-kubectl-on-ubuntu-22-04) we installed [kubectl](https://mannuelferreira.com/posts/install-kubectl-on-ubuntu-22-04) now we will install minikube.
 
-Minikube will run your kubernetes cluster on your local machine, it will essentially be you `server like container` on which your Docker containers will run.
+Minikube creates a `VM` that will run the Docker containers inside of. Use `kubectl` to manage the lifespan of these containers apps.
+
+![Minikube Diagram](https://res.cloudinary.com/mannuel/image/upload/v1669269521/images/diagram-node-cluster.svg)
 
 You will need Docker in order to use, or any other flavour of container/virtual manachine manager (Hyperkit, Podman, Virtualbox, VMware Fusion/Workstation, KVM, Hyper-v).
 
