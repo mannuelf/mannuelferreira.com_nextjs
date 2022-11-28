@@ -217,4 +217,4 @@ And here is how the pipeline looks:
 
 [Click here](https://github.com/mannuelf/lastfm-nodejs-client/actions/runs/3562147466/jobs/5983622759) to see it live in Github.
 
-I hope you enjoyed this wirlwind tour, concider sharing with your collegues and friends.
+I hope you enjoyed this whirlwind tour, concider sharing with your colleagues and friends.
