@@ -1,13 +1,13 @@
 ---
 title: 'Runtime aka environment variables in NodeJs and Github Actions CI/CD pipeline with Playwright test'
 excerpt: 'A guide to testing environment variables in NodeJs project and runnig it a github actions CI/CD pipeline using Playright'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png'
+coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1669673297/images/github-actions-cover.png'
 date: '2022-11-28T06:25:00.322Z'
 author:
   name: M Ferreira
   picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png'
+  url: 'https://res.cloudinary.com/mannuel/image/upload/v1669673297/images/github-actions-cover.png'
 ---
 
 This guide will show you how to inject environment variables into the Github actions pipeline. the context of this guide is to have our tests run in the pipeline in the same way as they run on our localhost.
