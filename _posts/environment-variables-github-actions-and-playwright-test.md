@@ -88,7 +88,7 @@ let environmentVarWarning =
   '❗ No environment variable found, use the .env.example file to create your own .env file with required properties and values.';
 ```
 
-- Create a describe so multple tests can be grouped, plan to run 2 test
+- Create a describe so multple tests can be grouped, plan to run 2 tests
 
 ```js
 test.describe('Environment variables present and configured', async () => {
@@ -98,10 +98,12 @@ test.describe('Environment variables present and configured', async () => {
 
 ```js
 test.describe('Environment variables present and configured', async () => {
+  // 1
   test('API_BASE_URL is present', async () => {
     expect(API_BASE_URL, environmentVarWarning).toBeDefined();
   });
 
+  // 2
   test('API_KEY is present', async () => {
     expect(API_KEY, environmentVarWarning).toBeDefined();
   });
