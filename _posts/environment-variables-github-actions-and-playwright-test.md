@@ -1,5 +1,5 @@
 ---
-title: 'Runtime aka environment variables in NodeJs and Github Actions CI/CD pipeline with Playwright test'
+title: 'Environment variables inside of NodeJs and Github actions CI/CD pipeline with Playwright test'
 excerpt: 'A guide to testing environment variables in NodeJs project and runnig it a github actions CI/CD pipeline using Playright'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1669673297/images/github-actions-cover.png'
 date: '2022-11-28T06:25:00.322Z'
