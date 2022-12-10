@@ -10,13 +10,23 @@ const FooterCopyright = () => {
         </li>
         <li>
           Fonts:{' '}
-          <a href={GOOGLE_FONTS_URL} rel='noopener noreferrer' target='_blank' className='underline'>
-            Ubuntu, Fira.
+          <a
+            href={GOOGLE_FONTS_URL}
+            rel='noopener noreferrer'
+            target='_blank'
+            className='underline'
+          >
+            Ubuntu.
           </a>
         </li>
         <li>
           Icons:{' '}
-          <a href='https://fontawesome.com' rel='noopener noreferrer' target='_blank' className='underline'>
+          <a
+            href='https://fontawesome.com'
+            rel='noopener noreferrer'
+            target='_blank'
+            className='underline'
+          >
             Font Awesome 5.
           </a>
         </li>
