@@ -150,3 +150,34 @@ p a {
 .top-artist .scrobble-card .h-80 {
   height: 18.6rem;
 }
+
+.icon-hamburger {
+  height: 32px;
+  width: 32px;
+}
+
+.icon-hamburger .lines {
+  display: block;
+  width: 32px;
+  height: 4px;
+  background-color: white;
+  text-align: center;
+}
+.icon-hamburger .lines::before {
+  background-color: #f5628d;
+  content: '';
+  display: block;
+  height: 4px;
+  position: relative;
+  top: 16px;
+  width: 32px;
+}
+.icon-hamburger .lines::after {
+  background-color: #ff9d00;
+  content: '';
+  display: block;
+  position: relative;
+  top: 4px;
+  height: 4px;
+  width: 32px;
+}

@@ -11,9 +11,7 @@ const NavBar = ({ position }: NavProps) => {
 
   return (
     <>
-      <nav
-        className={`${position} flex flex-wrap items-center justify-between px-0 py-0 mb-0`}
-      >
+      <nav className={`${position} flex flex-wrap items-center justify-between px-0 py-0 mb-0`}>
         <div className='container flex flex-wrap items-center justify-between px-0 mx-auto'>
           <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
             <Logo customClass='grow-none' />
@@ -22,15 +20,12 @@ const NavBar = ({ position }: NavProps) => {
               type='button'
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <i className='fas fa-bars'></i>
+              <div className='icon-hamburger'>
+                <div className='lines'></div>
+              </div>
             </button>
           </div>
-          <div
-            className={
-              'lg:flex flex-grow items-center' +
-              (navbarOpen ? ' flex' : ' hidden')
-            }
-          >
+          <div className={'lg:flex flex-grow items-center' + (navbarOpen ? ' flex' : ' hidden')}>
             <ul
               className={`flex flex-col lg:flex-row list-none lg:ml-auto ${
                 navbarOpen ? 'mb-8' : ''
