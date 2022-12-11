@@ -48,3 +48,15 @@ export const URL_LINKEDIN_PROFILE = 'https://www.linkedin.com/in/mannuelferreira
 export const URL_MICROSOFT_PROFILE = 'https://docs.microsoft.com/en-us/users/mannuelferreira';
 export const URL_TWITTER_PROFILE = 'https://twitter.com/manidf';
 export const URL_YOUTUBE_CHANNEL = 'https://www.youtube.com/mannuelferreira';
+export const ICON_GITHUB =
+  'https://res.cloudinary.com/mannuel/image/upload/v1670743468/images/icon-github.svg';
+export const ICON_CODEPEN =
+  'https://res.cloudinary.com/mannuel/image/upload/v1670743468/images/icon-codepen.svg';
+export const ICON_LINKEDIN =
+  'https://res.cloudinary.com/mannuel/image/upload/v1670743468/images/icon-linkedin.svg';
+export const ICON_MICROSOFT =
+  'https://res.cloudinary.com/mannuel/image/upload/v1670743468/images/icon-microsoft.svg';
+export const ICON_TWITTER =
+  'https://res.cloudinary.com/mannuel/image/upload/v1670743806/images/icon-twitter.svg';
+export const ICON_YOUTUBE =
+  'https://res.cloudinary.com/mannuel/image/upload/v1670743468/images/icon-youtube.svg';
