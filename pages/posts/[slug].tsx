@@ -33,12 +33,7 @@ const Post = ({ post }: Props) => {
       const contents = String(children).replace(/\n$/, '');
 
       return !inline && match ? (
-        <SyntaxHighlighter
-          style={dracula}
-          language={match[1]}
-          PreTag='div'
-          {...props}
-        >
+        <SyntaxHighlighter style={dracula} language={match[1]} PreTag='div' {...props}>
           {contents}
         </SyntaxHighlighter>
       ) : (
@@ -67,11 +62,7 @@ const Post = ({ post }: Props) => {
                 ogTwitterCreator={TWITTER_HANDLE}
                 ogUrl={currentURL}
               />
-              <PostHeader
-                title={post.title}
-                date={post.date}
-                author={post.author}
-              />
+              <PostHeader title={post.title} date={post.date} author={post.author} />
               <Markdown components={components} className='markdown-body'>
                 {post.content}
               </Markdown>
