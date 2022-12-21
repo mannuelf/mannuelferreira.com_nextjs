@@ -23,7 +23,7 @@ const ScrobblesCard = ({
   title,
 }: ScrobblesCard) => {
   return (
-    <div key={title} className='scrobble-card relative rounded-lg max-w-xs'>
+    <div key={title} className='scrobble-card relative rounded-lg'>
       <div
         key={title + mbid}
         className={`${
