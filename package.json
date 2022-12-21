@@ -10,7 +10,8 @@
     "watch:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css --watch",
     "lint": "next lint",
     "start": "next start",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "nexxt-upgrade-stuff": "npx @next/codemod next-image-to-legacy-image ./pages"
   },
   "dependencies": {
     "@next/env": "^12.3.1",
