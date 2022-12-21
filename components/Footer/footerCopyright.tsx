@@ -1,4 +1,4 @@
-import { CMS_NAME, GOOGLE_FONTS_URL } from '@shared/constants';
+import { GOOGLE_FONTS_URL } from '@shared/constants';
 
 const FooterCopyright = () => {
   return (

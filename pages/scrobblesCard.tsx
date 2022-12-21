@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 
 type ScrobblesCard = {
@@ -141,15 +141,11 @@ const ScrobblesCard = ({
           ) : null}
           {subTitle ? (
             <h2 className='p-2 text-l font-light text-white bg-black bg-opacity-50 rounded-tr-lg'>
-              <Link href={imageUrl ?? ''}>
-                <a>{subTitle}</a>
-              </Link>
+              <Link href={imageUrl ?? ''}>{subTitle}</Link>
             </h2>
           ) : null}
           <h2 className='p-2 text-xl font-semibold text-white bg-black bg-opacity-40 rounded-br-lg'>
-            <Link href={siteUrl ?? '#'}>
-              <a>{title}</a>
-            </Link>
+            <Link href={siteUrl ?? '#'}>{title}</Link>
           </h2>
         </div>
       </div>
