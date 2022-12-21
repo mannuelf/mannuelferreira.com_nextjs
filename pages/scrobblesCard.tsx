@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 type ScrobblesCard = {
@@ -38,7 +38,6 @@ const ScrobblesCard = ({
             alt={title}
             width={398}
             height={320}
-            layout={'fill'}
           />
         ) : null}
         <div className='absolute bottom-0 left-0 pb-0 mb-2'>
@@ -54,7 +53,6 @@ const ScrobblesCard = ({
                 alt='Apple Music'
                 width={20}
                 height={20}
-                layout='fixed'
               />
             </a>
             <a
@@ -68,7 +66,6 @@ const ScrobblesCard = ({
                 alt='Beatport'
                 width={20}
                 height={20}
-                layout='fixed'
               />
             </a>
             <a
@@ -77,13 +74,7 @@ const ScrobblesCard = ({
               rel='noopener noreferrer'
               className='inline-block mr-2'
             >
-              <Image
-                src={'/assets/icons/icon-deezer.svg'}
-                alt='Deezer'
-                width={20}
-                height={20}
-                layout='fixed'
-              />
+              <Image src={'/assets/icons/icon-deezer.svg'} alt='Deezer' width={20} height={20} />
             </a>
             <a
               href={`https://open.spotify.com/search/${title}${' '}${subTitle}`}
@@ -91,13 +82,7 @@ const ScrobblesCard = ({
               rel='noopener noreferrer'
               className='inline-block mr-2'
             >
-              <Image
-                src={'/assets/icons/icon-spotify.svg'}
-                alt='Spotify'
-                width={20}
-                height={20}
-                layout='fixed'
-              />
+              <Image src={'/assets/icons/icon-spotify.svg'} alt='Spotify' width={20} height={20} />
             </a>
             <a
               href={`https://listen.tidal.com/search?q=${title}${' '}${subTitle}`}
@@ -105,13 +90,7 @@ const ScrobblesCard = ({
               rel='noopener noreferrer'
               className='inline-block mr-2'
             >
-              <Image
-                src={'/assets/icons/icon-tidal.svg'}
-                alt='TIDAL'
-                width={20}
-                height={20}
-                layout='fixed'
-              />
+              <Image src={'/assets/icons/icon-tidal.svg'} alt='TIDAL' width={20} height={20} />
             </a>
             <a
               href={`https://music.youtube.com/search?q=${title}${' '}${subTitle}`}
@@ -119,13 +98,7 @@ const ScrobblesCard = ({
               rel='noopener noreferrer'
               className='inline-block mr-2'
             >
-              <Image
-                src={'/assets/icons/icon-youtube.svg'}
-                alt='YouTube'
-                width={20}
-                height={20}
-                layout='fixed'
-              />
+              <Image src={'/assets/icons/icon-youtube.svg'} alt='YouTube' width={20} height={20} />
             </a>
           </span>
           {playCount ? (
