@@ -23,22 +23,15 @@ const ScrobblesCard = ({
   title,
 }: ScrobblesCard) => {
   return (
-    <div key={title} className='scrobble-card relative rounded-lg'>
+    <div key={title} className='scrobble-card relative rounded-lg max-w-xs'>
       <div
         key={title + mbid}
         className={`${
           nowplaying ? 'nowplaying ' : ''
-        }relative h-80 md:h-85 bg-purple-dark rounded-lg overflow-hidden`}
+        }relative h-80 md:h-85 bg-white rounded-lg overflow-hidden`}
       >
         {imageUrl ? (
-          <Image
-            blurDataURL={imageUrl}
-            placeholder='blur'
-            src={imageUrl}
-            alt={title}
-            width={398}
-            height={320}
-          />
+          <Image blurDataURL={imageUrl} placeholder='blur' src={imageUrl} alt={title} fill />
         ) : null}
         <div className='absolute bottom-0 left-0 pb-0 mb-2'>
           <span className='grid gap-4	p-2 text-xs font-light text-white rounded-br-lg'>
