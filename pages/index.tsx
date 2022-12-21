@@ -2,7 +2,7 @@ import Container from '@components/container';
 import MoreStories from '@components/more-stories';
 import Layout from '@components/Layout/layout';
 import { getAllPosts } from '@lib/api';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import Link from 'next/link';
 import { AVATAR_ME, CMS_NAME, GENERIC_META, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
 import MetaTags from '@components/meta-tags';
@@ -73,11 +73,13 @@ const Index = ({ allPosts }: Props) => {
               </div>
               {pageSideNav
                 ? pageSideNav.map((nav) => (
-                    <Link href={nav.href} key={nav.title}>
-                      <a className='mb-6 border-b-4 border-purple-900 hover:bg-white'>
-                        <h2 className='text-3xl font-medium'>{nav.title}</h2>
-                        <p className='text-base font-light'>{nav.text}</p>
-                      </a>
+                    <Link
+                      href={nav.href}
+                      key={nav.title}
+                      className='mb-6 border-b-4 border-purple-900 hover:bg-white'
+                    >
+                      <h2 className='text-3xl font-medium'>{nav.title}</h2>
+                      <p className='text-base font-light'>{nav.text}</p>
                     </Link>
                   ))
                 : null}

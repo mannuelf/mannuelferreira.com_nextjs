@@ -61,7 +61,7 @@ const FooterSocial = () => {
         <li className='pr-4'>
           <a href={URL_LARACASTS} target='_blank' rel='noopener noreferrer'>
             <span>
-              <Image src={LOGO_LARCASTS} alt='Larcasts' width={28} height={28} layout='fixed' />
+              <Image src={LOGO_LARCASTS} alt='Larcasts' width={28} height={28} />
             </span>
           </a>
         </li>
