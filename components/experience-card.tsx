@@ -8,7 +8,13 @@ const ExperienceCard = ({ title, date, logo }: ExperienceCardProps) => {
       <div className='p-4 bg-white rounded'>
         <h2 className='pb-1 text-xl font-light'>{title}</h2>
         <h3 className='pb-4 text-2xl font-light'>{date}</h3>
-        <Image width={logo.width} height={logo.height} src={logo.href} alt={logo.title} />
+        <Image
+          width={logo.width}
+          height={logo.height}
+          src={logo.href}
+          alt={logo.title}
+          style={{ margin: '0 auto' }}
+        />
         <div className='pt-4'>
           <Link href={logo.weblink}>
             {logo.title} <i className='text-sm fa-solid fa-arrow-up-right-from-square'></i>
