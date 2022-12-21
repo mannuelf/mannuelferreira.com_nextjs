@@ -29,7 +29,7 @@ import type { Image as LastFmImage } from 'lastfm-nodejs-client/@types';
 
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import ScrobblesCard from './scrobblesCard';
 
 type Props = {

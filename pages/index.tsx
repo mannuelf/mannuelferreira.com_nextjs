@@ -2,7 +2,7 @@ import Container from '@components/container';
 import MoreStories from '@components/more-stories';
 import Layout from '@components/Layout/layout';
 import { getAllPosts } from '@lib/api';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import { AVATAR_ME, CMS_NAME, GENERIC_META, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
 import MetaTags from '@components/meta-tags';
