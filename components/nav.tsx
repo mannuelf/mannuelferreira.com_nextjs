@@ -11,12 +11,12 @@ const NavBar = ({ position }: NavProps) => {
 
   return (
     <>
-      <nav className={`${position} flex flex-wrap items-center justify-between px-0 py-0 mb-0`}>
-        <div className='container flex flex-wrap items-center justify-between px-0 mx-auto'>
+      <nav className={`${position} flex flex-wrap items-center justify-between `}>
+        <div className='container flex flex-wrap items-center justify-between mx-auto'>
           <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
-            <Logo customClass='grow-none' />
+            <Logo customClass='grow-none mt-1 md:mt-0' />
             <button
-              className='block px-3 py-1 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none'
+              className='block px-3 py-1 mt-1 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer md:mt-0 lg:hidden focus:outline-none'
               type='button'
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
