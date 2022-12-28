@@ -28,8 +28,8 @@ export default function MetaTags({
       <title>{`${ogTitle} | ${ogSiteName}`}</title>
       <meta name='twitter:card' content={ogTwitterCard} />
       <meta name='twitter:creator' content={ogTwitterCreator} />
-      <meta name='twitter:description' content={ogDescription} key='ogdesc' />
-      <meta name='twitter:image' content={ogImage} />
+      <meta name='twitter:description' content={ogDescription} />
+      <meta name='twitter:image:src' content={ogImage} />
       <meta name='twitter:site' content={ogTwitterSite} />
       <meta name='twitter:title' content={ogTitle} />
       <meta property='og:description' content={ogDescription} key='ogdesc' />
