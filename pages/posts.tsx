@@ -21,7 +21,7 @@ const Posts = ({ allPosts }: Props) => {
           ogTitle={'Posts'}
           ogTwitterCard='summary_large_image'
           ogTwitterCreator={TWITTER_HANDLE}
-          ogTwitterImage={TWITTER_CARD_POSTS}
+          ogTwitterImage={`${TWITTER_CARD_POSTS}?${Date.now()}`}
           ogTwitterSite={TWITTER_HANDLE}
           ogTwitterTitle={'Posts'}
           ogUrl='https://mannuelferreira.com/posts'

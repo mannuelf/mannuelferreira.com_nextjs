@@ -21,7 +21,7 @@ const Books = () => {
           ogTitle={TITLE_BOOKS}
           ogTwitterCard='summary_large_image'
           ogTwitterCreator={TWITTER_HANDLE}
-          ogTwitterImage={TWITTER_CARD_BOOKS}
+          ogTwitterImage={`${TWITTER_CARD_BOOKS}?${Date.now()}`}
           ogTwitterSite={TWITTER_HANDLE}
           ogTwitterTitle={TITLE_BOOKS}
           ogUrl='https://mannuelferreira.com/books'

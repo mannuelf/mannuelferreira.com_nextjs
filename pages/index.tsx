@@ -58,7 +58,7 @@ const Index = ({ allPosts }: Props) => {
           ogTitle={TITLE_HOME}
           ogTwitterCard='summary_large_image'
           ogTwitterCreator={TWITTER_HANDLE}
-          ogTwitterImage={TWITTER_CARD_HOME}
+          ogTwitterImage={`${TWITTER_CARD_HOME}?${Date.now()}`}
           ogTwitterSite={TWITTER_HANDLE}
           ogTwitterTitle={TITLE_HOME}
           ogUrl={SITE_URL}

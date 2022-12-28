@@ -24,7 +24,7 @@ const Experience = () => {
           ogTitle={'Experience'}
           ogTwitterCard='summary_large_image'
           ogTwitterCreator={TWITTER_HANDLE}
-          ogTwitterImage={TWITTER_CARD_EXPERIENCE}
+          ogTwitterImage={`${TWITTER_CARD_EXPERIENCE}?${Date.now()}`}
           ogTwitterSite={TWITTER_HANDLE}
           ogTwitterTitle={TITLE_EXPERIENCE}
           ogUrl='https://mannuelferreira.com/experience'

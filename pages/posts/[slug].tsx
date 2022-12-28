@@ -59,7 +59,7 @@ const Post = ({ post }: Props) => {
                 ogTitle={post.title}
                 ogTwitterCard={'summary_large_image'}
                 ogTwitterCreator={TWITTER_HANDLE}
-                ogTwitterImage={post.ogImage.url}
+                ogTwitterImage={`${post.ogImage.url}?${Date.now()}`}
                 ogTwitterSite={TWITTER_HANDLE}
                 ogTwitterTitle={post.title}
                 ogUrl={currentURL}
