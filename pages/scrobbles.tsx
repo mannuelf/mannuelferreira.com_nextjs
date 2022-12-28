@@ -1,5 +1,5 @@
-import Container from '@components/container';
 import Layout from '@components/Layout/layout';
+import Container from '@components/container';
 import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
 import {
@@ -24,8 +24,13 @@ import { useEffect, useState } from 'react';
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
 import LastFmApi from 'lastfm-nodejs-client';
-import type { Artist, Track, User, WeeklyAlbum } from 'lastfm-nodejs-client/@types';
-import type { Image as LastFmImage } from 'lastfm-nodejs-client/@types';
+import type {
+  Artist,
+  Image as LastFmImage,
+  Track,
+  User,
+  WeeklyAlbum,
+} from 'lastfm-nodejs-client/@types';
 
 import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
 import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
@@ -75,14 +80,16 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
   return (
     <Layout>
       <MetaTags
-        ogTitle={'Scrobbles'}
-        ogImage={TWITTER_CARD_MUSIC}
         ogDescription={META_MUSIC}
-        ogUrl={MUSIC_URL}
+        ogImage={TWITTER_CARD_MUSIC}
         ogSiteName={CMS_NAME}
+        ogTitle={'Scrobbles'}
         ogTwitterCard='summary_large_image'
-        ogTwitterSite={TWITTER_HANDLE}
         ogTwitterCreator={TWITTER_HANDLE}
+        ogTwitterImage={TWITTER_CARD_MUSIC}
+        ogTwitterSite={TWITTER_HANDLE}
+        ogTwitterTitle={'Scrobbles'}
+        ogUrl={MUSIC_URL}
       />
       <Container>
         <PageTitle>Scrobbles</PageTitle>
@@ -109,7 +116,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
               I have extracted an API client to{' '}
               <a href={URL_LASTFM_NPM_PKG} target='_blank' rel='noopener noreferrer'>
                 <span>
-                  <Image src={NPM_LOGO} alt='Larcasts' width={42} height={28} layout='fixed' />
+                  <Image src={NPM_LOGO} alt='Larcasts' width={42} height={28} />
                 </span>
               </a>
               , if you want to build something similar the client may help.
@@ -130,7 +137,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
               {user ? (
                 <>
                   Total plays:{' '}
-                  <span className='font-medium text-4xl text-red-600 '>{user?.playcount}</span>.
+                  <span className='font-bold text-4xl text-red-600 '>{user?.playcount}</span>.
                 </>
               ) : null}
             </p>

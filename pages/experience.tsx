@@ -1,32 +1,33 @@
+import Layout from '@components/Layout/layout';
 import Container from '@components/container';
 import ExperienceCard from '@components/experience-card';
-import Layout from '@components/Layout/layout';
-import PageTitle from '@components/page-title';
 import { ExperienceCardItems } from '@components/experience-card.data';
 import { ExperienceCardProps } from '@components/experience-card.types';
+import MetaTags from '@components/meta-tags';
+import PageTitle from '@components/page-title';
 import {
   CMS_NAME,
-  GENERIC_META,
   META_EXPERIENCE,
-  SITE_URL,
-  TWITTER_CARD_POSTS,
+  TITLE_EXPERIENCE,
+  TWITTER_CARD_EXPERIENCE,
   TWITTER_HANDLE,
 } from '@shared/constants';
-import MetaTags from '@components/meta-tags';
 
 const Experience = () => {
   return (
     <>
       <Layout>
         <MetaTags
-          ogTitle={'Experience'}
-          ogImage={TWITTER_CARD_POSTS}
           ogDescription={META_EXPERIENCE}
-          ogUrl='https://mannuelferreira.com/experience'
+          ogImage={TWITTER_CARD_EXPERIENCE}
           ogSiteName={CMS_NAME}
+          ogTitle={'Experience'}
           ogTwitterCard='summary_large_image'
-          ogTwitterSite={TWITTER_HANDLE}
           ogTwitterCreator={TWITTER_HANDLE}
+          ogTwitterImage={TWITTER_CARD_EXPERIENCE}
+          ogTwitterSite={TWITTER_HANDLE}
+          ogTwitterTitle={TITLE_EXPERIENCE}
+          ogUrl='https://mannuelferreira.com/experience'
         />
         <Container>
           <PageTitle>Experience</PageTitle>

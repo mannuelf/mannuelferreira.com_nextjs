@@ -3,14 +3,8 @@ import MoreStories from '@components/more-stories';
 import Layout from '@components/Layout/layout';
 import { getAllPosts } from '@lib/api';
 import PageTitle from '@components/page-title';
-import {
-  CMS_NAME,
-  META_POSTS,
-  TWITTER_CARD_POSTS,
-  TWITTER_HANDLE,
-} from '@shared/constants';
+import { CMS_NAME, META_POSTS, TWITTER_CARD_POSTS, TWITTER_HANDLE } from '@shared/constants';
 import MetaTags from '@components/meta-tags';
-
 
 type Props = {
   allPosts: Post[];
@@ -21,14 +15,16 @@ const Posts = ({ allPosts }: Props) => {
     <>
       <Layout>
         <MetaTags
-          ogTitle={'Posts'}
-          ogImage={TWITTER_CARD_POSTS}
           ogDescription={META_POSTS}
-          ogUrl='https://mannuelferreira.com/posts'
+          ogImage={TWITTER_CARD_POSTS}
           ogSiteName={CMS_NAME}
+          ogTitle={'Posts'}
           ogTwitterCard='summary_large_image'
-          ogTwitterSite={TWITTER_HANDLE}
           ogTwitterCreator={TWITTER_HANDLE}
+          ogTwitterImage={TWITTER_CARD_POSTS}
+          ogTwitterSite={TWITTER_HANDLE}
+          ogTwitterTitle={'Posts'}
+          ogUrl='https://mannuelferreira.com/posts'
         />
         <Container>
           <PageTitle>Posts</PageTitle>
@@ -45,14 +41,7 @@ const Posts = ({ allPosts }: Props) => {
 export default Posts;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ]);
+  const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt']);
 
   return {
     props: { allPosts },

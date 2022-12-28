@@ -4,7 +4,14 @@ import Layout from '@components/Layout/layout';
 import { getAllPosts } from '@lib/api';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AVATAR_ME, CMS_NAME, GENERIC_META, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
+import {
+  AVATAR_ME,
+  CMS_NAME,
+  GENERIC_META,
+  SITE_URL,
+  TITLE_HOME,
+  TWITTER_HANDLE,
+} from '@shared/constants';
 import MetaTags from '@components/meta-tags';
 import { TWITTER_CARD_HOME } from '../shared/constants';
 
@@ -45,14 +52,16 @@ const Index = ({ allPosts }: Props) => {
     <>
       <Layout>
         <MetaTags
-          ogTitle={'Home'}
-          ogImage={TWITTER_CARD_HOME}
           ogDescription={GENERIC_META}
-          ogUrl={SITE_URL}
+          ogImage={TWITTER_CARD_HOME}
           ogSiteName={CMS_NAME}
+          ogTitle={TITLE_HOME}
           ogTwitterCard='summary_large_image'
-          ogTwitterSite={TWITTER_HANDLE}
           ogTwitterCreator={TWITTER_HANDLE}
+          ogTwitterImage={TWITTER_CARD_HOME}
+          ogTwitterSite={TWITTER_HANDLE}
+          ogTwitterTitle={TITLE_HOME}
+          ogUrl={SITE_URL}
         />
         <Container>
           <section className='content-center mb-8 grid grid-cols-1 md:grid-cols-2 gap-4'>

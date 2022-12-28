@@ -25,16 +25,20 @@ export const META_POSTS =
   'I enjoy learning about new technologies, programming techniques and languages, this where I will save my notes.';
 export const MUSIC_URL = 'https://mannuelferreira.com/scrobbles';
 export const SITE_URL = 'https://mannuelferreira.com';
+export const TITLE_BOOKS = 'Books';
+export const TITLE_HOME = 'Home';
+export const TITLE_POSTS = 'Posts';
+export const TITLE_EXPERIENCE = 'Experience';
 export const TWITTER_CARD_BOOKS =
   'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/books-post-cover.png';
 export const TWITTER_CARD_EXPERIENCE =
   'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/experience-post-cover.png';
 export const TWITTER_CARD_HOME =
-  'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/music-post-cover.png';
+  'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/home-post-cover.png';
 export const TWITTER_CARD_MUSIC =
   'https://res.cloudinary.com/mannuel/image/upload/v1664946422/images/music-post-cover.png';
 export const TWITTER_CARD_POSTS =
-  'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/home-post-cover.png';
+  'https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/posts-post-cover.png';
 export const TWITTER_HANDLE = 'manidf';
 export const URL_CODEPEN_PROFILE = 'https://codepen.io/mannuelf';
 export const URL_COVERART_ARCHIVE = 'https://coverartarchive.org';

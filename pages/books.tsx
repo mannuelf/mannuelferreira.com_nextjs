@@ -1,27 +1,30 @@
-import Container from '@components/container';
 import Layout from '@components/Layout/layout';
+import Container from '@components/container';
+import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
 import {
   CMS_NAME,
   META_BOOKS,
-  TWITTER_CARD_POSTS,
+  TITLE_BOOKS,
+  TWITTER_CARD_BOOKS,
   TWITTER_HANDLE,
 } from '@shared/constants';
-import MetaTags from '@components/meta-tags';
 
 const Books = () => {
   return (
     <>
       <Layout>
         <MetaTags
-          ogTitle={'Books'}
-          ogImage={TWITTER_CARD_POSTS}
           ogDescription={META_BOOKS}
-          ogUrl='https://mannuelferreira.com/books'
+          ogImage={TWITTER_CARD_BOOKS}
           ogSiteName={CMS_NAME}
+          ogTitle={TITLE_BOOKS}
           ogTwitterCard='summary_large_image'
-          ogTwitterSite={TWITTER_HANDLE}
           ogTwitterCreator={TWITTER_HANDLE}
+          ogTwitterImage={TWITTER_CARD_BOOKS}
+          ogTwitterSite={TWITTER_HANDLE}
+          ogTwitterTitle={TITLE_BOOKS}
+          ogUrl='https://mannuelferreira.com/books'
         />
         <Container>
           <PageTitle>Books</PageTitle>
