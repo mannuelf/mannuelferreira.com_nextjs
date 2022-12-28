@@ -1,17 +1,17 @@
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
-import Markdown from 'react-markdown';
 import matter from 'gray-matter';
+import ErrorPage from 'next/error';
+import { useRouter } from 'next/router';
+import Markdown from 'react-markdown';
 import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
-import { getPostBySlug, getAllPosts } from '@lib/api';
-import Container from '@components/container';
 import Layout from '@components/Layout/layout';
+import Container from '@components/container';
+import MetaTags from '@components/meta-tags';
 import PostHeader from '@components/post-header';
 import PostTitle from '@components/post-title';
-import MetaTags from '@components/meta-tags';
+import { getAllPosts, getPostBySlug } from '@lib/api';
+import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
 
 type Props = {
   post: Post;
@@ -53,13 +53,15 @@ const Post = ({ post }: Props) => {
           <>
             <article className='mx-auto mb-20 max-w-screen-md'>
               <MetaTags
+                ogDescription={post.excerpt}
                 ogImage={post.ogImage.url}
                 ogSiteName={CMS_NAME}
                 ogTitle={post.title}
-                ogDescription={post.excerpt}
                 ogTwitterCard={'summary_large_image'}
-                ogTwitterSite={TWITTER_HANDLE}
                 ogTwitterCreator={TWITTER_HANDLE}
+                ogTwitterImage={post.ogImage.url}
+                ogTwitterSite={TWITTER_HANDLE}
+                ogTwitterTitle={post.title}
                 ogUrl={currentURL}
               />
               <PostHeader title={post.title} date={post.date} author={post.author} />
