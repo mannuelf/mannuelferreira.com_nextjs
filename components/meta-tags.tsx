@@ -10,6 +10,7 @@ type Props = {
   ogTwitterImage: string;
   ogTwitterSite: string;
   ogTwitterTitle: string;
+  ogType?: string;
   ogUrl: string;
 };
 
@@ -37,6 +38,7 @@ export default function MetaTags({
       <meta property='og:site_name' content={ogSiteName} key='ogsitename' />
       <meta property='og:title' content={ogTitle} />
       <meta property='og:url' content={ogUrl} />
+      <meta property='og:type' content={'object'} />
     </Head>
   );
 }
