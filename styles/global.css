@@ -199,7 +199,16 @@ h6 {
   height: 3px;
   width: 32px;
 }
-
 .max-w-screen-md {
   max-width: 1096px;
+}
+
+.fields-wrapper_316Zq label {
+  font-family: Ubuntu;
+}
+
+.inputWrap_l30a8[div],
+.inputWrap_l30a8[div] {
+  border-radius: none !important;
+  box-shadow: 0 0 0 1px #fff !important;
 }

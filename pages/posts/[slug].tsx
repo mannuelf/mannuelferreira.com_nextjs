@@ -68,6 +68,25 @@ const Post = ({ post }: Props) => {
               <Markdown components={components} className='markdown-body'>
                 {post.content}
               </Markdown>
+
+              <div className='flex flex-row flex-wrap md:flex-nowrap gap-4 pl-4 mt-8 content-start border-solid border-l-8 border-x-orange '>
+                <div className='basis-full order-2 sm:order-1  md:basis-1/2 overflow-hidden'>
+                  <iframe
+                    title='Sign up to newsletter'
+                    width={'320'}
+                    height={'400'}
+                    src='https://cdn.forms-content.sg-form.com/8ab0a5f5-8918-11ed-bde3-9e0d879814a7'
+                  />
+                </div>
+                <div className='basis-full order-1 sm:order-2 md:basis-auto'>
+                  <h4 className='text-2xl	'>Stay up to date</h4>
+                  <p>
+                    Consider keeping up to date with software development and design by signing up
+                    to my newsletter.
+                  </p>
+                  <i>I will only email you when I make a new post.</i>
+                </div>
+              </div>
             </article>
           </>
         )}
