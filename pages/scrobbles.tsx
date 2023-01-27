@@ -27,6 +27,7 @@ import LastFmApi from 'lastfm-nodejs-client';
 import type {
   Artist,
   Image as LastFmImage,
+  TopAlbums,
   Track,
   User,
   WeeklyAlbum,
@@ -51,6 +52,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
   const [isError, setIsError] = useState<[]>();
   const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
   const [user, setUser] = useState<User>();
+  const [topAlbums, setTopAlbums] = useState<TopAlbums[]>([]);
 
   useEffect(() => {
     setIsError(error);
@@ -58,7 +60,8 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
     setWeeklyAlbums(weeklyAlbumChart);
     setAllRecentTrack(recentTracks);
     setUser(userProfile);
-  }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart]);
+    setTopAlbums(topAlbums)
+  }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums]);
 
   console.log('⚠️ ERROR', isError);
 
@@ -170,16 +173,16 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <div className='grid grid-flow-row-dense  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
             {allRecentTracks && allRecentTracks.length
               ? allRecentTracks.map((track) => (
-                  <ScrobblesCard
-                    imageUrl={track.image ? track.image.toString() : ''}
-                    nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
-                    playTitle={track.name}
-                    siteUrl={track.url}
-                    subTitle={track.artist['#text']}
-                    title={track.name}
-                    key={track.name.trim().replace(/\s/gm, '')}
-                  />
-                ))
+                <ScrobblesCard
+                  imageUrl={track.image ? track.image.toString() : ''}
+                  nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
+                  playTitle={track.name}
+                  siteUrl={track.url}
+                  subTitle={track.artist['#text']}
+                  title={track.name}
+                  key={track.name.trim().replace(/\s/gm, '')}
+                />
+              ))
               : null}
             <hr />
           </div>
@@ -190,16 +193,16 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <div className='grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
             {weeklyAlbums && weeklyAlbums.length
               ? weeklyAlbums.map((album) => (
-                  <ScrobblesCard
-                    playCount={album.playcount.toString()}
-                    playTitle={album.name}
-                    subTitle={album.artist['#text']}
-                    title={album.name}
-                    siteUrl={album.url}
-                    imageUrl={album.image ? album.image : ''}
-                    key={album.name.trim().replace(/\s/gm, '')}
-                  />
-                ))
+                <ScrobblesCard
+                  playCount={album.playcount.toString()}
+                  playTitle={album.name}
+                  subTitle={album.artist['#text']}
+                  title={album.name}
+                  siteUrl={album.url}
+                  imageUrl={album.image ? album.image : ''}
+                  key={album.name.trim().replace(/\s/gm, '')}
+                />
+              ))
               : null}
             <hr />
           </div>
@@ -210,16 +213,16 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           <div className='top-artist grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-2 pb-20'>
             {artists && artists.length
               ? artists.map((artist) => (
-                  <ScrobblesCard
-                    playCount={artist.playcount.toString()}
-                    playTitle={artist.name}
-                    subTitle={''}
-                    title={artist.name}
-                    siteUrl={artist.url}
-                    imageUrl={artist.image ?? ''}
-                    key={artist.name.trim().replace(/\s/gm, '')}
-                  />
-                ))
+                <ScrobblesCard
+                  playCount={artist.playcount.toString()}
+                  playTitle={artist.name}
+                  subTitle={''}
+                  title={artist.name}
+                  siteUrl={artist.url}
+                  imageUrl={artist.image ?? ''}
+                  key={artist.name.trim().replace(/\s/gm, '')}
+                />
+              ))
               : null}
           </div>
         </div>
@@ -272,6 +275,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let myRecentTracks = [];
   let myTopArtists = [];
   let myWeeklyAlbumChart = [];
+  let myTopAlbums = []
 
   const lastFm = LastFmApi();
   const { config, method } = lastFm;
@@ -295,7 +299,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', '12');
+    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', '5');
     const { recenttracks } = data;
     return recenttracks;
   };
@@ -323,9 +327,22 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return weeklyalbumchart;
   };
 
+  const getTopAlbums = async () => {
+    const data = await lastFm.getTopAlbums(
+      method.user.top_albums,
+      config.username,
+      'overall',
+      '12'
+    );
+    return data;
+  };
+
   try {
     const { artist } = await getTopArtists();
     const artistMbIds: string[] = artist.map((artist: Artist) => artist.mbid);
+
+    const { topalbums } = await getTopAlbums();
+    const theTopAlbums = topalbums.album.map((album: TopAlbums) => album);
 
     const { album } = await getWeeklyAlbumChart();
     const weeklyAlbums = album.map((album: WeeklyAlbum) => album);
@@ -433,12 +450,21 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     });
 
+    const topAlbumsWithImages = theTopAlbums.map((album: Alb) => {
+      const getImage = track.image.find((img: LastFmImage) => img.size === 'extralarge');
+      return {
+        ...track,
+        image: getImage ? getImage['#text'] : '',
+      };
+    });
+
     /**
      * Set all page data to respect props to be given to component
      */
     myTopArtists.push(topArtistsWithImages);
     myWeeklyAlbumChart.push(weeklyAlbumChartWithImages);
     myRecentTracks.push(recentTracksWithImages);
+    myTopAlbums.push(topAlbumsWithImages);
   } catch (error) {
     console.log('🔥🔥🔥ERROR', error);
     myErrors.push(error as string);
@@ -449,6 +475,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       error: myErrors ? myErrors : [],
       recentTracks: myRecentTracks[0] ? myRecentTracks[0] : [],
       topArtists: myTopArtists[0] ? myTopArtists[0] : [],
+      topAlbums: myTopAlbums[0] ? myTopAlbums[0] : [],
       weeklyAlbumChart: myWeeklyAlbumChart[0] ? myWeeklyAlbumChart[0] : [],
       userProfile: await getUser(),
     },
