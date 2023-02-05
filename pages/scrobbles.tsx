@@ -44,6 +44,7 @@ type Props = {
   topArtists: Artist[];
   weeklyAlbumChart: WeeklyAlbum[];
   userProfile: User;
+  topAlbums: TopAlbums[]
 };
 
 const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums }: Props) => {
@@ -191,8 +192,8 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <p>Top Albums of all time</p>
           </div>
           <div className='grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
-            {topAlbums && topAlbums.length
-              ? topAlbums.map((album: any) => (
+            {allTimeTopAlbums && allTimeTopAlbums.length
+              ? allTimeTopAlbums.map((album: any) => (
                 <ScrobblesCard
                   playCount={album.playcount.toString()}
                   playTitle={album.name}
