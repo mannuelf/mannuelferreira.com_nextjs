@@ -46,13 +46,13 @@ type Props = {
   userProfile: User;
 };
 
-const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumChart }: Props) => {
+const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums }: Props) => {
   const [allRecentTracks, setAllRecentTrack] = useState<Track[]>([]);
   const [artists, setArtists] = useState<Artist[]>([]);
   const [isError, setIsError] = useState<[]>();
   const [weeklyAlbums, setWeeklyAlbums] = useState<WeeklyAlbum[]>([]);
   const [user, setUser] = useState<User>();
-  const [topAlbums, setTopAlbums] = useState<TopAlbums[]>([]);
+  const [allTimeTopAlbums, setAllTimeTopAlbums] = useState<TopAlbums[]>([]);
 
   useEffect(() => {
     setIsError(error);
@@ -60,7 +60,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
     setWeeklyAlbums(weeklyAlbumChart);
     setAllRecentTrack(recentTracks);
     setUser(userProfile);
-    setTopAlbums(topAlbums)
+    setAllTimeTopAlbums(topAlbums)
   }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums]);
 
   console.log('⚠️ ERROR', isError);
@@ -181,6 +181,26 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
                   subTitle={track.artist['#text']}
                   title={track.name}
                   key={track.name.trim().replace(/\s/gm, '')}
+                />
+              ))
+              : null}
+            <hr />
+          </div>
+          <div className='pb-2 pl-4'>
+            <h2 className='text-2xl font-medium'>Top Albums</h2>
+            <p>Top Albums of all time</p>
+          </div>
+          <div className='grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
+            {topAlbums && topAlbums.length
+              ? topAlbums.map((album: any) => (
+                <ScrobblesCard
+                  playCount={album.playcount.toString()}
+                  playTitle={album.name}
+                  subTitle={album.artist['#text']}
+                  title={album.name}
+                  siteUrl={album.url}
+                  imageUrl={album.image ? album.image : ''}
+                  key={album.name.trim().replace(/\s/gm, '')}
                 />
               ))
               : null}
@@ -332,7 +352,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       method.user.top_albums,
       config.username,
       'overall',
-      '12'
+      '50'
     );
     return data;
   };
@@ -342,7 +362,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const artistMbIds: string[] = artist.map((artist: Artist) => artist.mbid);
 
     const { topalbums } = await getTopAlbums();
-    const theTopAlbums = topalbums.album.map((album: TopAlbums) => album);
+    const theTopAlbums = topalbums.album.map((album) => album);
 
     const { album } = await getWeeklyAlbumChart();
     const weeklyAlbums = album.map((album: WeeklyAlbum) => album);
@@ -450,10 +470,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     });
 
-    const topAlbumsWithImages = theTopAlbums.map((album: Alb) => {
-      const getImage = track.image.find((img: LastFmImage) => img.size === 'extralarge');
+    const topAlbumsWithImages = theTopAlbums.map((album: any) => {
+      const getImage = album.image.find((img: LastFmImage) => img.size === 'extralarge');
       return {
-        ...track,
+        ...album,
         image: getImage ? getImage['#text'] : '',
       };
     });
