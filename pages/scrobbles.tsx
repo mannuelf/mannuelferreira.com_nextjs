@@ -320,7 +320,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', '20');
+    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', '22');
     const { recenttracks } = data;
     return recenttracks;
   };
@@ -330,7 +330,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       method.user.top_artists,
       config.username,
       'overall',
-      '12',
+      '50',
     );
 
     const { topartists } = data;
@@ -342,7 +342,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       method.user.weekly_album_chart,
       config.username,
       'overall',
-      '12',
+      '22',
     );
     const { weeklyalbumchart } = data;
     return weeklyalbumchart;
