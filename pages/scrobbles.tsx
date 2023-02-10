@@ -167,7 +167,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
       </Container>
       <div className='container mx-auto'>
         <div className='p-2'>
-          <div className='pb-2 pl-4'>
+          <div className='pb-2 pl-4' id='#recenttracks'>
             <h2 className='text-2xl font-medium'>Recent Tracks</h2>
             <p>Listened to today</p>
           </div>
@@ -188,6 +188,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
             <hr />
           </div>
           <div className='pb-2 pl-4'>
+            <a href="#" id='#topalbums'></a>
             <h2 className='text-2xl font-medium'>Top Albums</h2>
             <p>Top Albums of all time</p>
           </div>
@@ -207,7 +208,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
               : null}
             <hr />
           </div>
-          <div className='pb-2 pl-4'>
+          <div className='pb-2 pl-4' id='#weeklyalbumcharts'>
             <h2 className='text-2xl font-medium'>Weekly Album Charts</h2>
             <p>Scrobbles this week</p>
           </div>
@@ -227,7 +228,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
               : null}
             <hr />
           </div>
-          <div className='pb-2 pl-4'>
+          <div className='pb-2 pl-4' id='#topartists'>
             <h2 className='text-2xl font-medium'>Top Artists</h2>
             <p>Scrobbles since 2008</p>
           </div>

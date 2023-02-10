@@ -14,6 +14,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
+
   type Items = {
     [key: string]: string;
   };
@@ -40,6 +41,8 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
+  console.log('fields',fields);
+
   // sort posts by date in descending order
   return slugs
     .map((slug) => getPostBySlug(slug, fields))
