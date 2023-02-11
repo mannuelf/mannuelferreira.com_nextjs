@@ -1,6 +1,8 @@
 ---
 title: 'Typesense an open-source alternative to Algolia and Elasticsearch'
 excerpt: 'Building a custom search into your application can be a deeply technical and expensive endeavor in terms of build hours and license fees. Typesense is aiming to fix those pains with it’s Open-Sourced solution to web search Typesense.'
+category: 'Tools'
+tags: 'Search'
 coverImage: 'https://www.mannuelferreira.com/assets/blog/typesense-open-source-alternative-to-algolia-and-elasticsearch/typesense-header.png'
 date: '2021-10-21T22:05:00.322Z'
 author:
@@ -28,7 +30,7 @@ Building a custom search into your application can be a deeply technical and exp
 
 Typesense is a fast typo tolerant search engine boasting a sub-50ms search that feels instant. Typesense is built in C++, it is free to use and deploy on self hosted projects.
 
-## A few notable features include:
+## A few notable features include
 
 ### Typo tolerance
 
@@ -56,7 +58,7 @@ Setting up a search experience in your web application is now trivial thanks to 
 
 If that wasn’t cool enough to further smooth the road, Typesense has UI Component adapters to help you build your UI. The Typesense Instant Search Adapter is based on Algolia open-sourced instantsearch.js. If you have experience with Algolias adapter it makes the switch to Typesense all that much smoother.
 
-### The adapter comes in 4 flavours:
+### The adapter comes in 4 flavours
 
 - Instantsearch.js
 - react-instantsearch

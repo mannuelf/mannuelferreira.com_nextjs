@@ -1,6 +1,8 @@
 ---
 title: 'Ultimate guide to documenting components using docz'
 excerpt: 'Leveraging the power of Gatsby, docz builds a mobile first, SEO friendly static website along-side your projects.'
+category: 'React'
+tags: 'TypeScript, Documentation'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png'
 date: '2021-12-01T09:45:00.322Z'
 author:

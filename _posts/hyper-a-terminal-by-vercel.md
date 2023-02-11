@@ -1,6 +1,8 @@
 ---
 title: 'Hyper a terminal by Vercel'
 excerpt: 'I have started using Hyper a terminal built by Vercel, I think you might like it too. Here is why...'
+category: 'Tools'
+tags: 'Vercel, hyper'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1662873007/images/hyper-post-cover.png'
 date: '2022-09-11T07:18:00.322Z'
 author:
@@ -62,7 +64,7 @@ Hyper has a plugin ecosystem you can install plugins and most importantly themes
 Hyper has CLI to help you install those [plugins](https://hyper.is/plugins) and themes, command below will install the Shades of purple theme.
 
 ```bash
-$ hyper i shades_of_purple
+hyper i shades_of_purple
 ```
 
 ### It's not a resource hog
@@ -72,7 +74,6 @@ It's low usage on memory is great.
 I used to use Iterm2 on mac and found that a bit hungry on memory. Hyper is winning.
 
 ![memory](https://res.cloudinary.com/mannuel/image/upload/v1662875027/images/hyper-memory.png)
-
 
 ### Split tabs, horizontal and vertical
 

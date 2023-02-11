@@ -1,6 +1,8 @@
 ---
 title: 'FactBook Explorer'
 excerpt: 'Factbook Explorer is a web app designed to help navigate statistics from the OECD iLibrary.'
+category: 'NodeJs'
+tags: 'TypeScript, Maps, Data'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1664734063/mfcom/factbook-explorer.png'
 date: '2022-10-04T07:18:00.322Z'
 author:

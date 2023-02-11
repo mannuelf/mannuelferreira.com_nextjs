@@ -1,6 +1,8 @@
 ---
 title: 'Update outdated node packages for security reasons'
 excerpt: 'It is very easy to update your node packages, using an interactive cli command.'
+category: 'NodeJs'
+tags: 'Terminal'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1624774339/images/node-article.png'
 date: '2021-06-24T00:00:07.322Z'
 author:

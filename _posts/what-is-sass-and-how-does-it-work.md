@@ -1,6 +1,8 @@
 ---
 title: 'What is Sass and how does it work'
 excerpt: 'Sass stands for Syntactically Awesome Stylesheets. It is a CSS Pre-Processor meaning you are able to write CSS with super powers of functions, variables, loops, mixins and components or partials.'
+category: 'SCSS'
+tags: 'CSS, Styling'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933698/images/sass-article.png'
 date: '2020-03-11T05:35:07.322Z'
 author:

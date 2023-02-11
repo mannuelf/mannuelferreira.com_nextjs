@@ -1,6 +1,8 @@
 ---
 title: 'Deno avoid import path cannot end with a .ts extension error in vscode warning'
 excerpt: 'A common error when starting out coding with Deno is this annoying awarning about not being allowed to import using file extentions.'
+category: 'Deno'
+tags: 'vscode'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1668935182/images/deno-cover.png'
 date: '2022-11-20T10:25:00.322Z'
 author:
@@ -30,7 +32,7 @@ Type `CTRl+,` to bring up the settings panel and search for `deno.lint`.
 
 This will create a `settings.json` file in your `.vscode` folder.
 
-## 3. Next add some configurations.
+## 3. Next add some configurations
 
 They are:
 

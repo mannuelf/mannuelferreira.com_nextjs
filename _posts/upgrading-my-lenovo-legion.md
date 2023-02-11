@@ -1,6 +1,8 @@
 ---
 title: 'Upgrading my Lenovo Legion'
 excerpt: 'I had such a great time upgrading my laptop I felt I had to share my experience of it with you all.'
+category: 'Hardware'
+tags: 'Geeking out'
 coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661487899/legion/main-cover.jpg'
 date: '2022-08-26T06:25:00.322Z'
 author:
@@ -82,7 +84,7 @@ These tiny black dots are the rivets that need melting off, this was the most ti
 
 ![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-09.jpg)
 
-### Is that it? had no idea what I was looking at thinking maybe I should have taken it to a guy.
+### Is that it? had no idea what I was looking at thinking maybe I should have taken it to a guy
 
 ![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-10.jpg)
 
