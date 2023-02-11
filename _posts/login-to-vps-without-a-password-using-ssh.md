@@ -1,6 +1,6 @@
 ---
 title: 'Login to VPS without a password using SSH'
-excerpt: 'Connecting to your VPS via ssh without a password is groovy, here how you do it.'
+excerpt: 'Connecting to your VPS via ssh without a password is groovy, heres how you do it.'
 category: 'Linux'
 tags: 'bash, ssh, vps'
 date: '2022-12-02T07:35:00.322Z'
