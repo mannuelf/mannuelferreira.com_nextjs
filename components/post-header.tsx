@@ -2,13 +2,7 @@ import Avatar from './avatar';
 import DateFormatter from './date-formatter';
 import PostTitle from './post-title';
 
-type Props = {
-  title: string;
-  date: string;
-  author: Author;
-};
-
-const PostHeader = ({ title, date, author }: Props) => {
+const PostHeader = ({ title, date, author, tags, category }: Post) => {
   return (
     <>
       <div className='mx-auto'>

@@ -64,7 +64,7 @@ const Post = ({ post }: Props) => {
                 ogTwitterTitle={post.title}
                 ogUrl={currentURL}
               />
-              <PostHeader title={post.title} date={post.date} author={post.author} />
+              <PostHeader {...post} />
               <Markdown components={components} className='markdown-body'>
                 {post.content}
               </Markdown>
@@ -79,7 +79,7 @@ const Post = ({ post }: Props) => {
                   />
                 </div>
                 <div className='basis-full order-1 sm:order-2 md:basis-auto'>
-                  <h4 className='text-2xl	'>Stay up to date</h4>
+                  <h4 className='text-2xl'>Stay up to date</h4>
                   <p>
                     Consider keeping up to date with software development and design by signing up
                     to my newsletter.
@@ -105,14 +105,16 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
     'author',
+    'category',
     'content',
-    'ogImage',
     'coverImage',
+    'date',
     'excerpt',
+    'ogImage',
+    'slug',
+    'tags',
+    'title',
   ]);
 
   const content = matter.stringify(post.content, {});

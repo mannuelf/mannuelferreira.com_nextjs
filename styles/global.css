@@ -214,3 +214,23 @@ h6 {
   border-radius: none !important;
   box-shadow: 0 0 0 1px #fff !important;
 }
+
+
+
+.pill {
+  display: inline-block;
+  background: #EEE;
+  color: #444;
+  border: 1px solid #EEE;
+  border-radius: 8px;
+  min-width: 60px;
+  padding: 2px;
+  margin-right: 5px;
+  margin-bottom: 1px;
+  text-align: center;
+}
+
+.pill-category {
+  background: #8FFFFF;
+  border: 1px solid #fff;
+}
