@@ -34,11 +34,10 @@ p {
 }
 
 .app-footer {
-  background: #28284f
-    url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg') no-repeat
-    bottom right;
+  background: #28284f url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg') no-repeat bottom right;
   color: #f8f8f8;
 }
+
 .app-footer a:link,
 .app-footer a:visited {
   color: #f8f8f8;
@@ -52,7 +51,7 @@ p {
   height: 62px;
 }
 
-.logo-icon > div {
+.logo-icon>div {
   height: 64px;
 }
 
@@ -170,7 +169,7 @@ h6 {
 }
 
 .icon-hamburger {
-  height: 32px;
+  height: 22px;
   width: 32px;
 }
 
@@ -181,6 +180,7 @@ h6 {
   background-color: #fff;
   text-align: center;
 }
+
 .icon-hamburger .lines::before {
   background-color: #fff;
   content: '';
@@ -190,6 +190,7 @@ h6 {
   top: 16px;
   width: 32px;
 }
+
 .icon-hamburger .lines::after {
   background-color: #fff;
   content: '';
@@ -199,6 +200,7 @@ h6 {
   height: 3px;
   width: 32px;
 }
+
 .max-w-screen-md {
   max-width: 1096px;
 }
