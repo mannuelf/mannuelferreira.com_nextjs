@@ -11,24 +11,25 @@ const NavBar = ({ position }: NavProps) => {
 
   return (
     <>
-      <nav className={`${position} flex flex-wrap items-center justify-between `}>
+      <nav className={`${position} flex flex-wrap items-center justify-between pt-2 pb-2 md:pt-1 md:pb-1`}>
         <div className='container flex flex-wrap items-center justify-between mx-auto'>
-          <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
-            <Logo customClass='grow-none mt-1 md:mt-0' />
+          <div className='relative flex items-center justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
+            <Logo customClass='grow-none' />
             <button
-              className='block px-3 py-1 mt-1 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer md:mt-0 lg:hidden focus:outline-none'
+              className='block text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none'
               type='button'
               onClick={() => setNavbarOpen(!navbarOpen)}
+              title="open nav"
             >
               <div className='icon-hamburger'>
                 <div className='lines'></div>
               </div>
             </button>
           </div>
-          <div className={'lg:flex flex-grow items-center' + (navbarOpen ? ' flex' : ' hidden')}>
+          <div className={'flex lg:flex flex-grow items-center' + (navbarOpen ? ' flex' : ' hidden')}>
             <ul
               className={`flex flex-col lg:flex-row list-none lg:ml-auto ${
-                navbarOpen ? 'mb-8' : ''
+                navbarOpen ? 'mt-4 mb-4' : ''
               }`}
             >
               {menuItems
@@ -36,7 +37,7 @@ const NavBar = ({ position }: NavProps) => {
                     <li key={menu.text}>
                       <Link
                         href={menu.href}
-                        className='block pt-4 pb-4 text-base font-normal text-white md:px-4 rounded-md'
+                        className='block text-base font-normal text-white p-1 md:p-2'
                       >
                         {menu.text}
                       </Link>
