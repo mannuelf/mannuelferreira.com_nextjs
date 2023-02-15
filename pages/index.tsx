@@ -1,7 +1,7 @@
 import Container from '@components/container';
 import MoreStories from '@components/more-stories';
 import Layout from '@components/Layout/layout';
-import { getAllPosts } from '@lib/api';
+import { getAllPosts } from '@lib/posts';
 import Image from 'next/image';
 import Link from 'next/link';
 import {

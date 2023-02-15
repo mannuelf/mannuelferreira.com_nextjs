@@ -10,7 +10,7 @@ import Container from '@components/container';
 import MetaTags from '@components/meta-tags';
 import PostHeader from '@components/post-header';
 import PostTitle from '@components/post-title';
-import { getAllPosts, getPostBySlug } from '@lib/api';
+import { getAllPosts, getPostBySlug } from '@lib/posts';
 import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
 
 type Props = {
