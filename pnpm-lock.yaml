@@ -16,7 +16,6 @@ specifiers:
   axios: ^1.2.1
   classnames: 2.3.2
   concurrently: ^7.6.0
-  convert-csv-to-json: ^1.5.0
   cssnano: ^5.1.14
   date-fns: ^2.29.3
   dotenv: ^16.0.3
@@ -44,7 +43,6 @@ dependencies:
   '@vercel/analytics': 0.1.6_react@18.2.0
   axios: 1.2.1
   classnames: 2.3.2
-  convert-csv-to-json: 1.5.0
   date-fns: 2.29.3
   dotenv: 16.0.3
   globby: 13.1.2
@@ -1471,10 +1469,6 @@ packages:
   /console-control-strings/1.1.0:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
-
-  /convert-csv-to-json/1.5.0:
-    resolution: {integrity: sha512-jqhcLPjlaGy2OOOvkUuuiuig1QFBqP5BMeUP6bSIJ/rvXceRMqLFfvR7xri6SQwhdHLtlPCv3MCvmFisla7m/A==}
-    dev: false
 
   /convert-hrtime/3.0.0:
     resolution: {integrity: sha512-7V+KqSvMiHp8yWDuwfww06XleMWVVB9b9tURBx+G7UTADuo5hYPuowKloz4OzOqbPezxgo+fdQ1522WzPG4OeA==}
