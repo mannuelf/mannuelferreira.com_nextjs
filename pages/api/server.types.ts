@@ -1,4 +1,12 @@
-enum HttpResponseCode {
+export enum RequestMethod {
+  DELETE = 'DELETE',
+  GET = 'GET',
+  POST = ' POST',
+  PUT = 'PUT',
+  UPDATE = 'UPDATE',
+}
+
+export enum HttpResponseCode {
   'CONTINUE' = 100,
   'SWITCHING_PROTOCOLS' = 101,
   'PROCESSING' = 102,
