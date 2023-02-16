@@ -1,5 +1,6 @@
-import Layout from '@components/Layout/layout';
+import type { Books } from '@api/books/books.types';
 import Container from '@components/container';
+import Layout from '@components/Layout/layout';
 import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
 import {
@@ -7,10 +8,12 @@ import {
   META_BOOKS,
   TITLE_BOOKS,
   TWITTER_CARD_BOOKS,
-  TWITTER_HANDLE,
+  TWITTER_HANDLE
 } from '@shared/constants';
 
-const Books = () => {
+
+const Books = (books: Books[]) => {
+  console.log(books);
   return (
     <>
       <Layout>
@@ -29,7 +32,10 @@ const Books = () => {
         <Container>
           <PageTitle>Books</PageTitle>
           <div className='border-t pt-4 mt-8 mb-8'>
-            <p className='text-lg'>Coming soon...</p>
+            <p className='text-lg'>A list of books I have read, hoping you find something interesting to you.</p>
+            {books.length ? books.map((book, i) => (<>
+              <h1>{book.title}</h1>
+            </>)): null}
           </div>
         </Container>
       </Layout>
@@ -40,9 +46,10 @@ const Books = () => {
 export default Books;
 
 export const getStaticProps = async () => {
-  const data = {};
+  const res = await fetch('http://localhost:3000/api/books');
+  const books = await res.json()
 
   return {
-    props: { data },
+    props: { books },
   };
 };
