@@ -6,13 +6,13 @@ export type Book = {
   'additional-authors': string;
   'author-l-f': string;
   'average-rating': number;
-  'back-cover'?: string;
+  'back-cover'?: string | null;
   'binding': string;
   'bookshelves-with-positions': string;
   'date-added': string;
   'date-read': string;
   'exclusive-shelf': string;
-  'front-cover'?: string;
+  'cover': string | null;
   'my-rating'?: number;
   'my-review'?: string;
   'number-of-pages': number;
@@ -25,7 +25,7 @@ export type Book = {
   author: string;
   book_id: number;
   bookshelves: string;
-  ISBN: number;
+  ISBN: string;
   ISBN13: number;
   spoiler?: string;
   title: string;

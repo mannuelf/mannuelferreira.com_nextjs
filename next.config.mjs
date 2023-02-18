@@ -16,6 +16,7 @@ const nextConfig = {
       'upload.wikimedia.org',
       'coverartarchive.org',
       'assets.fanart.tv',
+      'covers.openlibrary.org'
     ],
   },
   generateBuildId: async () => uuidv4(),
