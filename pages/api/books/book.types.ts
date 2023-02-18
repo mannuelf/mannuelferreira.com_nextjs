@@ -1,5 +1,8 @@
 
-export type Books = {
+export type ReadStatus = {
+  TOREAD: ''
+}
+export type Book = {
   'additional-authors': string;
   'author-l-f': string;
   'average-rating': number;
