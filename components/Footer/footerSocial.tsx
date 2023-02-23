@@ -25,7 +25,7 @@ const FooterSocial = () => {
         <li className='pr-4'>
           <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
             <span>
-              <img src={ICON_TWITTER} alt='LinkedIn' width={28} height={28} />
+              <img src={ICON_TWITTER} alt='Twitter' width={28} height={28} />
             </span>
           </a>
         </li>
