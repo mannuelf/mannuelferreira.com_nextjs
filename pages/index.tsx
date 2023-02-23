@@ -40,9 +40,9 @@ const pageSideNav: pageSideNavProps = [
     enabled: false,
   },
   {
-    title: 'Books',
+    title: 'Library',
     text: "Books I've read and recommend.",
-    href: 'books',
+    href: 'libary',
     enabled: false,
   },
 ].filter((item) => item.enabled);

@@ -1,15 +1,17 @@
 import Image from 'next/image';
-import type { Book } from '@api/books/book.types';
+import type { Book } from '@api/library/library.types';
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import MetaTags from '@components/meta-tags';
 import PageTitle from '@components/page-title';
 import {
   CMS_NAME,
+  ICON_TWITTER,
   META_BOOKS,
   TITLE_BOOKS,
   TWITTER_CARD_BOOKS,
-  TWITTER_HANDLE
+  TWITTER_HANDLE,
+  URL_TWITTER_PROFILE
 } from '@shared/constants';
 
 
@@ -30,11 +32,17 @@ const Books = ({ books }) => {
           ogUrl='https://mannuelferreira.com/books'
         />
         <Container>
-          <PageTitle>Books</PageTitle>
+          <PageTitle>Library</PageTitle>
           <div className='border-t pt-4 mt-8 mb-8'>
-            <p className='text-lg'>Herein a list of books I have read or currently reading.</p>
-            <p className='text-lg'>I promised myself to write a post on my favourite books... for now heres a wall  of text, hope you find something intersting.</p>
-            <small className='bg-white p-2'>Cover photos thanks to: <a href="https://openlibrary.org/dev/docs/api/covers" target="_blank" rel="noreferrer">www.openlibrary.org</a></small>
+            <p className='text-lg'>I read or listen for fun and sport 😃 Herein a list of books I have read and/or currently reading.</p>
+            <p className='text-lg'>I promised myself to write a post on my favourite books... for now heres a wall of books, hope you find something interesting. These are the books I added to my Good Reads profile, I exported the data and plan to add more to this list.</p>
+            <div className='p-2 border-gray-700 rounded-sm gap-2 flex center-content'>
+              <a className='bg-purple rounded p-2 w-8' href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
+                <img src={ICON_TWITTER} alt='LinkedIn' width={28} height={28} />
+              </a>
+              <p><a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>Tweet</a> me to reccomend a book I should read.</p>
+            </div>
+            <small className='bg-white p-2 rounded'>Cover photos thanks to API over at <a href="https://openlibrary.org/dev/docs/api/covers" target="_blank" rel="noreferrer">www.openlibrary.org</a></small>
             <div className='grid grid-flow-row grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-4'>
               {books.length ? books.map((book: Book) => (
                 <div key={book.book_id} className='book__item'>
@@ -47,7 +55,7 @@ const Books = ({ books }) => {
                       width={220}
                       height={120}
                     />)
-                    : null
+                      : null
                   }
                   <h1>{book.title}</h1>
                   <div>{book['author-l-f']}</div>
@@ -64,7 +72,7 @@ const Books = ({ books }) => {
 export default Books;
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/books');
+  const res = await fetch('http://localhost:3000/api/library');
   const books = await res.json()
 
   return {

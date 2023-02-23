@@ -25,7 +25,7 @@ export const META_POSTS =
   'I enjoy learning about new technologies, programming techniques and languages, this where I will save my notes.';
 export const MUSIC_URL = 'https://mannuelferreira.com/scrobbles';
 export const SITE_URL = 'https://mannuelferreira.com';
-export const TITLE_BOOKS = 'Books';
+export const TITLE_BOOKS = 'Library';
 export const TITLE_HOME = 'Home';
 export const TITLE_POSTS = 'Posts';
 export const TITLE_EXPERIENCE = 'Experience';
