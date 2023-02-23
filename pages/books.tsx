@@ -32,7 +32,8 @@ const Books = ({ books }) => {
         <Container>
           <PageTitle>Books</PageTitle>
           <div className='border-t pt-4 mt-8 mb-8'>
-            <p className='text-lg'>Herein a list of books I have read or currently reading. I hope you find something interesting to read yourself.</p>
+            <p className='text-lg'>Herein a list of books I have read or currently reading.</p>
+            <p className='text-lg'>I promised myself to write a post on my favourite books... for now heres a wall  of text, hope you find something intersting.</p>
             <small className='bg-white p-2'>Cover photos thanks to: <a href="https://openlibrary.org/dev/docs/api/covers" target="_blank" rel="noreferrer">www.openlibrary.org</a></small>
             <div className='grid grid-flow-row grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-4'>
               {books.length ? books.map((book: Book) => (

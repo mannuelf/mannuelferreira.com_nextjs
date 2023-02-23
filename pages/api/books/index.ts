@@ -12,15 +12,15 @@ const coverSize = {
 }
 
 const fetchBookCovers = async (books: Book[]) => {
-  for (let i = 0; i < books.length; i++) {
+  for (let i = 0; i < (books.length); i++) {
     const book = books[i];
     const { ISBN, ISBN13, cover } = book;
 
-    if (cover !== null || cover !== '') {
+    if (cover !== null) {
       continue;
     }
 
-    const url = `${API_BASE_URL}${ISBN ?? String(ISBN13)}-${coverSize.M}.jpg`;
+    const url = `${API_BASE_URL}${ISBN ?? ISBN13}-${coverSize.M}.jpg`;
 
     try {
       const response = await fetch(url);
