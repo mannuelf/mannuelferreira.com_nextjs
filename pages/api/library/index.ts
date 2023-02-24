@@ -1,7 +1,7 @@
 import fetch from 'cross-fetch';
 import { RequestMethod } from '@api/server.types';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import BOOKS from './library.json';
+import BOOKS from './library';
 import type { Book } from './library.types';
 
 const readBooks = BOOKS.filter(books => books['read-count'] >= 1);

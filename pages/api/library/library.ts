@@ -1,4 +1,4 @@
-[
+const BOOKS = [
   {
     "book_id": 54716655,
     "title": "Kill It with Fire: Manage Aging Computer Systems (and Future Proof Modern Ones)",
@@ -5427,3 +5427,5 @@
     "cover": null
   }
 ]
+
+export default BOOKS;

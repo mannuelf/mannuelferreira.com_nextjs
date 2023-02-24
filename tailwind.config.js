@@ -17,6 +17,9 @@ module.exports = {
           DEFAULT: '#2D2B55',
           dark: '#2D2B55',
         },
+        twitterBlue: {
+          DEFAULT: '#1d9bf0'
+        },
       },
       container: {
         screens: {
