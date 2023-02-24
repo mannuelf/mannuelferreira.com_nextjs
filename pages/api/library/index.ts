@@ -16,7 +16,7 @@ const fetchBookCovers = async (books: Book[]) => {
     const book = books[i];
     const { ISBN, ISBN13, cover } = book;
 
-    if (cover !== null) {
+    if (cover !== undefined) {
       continue;
     }
 

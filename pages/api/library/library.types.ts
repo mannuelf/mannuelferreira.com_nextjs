@@ -7,7 +7,7 @@ export type Book = {
   'date-added': string;
   'date-read': string;
   'exclusive-shelf': string;
-  'cover': string;
+  'cover'?: string | undefined;
   'my-rating': number;
   'my-review': string;
   'number-of-pages'?: number | undefined;

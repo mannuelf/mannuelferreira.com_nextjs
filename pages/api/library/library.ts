@@ -26,7 +26,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 25655712,
@@ -53,7 +53,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 57573212,
@@ -80,7 +80,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 48816586,
@@ -107,7 +107,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 57345272,
@@ -134,7 +134,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 25531393,
@@ -161,7 +161,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 54466852,
@@ -188,7 +188,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 6608313,
@@ -215,7 +215,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 40993344,
@@ -242,7 +242,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44573628,
@@ -269,7 +269,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18043011,
@@ -296,7 +296,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 17239285,
@@ -323,7 +323,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 52715562,
@@ -350,7 +350,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 13629,
@@ -377,7 +377,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 37638098,
@@ -404,7 +404,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 6892870,
@@ -431,7 +431,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 84525,
@@ -458,7 +458,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 35957156,
@@ -485,7 +485,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 15014,
@@ -512,7 +512,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 52719441,
@@ -539,7 +539,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44595007,
@@ -566,7 +566,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 23692271,
@@ -593,7 +593,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 22668729,
@@ -620,7 +620,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 58482658,
@@ -647,7 +647,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 49628,
@@ -674,7 +674,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 54109255,
@@ -701,7 +701,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 34626375,
@@ -728,7 +728,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 31951519,
@@ -755,7 +755,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 58233711,
@@ -782,7 +782,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44144499,
@@ -809,7 +809,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 28321010,
@@ -836,7 +836,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 23463279,
@@ -863,7 +863,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18176747,
@@ -890,7 +890,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 50419441,
@@ -917,7 +917,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 23759189,
@@ -944,7 +944,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 259072,
@@ -971,7 +971,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 29496432,
@@ -998,7 +998,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 76865,
@@ -1025,7 +1025,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 6346975,
@@ -1052,7 +1052,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 43565360,
@@ -1079,7 +1079,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 242433,
@@ -1106,7 +1106,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18606951,
@@ -1133,7 +1133,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 52472115,
@@ -1160,7 +1160,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 25520974,
@@ -1187,7 +1187,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 41881472,
@@ -1214,7 +1214,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 179133,
@@ -1241,7 +1241,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 46223297,
@@ -1268,7 +1268,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 23164946,
@@ -1295,7 +1295,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 1963638,
@@ -1322,7 +1322,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 3735293,
@@ -1349,7 +1349,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 81948,
@@ -1376,7 +1376,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 53746011,
@@ -1403,7 +1403,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 563,
@@ -1430,7 +1430,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 49195923,
@@ -1457,7 +1457,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 857,
@@ -1484,7 +1484,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 30646587,
@@ -1511,7 +1511,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 35496817,
@@ -1538,7 +1538,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 11532012,
@@ -1565,7 +1565,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 26156469,
@@ -1592,7 +1592,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 12910715,
@@ -1619,7 +1619,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 1005,
@@ -1646,7 +1646,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 8148515,
@@ -1673,7 +1673,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 28257707,
@@ -1700,7 +1700,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 88061,
@@ -1727,7 +1727,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 52300107,
@@ -1754,7 +1754,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 180116,
@@ -1781,7 +1781,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 23158207,
@@ -1808,7 +1808,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 15843166,
@@ -1835,7 +1835,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 2,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 106835,
@@ -1862,7 +1862,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44063692,
@@ -1889,7 +1889,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 49099937,
@@ -1916,7 +1916,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 944267,
@@ -1943,7 +1943,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 39996759,
@@ -1970,7 +1970,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 34267304,
@@ -1997,7 +1997,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 593458,
@@ -2024,7 +2024,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 33369254,
@@ -2051,7 +2051,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 25238425,
@@ -2078,7 +2078,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44512538,
@@ -2105,7 +2105,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 37638074,
@@ -2132,7 +2132,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 50542735,
@@ -2159,7 +2159,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 55277918,
@@ -2186,7 +2186,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 43190966,
@@ -2213,7 +2213,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 12544648,
@@ -2240,7 +2240,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 27220736,
@@ -2267,7 +2267,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 27036528,
@@ -2294,7 +2294,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 20987043,
@@ -2321,7 +2321,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44773654,
@@ -2348,7 +2348,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 20787425,
@@ -2375,7 +2375,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 9420697,
@@ -2402,7 +2402,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 16599562,
@@ -2429,7 +2429,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18693655,
@@ -2456,7 +2456,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 21856367,
@@ -2483,7 +2483,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 54502643,
@@ -2510,7 +2510,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 25814544,
@@ -2537,7 +2537,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 40885164,
@@ -2564,7 +2564,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 11084145,
@@ -2591,7 +2591,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 17255186,
@@ -2618,7 +2618,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44245196,
@@ -2645,7 +2645,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 36072,
@@ -2672,7 +2672,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 25541028,
@@ -2699,7 +2699,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 43169404,
@@ -2726,7 +2726,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 38746485,
@@ -2753,7 +2753,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 35674293,
@@ -2780,7 +2780,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 76334,
@@ -2807,7 +2807,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 7153903,
@@ -2834,7 +2834,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 17910144,
@@ -2861,7 +2861,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 35957157,
@@ -2888,7 +2888,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18050143,
@@ -2915,7 +2915,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18197267,
@@ -2942,7 +2942,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 6658783,
@@ -2969,7 +2969,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 2998152,
@@ -2996,7 +2996,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 148050,
@@ -3023,7 +3023,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 12442420,
@@ -3050,7 +3050,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 38093768,
@@ -3077,7 +3077,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 25817524,
@@ -3104,7 +3104,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18144590,
@@ -3131,7 +3131,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 514964,
@@ -3158,7 +3158,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 39866497,
@@ -3185,7 +3185,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 2,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 42615459,
@@ -3212,7 +3212,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 34974310,
@@ -3239,7 +3239,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44525766,
@@ -3266,7 +3266,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 28259132,
@@ -3293,7 +3293,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 6708,
@@ -3320,7 +3320,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 16121,
@@ -3347,7 +3347,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 2054761,
@@ -3374,7 +3374,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 866222,
@@ -3401,7 +3401,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 54505323,
@@ -3428,7 +3428,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 40121378,
@@ -3455,7 +3455,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 113934,
@@ -3482,7 +3482,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 9418327,
@@ -3509,7 +3509,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 55359022,
@@ -3536,7 +3536,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 9402297,
@@ -3563,7 +3563,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 38315,
@@ -3590,7 +3590,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 13530973,
@@ -3617,7 +3617,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 36064445,
@@ -3644,7 +3644,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 242472,
@@ -3671,7 +3671,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 43710233,
@@ -3698,7 +3698,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 54110137,
@@ -3725,7 +3725,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 38820046,
@@ -3752,7 +3752,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 31138556,
@@ -3779,7 +3779,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 4671,
@@ -3806,7 +3806,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 33585396,
@@ -3833,7 +3833,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 8978488,
@@ -3860,7 +3860,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44436221,
@@ -3887,7 +3887,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 11722275,
@@ -3914,7 +3914,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 10127019,
@@ -3941,7 +3941,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 2,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 29634529,
@@ -3968,7 +3968,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 2,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 85009,
@@ -3995,7 +3995,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 50705179,
@@ -4022,7 +4022,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 2169661,
@@ -4049,7 +4049,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 796429,
@@ -4076,7 +4076,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 34536488,
@@ -4103,7 +4103,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 387190,
@@ -4130,7 +4130,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 3828382,
@@ -4157,7 +4157,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 6828896,
@@ -4184,7 +4184,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18077903,
@@ -4211,7 +4211,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 16071764,
@@ -4238,7 +4238,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 368593,
@@ -4265,7 +4265,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 17660462,
@@ -4292,7 +4292,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 52200318,
@@ -4319,7 +4319,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 53104184,
@@ -4346,7 +4346,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 13614924,
@@ -4373,7 +4373,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 31948742,
@@ -4400,7 +4400,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 18655793,
@@ -4427,7 +4427,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 44936,
@@ -4454,7 +4454,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 10361330,
@@ -4481,7 +4481,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 26032410,
@@ -4508,7 +4508,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 4479421,
@@ -4535,7 +4535,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 7107155,
@@ -4562,7 +4562,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 3539925,
@@ -4589,7 +4589,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 13073411,
@@ -4616,7 +4616,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 344733,
@@ -4643,7 +4643,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 12671770,
@@ -4670,7 +4670,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 16256798,
@@ -4697,7 +4697,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 2612,
@@ -4724,7 +4724,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 3228917,
@@ -4751,7 +4751,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 40102,
@@ -4778,7 +4778,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 15751404,
@@ -4805,7 +4805,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 69571,
@@ -4832,7 +4832,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 81922,
@@ -4859,7 +4859,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 817589,
@@ -4886,7 +4886,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 830502,
@@ -4913,7 +4913,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 2,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 841724,
@@ -4940,7 +4940,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 968,
@@ -4967,7 +4967,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 960,
@@ -4994,7 +4994,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 252577,
@@ -5021,7 +5021,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 34427205,
@@ -5048,7 +5048,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 17859574,
@@ -5075,7 +5075,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 22328546,
@@ -5102,7 +5102,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 36160513,
@@ -5129,7 +5129,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 51210419,
@@ -5156,7 +5156,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 119760,
@@ -5183,7 +5183,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 1,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 28014216,
@@ -5210,7 +5210,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 7237139,
@@ -5237,7 +5237,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 29974755,
@@ -5264,7 +5264,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " "
+    "cover": undefined
   },
   {
     "book_id": 583785,
@@ -5291,7 +5291,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 37976541,
@@ -5318,7 +5318,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 12605157,
@@ -5345,7 +5345,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 6732019,
@@ -5372,7 +5372,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 30317415,
@@ -5399,7 +5399,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   },
   {
     "book_id": 23215733,
@@ -5426,7 +5426,7 @@ const BOOKS: Book[] = [
     "private-notes": " ",
     "read-count": 0,
     "owned-copies": 0,
-    "cover": " ",
+    "cover": undefined,
   }
 ]
 
