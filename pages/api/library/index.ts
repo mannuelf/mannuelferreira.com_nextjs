@@ -1,17 +1,17 @@
-import fetch from 'cross-fetch';
 import { RequestMethod } from '@api/server.types';
+import fetch from 'cross-fetch';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import BOOKS from './library';
-import type { Book } from './library.types';
+import type { Books } from './library.types';
 
-const readBooks = BOOKS.filter(books => books['read-count'] >= 1);
+const readBooks = BOOKS.filter(books => books['read-count'] >= 1).splice(BOOKS.length/4);
 
 const API_BASE_URL = `http://covers.openlibrary.org/b/isbn/`;
 const coverSize = {
   S: 'S', M: 'M', L: 'L'
 }
 
-const fetchBookCovers = async (books: Book[]) => {
+const fetchBookCovers = async (books: Books) => {
   for (let i = 0; i < (books.length); i++) {
     const book = books[i];
     const { ISBN, ISBN13, cover } = book;

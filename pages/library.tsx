@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { Book } from '@api/library/library.types';
+import type { Books } from '@api/library/library.types';
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import MetaTags from '@components/meta-tags';
@@ -14,8 +14,11 @@ import {
   URL_TWITTER_PROFILE
 } from '@shared/constants';
 
+type Props = {
+  books: Books;
+}
 
-const Books = ({ books }) => {
+const Books = ({ books }: Props) => {
   return (
     <>
       <Layout>
@@ -34,17 +37,17 @@ const Books = ({ books }) => {
         <Container>
           <PageTitle>Library</PageTitle>
           <div className='border-t pt-4 mt-8 mb-8'>
-            <p className='text-lg'>I read or listen for fun and sport 😃 Herein a list of books I have read and/or currently reading.</p>
-            <p className='text-lg'>I promised myself to write a post on my favourite books... for now heres a wall of books, hope you find something interesting. These are the books I had added to my Good Reads profile, I exported the data and plan to add more to this list, no longer using Good Reads as they sunsetted their API.</p>
+            <p className='text-lg'>I read or listen for fun, and sport 😃</p>
+            <p className='text-lg'>I promised myself to write a post on my favourite books... for now heres a wall of books, hope you find something interesting. I exported these from my Good Reads profile, I exported the data and plan to add more to this list, no longer using Good Reads as they sunsetted their API.</p>
             <div className='p-2 border-gray-700 rounded-sm gap-2 flex center-content'>
-              <a className='bg-twitterBlue rounded p-2 w-8 h-8 block' href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
-                <img src={ICON_TWITTER} alt='LinkedIn' width={28} height={28} />
+              <a className='bg-twitterBlue rounded p-2 w-8 h-8 block' title={URL_TWITTER_PROFILE} href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
+                <Image src={ICON_TWITTER} alt='LinkedIn' width={28} height={28} />
               </a>
               <p><a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>Tweet</a> me to reccomend a book I should read.</p>
             </div>
             <small className='bg-white p-2 rounded'>Cover photos thanks to API over at <a href="https://openlibrary.org/dev/docs/api/covers" target="_blank" rel="noopener noreferrer">www.openlibrary.org</a></small>
-            <div className='grid grid-flow-row grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-4'>
-              {books.length ? books.map((book: Book) => (
+            <div className='grid grid-flow-row grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4'>
+              {books.length ? books.map((book) => (
                 <article key={book.book_id}>
                   <picture>
                     {
@@ -53,17 +56,20 @@ const Books = ({ books }) => {
                         placeholder='blur'
                         src={book['cover']}
                         alt={book.title}
-                        width={220}
+                        width={240}
                         height={120}
                       />)
                         : null
                     }
                   </picture>
-                  <header className='pt-4 max-w-2'>
+                  <header className='pt-4 w-[220px]'>
                     <h1>{book.title}</h1>
                     <div>{book['author-l-f']}</div>
-                    <div>{book.publisher}</div>
+
                   </header>
+                  <footer>
+                    <div>{book.publisher}</div>
+                  </footer>
                 </article>)) : null}
             </div>
           </div>

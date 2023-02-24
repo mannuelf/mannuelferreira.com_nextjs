@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Container: React.FC<Props> = ({ children }: Props) => {
-  return <div className='container mx-auto px-5'>{children}</div>;
+  return <section className='container mx-auto px-5'>{children}</section>;
 };
 
 export default Container;

@@ -1,8 +1,4 @@
-// 
-export type ReadStatus = {
-  TOREAD: ''
-}
-export type Book = {
+export type Books = {
   'additional-authors': string;
   'author-l-f': string;
   'average-rating': number;
@@ -12,13 +8,13 @@ export type Book = {
   'date-added': string;
   'date-read': string;
   'exclusive-shelf': string;
-  'cover': string | null;
-  'my-rating'?: number;
-  'my-review'?: string;
+  'cover'?: string | null;
+  'my-rating'?: number | null;
+  'my-review'?: string | null;
   'number-of-pages': number;
   'original-publication-year': string;
   'owned-copies': number;
-  'private-notes'?: string;
+  'private-notes'?: string | null;
   'publisher': string;
   'read-count': number;
   'year-published': number;
@@ -27,6 +23,6 @@ export type Book = {
   bookshelves: string;
   ISBN: string;
   ISBN13: number;
-  spoiler?: string;
+  spoiler?: string | null;
   title: string;
-}
+}[]
