@@ -15,10 +15,10 @@ import {
 } from '@shared/constants';
 
 type Props = {
-  books: Book;
+  books: Book[];
 }
 
-const Books = ({ books }: Props) => {
+const Library = ({ books }: Props) => {
   return (
     <>
       <Layout>
@@ -78,7 +78,7 @@ const Books = ({ books }: Props) => {
   );
 };
 
-export default Book;
+export default Library;
 
 export const getStaticProps = async () => {
   const res = await fetch('http://localhost:3000/api/library');
