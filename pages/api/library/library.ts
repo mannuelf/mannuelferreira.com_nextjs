@@ -3645,7 +3645,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 242472,
@@ -4888,7 +4887,6 @@ const BOOKS: Book[] = [
     "read-count": 1,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 830502,
@@ -4916,7 +4914,6 @@ const BOOKS: Book[] = [
     "read-count": 2,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 841724,
@@ -4944,7 +4941,6 @@ const BOOKS: Book[] = [
     "read-count": 1,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 968,
@@ -4972,7 +4968,6 @@ const BOOKS: Book[] = [
     "read-count": 1,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 960,
@@ -5000,7 +4995,6 @@ const BOOKS: Book[] = [
     "read-count": 1,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 252577,
@@ -5028,7 +5022,6 @@ const BOOKS: Book[] = [
     "read-count": 1,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 34427205,
@@ -5056,7 +5049,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 17859574,
@@ -5084,7 +5076,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 22328546,
@@ -5112,7 +5103,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 36160513,
@@ -5167,7 +5157,6 @@ const BOOKS: Book[] = [
     "read-count": 1,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 119760,
@@ -5195,7 +5184,6 @@ const BOOKS: Book[] = [
     "read-count": 1,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 28014216,
@@ -5223,7 +5211,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 7237139,
@@ -5251,7 +5238,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 29974755,
@@ -5333,7 +5319,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 12605157,
@@ -5361,7 +5346,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 6732019,
@@ -5389,7 +5373,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 30317415,
@@ -5417,7 +5400,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   },
   {
     "book_id": 23215733,
@@ -5445,7 +5427,6 @@ const BOOKS: Book[] = [
     "read-count": 0,
     "owned-copies": 0,
     "cover": " ",
-
   }
 ]
 
