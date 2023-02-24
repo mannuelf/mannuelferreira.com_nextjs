@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { Books } from '@api/library/library.types';
+import type { Book } from '@api/library/library.types';
 import Container from '@components/container';
 import Layout from '@components/Layout/layout';
 import MetaTags from '@components/meta-tags';
@@ -15,7 +15,7 @@ import {
 } from '@shared/constants';
 
 type Props = {
-  books: Books;
+  books: Book;
 }
 
 const Books = ({ books }: Props) => {
@@ -65,7 +65,6 @@ const Books = ({ books }: Props) => {
                   <header className='pt-4 w-[220px]'>
                     <h1>{book.title}</h1>
                     <div>{book['author-l-f']}</div>
-
                   </header>
                   <footer>
                     <div>{book.publisher}</div>
@@ -79,7 +78,7 @@ const Books = ({ books }: Props) => {
   );
 };
 
-export default Books;
+export default Book;
 
 export const getStaticProps = async () => {
   const res = await fetch('http://localhost:3000/api/library');

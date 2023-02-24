@@ -1,28 +1,27 @@
-export type Books = {
+export type Book = {
   'additional-authors': string;
   'author-l-f': string;
   'average-rating': number;
-  'back-cover'?: string | null;
   'binding': string;
   'bookshelves-with-positions': string;
   'date-added': string;
   'date-read': string;
   'exclusive-shelf': string;
-  'cover'?: string | null;
-  'my-rating'?: number | null;
-  'my-review'?: string | null;
-  'number-of-pages': number;
-  'original-publication-year': string;
+  'cover': string;
+  'my-rating': number;
+  'my-review': string;
+  'number-of-pages'?: number | undefined;
+  'original-publication-year'?: number | undefined;
   'owned-copies': number;
-  'private-notes'?: string | null;
+  'private-notes': string;
   'publisher': string;
   'read-count': number;
-  'year-published': number;
+  'year-published'?: number | undefined;
   author: string;
   book_id: number;
   bookshelves: string;
-  ISBN: string;
-  ISBN13: number;
-  spoiler?: string | null;
+  ISBN?: string | undefined;
+  ISBN13?: number | undefined;
+  spoiler: string;
   title: string;
-}[]
+}
