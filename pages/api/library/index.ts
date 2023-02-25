@@ -29,7 +29,7 @@ const fetchBookCovers = async (books: Book[]) => {
         book.cover =  imageUrl;
       }
     } catch (error) {
-      console.log(`🔥 Failed to fetch cover for book with ISBN ${ISBN}: ${error}`);
+      throw new Error(`🔥 Failed to fetch cover for book with ISBN ${ISBN}: ${error}`);
     }
   }
 

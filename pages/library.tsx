@@ -81,7 +81,8 @@ const Library = ({ books }: Props) => {
 export default Library;
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/library');
+  const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api'
+  const res = await fetch(`${apiUrl}/library`);
   const books = await res.json()
 
   return {
