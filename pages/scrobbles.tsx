@@ -64,8 +64,6 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
     setAllTimeTopAlbums(topAlbums)
   }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums]);
 
-  console.log('⚠️ ERROR', isError);
-
   if (isError && isError?.length > 0) {
     return (
       <Layout>
@@ -488,7 +486,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     myRecentTracks.push(recentTracksWithImages);
     myTopAlbums.push(topAlbumsWithImages);
   } catch (error) {
-    console.log('🔥🔥🔥ERROR', error);
     myErrors.push(error as string);
   }
 
