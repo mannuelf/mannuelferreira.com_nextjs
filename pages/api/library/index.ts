@@ -20,11 +20,11 @@ const fetchBookCovers = async (books: Book[]) => {
       continue;
     }
 
-    const url = `${API_BASE_URL}${ISBN ?? ISBN13}-${coverSize.M}.jpg`;
+    const url = `${API_BASE_URL}${ISBN || ISBN13}-${coverSize.M}.jpg`;
 
     try {
       const response = await fetch(url);
-      if (response.ok) {
+      if (response) {
         const imageUrl =  url;
         book.cover =  imageUrl;
       }
