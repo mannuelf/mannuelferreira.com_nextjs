@@ -32,7 +32,7 @@ const Library = ({ books }: Props) => {
           ogTwitterImage={`${TWITTER_CARD_BOOKS}?${Date.now()}`}
           ogTwitterSite={TWITTER_HANDLE}
           ogTwitterTitle={TITLE_BOOKS}
-          ogUrl='https://mannuelferreira.com/books'
+          ogUrl='https://mannuelferreira.com/library'
         />
         <Container>
           <PageTitle>Library</PageTitle>

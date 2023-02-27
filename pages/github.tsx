@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import axios, { type AxiosError } from 'axios';
-import Layout from '@components/Layout/layout';
 import Container from '@components/container';
-import PageTitle from '../components/page-title';
+import Layout from '@components/Layout/layout';
 import GITHUB from '@lib/github/github';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import PageTitle from '../components/page-title';
 
 type UserProps = {
   name: string;
@@ -32,7 +32,7 @@ interface IRepositories {
 function GitHub({ user, apiError }: { user: UserProps, apiError: IApiError }) {
   const [userName, setUserName] = useState<string>('');
   const [repos, setRepos] = useState<IRepo[]>();
-  const [errorMessage, setErrorMessage] = useState<AxiosError>();
+  const [errorMessage, setErrorMessage] = useState<IApiError | undefined>();
 
   useEffect(() => {
     if (user) {
@@ -52,7 +52,7 @@ function GitHub({ user, apiError }: { user: UserProps, apiError: IApiError }) {
               <h2 className='mb-8 text-4xl md:text-4xl font-bold tracking-tighter leading-tight'>
                 Error
               </h2>
-              {apiError?.message} with message: { apiError.response?.data.message}
+              {apiError?.message} with message: {apiError.response?.data.message}
             </section>
           </Container>
         </Layout>
