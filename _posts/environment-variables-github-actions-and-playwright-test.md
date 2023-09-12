@@ -42,8 +42,8 @@ API_KEY="adbcefg"
 .env.example (empty values for the example file) It's a good idea to have an example `.env` file so the next engineer knows what variables are required.
 
 ```bash
-API_BASE_URL=""
-API_KEY=""
+API_BASE_URL=
+API_KEY=
 ```
 
 ## 3. Create the test file and test
