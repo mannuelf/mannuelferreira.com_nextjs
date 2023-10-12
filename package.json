@@ -2,6 +2,9 @@
   "name": "mannuel-ferreira",
   "version": "0.1.1",
   "module": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "next",
     "start:dev": "concurrently \"npm run watch:css\" \"npm run dev\" \"npm run typecheck -w\"",
