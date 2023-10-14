@@ -231,17 +231,15 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           </div>
           <div className='top-artist grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-2 pb-20'>
             {artists && artists.length
-              ? artists.map((artist: Artist) => (
-                <ScrobblesCard
-                  playCount={artist.playcount.toString()}
-                  playTitle={artist.name}
-                  subTitle={''}
-                  title={artist.name}
-                  siteUrl={artist.url}
-                  imageUrl={artist.image ?? ''}
-                  key={artist.name.trim().replace(/\s/gm, '')}
-                />
-              ))
+              ? artists.map((artist: Artist) => <ScrobblesCard
+                    playCount={artist.playcount.toString()}
+                    playTitle={artist.name}
+                    subTitle={''}
+                    title={artist.name}
+                    siteUrl={artist.url}
+                    imageUrl={artist.image.toString()}
+                    key={artist.name.trim().replace(/\s/gm, '')}
+                  />)
               : null}
           </div>
         </div>
@@ -462,7 +460,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     });
 
     const recentTracksWithImages = track.map((track: Track) => {
-      if(!track.image) return;
+      if (!track.image) return;
       const getImage = track.image.find((img: LastFmImage) => img.size === 'extralarge');
       return {
         ...track,
