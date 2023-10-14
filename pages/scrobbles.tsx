@@ -63,8 +63,6 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
     setAllTimeTopAlbums(topAlbums)
   }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums]);
 
-  console.log('⚠️ ERROR', isError);
-
   if (isError && isError?.length > 0) {
     return (
       <Layout>
@@ -172,7 +170,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           </div>
           <div className='grid grid-flow-row-dense  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
             {allRecentTracks && allRecentTracks.length
-              ? allRecentTracks.map((track) => (
+              ? allRecentTracks.map((track: Track) => (
                 <ScrobblesCard
                   imageUrl={track.image ? track.image.toString() : ''}
                   nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
@@ -233,7 +231,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
           </div>
           <div className='top-artist grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-2 pb-20'>
             {artists && artists.length
-              ? artists.map((artist) => (
+              ? artists.map((artist: Artist) => (
                 <ScrobblesCard
                   playCount={artist.playcount.toString()}
                   playTitle={artist.name}
@@ -464,6 +462,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     });
 
     const recentTracksWithImages = track.map((track: Track) => {
+      if(!track.image) return;
       const getImage = track.image.find((img: LastFmImage) => img.size === 'extralarge');
       return {
         ...track,
