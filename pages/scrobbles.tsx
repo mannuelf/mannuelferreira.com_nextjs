@@ -23,6 +23,8 @@ import { useEffect, useState } from 'react';
 
 import { FANART_TV } from '@lib/fanarttv/fanarttv';
 import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
+import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
+import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
 import LastFmApi from 'lastfm-nodejs-client';
 import type {
   Artist,
@@ -31,10 +33,7 @@ import type {
   Track,
   User,
   WeeklyAlbum,
-} from 'lastfm-nodejs-client/@types';
-
-import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
-import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
+} from 'lastfm-nodejs-client/dist/@types/lastfm.types';
 import Image from 'next/image';
 import ScrobblesCard from './scrobblesCard';
 
@@ -304,14 +303,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const auth = await lastFm.auth('', method.auth, '', '');
 
   const getUser = async () => {
-    const data = await lastFm.getInfo(method.user.getInfo, config.username, 'overall', '');
+    const data = await lastFm.getInfo(method.user.getInfo, config.username);
     const { user } = data;
     return user;
   };
 
   const getLovedTracks = async () => {
     const data = await lastFm.getLovedTracks(
-      method.user.loved_tracks,
+      method.user.getLovedTracks,
       config.username,
       'overall',
       '12',
@@ -321,14 +320,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(method.user.recent_tracks, config.username, '', '22');
+    const data = await lastFm.getRecentTracks(method.user.getRecentTracks, config.username, '', '22');
     const { recenttracks } = data;
     return recenttracks;
   };
 
   const getTopArtists = async () => {
     const data = await lastFm.getTopArtists(
-      method.user.top_artists,
+      method.user.getTopArtists,
       config.username,
       'overall',
       '50',
@@ -340,7 +339,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const getWeeklyAlbumChart = async () => {
     const data = await lastFm.getWeeklyAlbumChart(
-      method.user.weekly_album_chart,
+      method.user.getWeeklyAlbumChart,
       config.username,
       'overall',
       '22',
@@ -351,7 +350,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const getTopAlbums = async () => {
     const data = await lastFm.getTopAlbums(
-      method.user.top_albums,
+      method.user.getTopAlbums,
       config.username,
       'overall',
       '50'
