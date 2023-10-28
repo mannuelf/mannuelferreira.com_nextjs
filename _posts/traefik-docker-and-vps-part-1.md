@@ -12,13 +12,20 @@ ogImage:
 coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
 ---
 
-I have an amazing website here [www.themwebs.me](https://www.themwebs.me) it's fast simple and cheaply hosted with a yearly fixed cost on a VPS with [www.hostinger.com](https://hostinger.com?REFERRALCODE=1MANNUELFER05).
+I have an "amazing" website here [www.themwebs.me](https://www.themwebs.me) it's fast simple and cheaply hosted with a yearly fixed cost on a VPS with [www.hostinger.com](https://hostinger.com?REFERRALCODE=1MANNUELFER05).
 
-I wanted a space where I could play with server technology like Traefik and docker.
+I wanted a space where I could play with stuff, containers, apis, test tools, test web frameworks, backend and frontend.
 
-I needed a place to host backend APIs that I might create like this [one](https://factbookapi.themwebs.me/population-levels) made with with python using [Flask](https://flask.palletsprojects.com).
+Specifically: I needed a place to host backend APIs that I might create like this [one](https://factbookapi.themwebs.me/population-levels) made with with python using [Flask](https://flask.palletsprojects.com).
 
-Now if playing with servers is not your jam, stop reading and head over to your favourite backend as service or servless platforms those are great too I use them often.
+I have these apps running:
+
+- [https://www.themwebs.me/](https://www.themwebs.me/)
+- [https://musicwall.themwebs.me/](https://musicwall.themwebs.me/)
+- [https://factbookapi.themwebs.me/](https://factbookapi.themwebs.me/)
+
+
+> Now if playing with servers is not your jam, stop reading and head over to your favourite backend as service or servless platforms those are great too I use them often.
 
 knowledge about docker is assumed. I will be focusing on Traefik and configuring it more than [docker basics](https://www.docker.com/101-tutorial).
 
