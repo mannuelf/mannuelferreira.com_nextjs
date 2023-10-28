@@ -30,6 +30,10 @@ Let's go.
 
 We will be building a small microservices architecture on our server using docker.
 
+It looks like this:
+
+![treafik architecture](https://res.cloudinary.com/mannuel/image/upload/v1698482073/mfcom/treafik-flow.png)
+
 ## Why
 
 So that we can quickly deploy backend api using any language. It's fun to try out new languages and frameworks e.g Deno, Rust and maybe some Go lang in the future. This way we will be able to deploy the code and have live URL's to test with.
@@ -43,7 +47,7 @@ I have already set up a repo with different "services" [here](https://github.com
 It includes:
 
 - one folder per service, each service has it's own Dockerfile
-- docker-compose file to start the services.
+- a single `docker-compose` file to start the services from the root.
 - traefik.toml
 - treafik_dynamic.toml
 
@@ -68,6 +72,8 @@ This is configured via a .toml configuration file called traefik.toml and treafi
 Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik.toml)
 
 ```toml
+# EntryPoints
+# Network entry points into Traefik, defines which port will get accept traffick on either TCP or UDP
 [entryPoints]
   [entryPoints.web]
     address = ":80"
@@ -78,18 +84,22 @@ Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik.tom
   [entryPoints.websecure]
     address = ":443"
 
+# Enables the monitoring dashboard, a docker container itself, it shows you an overview of all your running containers (services)
 [api]
   dashboard = true
 
+# Certificate resolver, tells Traefik which certificate generator to use and configures the admin email.
 [certificatesResolvers.lets-encrypt.acme]
   email = "mannuel@themwebs.me"
   storage = "acme.json"
   [certificatesResolvers.lets-encrypt.acme.tlsChallenge]
 
+# specifies which provider you are using, there are a few supported ones (Kubernetes, Marathon, Rancher)
 [providers.docker]
   watch = true
   network = "web"
 
+# imports an extension configuration file for more traefik settings
 [providers.file]
   filename = "traefik_dynamic.toml"
 ```
@@ -99,13 +109,23 @@ Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik.tom
 Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik_dynamic.toml)
 
 ```toml
+# Here we configure Middleware and HTTP Routers
+
+# Middleware are plugins that enable and can extend the features of Traefik
+# We are using the basicAuth on here to allow us to protect our admin portal website that shows our running containters
+# users: tells it wich are the authenticated users.
 [http.middlewares.simpleAuth.basicAuth]
   users = [
     "admin:$apr1$futE7qd5$CWn820MIlYZm4RILGBlB0/"
   ]
 
+# Router configuration
+# Rule: which url must Traefik must assign to the container that runs the web portal site, so entering https://monitor.company.com will load the admin site.
+# entrypoint: the name of middleware to use which is simpleAuth
+# service: which service is it, it is "api" and it is an internal one
+# certResolver: tells Traefik to use lets-encrypt as the provider.
 [http.routers.api]
-  rule = "Host(`monitor.localhost`)"
+  rule = "Host(`monitor.company.com`)"
   entrypoints = ["websecure"]
   middlewares = ["simpleAuth"]
   service = "api@internal"
@@ -113,4 +133,23 @@ Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik_dyn
     certResolver = "lets-encrypt"
 ```
 
-That will do for now, take a break or head over to part 2 for me details on the configuration and how we will deploy all of this.
+### Admin page running on monitor.company.com domain, secured behind a username and password
+
+![monitor](https://res.cloudinary.com/mannuel/image/upload/v1698484441/mfcom/monitor.themwebs.me_dashboard_.png)
+
+### SimpleAuth middleware
+
+![simpleAuth](https://res.cloudinary.com/mannuel/image/upload/v1698484440/mfcom/monitor.themwebs.me_dashboard__1.png)
+
+Here is sample of my server showing the containers running on thier respective ports
+
+```bash
+CONTAINER ID   IMAGE          COMMAND                  CREATED       STATUS       PORTS                                                                      NAMES
+a153cafbc934   factbookapi    "flask run --host 0.…"   2 weeks ago   Up 2 weeks   5000/tcp                                                                   factbookapi-service
+9a32240c2384   musicwall      "docker-entrypoint.s…"   2 weeks ago   Up 2 weeks   3000/tcp                                                                   musicwall-service
+a4d4ad1cd697   home           "/docker-entrypoint.…"   2 weeks ago   Up 2 weeks   80/tcp                                                                     home-service
+1346eb22b039   traefik:v3.0   "/entrypoint.sh --ac…"   2 weeks ago   Up 2 weeks   0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp   traefik
+
+```
+
+That will do for now, take a break and we will dive into the docker parts in part 2.
