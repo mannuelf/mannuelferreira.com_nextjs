@@ -1,13 +1,13 @@
 ---
-title: 'Ultimate guide to documenting components using docz'
-excerpt: ''
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png'
-date: '2021-10-17T06:45:00.322Z'
+title: "Ultimate guide to documenting components using docz"
+excerpt: ""
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png"
+date: "2021-10-17T06:45:00.322Z"
 author:
-  name: 'M Ferreira'
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  name: "M Ferreira"
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/docz-site.png'
+  url: "https://www.mannuelferreira.com/assets/blog/ultimate-guide-to-documenting-components-using-docz/docz-site.png"
 ---
 
 Writing documentation is necessary but is often left as an after thought and only completed near the end of the software development life cycle. In my experience It may be the last thing I do once I have finished building a feature. Things I may document include how to get started in life contributing to a repository, document properties of the components and api endpoints. Waiting to the end of the development cycle is not ideal because at times with best intentions I might never get around to actually writing the documentation.
@@ -34,7 +34,7 @@ Leveraging the power of Gatsby, docz builds a mobile first, SEO friendly static 
 📁 client/src/components/common/Button.tsx
 
 ```tsx
-import React from 'react';
+import React from "react";
 
 interface ButtonProps {
   /*

@@ -52,7 +52,7 @@ The connection to `upstream` is not configured by default, you have to tell your
 issue this command:
 
 ```bash
-git remote add upstream https://github.com/mannuelf/DefinitelyTyped 
+git remote add upstream https://github.com/mannuelf/DefinitelyTyped
 ```
 
 then check your config:

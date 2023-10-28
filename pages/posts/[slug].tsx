@@ -1,17 +1,17 @@
-import matter from 'gray-matter';
-import ErrorPage from 'next/error';
-import { useRouter } from 'next/router';
-import Markdown from 'react-markdown';
-import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import matter from "gray-matter";
+import ErrorPage from "next/error";
+import { useRouter } from "next/router";
+import Markdown from "react-markdown";
+import { PrismAsync as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-import Layout from '@components/Layout/layout';
-import Container from '@components/container';
-import MetaTags from '@components/meta-tags';
-import PostHeader from '@components/post-header';
-import PostTitle from '@components/post-title';
-import { getAllPosts, getPostBySlug } from '@lib/api';
-import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from '@shared/constants';
+import Layout from "@components/Layout/layout";
+import Container from "@components/container";
+import MetaTags from "@components/meta-tags";
+import PostHeader from "@components/post-header";
+import PostTitle from "@components/post-title";
+import { getAllPosts, getPostBySlug } from "@lib/api";
+import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from "@shared/constants";
 
 type Props = {
   post: Post;
@@ -29,11 +29,11 @@ const Post = ({ post }: Props) => {
 
   const components = {
     code({ node, inline, className, children, ...props }: any) {
-      const match = /language-(\w+)/.exec(className || '');
-      const contents = String(children).replace(/\n$/, '');
+      const match = /language-(\w+)/.exec(className || "");
+      const contents = String(children).replace(/\n$/, "");
 
       return !inline && match ? (
-        <SyntaxHighlighter style={dracula} language={match[1]} PreTag='div' {...props}>
+        <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div" {...props}>
           {contents}
         </SyntaxHighlighter>
       ) : (
@@ -51,13 +51,13 @@ const Post = ({ post }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className='mx-auto mb-20 max-w-screen-md'>
+            <article className="mx-auto mb-20 max-w-screen-md">
               <MetaTags
                 ogDescription={post.excerpt}
                 ogImage={post.ogImage.url}
                 ogSiteName={CMS_NAME}
                 ogTitle={post.title}
-                ogTwitterCard={'summary_large_image'}
+                ogTwitterCard={"summary_large_image"}
                 ogTwitterCreator={TWITTER_HANDLE}
                 ogTwitterImage={`${post.ogImage.url}?${Date.now()}`}
                 ogTwitterSite={TWITTER_HANDLE}
@@ -65,21 +65,21 @@ const Post = ({ post }: Props) => {
                 ogUrl={currentURL}
               />
               <PostHeader {...post} />
-              <Markdown components={components} className='markdown-body'>
+              <Markdown components={components} className="markdown-body">
                 {post.content}
               </Markdown>
 
-              <div className='flex flex-row flex-wrap md:flex-nowrap gap-4 pl-4 mt-8 content-start border-solid border-l-8 border-x-orange '>
-                <div className='basis-full order-2 sm:order-1  md:basis-1/2 overflow-hidden'>
+              <div className="flex flex-row flex-wrap md:flex-nowrap gap-4 pl-4 mt-8 content-start border-solid border-l-8 border-x-orange ">
+                <div className="basis-full order-2 sm:order-1  md:basis-1/2 overflow-hidden">
                   <iframe
-                    title='Sign up to newsletter'
-                    width={'320'}
-                    height={'400'}
-                    src='https://cdn.forms-content.sg-form.com/8ab0a5f5-8918-11ed-bde3-9e0d879814a7'
+                    title="Sign up to newsletter"
+                    width={"320"}
+                    height={"400"}
+                    src="https://cdn.forms-content.sg-form.com/8ab0a5f5-8918-11ed-bde3-9e0d879814a7"
                   />
                 </div>
-                <div className='basis-full order-1 sm:order-2 md:basis-auto'>
-                  <h4 className='text-2xl'>Stay up to date</h4>
+                <div className="basis-full order-1 sm:order-2 md:basis-auto">
+                  <h4 className="text-2xl">Stay up to date</h4>
                   <p>
                     Consider keeping up to date with software development and design by signing up
                     to my newsletter.
@@ -105,16 +105,16 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug, [
-    'author',
-    'category',
-    'content',
-    'coverImage',
-    'date',
-    'excerpt',
-    'ogImage',
-    'slug',
-    'tags',
-    'title',
+    "author",
+    "category",
+    "content",
+    "coverImage",
+    "date",
+    "excerpt",
+    "ogImage",
+    "slug",
+    "tags",
+    "title",
   ]);
 
   const content = matter.stringify(post.content, {});
@@ -130,7 +130,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug']);
+  const posts = getAllPosts(["slug"]);
 
   return {
     paths: posts.map((posts) => {

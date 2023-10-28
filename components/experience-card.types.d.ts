@@ -2,7 +2,7 @@ export type ExperienceCardProps = {
   title: string;
   date: string;
   logo: Logo;
-}
+};
 
 export type Logo = {
   title: string;

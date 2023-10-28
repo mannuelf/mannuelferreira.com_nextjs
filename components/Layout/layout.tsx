@@ -1,6 +1,6 @@
-import Footer from '../Footer/footer';
-import Header from '../header';
-import Meta from '../meta';
+import Footer from "../Footer/footer";
+import Header from "../header";
+import Meta from "../meta";
 
 type Props = {
   preview?: boolean;
@@ -12,7 +12,7 @@ const Layout = ({ preview, children }: Props) => {
     <>
       <Meta />
       <Header />
-      <main className='mt-16'>{children}</main>
+      <main className="mt-16">{children}</main>
       <Footer />
     </>
   );

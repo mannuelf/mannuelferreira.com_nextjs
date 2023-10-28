@@ -1,4 +1,3 @@
-
 ```bash
 Refused to load the script 'https://www.googletagmanager.com/gtag/js?id=G-H5QZ22R2QN' because it violates the following Content Security Policy directive: "script-src 'self'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
 

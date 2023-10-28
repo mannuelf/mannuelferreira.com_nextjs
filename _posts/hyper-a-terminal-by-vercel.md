@@ -1,15 +1,15 @@
 ---
-title: 'Hyper a terminal by Vercel'
-excerpt: 'I have started using Hyper a terminal built by Vercel, I think you might like it too. Here is why...'
-category: 'Tools'
-tags: 'Vercel, hyper'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1662873007/images/hyper-post-cover.png'
-date: '2022-09-11T07:18:00.322Z'
+title: "Hyper a terminal by Vercel"
+excerpt: "I have started using Hyper a terminal built by Vercel, I think you might like it too. Here is why..."
+category: "Tools"
+tags: "Vercel, hyper"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1662873007/images/hyper-post-cover.png"
+date: "2022-09-11T07:18:00.322Z"
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1662873007/images/hyper-post-cover.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1662873007/images/hyper-post-cover.png"
 ---
 
 They say
@@ -26,7 +26,7 @@ It's been around for a few years(3 or more) and still going strong, is actively 
 
 ### Easily configurable via a JavaScript config
 
-On installation a dot file called `.hyper.js` is created in your home  directory, take a closer look at mine on github [here](https://github.com/mannuelf/dot.hyper.js).
+On installation a dot file called `.hyper.js` is created in your home directory, take a closer look at mine on github [here](https://github.com/mannuelf/dot.hyper.js).
 
 Shortened for brevity.
 

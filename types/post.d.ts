@@ -5,7 +5,7 @@ type Post = {
   coverImage: string;
   date: string;
   excerpt: string;
-  ogImage: { url: string;};
+  ogImage: { url: string };
   slug: string;
   tags: string;
   title: string;

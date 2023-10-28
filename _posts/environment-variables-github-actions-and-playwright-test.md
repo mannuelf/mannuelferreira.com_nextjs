@@ -1,15 +1,15 @@
 ---
-title: 'Environment variables inside of NodeJs and Github actions CI/CD pipeline with Playwright test'
-excerpt: 'A guide to testing environment variables in NodeJs project and runnig it a github actions CI/CD pipeline using Playright'
-category: 'Testing'
-tags: 'NodeJs, Playwright, GitHub Actions'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1669673297/images/github-actions-cover.png'
-date: '2022-11-28T06:25:00.322Z'
+title: "Environment variables inside of NodeJs and Github actions CI/CD pipeline with Playwright test"
+excerpt: "A guide to testing environment variables in NodeJs project and runnig it a github actions CI/CD pipeline using Playright"
+category: "Testing"
+tags: "NodeJs, Playwright, GitHub Actions"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1669673297/images/github-actions-cover.png"
+date: "2022-11-28T06:25:00.322Z"
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1669673297/images/github-actions-cover.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1669673297/images/github-actions-cover.png"
 ---
 
 This guide will show you how to inject environment variables into the Github actions pipeline. the context of this guide is to have our tests run in the pipeline in the same way as they run on our localhost.
@@ -63,9 +63,9 @@ All code below should be written in the same file.
 Import dependencies, playright, dotenv and path:
 
 ```ts
-import { test, expect } from '@playwright/test';
-import dotenv from 'dotenv';
-import path from 'path';
+import { test, expect } from "@playwright/test";
+import dotenv from "dotenv";
+import path from "path";
 dotenv.config();
 ```
 
@@ -74,7 +74,7 @@ dotenv.config();
 - The `.env` is not and should never be commited to git.
 
 ```ts
-dotenv.config({ path: path.resolve(__dirname, '..', process.env.CI ? '.env.example' : '.env') });
+dotenv.config({ path: path.resolve(__dirname, "..", process.env.CI ? ".env.example" : ".env") });
 ```
 
 - Grab the variables using destructuring
@@ -87,7 +87,7 @@ const { API_BASE_URL, API_KEY } = process.env;
 
 ```js
 let environmentVarWarning =
-  '❗ No environment variable found, use the .env.example file to create your own .env file with required properties and values.';
+  "❗ No environment variable found, use the .env.example file to create your own .env file with required properties and values.";
 ```
 
 - Create a describe so multple tests can be grouped, plan to run 2 tests
@@ -99,14 +99,14 @@ test.describe('Environment variables present and configured', async () => {
 ```
 
 ```js
-test.describe('Environment variables present and configured', async () => {
+test.describe("Environment variables present and configured", async () => {
   // 1
-  test('API_BASE_URL is present', async () => {
+  test("API_BASE_URL is present", async () => {
     expect(API_BASE_URL, environmentVarWarning).toBeDefined();
   });
 
   // 2
-  test('API_KEY is present', async () => {
+  test("API_KEY is present", async () => {
     expect(API_KEY, environmentVarWarning).toBeDefined();
   });
 });
@@ -115,24 +115,24 @@ test.describe('Environment variables present and configured', async () => {
 The final look fo the test:
 
 ```js
-import { test, expect } from '@playwright/test';
-import dotenv from 'dotenv';
-import path from 'path';
+import { test, expect } from "@playwright/test";
+import dotenv from "dotenv";
+import path from "path";
 
 dotenv.config();
-dotenv.config({ path: path.resolve(__dirname, '..', process.env.CI ? '.env.example' : '.env') });
+dotenv.config({ path: path.resolve(__dirname, "..", process.env.CI ? ".env.example" : ".env") });
 
 const { API_BASE_URL, API_KEY } = process.env;
 
 let environmentVarWarning =
-  '❗ No environment variable found, use the .env.example file to create your own .env file with required properties and values.';
+  "❗ No environment variable found, use the .env.example file to create your own .env file with required properties and values.";
 
-test.describe('Environment variables present and configured', async () => {
-  test('API_BASE_URL is present', async () => {
+test.describe("Environment variables present and configured", async () => {
+  test("API_BASE_URL is present", async () => {
     expect(API_BASE_URL, environmentVarWarning).toBeDefined();
   });
 
-  test('API_KEY is present', async () => {
+  test("API_KEY is present", async () => {
     expect(API_KEY, environmentVarWarning).toBeDefined();
   });
 });

@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 type Props = {
   ogDescription: string;
@@ -27,19 +27,19 @@ export default function MetaTags({
   return (
     <Head>
       <title>{`${ogTitle} | ${ogSiteName}`}</title>
-      <meta name='twitter:card' content={ogTwitterCard} />
-      <meta name='twitter:creator' content={ogTwitterCreator} />
-      <meta name='twitter:description' content={ogDescription} />
-      <meta name='twitter:image' content={`${ogImage}?${Date.now()}`} />
-      <meta name='twitter:site' content={ogTwitterSite} />
-      <meta name='twitter:title' content={ogTitle} />
-      <meta property='og:description' content={ogDescription} key='ogdesc' />
-      <meta property='og:image' content={ogImage} key='ogimage' />
-      <meta property='og:site_name' content={ogSiteName} key='ogsitename' />
-      <meta property='og:title' content={ogTitle} />
-      <meta property='og:url' content={ogUrl} />
-      <meta property='og:type' content={'object'} />
-      <meta property='og:image:type' content={'image/png'} />
+      <meta name="twitter:card" content={ogTwitterCard} />
+      <meta name="twitter:creator" content={ogTwitterCreator} />
+      <meta name="twitter:description" content={ogDescription} />
+      <meta name="twitter:image" content={`${ogImage}?${Date.now()}`} />
+      <meta name="twitter:site" content={ogTwitterSite} />
+      <meta name="twitter:title" content={ogTitle} />
+      <meta property="og:description" content={ogDescription} key="ogdesc" />
+      <meta property="og:image" content={ogImage} key="ogimage" />
+      <meta property="og:site_name" content={ogSiteName} key="ogsitename" />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:url" content={ogUrl} />
+      <meta property="og:type" content={"object"} />
+      <meta property="og:image:type" content={"image/png"} />
     </Head>
   );
 }

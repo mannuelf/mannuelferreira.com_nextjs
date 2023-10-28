@@ -1,15 +1,15 @@
 ---
-title: 'What is Sass and how does it work'
-excerpt: 'Sass stands for Syntactically Awesome Stylesheets. It is a CSS Pre-Processor meaning you are able to write CSS with super powers of functions, variables, loops, mixins and components or partials.'
-category: 'SCSS'
-tags: 'CSS, Styling'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933698/images/sass-article.png'
-date: '2020-03-11T05:35:07.322Z'
+title: "What is Sass and how does it work"
+excerpt: "Sass stands for Syntactically Awesome Stylesheets. It is a CSS Pre-Processor meaning you are able to write CSS with super powers of functions, variables, loops, mixins and components or partials."
+category: "SCSS"
+tags: "CSS, Styling"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933698/images/sass-article.png"
+date: "2020-03-11T05:35:07.322Z"
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933698/images/sass-article.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933698/images/sass-article.png"
 ---
 
 This is a beginner friendly whirlwind tour of setting up Sass.
@@ -76,8 +76,8 @@ _header.scss
 Sass will import these two files into one global context and generate one css file to be used in a simple html webpage.
 
 ```scss
-@import 'vars';
-@import 'header';
+@import "vars";
+@import "header";
 ```
 
 ### \_var.scss

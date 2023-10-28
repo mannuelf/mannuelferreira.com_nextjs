@@ -1,15 +1,15 @@
 ---
-title: 'Install Minikube on Ubuntu 22.04'
-excerpt: 'A simple guide to install minikube, help you get up and running with kubernetes on you local development environment.'
-category: 'Kubernetes'
-tags: 'Minikube, Docker, Linux'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png'
-date: '2022-11-23T07:58:00.322Z'
+title: "Install Minikube on Ubuntu 22.04"
+excerpt: "A simple guide to install minikube, help you get up and running with kubernetes on you local development environment."
+category: "Kubernetes"
+tags: "Minikube, Docker, Linux"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png"
+date: "2022-11-23T07:58:00.322Z"
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1669098514/images/kubernetes-cover.png"
 ---
 
 In a [previous post](https://mannuelferreira.com/posts/install-kubectl-on-ubuntu-22-04) we installed [kubectl](https://mannuelferreira.com/posts/install-kubectl-on-ubuntu-22-04) now we will install minikube.

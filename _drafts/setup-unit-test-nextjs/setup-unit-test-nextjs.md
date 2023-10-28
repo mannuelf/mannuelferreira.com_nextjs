@@ -41,11 +41,11 @@ export default {
 create config file in the root directory called `test.env.js`
 
 ```js
-import { loadEnvConfig } from '@next/env';
-import { resolve } from 'path';
+import { loadEnvConfig } from "@next/env";
+import { resolve } from "path";
 
 export default async () => {
-  const envFile = resolve(__dirname, '.');
+  const envFile = resolve(__dirname, ".");
   loadEnvConfig(envFile);
 };
 ```

@@ -1,16 +1,9 @@
 import { useEffect, RefObject } from "react";
 
-export const useOnClickOutside = (
-  ref: RefObject<HTMLDivElement>,
-  closeMenu: () => void
-) => {
+export const useOnClickOutside = (ref: RefObject<HTMLDivElement>, closeMenu: () => void) => {
   useEffect(() => {
     const listener = (event: MouseEvent) => {
-      if (
-        ref.current &&
-        event.target &&
-        ref.current.contains(event.target as Node)
-      ) {
+      if (ref.current && event.target && ref.current.contains(event.target as Node)) {
         return;
       }
       closeMenu();
@@ -22,4 +15,3 @@ export const useOnClickOutside = (
     };
   }, [ref, closeMenu]);
 };
-

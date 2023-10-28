@@ -1,15 +1,15 @@
 ---
-title: 'Traefik, Docker and your vps part 1'
-excerpt: 'I love playing with servers and if you do too keep reading. I will show you how to setup a Traefik proxy and docker environment on your VPS.'
-category: 'Linux'
-tags: 'traefik, docker, vps'
-date: '2023-10-10T07:35:00.322Z'
+title: "Traefik, Docker and your vps part 1"
+excerpt: "I love playing with servers and if you do too keep reading. I will show you how to setup a Traefik proxy and docker environment on your VPS."
+category: "Linux"
+tags: "traefik, docker, vps"
+date: "2023-10-10T07:35:00.322Z"
 author:
-  name: 'M Ferreira'
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  name: "M Ferreira"
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
 ---
 
 I have an amazing website here [www.themwebs.me](https://www.themwebs.me) it's fast simple and cheaply hosted with a yearly fixed cost on a VPS with [www.hostinger.com](https://hostinger.com?REFERRALCODE=1MANNUELFER05).
@@ -20,8 +20,7 @@ I needed a place to host backend APIs that I might create like this [one](https:
 
 Now if playing with servers is not your jam, stop reading and head over to your favourite backend as service or servless platforms those are great too I use them often.
 
-
-knowledge about docker  is assumed. I will be focusing on Traefik and configuring it more than [docker basics](https://www.docker.com/101-tutorial).
+knowledge about docker is assumed. I will be focusing on Traefik and configuring it more than [docker basics](https://www.docker.com/101-tutorial).
 
 ## Ready?
 
@@ -51,8 +50,7 @@ It includes:
 ## Traefik
 
 > Traefik is an open-source Edge Router that makes publishing your services a fun and easy experience. It receives requests on behalf of your system and finds out which components are responsible for handling them.
-source: [Traefik](https://doc.traefik.io/traefik)
-
+> source: [Traefik](https://doc.traefik.io/traefik)
 
 Imagine you have a website at www.website.com and an api at api.website.com, Traefik will direct the request to the appropriate service based on the sub domain.
 

@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   customClass: string;
@@ -7,10 +7,10 @@ type Props = {
 
 const Logo = ({ customClass }: Props) => {
   return (
-    <Link passHref href='/' className={customClass}>
+    <Link passHref href="/" className={customClass}>
       <Image
-        src='/assets/icons/mf-logo.svg'
-        alt='Mannuel Ferreira'
+        src="/assets/icons/mf-logo.svg"
+        alt="Mannuel Ferreira"
         unoptimized={true}
         width={96}
         height={64}

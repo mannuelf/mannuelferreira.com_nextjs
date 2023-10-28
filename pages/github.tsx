@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Layout from '@components/Layout/layout';
-import Container from '@components/container';
-import PageTitle from '../components/page-title';
-import GITHUB from '@lib/github/github';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Layout from "@components/Layout/layout";
+import Container from "@components/container";
+import PageTitle from "../components/page-title";
+import GITHUB from "@lib/github/github";
 
 type UserProps = {
   user: {
@@ -24,7 +24,7 @@ interface IRepositories {
 }
 
 function GitHub({ user }: UserProps) {
-  const [userName, setUserName] = useState<string>('');
+  const [userName, setUserName] = useState<string>("");
   const [repos, setRepos] = useState<IRepo[]>();
 
   useEffect(() => {
@@ -38,8 +38,8 @@ function GitHub({ user }: UserProps) {
         <Container>
           <section>
             <PageTitle>Github</PageTitle>
-            <h2 className='mb-8 text-4xl md:text-4xl font-bold tracking-tighter leading-tight'>
-              {userName ? userName : ''}
+            <h2 className="mb-8 text-4xl md:text-4xl font-bold tracking-tighter leading-tight">
+              {userName ? userName : ""}
             </h2>
             {repos ? repos.map((repo) => <h3 key={repo.name}>{repo.name}</h3>) : null}
           </section>
@@ -73,9 +73,9 @@ export async function getStaticProps() {
   try {
     const res = await axios({
       url: GITHUB.baseUrl,
-      method: 'POST',
+      method: "POST",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
         Authorization: GITHUB.token,
       },
       data: JSON.stringify(githubQuery),
@@ -83,7 +83,7 @@ export async function getStaticProps() {
 
     user = res.data.data.viewer;
   } catch (error) {
-    console.error('🚨', error);
+    console.error("🚨", error);
   }
 
   return {

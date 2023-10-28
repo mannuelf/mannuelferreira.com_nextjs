@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef } from "react";
 
 interface State<T> {
   data?: T;
@@ -8,9 +8,9 @@ interface State<T> {
 type Cache<T> = { [url: string]: T };
 
 type Action<T> =
-  | { type: 'loading' }
-  | { type: 'fetched'; payload: T }
-  | { type: 'error'; payload: Error };
+  | { type: "loading" }
+  | { type: "fetched"; payload: T }
+  | { type: "error"; payload: Error };
 
 function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
   const cache = useRef<Cache<T>>({});
@@ -25,11 +25,11 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
   // State logic
   const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
     switch (action.type) {
-      case 'loading':
+      case "loading":
         return { ...initialState };
-      case 'fetched':
+      case "fetched":
         return { ...initialState, data: action.payload };
-      case 'error':
+      case "error":
         return { ...initialState, error: action.payload };
       default:
         return state;
@@ -42,11 +42,11 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
     if (!url) return;
 
     const fetchData = async () => {
-      dispatch({ type: 'loading' });
+      dispatch({ type: "loading" });
 
       // if a cache exists for this url, return it.
       if (cache.current[url]) {
-        dispatch({ type: 'fetched', payload: cache.current[url] });
+        dispatch({ type: "fetched", payload: cache.current[url] });
         return;
       }
 
@@ -60,10 +60,10 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
         cache.current[url] = data;
         if (cancelRequest.current) return;
 
-        dispatch({ type: 'fetched', payload: data });
+        dispatch({ type: "fetched", payload: data });
       } catch (error) {
         if (cancelRequest.current) return;
-        dispatch({ type: 'error', payload: error as Error });
+        dispatch({ type: "error", payload: error as Error });
       }
     };
 

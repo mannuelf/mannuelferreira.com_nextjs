@@ -1,7 +1,7 @@
-import Layout from '@components/Layout/layout';
-import Container from '@components/container';
-import MetaTags from '@components/meta-tags';
-import PageTitle from '@components/page-title';
+import Layout from "@components/Layout/layout";
+import Container from "@components/container";
+import MetaTags from "@components/meta-tags";
+import PageTitle from "@components/page-title";
 import {
   CMS_NAME,
   LOGO_LASTFM,
@@ -15,17 +15,17 @@ import {
   URL_LASTFM_API_DOCS,
   URL_LASTFM_NPM_PKG,
   URL_TWITTER_PROFILE,
-} from '@shared/constants';
-import { defined } from '@shared/defined';
-import axios, { AxiosResponse } from 'axios';
-import { GetServerSideProps } from 'next';
-import { useEffect, useState } from 'react';
+} from "@shared/constants";
+import { defined } from "@shared/defined";
+import axios, { AxiosResponse } from "axios";
+import { GetServerSideProps } from "next";
+import { useEffect, useState } from "react";
 
-import { FANART_TV } from '@lib/fanarttv/fanarttv';
-import { Artistbackground, FanArtArtistResponse } from '@lib/fanarttv/fanarttv.types';
-import { MUSICBRAINZ } from '@lib/musicbrainz/musicbrainz-cover-art';
-import { MusicBrainzCoverArt } from '@lib/musicbrainz/musicbrainz-cover-art.types';
-import LastFmApi from 'lastfm-nodejs-client';
+import { FANART_TV } from "@lib/fanarttv/fanarttv";
+import { Artistbackground, FanArtArtistResponse } from "@lib/fanarttv/fanarttv.types";
+import { MUSICBRAINZ } from "@lib/musicbrainz/musicbrainz-cover-art";
+import { MusicBrainzCoverArt } from "@lib/musicbrainz/musicbrainz-cover-art.types";
+import LastFmApi from "lastfm-nodejs-client";
 import type {
   Artist,
   Image as LastFmImage,
@@ -33,9 +33,9 @@ import type {
   Track,
   User,
   WeeklyAlbum,
-} from 'lastfm-nodejs-client/dist/@types/lastfm.types';
-import Image from 'next/image';
-import ScrobblesCard from './scrobblesCard';
+} from "lastfm-nodejs-client/dist/@types/lastfm.types";
+import Image from "next/image";
+import ScrobblesCard from "./scrobblesCard";
 
 type Props = {
   error: [];
@@ -43,10 +43,17 @@ type Props = {
   topArtists: Artist[];
   weeklyAlbumChart: WeeklyAlbum[];
   userProfile: User;
-  topAlbums: TopAlbums[]
+  topAlbums: TopAlbums[];
 };
 
-const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums }: Props) => {
+const Scrobbles = ({
+  error,
+  recentTracks,
+  topArtists,
+  userProfile,
+  weeklyAlbumChart,
+  topAlbums,
+}: Props) => {
   const [allRecentTracks, setAllRecentTrack] = useState<Track[]>([]);
   const [artists, setArtists] = useState<Artist[]>([]);
   const [isError, setIsError] = useState<[]>();
@@ -60,7 +67,7 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
     setWeeklyAlbums(weeklyAlbumChart);
     setAllRecentTrack(recentTracks);
     setUser(userProfile);
-    setAllTimeTopAlbums(topAlbums)
+    setAllTimeTopAlbums(topAlbums);
   }, [error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums]);
 
   if (isError && isError?.length > 0) {
@@ -68,9 +75,9 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
       <Layout>
         <Container>
           <PageTitle>Scrobbles</PageTitle>
-          <div className='pt-4 mt-8 mb-16 border-t'>
+          <div className="pt-4 mt-8 mb-16 border-t">
             {isError.length
-              ? '😥 Error fetching data from lastFM, hit CTRL+F5 once or twice, maybe thrice, it eventually works.'
+              ? "😥 Error fetching data from lastFM, hit CTRL+F5 once or twice, maybe thrice, it eventually works."
               : null}
           </div>
         </Container>
@@ -84,162 +91,167 @@ const Scrobbles = ({ error, recentTracks, topArtists, userProfile, weeklyAlbumCh
         ogDescription={META_MUSIC}
         ogImage={TWITTER_CARD_MUSIC}
         ogSiteName={CMS_NAME}
-        ogTitle={'Scrobbles'}
-        ogTwitterCard='summary_large_image'
+        ogTitle={"Scrobbles"}
+        ogTwitterCard="summary_large_image"
         ogTwitterCreator={TWITTER_HANDLE}
         ogTwitterImage={`${TWITTER_CARD_MUSIC}?${Date.now()}`}
         ogTwitterSite={TWITTER_HANDLE}
-        ogTwitterTitle={'Scrobbles'}
+        ogTwitterTitle={"Scrobbles"}
         ogUrl={MUSIC_URL}
       />
       <Container>
         <PageTitle>Scrobbles</PageTitle>
         {user ? (
-          <div className='pt-4 mt-8 mb-16 border-t'>
-            <p className='text-lg'>
+          <div className="pt-4 mt-8 mb-16 border-t">
+            <p className="text-lg">
               My love for collecting music has brought me to keep using lastFm. I have been tracking
               my listening habits with lastFm since 2008. I have always wanted to play with the
               data, that is what this page is about. I of course want to share what I have been
               listening to with you all.
             </p>
             <p>
-              If code is what interests you read it{' '}
+              If code is what interests you read it{" "}
               <a
-                href='https://github.com/mannuelf/mannuelferreira.com_nextjs/blob/main/pages/scrobbles.tsx'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://github.com/mannuelf/mannuelferreira.com_nextjs/blob/main/pages/scrobbles.tsx"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {' '}
-                <i className='fab fa-github'></i> here.
-              </a>{' '}
+                {" "}
+                <i className="fab fa-github"></i> here.
+              </a>{" "}
             </p>
             <p>
-              I have extracted an API client to{' '}
-              <a href={URL_LASTFM_NPM_PKG} target='_blank' rel='noopener noreferrer'>
+              I have extracted an API client to{" "}
+              <a href={URL_LASTFM_NPM_PKG} target="_blank" rel="noopener noreferrer">
                 <span>
-                  <Image src={NPM_LOGO} alt='Larcasts' width={42} height={28} />
+                  <Image src={NPM_LOGO} alt="Larcasts" width={42} height={28} />
                 </span>
               </a>
               , if you want to build something similar the client may help.
             </p>
             <p>
-              My scrobbles from {''}
-              <a href={URL_LASTFM_API_DOCS} target='_blank' rel='noopener noreferrer'>
+              My scrobbles from {""}
+              <a href={URL_LASTFM_API_DOCS} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={LOGO_LASTFM}
                   unoptimized={true}
                   width={120}
                   height={36}
-                  alt='LastFm Logo'
+                  alt="LastFm Logo"
                 />
               </a>
-              {'  '}
-              API.{' '}
+              {"  "}
+              API.{" "}
               {user ? (
                 <>
-                  Total plays:{' '}
-                  <span className='font-bold text-4xl text-red-600 '>{user?.playcount}</span>.
+                  Total plays:{" "}
+                  <span className="font-bold text-4xl text-red-600 ">{user?.playcount}</span>.
                 </>
               ) : null}
             </p>
             <p>
-              Some photos from{' '}
-              <a href={URL_FANARTTV} target='_blank' rel='noopener noreferrer'>
+              Some photos from{" "}
+              <a href={URL_FANARTTV} target="_blank" rel="noopener noreferrer">
                 fanart.tv
-              </a>{' '}
-              API, some from{' '}
-              <a href={URL_COVERART_ARCHIVE} target='_blank' rel='noopener noreferrer'>
+              </a>{" "}
+              API, some from{" "}
+              <a href={URL_COVERART_ARCHIVE} target="_blank" rel="noopener noreferrer">
                 Musicbrainz Cover Art Archive
               </a>
               . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If
-              you know of another API{' '}
-              <a href={URL_TWITTER_PROFILE} target='_blank' rel='noopener noreferrer'>
+              you know of another API{" "}
+              <a href={URL_TWITTER_PROFILE} target="_blank" rel="noopener noreferrer">
                 let me know about it
               </a>
               .🤙
             </p>
-            <h2 className='text-2xl'></h2>
+            <h2 className="text-2xl"></h2>
           </div>
         ) : null}
       </Container>
-      <div className='container mx-auto'>
-        <div className='p-2'>
-          <div className='pb-2 pl-4' id='#recenttracks'>
-            <h2 className='text-2xl font-medium'>Recent Tracks</h2>
+      <div className="container mx-auto">
+        <div className="p-2">
+          <div className="pb-2 pl-4" id="#recenttracks">
+            <h2 className="text-2xl font-medium">Recent Tracks</h2>
             <p>Listened to today</p>
           </div>
-          <div className='grid grid-flow-row-dense  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
+          <div className="grid grid-flow-row-dense  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20">
             {allRecentTracks && allRecentTracks.length
               ? allRecentTracks.map((track: Track) => (
-                <ScrobblesCard
-                  imageUrl={track.image ? track.image.toString() : ''}
-                  nowplaying={track['@attr'] ? track['@attr'].nowplaying : ''}
-                  playTitle={track.name}
-                  siteUrl={track.url}
-                  subTitle={track.artist['#text']}
-                  title={track.name}
-                  key={track.name.trim().replace(/\s/gm, '')}
-                />
-              ))
+                  <ScrobblesCard
+                    imageUrl={track.image ? track.image.toString() : ""}
+                    nowplaying={track["@attr"] ? track["@attr"].nowplaying : ""}
+                    playTitle={track.name}
+                    siteUrl={track.url}
+                    subTitle={track.artist["#text"]}
+                    title={track.name}
+                    key={track.name.trim().replace(/\s/gm, "")}
+                  />
+                ))
               : null}
             <hr />
           </div>
-          <div className='pb-2 pl-4'>
-            <a href="#" id='#topalbums'></a>
-            <h2 className='text-2xl font-medium'>Top Albums</h2>
+          <div className="pb-2 pl-4">
+            <a href="#" id="#topalbums"></a>
+            <h2 className="text-2xl font-medium">Top Albums</h2>
             <p>Top Albums of all time</p>
           </div>
-          <div className='grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
+          <div className="grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20">
             {allTimeTopAlbums && allTimeTopAlbums.length
               ? allTimeTopAlbums.map((album: any) => (
-                <ScrobblesCard
-                  playCount={album.playcount.toString()}
-                  playTitle={album.name}
-                  subTitle={album.artist['#text']}
-                  title={album.name}
-                  siteUrl={album.url}
-                  imageUrl={album.image ? album.image : ''}
-                  key={album.name.trim().replace(/\s/gm, '')}
-                />
-              ))
+                  <ScrobblesCard
+                    playCount={album.playcount.toString()}
+                    playTitle={album.name}
+                    subTitle={album.artist["#text"]}
+                    title={album.name}
+                    siteUrl={album.url}
+                    imageUrl={album.image ? album.image : ""}
+                    key={album.name.trim().replace(/\s/gm, "")}
+                  />
+                ))
               : null}
             <hr />
           </div>
-          <div className='pb-2 pl-4' id='#weeklyalbumcharts'>
-            <h2 className='text-2xl font-medium'>Weekly Album Charts</h2>
+          <div className="pb-2 pl-4" id="#weeklyalbumcharts">
+            <h2 className="text-2xl font-medium">Weekly Album Charts</h2>
             <p>Scrobbles this week</p>
           </div>
-          <div className='grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20'>
+          <div className="grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20">
             {weeklyAlbums && weeklyAlbums.length
               ? weeklyAlbums.map((album) => (
-                <ScrobblesCard
-                  playCount={album.playcount.toString()}
-                  playTitle={album.name}
-                  subTitle={album.artist['#text']}
-                  title={album.name}
-                  siteUrl={album.url}
-                  imageUrl={album.image ? album.image : ''}
-                  key={album.name.trim().replace(/\s/gm, '')}
-                />
-              ))
+                  <ScrobblesCard
+                    playCount={album.playcount.toString()}
+                    playTitle={album.name}
+                    subTitle={album.artist["#text"]}
+                    title={album.name}
+                    siteUrl={album.url}
+                    imageUrl={album.image ? album.image : ""}
+                    key={album.name.trim().replace(/\s/gm, "")}
+                  />
+                ))
               : null}
             <hr />
           </div>
-          <div className='pb-2 pl-4' id='#topartists'>
-            <h2 className='text-2xl font-medium'>Top Artists</h2>
+          <div className="pb-2 pl-4" id="#topartists">
+            <h2 className="text-2xl font-medium">Top Artists</h2>
             <p>Scrobbles since 2008</p>
           </div>
-          <div className='top-artist grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-2 pb-20'>
+          <div className="top-artist grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-2 pb-20">
             {artists && artists.length
-              ? artists.map((artist: Artist) => <ScrobblesCard
-                    playCount={artist.playcount.toString()}
-                    playTitle={artist.name}
-                    subTitle={''}
-                    title={artist.name}
-                    siteUrl={artist.url}
-                    imageUrl={artist.image.toString()}
-                    key={artist.name.trim().replace(/\s/gm, '')}
-                  />)
+              ? artists.map((artist: Artist) => {
+                  if (!artist.image) return;
+                  return (
+                    <ScrobblesCard
+                      playCount={artist.playcount.toString()}
+                      playTitle={artist.name}
+                      subTitle={""}
+                      title={artist.name}
+                      siteUrl={artist.url}
+                      imageUrl={artist.image.toString()}
+                      key={artist.name.trim().replace(/\s/gm, "")}
+                    />
+                  );
+                })
               : null}
           </div>
         </div>
@@ -292,11 +304,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let myRecentTracks = [];
   let myTopArtists = [];
   let myWeeklyAlbumChart = [];
-  let myTopAlbums = []
+  let myTopAlbums = [];
 
   const lastFm = LastFmApi();
   const { config, method } = lastFm;
-  const auth = await lastFm.auth('', method.auth, '', '');
+  const auth = await lastFm.auth("", method.auth, "", "");
 
   const getUser = async () => {
     const data = await lastFm.getInfo(method.user.getInfo, config.username);
@@ -308,15 +320,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await lastFm.getLovedTracks(
       method.user.getLovedTracks,
       config.username,
-      'overall',
-      '12',
+      "overall",
+      "12",
     );
     const { lovedtracks } = data;
     return lovedtracks;
   };
 
   const getRecentTracks = async () => {
-    const data = await lastFm.getRecentTracks(method.user.getRecentTracks, config.username, '', '22');
+    const data = await lastFm.getRecentTracks(
+      method.user.getRecentTracks,
+      config.username,
+      "",
+      "22",
+    );
     const { recenttracks } = data;
     return recenttracks;
   };
@@ -325,8 +342,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await lastFm.getTopArtists(
       method.user.getTopArtists,
       config.username,
-      'overall',
-      '50',
+      "overall",
+      "50",
     );
 
     const { topartists } = data;
@@ -337,8 +354,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await lastFm.getWeeklyAlbumChart(
       method.user.getWeeklyAlbumChart,
       config.username,
-      'overall',
-      '22',
+      "overall",
+      "22",
     );
     const { weeklyalbumchart } = data;
     return weeklyalbumchart;
@@ -348,8 +365,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await lastFm.getTopAlbums(
       method.user.getTopAlbums,
       config.username,
-      'overall',
-      '50'
+      "overall",
+      "50",
     );
     return data;
   };
@@ -393,8 +410,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
       .filter(defined);
 
     const getTopArtistImage = (mbid: string): string => {
-      if (!mbid) return '';
-      let imageUrl = '';
+      if (!mbid) return "";
+      let imageUrl = "";
       fanArtTvResult.find((artist) => {
         if (artist.mbid_id === mbid) {
           artist.artistbackground?.map((artistBackground: Artistbackground) => {
@@ -430,8 +447,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
       albumTitle?: string,
       artistName?: string,
     ) => {
-      let imageUrl = '';
-      if (albumMbId === '') return '';
+      let imageUrl = "";
+      if (albumMbId === "") return "";
       musicBrainzResult.find((album) => {
         if (album.release.includes(albumMbId)) {
           album.images
@@ -455,24 +472,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const weeklyAlbumChartWithImages = album.map((album: WeeklyAlbum) => {
       return {
         ...album,
-        image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist['#text']),
+        image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist["#text"]),
       };
     });
 
     const recentTracksWithImages = track.map((track: Track) => {
       if (!track.image) return;
-      const getImage = track.image.find((img: LastFmImage) => img.size === 'extralarge');
+      const getImage = track.image.find((img: LastFmImage) => img.size === "extralarge");
       return {
         ...track,
-        image: getImage ? getImage['#text'] : '',
+        image: getImage ? getImage["#text"] : "",
       };
     });
 
     const topAlbumsWithImages = theTopAlbums.map((album: any) => {
-      const getImage = album.image.find((img: LastFmImage) => img.size === 'extralarge');
+      const getImage = album.image.find((img: LastFmImage) => img.size === "extralarge");
       return {
         ...album,
-        image: getImage ? getImage['#text'] : '',
+        image: getImage ? getImage["#text"] : "",
       };
     });
 
@@ -484,7 +501,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     myRecentTracks.push(recentTracksWithImages);
     myTopAlbums.push(topAlbumsWithImages);
   } catch (error) {
-    console.log('🔥🔥🔥ERROR', error);
+    console.log("🔥🔥🔥ERROR", error);
     myErrors.push(error as string);
   }
 

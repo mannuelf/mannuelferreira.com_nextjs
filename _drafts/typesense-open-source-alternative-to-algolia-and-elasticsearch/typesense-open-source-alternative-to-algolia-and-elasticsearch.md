@@ -1,13 +1,13 @@
 ---
-title: 'Typesense and open-source alternative to Algolia and Elasticsearch'
-excerpt: ''
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png'
-date: '2021-06-22T06:45:00.322Z'
+title: "Typesense and open-source alternative to Algolia and Elasticsearch"
+excerpt: ""
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png"
+date: "2021-06-22T06:45:00.322Z"
 author:
-  name: 'M Ferreira'
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  name: "M Ferreira"
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1623933965/images/git-article.png"
 ---
 
 ## What is it

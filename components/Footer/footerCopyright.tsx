@@ -1,29 +1,29 @@
-import { GOOGLE_FONTS_URL } from '@shared/constants';
+import { GOOGLE_FONTS_URL } from "@shared/constants";
 
 const FooterCopyright = () => {
   return (
-    <div className='w-full pt-10 text-left md:pt-0 md:w-1/2'>
-      <h3 className='pb-3 text-2xl font-medium'>Thank you for visiting 🤘</h3>
-      <ul className='footer-copyright leading-8'>
+    <div className="w-full pt-10 text-left md:pt-0 md:w-1/2">
+      <h3 className="pb-3 text-2xl font-medium">Thank you for visiting 🤘</h3>
+      <ul className="footer-copyright leading-8">
         <li>Hosted on Vercel built with Next.js.</li>
         <li>
-          Fonts:{' '}
+          Fonts:{" "}
           <a
             href={GOOGLE_FONTS_URL}
-            rel='noopener noreferrer'
-            target='_blank'
-            className='underline'
+            rel="noopener noreferrer"
+            target="_blank"
+            className="underline"
           >
             Ubuntu.
           </a>
         </li>
         <li>
-          Icons:{' '}
+          Icons:{" "}
           <a
-            href='https://fontawesome.com'
-            rel='noopener noreferrer'
-            target='_blank'
-            className='underline'
+            href="https://fontawesome.com"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="underline"
           >
             Font Awesome 5.
           </a>

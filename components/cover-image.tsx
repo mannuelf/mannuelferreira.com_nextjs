@@ -1,6 +1,6 @@
-import cn from 'classnames';
-import Link from 'next/link';
-import Image from 'next/image';
+import cn from "classnames";
+import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
   title: string;
@@ -13,15 +13,15 @@ const CoverImage = ({ title, src, slug }: Props) => {
     <Image
       src={src}
       alt={`${title}`}
-      className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
+      className={cn("shadow-small", {
+        "hover:shadow-medium transition-shadow duration-200": slug,
       })}
     />
   );
   return (
-    <div className='sm:mx-0'>
+    <div className="sm:mx-0">
       {slug ? (
-        <Link as={`/posts/${slug}`} href='/posts/[slug]' title={title}>
+        <Link as={`/posts/${slug}`} href="/posts/[slug]" title={title}>
           {image}
         </Link>
       ) : (

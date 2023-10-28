@@ -1,15 +1,15 @@
 ---
-title: 'FactBook Explorer'
-excerpt: 'Factbook Explorer is a web app designed to help navigate statistics from the OECD iLibrary.'
-category: 'NodeJs'
-tags: 'TypeScript, Maps, Data'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1664734063/mfcom/factbook-explorer.png'
-date: '2022-10-04T07:18:00.322Z'
+title: "FactBook Explorer"
+excerpt: "Factbook Explorer is a web app designed to help navigate statistics from the OECD iLibrary."
+category: "NodeJs"
+tags: "TypeScript, Maps, Data"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1664734063/mfcom/factbook-explorer.png"
+date: "2022-10-04T07:18:00.322Z"
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1664734063/mfcom/factbook-explorer.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1664734063/mfcom/factbook-explorer.png"
 ---
 
 Facbook Explorer is a web app designed to make navigating statistics data made available from the OECD iLibrary in a user friendly way.

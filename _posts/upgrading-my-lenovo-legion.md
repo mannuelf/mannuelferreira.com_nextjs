@@ -1,15 +1,15 @@
 ---
-title: 'Upgrading my Lenovo Legion'
-excerpt: 'I had such a great time upgrading my laptop I felt I had to share my experience of it with you all.'
-category: 'Hardware'
-tags: 'Geeking out'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661487899/legion/main-cover.jpg'
-date: '2022-08-26T06:25:00.322Z'
+title: "Upgrading my Lenovo Legion"
+excerpt: "I had such a great time upgrading my laptop I felt I had to share my experience of it with you all."
+category: "Hardware"
+tags: "Geeking out"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661487899/legion/main-cover.jpg"
+date: "2022-08-26T06:25:00.322Z"
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661487899/legion/main-cover.jpg'
+  url: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661487899/legion/main-cover.jpg"
 ---
 
 ![Lenovo Legion Y530](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/main-cover.jpg)

@@ -1,17 +1,16 @@
 ---
-title: 'Login to VPS without a password using SSH'
-excerpt: 'Connecting to your VPS via ssh without a password is groovy, heres how you do it.'
-category: 'Linux'
-tags: 'bash, ssh, vps'
-date: '2022-12-02T07:35:00.322Z'
+title: "Login to VPS without a password using SSH"
+excerpt: "Connecting to your VPS via ssh without a password is groovy, heres how you do it."
+category: "Linux"
+tags: "bash, ssh, vps"
+date: "2022-12-02T07:35:00.322Z"
 author:
-  name: 'M Ferreira'
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  name: "M Ferreira"
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
 ---
-
 
 It is possible to ssh into your Linux VPS without having to use a password.
 
@@ -33,7 +32,7 @@ cd ~/.ssh
 Then type (to create the ssh key)
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "your@email.com" 
+ssh-keygen -t rsa -b 4096 -C "your@email.com"
 ```
 
 Follow the prompts
@@ -47,8 +46,8 @@ It will look like this:
 ```bash
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/mannuel/.ssh/id_rsa): id_rsa_test
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
 Your identification has been saved in id_rsa
 Your public key has been saved in id_rsa.pub
 The key fingerprint is:
@@ -77,7 +76,7 @@ you will be prompted to enter your VPS password given for `yourUsername`.
 
 ```bash
  cat ~/.ssh/id_rsa.pub | ssh yourUsername@000.000.00.00 'cat >> ~/.ssh/authorized_keys'
- yourUsername@000.000.00.00's password: 
+ yourUsername@000.000.00.00's password:
 ```
 
 Jobs done, you should be able to ssh into VPS without entering a password.

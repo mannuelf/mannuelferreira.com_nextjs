@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   background: #f1f1f1;
   color: #444;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +34,9 @@ p {
 }
 
 .app-footer {
-  background: #28284f url('https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg') no-repeat bottom right;
+  background: #28284f
+    url("https://res.cloudinary.com/mannuel/image/upload/v1662896659/images/ribbon.svg") no-repeat
+    bottom right;
   color: #f8f8f8;
 }
 
@@ -51,7 +53,7 @@ p {
   height: 62px;
 }
 
-.logo-icon>div {
+.logo-icon > div {
   height: 64px;
 }
 
@@ -86,7 +88,7 @@ p a {
 
 .markdown-body pre,
 .markdown-body div[style] {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
 }
 
 .markdown-body p {
@@ -96,7 +98,7 @@ p a {
 }
 
 .post-title {
-  font-family: 'Ubuntu', Arial, sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
 }
 
 .markdown-body h1,
@@ -111,7 +113,7 @@ h4,
 h5,
 .markdown-body h6,
 h6 {
-  font-family: 'Ubuntu', Arial, sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   font-weight: 700;
 }
 
@@ -183,7 +185,7 @@ h6 {
 
 .icon-hamburger .lines::before {
   background-color: #fff;
-  content: '';
+  content: "";
   display: block;
   height: 3px;
   position: relative;
@@ -193,7 +195,7 @@ h6 {
 
 .icon-hamburger .lines::after {
   background-color: #fff;
-  content: '';
+  content: "";
   display: block;
   position: relative;
   top: 5px;
@@ -215,13 +217,11 @@ h6 {
   box-shadow: 0 0 0 1px #fff !important;
 }
 
-
-
 .pill {
   display: inline-block;
-  background: #EEE;
+  background: #eee;
   color: #444;
-  border: 1px solid #EEE;
+  border: 1px solid #eee;
   border-radius: 8px;
   min-width: 60px;
   padding: 2px;
@@ -231,6 +231,6 @@ h6 {
 }
 
 .pill-category {
-  background: #8FFFFF;
+  background: #8fffff;
   border: 1px solid #fff;
 }

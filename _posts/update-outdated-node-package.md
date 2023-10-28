@@ -1,15 +1,15 @@
 ---
-title: 'Update outdated node packages for security reasons'
-excerpt: 'It is very easy to update your node packages, using an interactive cli command.'
-category: 'NodeJs'
-tags: 'Terminal'
-coverImage: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1624774339/images/node-article.png'
-date: '2021-06-24T00:00:07.322Z'
+title: "Update outdated node packages for security reasons"
+excerpt: "It is very easy to update your node packages, using an interactive cli command."
+category: "NodeJs"
+tags: "Terminal"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1624774339/images/node-article.png"
+date: "2021-06-24T00:00:07.322Z"
 author:
   name: M Ferreira
-  picture: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg'
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: 'https://res.cloudinary.com/mannuel/image/upload/f_auto/v1624774339/images/node-article.png'
+  url: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1624774339/images/node-article.png"
 ---
 
 It is very easy to update your node packages, using an interactive cli command. This is something you should check regularly for security patches and/or improvements. First of all make sure you are using YARN, [click here](https://yarnpkg.com) to install.
