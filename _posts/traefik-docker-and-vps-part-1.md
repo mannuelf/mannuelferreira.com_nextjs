@@ -63,4 +63,54 @@ This is configured via a .toml configuration file called traefik.toml and treafi
 - Middlewares, e.g SSL certificate resolver.
 - Services Traefik supports
 
+## treafik.toml
+
+Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik.toml)
+
+```toml
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+    [entryPoints.web.http.redirections.entryPoint]
+      to = "websecure"
+      scheme = "https"
+
+  [entryPoints.websecure]
+    address = ":443"
+
+[api]
+  dashboard = true
+
+[certificatesResolvers.lets-encrypt.acme]
+  email = "mannuel@themwebs.me"
+  storage = "acme.json"
+  [certificatesResolvers.lets-encrypt.acme.tlsChallenge]
+
+[providers.docker]
+  watch = true
+  network = "web"
+
+[providers.file]
+  filename = "traefik_dynamic.toml"
+```
+
+## traefik_dynamic.toml
+
+Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik_dynamic.toml)
+
+```toml
+[http.middlewares.simpleAuth.basicAuth]
+  users = [
+    "admin:$apr1$futE7qd5$CWn820MIlYZm4RILGBlB0/"
+  ]
+
+[http.routers.api]
+  rule = "Host(`monitor.localhost`)"
+  entrypoints = ["websecure"]
+  middlewares = ["simpleAuth"]
+  service = "api@internal"
+  [http.routers.api.tls]
+    certResolver = "lets-encrypt"
+```
+
 That will do for now, take a break or head over to part 2 for me details on the configuration and how we will deploy all of this.
