@@ -8,7 +8,7 @@ author:
   name: "M Ferreira"
   picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1696967398/mfcom/traefik-docker.png"
 coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
 ---
 
