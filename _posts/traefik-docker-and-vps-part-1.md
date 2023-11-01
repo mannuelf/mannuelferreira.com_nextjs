@@ -159,4 +159,4 @@ a4d4ad1cd697   home           "/docker-entrypoint.…"   2 weeks ago   Up 2 week
 
 ```
 
-That will do for now, take a break and we will dive into the docker parts in part 2.
+That will do for now, take a break and we will dive into the docker parts in [part 2](traefik-docker-and-vps-part-2).
