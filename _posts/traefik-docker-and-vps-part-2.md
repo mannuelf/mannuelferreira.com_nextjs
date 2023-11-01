@@ -12,7 +12,7 @@ ogImage:
 coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
 ---
 
-If you have landed here without reading Part 1, [go there now](/traefik-docker-and-vps-part-1).
+If you have landed here without reading Part 1, [go there now](https://mannuelferreira.com/posts/traefik-docker-and-vps-part-1).
 
 The docker-compose.yml file in the root directory is the main config that Traefik looks at to understand what containers to start and manage.
 
