@@ -14,7 +14,7 @@ coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1699086204/mfcom/t
 
 Tmux is a terminal multiplexer, it allows you to have multiple processes open in multiple window panes on your server.
 
-All the window panes can be manged from one terminal. Servers dont have fancy multi tab terminals so yeah this is the answer.
+All the window panes can be manged from one terminal. Servers don't have fancy multi tab terminals so yeah this is the answer.
 
 The processes will run in the background on a tmux server. The process and windows will remain open and running even when you log out of your SSH session.
 
@@ -24,7 +24,7 @@ You can use it on your localhost machine as well to have multiple window panes r
 
 Here I have four panes opens and I can move between each pane by pressing `Ctrl+b` then `Up` or `Down`, `Left` and `Right`.
 
-The leader key is `Ctrl` plus some "other key".
+The leader key is `Ctrl` plus 'b' and  some "other key".
 
 ## Install
 
@@ -49,6 +49,7 @@ In the terminal enter:
 ```bash
 tmux
 ```
+
 This will start a tmux server and session with one window pane.
 
 For horizontal window split: `Ctrl+b %`
@@ -63,7 +64,7 @@ Move left: `Ctrl+b Left`
 
 Move right: `Ctrl+b Right`
 
-Resize window: Press and keep pressing `Ctrl+b` while tapping `Up` or `Down` repeatdly this will increase/decrease window size in which ever direction you have chosen.
+Resize window: Press and keep pressing `Ctrl+b` while tapping `Up` or `Down` repeatedly this will increase/decrease window size in which ever direction you have chosen.
 
 List all the commands `Ctrl+b` then `:`
 
@@ -75,4 +76,4 @@ man 1 tmux
 
 Deep dive the docs [here](https://github.com/tmux/tmux/wiki/Getting-Started)
 
-Thats it have fun with it.
+That's it have fun with it.
