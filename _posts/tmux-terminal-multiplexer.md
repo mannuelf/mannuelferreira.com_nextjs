@@ -12,11 +12,11 @@ ogImage:
 coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1699086204/mfcom/tmux.png"
 ---
 
-Tmux is a terminal multiplexer, it allows you to have multiple processes open in multple window panes on your server.
+Tmux is a terminal multiplexer, it allows you to have multiple processes open in multiple window panes on your server.
 
 All the window panes can be manged from one terminal. Servers dont have fancy multi tab terminals so yeah this is the answer.
 
-The processes will  run in the background on a tmux server. The process and windows will remain open and running even when you log off your SSH session.
+The processes will run in the background on a tmux server. The process and windows will remain open and running even when you log out of your SSH session.
 
 You can use it on your localhost machine as well to have multiple window panes running any process, like `npm run watch`, `npm run start` or what ever your heart desires.
 
@@ -24,7 +24,7 @@ You can use it on your localhost machine as well to have multiple window panes r
 
 Here I have four panes opens and I can move between each pane by pressing `Ctrl+b` then `Up` or `Down`, `Left` and `Right`.
 
-The leader key is `Ctrl` plus some other key.
+The leader key is `Ctrl` plus some "other key".
 
 ## Install
 
@@ -72,5 +72,7 @@ List all the commands `Ctrl+b` then `:`
 ```bash
 man 1 tmux
 ```
+
+Deep dive the docs [here](https://github.com/tmux/tmux/wiki/Getting-Started)
 
 Thats it have fun with it.
