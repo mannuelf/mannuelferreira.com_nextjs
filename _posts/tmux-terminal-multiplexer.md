@@ -1,9 +1,9 @@
 ---
-title: "Tmux terminal multiplexer"
-excerpt: "Tmux is a terminal multiplexer, many windows or terminal panes in one terminal."
+title: "Tmux a terminal multiplexer"
+excerpt: "Tmux is a terminal multiplexer, allows you to have many windows panes in one terminal."
 category: "Tools"
 tags: "Linux, Terminal"
-date: "2023-11-01T07:35:00.322Z"
+date: "2023-11-04T07:35:00.322Z"
 author:
   name: "M Ferreira"
   picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
