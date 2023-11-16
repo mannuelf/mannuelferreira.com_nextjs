@@ -24,8 +24,7 @@ I have these apps running:
 - [https://musicwall.themwebs.me/](https://musicwall.themwebs.me/)
 - [https://factbookapi.themwebs.me/](https://factbookapi.themwebs.me/)
 
-
-> Now if playing with servers is not your jam, stop reading and head over to your favourite backend as service or servless platforms those are great too I use them often.
+> Now if playing with servers is not your jam, stop reading and head over to your favourite backend as service or serverless platforms those are great too I use them often.
 
 knowledge about docker is assumed. I will be focusing on Traefik and configuring it more than [docker basics](https://www.docker.com/101-tutorial).
 
@@ -56,7 +55,7 @@ It includes:
 - one folder per service, each service has it's own Dockerfile
 - a single `docker-compose` file to start the services from the root.
 - traefik.toml
-- treafik_dynamic.toml
+- traefik_dynamic.toml
 
 ## Traefik
 
@@ -67,14 +66,14 @@ Imagine you have a website at www.website.com and an api at api.website.com, Tra
 
 Traefik will also help create SSL certificates using ACME provider [Lets Encrypt](https://letsencrypt.org/).
 
-This is configured via a .toml configuration file called traefik.toml and treafik_dynamic.toml. In these configuration files we specify:
+This is configured via a .toml configuration file called traefik.toml and traefik_dynamic.toml. In these configuration files we specify:
 
 - Entry points,
 - Routers
 - Middlewares, e.g SSL certificate resolver.
 - Services Traefik supports
 
-## treafik.toml
+## traefik.toml
 
 Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik.toml)
 
@@ -120,7 +119,7 @@ Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik_dyn
 
 # Middleware are plugins that enable and can extend the features of Traefik
 # We are using the basicAuth on here to allow us to protect our admin portal website that shows our running containters
-# users: tells it wich are the authenticated users.
+# users: tells it which are the authenticated users.
 [http.middlewares.simpleAuth.basicAuth]
   users = [
     "admin:$apr1$futE7qd5$CWn820MIlYZm4RILGBlB0/"
@@ -148,7 +147,7 @@ Read file [here](https://github.com/mannuelf/them-webs-vps/blob/main/traefik_dyn
 
 ![simpleAuth](https://res.cloudinary.com/mannuel/image/upload/v1698484440/mfcom/monitor.themwebs.me_dashboard__1.png)
 
-Here is sample of my server showing the containers running on thier respective ports
+Here is sample of my server showing the containers running on their respective ports
 
 ```bash
 CONTAINER ID   IMAGE          COMMAND                  CREATED       STATUS       PORTS                                                                      NAMES

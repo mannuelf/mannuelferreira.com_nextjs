@@ -81,7 +81,7 @@ declare a services block
 **home:**
 declare a service by its give name, I called it `home` which corresponds to the folder name I created earlier.
 
-**contianer_name:**
+**container_name:**
 tells docker what to call the container.
 
 **build:**
@@ -95,8 +95,9 @@ tells docker to load up the Dockerfile found in that directory.
 
 **labels:**
 This is where Traefik and docker meet for the first time.
+
 - `"traefik.enable=true"`: enables Traefik
-- `"traefik.http.routers.home.rule=Host(`www.company.com`)"`: sets the domain name using the `Host()` function wich takes string as an argument. we have set it to `www.company.com`.
+- `"traefik.http.routers.home.rule=Host(`www.company.com`)"`: sets the domain name using the `Host()` function which takes string as an argument. we have set it to `www.company.com`.
 - `"traefik.http.routers.home.entrypoints=websecure"`: sets the app entry point to use `websecure` which we created in Part 1.
 - `"traefik.http.routers.home.tls.certresolver=myresolver"`: sets the TLS Certficate Resolver to use the resolver defined by `myresolver`
 

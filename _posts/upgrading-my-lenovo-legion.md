@@ -54,7 +54,7 @@ Throughout the process I took pictures and labeled screws, do this, or bad thing
 ### That has to go in there
 
 ![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-01.jpg)
-At this point I was questing my lifes choices.
+At this point I was questing my life choices.
 
 ![lenovo-legion-keyboard-replacement](https://res.cloudinary.com/mannuel/image/upload/f_auto/v1661362090/legion/legion-02.jpg)
 

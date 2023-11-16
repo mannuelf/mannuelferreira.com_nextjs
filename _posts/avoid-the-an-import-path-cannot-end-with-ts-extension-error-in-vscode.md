@@ -1,6 +1,6 @@
 ---
 title: "Deno avoid import path cannot end with a .ts extension error in vscode warning"
-excerpt: "A common error when starting out coding with Deno is this annoying awarning about not being allowed to import using file extentions."
+excerpt: "A common error when starting out coding with Deno is this annoying a warning about not being allowed to import using file extentions."
 category: "Deno"
 tags: "vscode"
 coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1668935182/images/deno-cover.png"
@@ -12,7 +12,7 @@ ogImage:
   url: "https://res.cloudinary.com/mannuel/image/upload/v1668935182/images/deno-cover.png"
 ---
 
-A common error when starting out coding with Deno is this annoying awarning about not being allowed to import using file extentions.
+A common error when starting out coding with Deno is this annoying a warning about not being allowed to import using file extentions.
 
 > An import path cannot end with a '.ts' extension. Consider importing './data/plays.js' instead.ts(2691)
 
