@@ -6,6 +6,7 @@ type Post = {
   date: string;
   excerpt: string;
   ogImage: { url: string };
+  published: boolean;
   slug: string;
   tags: string;
   title: string;
