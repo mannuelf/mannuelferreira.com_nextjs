@@ -1,7 +1,8 @@
 import Container from "@components/container";
 import MoreStories from "@components/more-stories";
 import Layout from "@components/Layout/layout";
-import { getAllPosts } from "@lib/api";
+import { getAllPosts } from "@lib/posts";
+
 import PageTitle from "@components/page-title";
 import { CMS_NAME, META_POSTS, TWITTER_CARD_POSTS, TWITTER_HANDLE } from "@shared/constants";
 import MetaTags from "@components/meta-tags";

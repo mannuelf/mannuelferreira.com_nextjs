@@ -1,6 +1,7 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import { defined } from "@shared/defined";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -14,35 +15,39 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  type Items = {
+  if (data.published !== true) {
+    return undefined;
+  }
+
+  type Post = {
     [key: string]: string;
   };
 
-  const items: Items = {};
+  const post: Post = {};
 
-  // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === "slug") {
-      items[field] = realSlug;
+      post[field] = realSlug;
     }
 
     if (field === "content") {
-      items[field] = content;
+      post[field] = content;
     }
 
     if (data[field]) {
-      items[field] = data[field];
+      post[field] = data[field];
     }
   });
 
-  return items;
+  return post;
 }
 
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
 
-  // sort posts by date in descending order
   return slugs
     .map((slug) => getPostBySlug(slug, fields))
+    .filter((post) => post !== undefined)
+    .filter(defined)
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 }

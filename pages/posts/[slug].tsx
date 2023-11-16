@@ -10,7 +10,7 @@ import Container from "@components/container";
 import MetaTags from "@components/meta-tags";
 import PostHeader from "@components/post-header";
 import PostTitle from "@components/post-title";
-import { getAllPosts, getPostBySlug } from "@lib/api";
+import { getAllPosts, getPostBySlug } from "@lib/posts";
 import { CMS_NAME, SITE_URL, TWITTER_HANDLE } from "@shared/constants";
 
 type Props = {
@@ -51,7 +51,7 @@ const Post = ({ post }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mx-auto mb-20 max-w-screen-md">
+            <article className="max-w-screen-md mx-auto mb-20">
               <MetaTags
                 ogDescription={post.excerpt}
                 ogImage={post.ogImage.url}
@@ -69,8 +69,8 @@ const Post = ({ post }: Props) => {
                 {post.content}
               </Markdown>
 
-              <div className="flex flex-row flex-wrap md:flex-nowrap gap-4 pl-4 mt-8 content-start border-solid border-l-8 border-x-orange ">
-                <div className="basis-full order-2 sm:order-1  md:basis-1/2 overflow-hidden">
+              <div className="flex flex-row flex-wrap content-start gap-4 pl-4 mt-8 border-l-8 border-solid md:flex-nowrap border-x-orange ">
+                <div className="order-2 overflow-hidden basis-full sm:order-1 md:basis-1/2">
                   <iframe
                     title="Sign up to newsletter"
                     width={"320"}
@@ -78,7 +78,7 @@ const Post = ({ post }: Props) => {
                     src="https://cdn.forms-content.sg-form.com/8ab0a5f5-8918-11ed-bde3-9e0d879814a7"
                   />
                 </div>
-                <div className="basis-full order-1 sm:order-2 md:basis-auto">
+                <div className="order-1 basis-full sm:order-2 md:basis-auto">
                   <h4 className="text-2xl">Stay up to date</h4>
                   <p>
                     Consider keeping up to date with software development and design by signing up
