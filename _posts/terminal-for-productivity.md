@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Terminal for productivity"
 excerpt: "If you are are software developer building websites you most likely are writing backend code, frontend code, configuring databases, servers and are using html, javascript, work with php, node js, .net, ruby, python insert favourite language you are coding."
 category: "Terminal"

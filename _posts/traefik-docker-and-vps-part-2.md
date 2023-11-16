@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Traefik, Docker and your vps part 2"
 excerpt: "Docker time let tlk about about how Traefik and docker and docker compose work together."
 category: "Linux"

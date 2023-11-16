@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Environment variables inside of NodeJs and Github actions CI/CD pipeline with Playwright test"
 excerpt: "A guide to testing environment variables in NodeJs project and running it a github actions CI/CD pipeline using Playright"
 category: "Testing"

@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Update outdated node packages for security reasons"
 excerpt: "It is very easy to update your node packages, using an interactive cli command."
 category: "NodeJs"

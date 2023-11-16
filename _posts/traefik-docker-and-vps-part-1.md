@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Traefik, Docker and your vps part 1"
 excerpt: "I love playing with servers and if you do too keep reading. I will show you how to setup a Traefik proxy and docker environment on your VPS."
 category: "Linux"

@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Hyper a terminal by Vercel"
 excerpt: "I have started using Hyper a terminal built by Vercel, I think you might like it too. Here is why..."
 category: "Tools"

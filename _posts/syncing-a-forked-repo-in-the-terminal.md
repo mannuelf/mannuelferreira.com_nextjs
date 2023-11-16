@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Syncing a forked repo in the terminal"
 excerpt: "A fork is your very own copy of some code which you can make changes locally without fear of breaking anything upstream (more on this later). You are free to add some feature and suggest that new feature be added back to the upstream repository."
 category: "Git"

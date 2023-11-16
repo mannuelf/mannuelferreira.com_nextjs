@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Tmux a terminal multiplexer"
 excerpt: "Tmux is a terminal multiplexer, allows you to have many windows panes in one terminal."
 category: "Tools"

@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Upgrading my Lenovo Legion"
 excerpt: "I had such a great time upgrading my laptop I felt I had to share my experience of it with you all."
 category: "Hardware"

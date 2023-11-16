@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Typescript 101"
 excerpt: "Typescript 101 is designed to take a total beginner to proficient in no time."
 coverImage: ""

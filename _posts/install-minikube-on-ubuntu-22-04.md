@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Install Minikube on Ubuntu 22.04"
 excerpt: "A simple guide to install minikube, help you get up and running with kubernetes on you local development environment."
 category: "Kubernetes"

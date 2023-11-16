@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Typesense an open-source alternative to Algolia and Elasticsearch"
 excerpt: "Building a custom search into your application can be a deeply technical and expensive endeavor in terms of build hours and license fees. Typesense is aiming to fix those pains with it’s Open-Sourced solution to web search Typesense."
 category: "Tools"

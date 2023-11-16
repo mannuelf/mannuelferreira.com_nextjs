@@ -1,4 +1,5 @@
 ---
+published: true
 title: "Ultimate guide to documenting components using docz"
 excerpt: "Leveraging the power of Gatsby, docz builds a mobile first, SEO friendly static website along-side your projects."
 category: "React"
