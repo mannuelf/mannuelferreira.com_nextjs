@@ -1,7 +1,7 @@
 import Container from "@components/container";
 import MoreStories from "@components/more-stories";
 import Layout from "@components/Layout/layout";
-import { getAllPosts } from "@lib/api";
+import { getAllPosts } from "@lib/posts";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -64,7 +64,7 @@ const Index = ({ allPosts }: Props) => {
           ogUrl={SITE_URL}
         />
         <Container>
-          <section className="content-center mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <section className="grid content-center grid-cols-1 gap-4 mb-8 md:grid-cols-2">
             <div className="items-center justify-self-center">
               <Image
                 className="rounded-full w-54 h-54"
@@ -76,7 +76,7 @@ const Index = ({ allPosts }: Props) => {
             </div>
 
             <div>
-              <div className="mb-12 md:mb-8 text-center md:text-left ">
+              <div className="mb-12 text-center md:mb-8 md:text-left ">
                 <h1 className="text-5xl font-bold">{CMS_NAME}</h1>
                 <p className="text-2xl font-light">Software Engineer</p>
               </div>
