@@ -6,10 +6,17 @@ import { getAllPosts } from "@lib/posts";
 import PageTitle from "@components/page-title";
 import { CMS_NAME, META_POSTS, TWITTER_CARD_POSTS, TWITTER_HANDLE } from "@shared/constants";
 import MetaTags from "@components/meta-tags";
+import Dropdown, { type Item } from "@components/drop-down/drop-down";
 
 type Props = {
   allPosts: Post[];
 };
+
+const items: Item[] = [
+  { icon: null, text: "one", description: "One paragraphs here" },
+  { icon: null, text: "two", description: "Two paragraphs here" },
+  { icon: null, text: "Three", description: "Three paragraphs here" },
+];
 
 const Posts = ({ allPosts }: Props) => {
   return (
@@ -30,7 +37,7 @@ const Posts = ({ allPosts }: Props) => {
         <Container>
           <PageTitle>Posts</PageTitle>
           <div className="pt-4 mt-8 mb-8 border-t">
-            <p className="text-lg"></p>
+            <form className="flex"></form>
           </div>
           {allPosts.length > 0 && <MoreStories posts={allPosts} />}
         </Container>

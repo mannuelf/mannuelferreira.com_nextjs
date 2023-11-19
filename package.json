@@ -12,11 +12,12 @@
     "build:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css",
     "watch:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css --watch",
     "lint": "next lint",
-    "prettier:fix": "prettier . --write",
+    "prettier:fix": "prettier --write .",
     "start": "next start",
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@next/env": "^14.0.3",
     "@piwikpro/react-piwik-pro": "^1.2.1",
     "@sendgrid/mail": "^7.7.0",
@@ -53,6 +54,8 @@
     "eslint-config-next": "14.0.3",
     "eslint-config-prettier": "^9.0.0",
     "postcss": "^8.4.31",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
     "vercel": "^32.5.5"

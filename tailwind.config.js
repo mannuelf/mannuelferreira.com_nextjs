@@ -1,6 +1,7 @@
 module.exports = {
   mode: "jit",
   // https://github.com/tailwindlabs/tailwindcss/discussions/6019#discussioncomment-1609444
+  plugins: ["prettier-plugin-tailwindcss"],
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {

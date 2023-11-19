@@ -15,27 +15,14 @@ type DropDownProps = {
 };
 
 const Dropdown = ({ items }: DropDownProps) => {
-  const [
-    isOpen,
-    selectedItem,
-    selectedIndex,
-    toggleDropdown,
-    handleKeyDown,
-    setSelectedItem,
-  ] = useDropown(items);
+  const [isOpen, selectedItem, selectedIndex, toggleDropdown, handleKeyDown, setSelectedItem] =
+    useDropown(items);
 
   return (
     <div className="dropdown" onKeyDown={handleKeyDown}>
-      <Trigger
-        label={selectedItem?.text ?? "Select an item..."}
-        onClick={toggleDropdown}
-      />
+      <Trigger label={selectedItem?.text ?? "Select an item..."} onClick={toggleDropdown} />
       {isOpen && (
-        <DropdownMenu
-          onItemClick={setSelectedItem}
-          selectedIndex={selectedIndex}
-          items={items}
-        />
+        <DropdownMenu onItemClick={setSelectedItem} selectedIndex={selectedIndex} items={items} />
       )}
     </div>
   );

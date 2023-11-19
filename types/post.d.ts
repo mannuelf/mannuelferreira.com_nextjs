@@ -1,6 +1,6 @@
 type Post = {
   author: Author;
-  category: string
+  category: string;
   content: string;
   coverImage: string;
   date: string;

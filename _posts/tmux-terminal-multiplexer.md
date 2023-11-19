@@ -25,7 +25,7 @@ You can use it on your localhost machine as well to have multiple window panes r
 
 Here I have four panes opens and I can move between each pane by pressing `Ctrl+b` then `Up` or `Down`, `Left` and `Right`.
 
-The leader key is `Ctrl` plus 'b' and  some "other key".
+The leader key is `Ctrl` plus 'b' and some "other key".
 
 ## Install
 
