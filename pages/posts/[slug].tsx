@@ -32,24 +32,29 @@ const Post = ({ post }: Props) => {
       const match = /language-(\w+)/.exec(className || "");
       const contents = String(children).replace(/\n$/, "");
 
-      return !inline && match ? (
-        <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div" {...props}>
-          {contents}
-        </SyntaxHighlighter>
-      ) : (
-        <code className={className} {...props}>
-          {children}
-        </code>
-      );
+      return !inline && match
+        ? (
+          <SyntaxHighlighter
+            style={dracula}
+            language={match[1]}
+            PreTag="div"
+            {...props}
+          >
+            {contents}
+          </SyntaxHighlighter>
+        )
+        : (
+          <code className={className} {...props}>
+            {children}
+          </code>
+        );
     },
   };
 
   return (
     <Layout>
       <Container>
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
+        {router.isFallback ? <PostTitle>Loading…</PostTitle> : (
           <>
             <article className="max-w-screen-md mx-auto mb-20">
               <MetaTags
@@ -81,8 +86,8 @@ const Post = ({ post }: Props) => {
                 <div className="order-1 basis-full sm:order-2 md:basis-auto">
                   <h4 className="text-2xl">Stay up to date</h4>
                   <p>
-                    Consider keeping up to date with software development and design by signing up
-                    to my newsletter.
+                    Consider keeping up to date with software development and
+                    design by signing up to my newsletter.
                   </p>
                   <i>I will only email you when I make a new post.</i>
                 </div>
@@ -117,7 +122,7 @@ export async function getStaticProps({ params }: Params) {
     "title",
   ]);
 
-  const content = matter.stringify(post.content, {});
+  const content = post ? matter.stringify(post.content, {}) : undefined;
 
   return {
     props: {
