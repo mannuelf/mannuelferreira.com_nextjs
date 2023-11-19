@@ -1,10 +1,14 @@
 import { Item } from "./drop-down";
 
 export const DropdownMenu = (
-  { items, onItemClick }: { items: Item[]; onItemClick: (item: Item) => void },
+  { items, selectedIndex, onItemClick }: {
+    items: Item[];
+    selectedIndex: number;
+    onItemClick: (item: Item) => void;
+  },
 ) => {
   return (
-    <div className="dropdown-menu">
+    <div className="dropdown-menu" role="listbox">
       {items.map((item, index) => (
         <div
           key={index}

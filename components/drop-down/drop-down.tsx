@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Trigger } from "./trigger";
 import { DropdownMenu } from "./drop-down-menu";
+import { useDropown } from "./useDropdown";
 
 export interface Item {
   icon?: string | null;
@@ -14,16 +15,28 @@ type DropDownProps = {
 };
 
 const Dropdown = ({ items }: DropDownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+  const [
+    isOpen,
+    selectedItem,
+    selectedIndex,
+    toggleDropdown,
+    handleKeyDown,
+    setSelectedItem,
+  ] = useDropown(items);
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" onKeyDown={handleKeyDown}>
       <Trigger
         label={selectedItem?.text ?? "Select an item..."}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleDropdown}
       />
-      {isOpen && <DropdownMenu items={items} onItemClick={setSelectedItem} />}
+      {isOpen && (
+        <DropdownMenu
+          onItemClick={setSelectedItem}
+          selectedIndex={selectedIndex}
+          items={items}
+        />
+      )}
     </div>
   );
 };
