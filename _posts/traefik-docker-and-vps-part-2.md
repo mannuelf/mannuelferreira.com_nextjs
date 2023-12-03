@@ -100,9 +100,9 @@ This is where Traefik and docker meet for the first time.
 - `"traefik.enable=true"`: enables Traefik
 - `"traefik.http.routers.home.rule=Host(`www.company.com`)"`: sets the domain name using the `Host()` function which takes string as an argument. we have set it to `www.company.com`.
 - `"traefik.http.routers.home.entrypoints=websecure"`: sets the app entry point to use `websecure` which we created in Part 1.
-- `"traefik.http.routers.home.tls.certresolver=myresolver"`: sets the TLS Certficate Resolver to use the resolver defined by `myresolver`
+- `"traefik.http.routers.home.tls.certresolver=myresolver"`: sets the TLS Certificate Resolver to use the resolver defined by `myresolver`
 
-Vioala! that is it that is all that is needed to help Traefik autodiscover, start and manage your container. Creating a service is literally createing its resource in a folder with it's required Dockerfile and configureing it's `service` block in the main `docker-compose.yml` file in the root.
+Viola! that is it that is all that is needed to help Traefik autodiscover, start and manage your container. Creating a service is literally createing its resource in a folder with it's required Dockerfile and configureing it's `service` block in the main `docker-compose.yml` file in the root.
 
 ## Complete docker-compose file
 
