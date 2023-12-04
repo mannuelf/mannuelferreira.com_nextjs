@@ -39,7 +39,7 @@ Could have built ontop of something like [https://nextjs.org/commerce](https://n
 - [https://www.sanity.io/](https://www.sanity.io/)
 - [https://www.enonic.com/](https://www.enonic.com/)
 - heres a more complete list [https://instantcommerce.io/blog/best-headless-cms](https://instantcommerce.io/blog/best-headless-cms)
-(Immediate no)
+  (Immediate no)
 
 ### Wix Commerce
 
@@ -112,7 +112,7 @@ We used the WYSIWYG editor to "design" what we envisaged in the Figma. Which of 
 
 Well the backend is hosted in one region, nothing we can about that.
 
-The Frontend we use [Cloudflare](https://www.cloudflare.com/)  to distribute the all over the world on the cloudflare edge, makes the site perceivably faster than it normally would be with out it.
+The Frontend we use [Cloudflare](https://www.cloudflare.com/) to distribute the all over the world on the cloudflare edge, makes the site perceivably faster than it normally would be with out it.
 
 #### Security
 
@@ -124,7 +124,7 @@ Also use [WordFence](https://www.wordfence.com/?utm_source=plugin&utm_medium=plu
 Here is list of things we make use of to mee our needs, takes care of custom 404 pages, email list subscription, contact forms, analytics, and more.
 
 - [Flexible SSL for CloudFlare](https://icwp.io/cloudflaresslpluginauthor): by One Dollar Plugin – 1.3.1
-- [Contact Form 7](https://contactform7.com/):  by Takayuki Miyoshi – 5.8.4
+- [Contact Form 7](https://contactform7.com/): by Takayuki Miyoshi – 5.8.4
 - [Convert Plus](https://www.convertplug.com/plus): by Brainstorm Force – 3.5.24
 - [CookieYes | GDPR Cookie Consent](https://www.cookieyes.com/): by CookieYes – 3.1.7
 - [Facebook for WooCommerce](https://github.com/woocommerce/facebook-for-woocommerce/): by Facebook – 3.1.5
