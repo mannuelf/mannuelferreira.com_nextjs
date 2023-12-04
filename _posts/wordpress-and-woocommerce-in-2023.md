@@ -39,7 +39,8 @@ Could have built ontop of something like [https://nextjs.org/commerce](https://n
 - [https://www.sanity.io/](https://www.sanity.io/)
 - [https://www.enonic.com/](https://www.enonic.com/)
 - heres a more complete list [https://instantcommerce.io/blog/best-headless-cms](https://instantcommerce.io/blog/best-headless-cms)
-  (Immediate no)
+  
+> Hard no, we not doing this
 
 ### Wix Commerce
 
