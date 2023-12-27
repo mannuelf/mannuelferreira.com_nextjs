@@ -19,7 +19,7 @@
   "dependencies": {
     "@next/env": "^14.0.3",
     "@piwikpro/react-piwik-pro": "^1.2.1",
-    "@sendgrid/mail": "^7.7.0",
+    "@sendgrid/mail": "^8.0.0",
     "@sentry/nextjs": "^7.84.0",
     "@vercel/analytics": "^1.1.1",
     "axios": "^1.6.2",
