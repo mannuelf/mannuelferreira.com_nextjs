@@ -13,7 +13,7 @@ if (typeof window !== "undefined" && process.env.NODE_ENV !== "development") {
   );
 }
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Script
@@ -35,4 +35,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Analytics />
     </>
   );
-}
+};
+
+export default MyApp;

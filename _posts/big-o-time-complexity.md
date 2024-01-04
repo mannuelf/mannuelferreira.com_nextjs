@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "Big O Notation and time complexity"
 excerpt: "What is is Big O, what does time complexity even mean?"
 category: "Data Structures and Algorithms"
@@ -13,13 +13,20 @@ ogImage:
 coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1700164934/algorithms_cover.png"
 ---
 
-Lets take a slow and steady approach to learning about Big O and how it relates to algorithms.
+Lets take a slow and steady approach to learning about Big O and how it relates
+to algorithms.
 
 ## What is an algorithm?
 
-An algorithm is a sequence of steps, from start to finish to achieve some goal. In the physical world a recipe is an algorithm.
+An algorithm is a sequence of steps, or instructions given to a computer to execute.
 
-Here is an algorithm to make a Lemon Drizzle Cake:
+In the physical world a recipe is an algorithm.
+
+If you ask some one "Hey how do I make Lemon drizzle cake". You might reach for recipe, this recipe will in detailed steps explain to the baker how to make it.
+
+Here is an algorithm to making a Lemon Drizzle Cake:N
+
+Note: it takes 45-50 minutes to bake one.
 
 ```text
 STEP 1
@@ -49,11 +56,14 @@ Leave in the tin until completely cool, then remove and serve. Will keep in an a
 
 ## What is Big O?
 
-Big O is a way of talking about how efficient an algorithm is. An algorithm is a set of instructions that tell the computer to do something. A sequence of steps from the start to some end.
+Big O is a way of talking about how efficient an algorithm is. An algorithm is a
+set of instructions that tell the computer to do something. A sequence of steps
+from the start to some end.
 
 ### Linear search
 
-In this example we will tell the computer to console log each index of the given array.
+In this example we will tell the computer to console log each index of the given
+array.
 
 ```js
 const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -67,11 +77,14 @@ for (let i = 0; i < numArray.length; i++) {
 
 In plain english we could say:
 
-> Ok there are ten numbers in the array, so it will take ten steps to read each index of the array, therefore I will see ten console logs.
+> Ok there are ten numbers in the array, so it will take ten steps to read each
+> index of the array, therefore I will see ten console logs.
 
-This would be correct, but that statement doesn't tell us anything about how "fast or slow" this algorithm is.
+This would be correct, but that statement doesn't tell us anything about how
+"fast or slow" this algorithm is.
 
-This is where Big O comes in. Big O is a way of describing how long an algorithm will take to run.
+This is where Big O comes in. Big O is a way of describing how long an algorithm
+will take to run.
 
 ## What is time complexity
 
