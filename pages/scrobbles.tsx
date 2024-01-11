@@ -17,7 +17,6 @@ import {
   URL_TWITTER_PROFILE,
 } from "@shared/constants";
 import { defined } from "@shared/defined";
-import axios, { AxiosResponse } from "axios";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 
@@ -124,7 +123,7 @@ const Scrobbles = ({
               I have extracted an API client to{" "}
               <a href={URL_LASTFM_NPM_PKG} target="_blank" rel="noopener noreferrer">
                 <span>
-                  <Image src={NPM_LOGO} alt="Larcasts" width={42} height={28} />
+                  <Image src={NPM_LOGO} alt="npm" width={42} height={28} />
                 </span>
               </a>
               , if you want to build something similar the client may help.
@@ -145,7 +144,7 @@ const Scrobbles = ({
               {user ? (
                 <>
                   Total plays:{" "}
-                  <span className="font-bold text-4xl text-red-600 ">{user?.playcount}</span>.
+                  <span className="text-4xl font-bold text-red-600 ">{user?.playcount}</span>.
                 </>
               ) : null}
             </p>
@@ -175,7 +174,7 @@ const Scrobbles = ({
             <h2 className="text-2xl font-medium">Recent Tracks</h2>
             <p>Listened to today</p>
           </div>
-          <div className="grid grid-flow-row-dense  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20">
+          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {allRecentTracks && allRecentTracks.length
               ? allRecentTracks.map((track: Track) => (
                   <ScrobblesCard
@@ -196,7 +195,7 @@ const Scrobbles = ({
             <h2 className="text-2xl font-medium">Top Albums</h2>
             <p>Top Albums of all time</p>
           </div>
-          <div className="grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20">
+          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {allTimeTopAlbums && allTimeTopAlbums.length
               ? allTimeTopAlbums.map((album: any) => (
                   <ScrobblesCard
@@ -216,7 +215,7 @@ const Scrobbles = ({
             <h2 className="text-2xl font-medium">Weekly Album Charts</h2>
             <p>Scrobbles this week</p>
           </div>
-          <div className="grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 pb-20">
+          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {weeklyAlbums && weeklyAlbums.length
               ? weeklyAlbums.map((album) => (
                   <ScrobblesCard
@@ -236,7 +235,7 @@ const Scrobbles = ({
             <h2 className="text-2xl font-medium">Top Artists</h2>
             <p>Scrobbles since 2008</p>
           </div>
-          <div className="top-artist grid grid-flow-row-dense sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-2 pb-20">
+          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 top-artist sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {artists && artists.length
               ? artists.map((artist: Artist) => {
                   if (!artist.image) return;
@@ -269,11 +268,8 @@ const Scrobbles = ({
  */
 export const getAlbumCoverArt = async (albumMbId: string) => {
   try {
-    const response: AxiosResponse<MusicBrainzCoverArt.RootObject> = await axios.get(
-      `${MUSICBRAINZ.base_url}/release/${albumMbId}`,
-    );
-    const { data } = response;
-    return data;
+    const response = await fetch(`${MUSICBRAINZ.base_url}/release/${albumMbId}`);
+    return (await response.json()) satisfies MusicBrainzCoverArt.RootObject;
   } catch (error: any) {
     const errMessage = `😞 Album cover ${albumMbId} - ${error.message}`;
     throw new Error(errMessage);
@@ -289,14 +285,14 @@ export const getAlbumCoverArt = async (albumMbId: string) => {
  */
 export const getFanartTvData = async (mbid: string): Promise<FanArtArtistResponse> => {
   const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
-  const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
-  return data;
+  const data = await fetch(FANART_TV_ENDPOINT);
+  return data.json() satisfies Promise<FanArtArtistResponse>;
 };
 
 export const getFanartTvAlbumData = async (mbid: string): Promise<FanArtArtistResponse> => {
   const FANART_TV_ENDPOINT = `${FANART_TV.base_url}/albums/${mbid}?api_key=${FANART_TV.api_key}`;
-  const { data } = await axios.get<FanArtArtistResponse>(FANART_TV_ENDPOINT);
-  return data;
+  const data = await fetch(FANART_TV_ENDPOINT);
+  return data.json() satisfies Promise<FanArtArtistResponse>;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -394,12 +390,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
         if (!mbId) {
           return;
         }
-        const res = await axios.get(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`);
+        const res = await fetch(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`);
         if (res.status === 200) {
-          return res.data;
+          return res.json() satisfies Promise<FanArtArtistResponse>;
         }
         return {
-          ...res.data,
+          ...res,
         };
       }),
     );
