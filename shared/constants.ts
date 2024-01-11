@@ -41,7 +41,7 @@ export const TWITTER_CARD_POSTS =
   "https://res.cloudinary.com/mannuel/image/upload/v1663044455/images/posts-post-cover.png";
 export const TWITTER_HANDLE = "manidf";
 export const URL_CODEPEN_PROFILE = "https://codepen.io/mannuelf";
-export const URL_COVERART_ARCHIVE = "https://coverartarchive.org";
+export const URL_COVER_ART_ARCHIVE = "https://coverartarchive.org";
 export const URL_FANARTTV = "https://fanart.tv/";
 export const URL_GITHUB_PROFILE = "https://github.com/mannuelf";
 export const URL_LARACASTS = "https://laracasts.com/@mannuelf";
