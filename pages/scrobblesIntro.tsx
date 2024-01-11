@@ -1,6 +1,6 @@
 import {
   LOGO_LASTFM,
-  URL_COVERART_ARCHIVE,
+  URL_COVER_ART_ARCHIVE,
   URL_FANARTTV,
   URL_LASTFM_API_DOCS,
   URL_TWITTER_PROFILE,
@@ -41,7 +41,7 @@ const ScrobblesIntro = ({ user }: UserProps) => {
             fanart.tv
           </a>{" "}
           API, some from{" "}
-          <a href={URL_COVERART_ARCHIVE} target="_blank" rel="noopener noreferrer">
+          <a href={URL_COVER_ART_ARCHIVE} target="_blank" rel="noopener noreferrer">
             Musicbrainz Cover Art Archive
           </a>
           . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you
