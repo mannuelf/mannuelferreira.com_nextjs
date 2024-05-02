@@ -1,7 +1,18 @@
 export const ExperienceCardItems = [
   {
+    title: "Senior Frontend Developer",
+    date: "2024 - PRESENT",
+    logo: {
+      title: "Storebrand",
+      href: "https://res.cloudinary.com/mannuel/image/upload/v1709618059/storebrand-logo.svg",
+      height: 34,
+      width: 280,
+      weblink: "https://www.storebrand.no",
+    },
+  },
+  {
     title: "Nordic Web Developer",
-    date: "2021 - PRESENT",
+    date: "2021 - 2023",
     logo: {
       title: "SATS ASA",
       href: "https://res.cloudinary.com/mannuel/image/upload/v1662272848/mfcom/logo-sats.svg",
