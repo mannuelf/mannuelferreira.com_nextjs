@@ -1,0 +1,215 @@
+---
+published: true
+title: "Traefik, Docker and your vps part 2"
+excerpt: "Docker time let tlk about about how Traefik and docker and docker compose work together."
+category: "Linux"
+tags: ["traefik", "Docker", "vps"]
+date: "2023-11-01T07:35:00.322Z"
+author:
+  name: "M Ferreira"
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
+ogImage:
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1696967398/mfcom/traefik-docker.png"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
+---
+
+If you have landed here without reading Part 1, [go there now](https://mannuelferreira.com/posts/traefik-docker-and-vps-part-1).
+
+The docker-compose.yml file in the root directory is the main config that Traefik looks at to understand what containers to start and manage.
+
+## Project folder structure
+
+It is important to keep a good and simple folder structure, because the docker compose file in the root will be configured to look for Docker files using relative paths.
+
+This way the `docker-compose.yml` file is the single entry point for all services in this server.
+
+Within these folders for each service you can put anything, Node js, python, what ever you feeling that day.
+
+- name the folders the exact name you want the subdomain to be, so if you are building an API, call the folder `api`. This will result in a domain of `api.company.com`
+- I have called my examples `servicea` and `serviceb` for clarity sake.
+- user lower-case names,
+- keep names short and sweet, because the names will be the same as the sub domain you will create.
+
+```bash
+root/
+├── home/
+│   ├── Dockerfile
+│   ├── index.html
+│   └──
+├── servicea/
+│   ├── Dockerfile
+│   ├── ...
+│   └──
+├── serviceb/
+│   ├── Dockerfile
+│   └── ...
+│
+├─ docker-compose.yml
+├─ traefik.yml
+├─ traefik_dynamic.yml
+```
+
+## docker-compose.yml
+
+I will show you the `entire` compose file after we first understand how easy it is setup a service.
+
+Here is a snippet to define a service:
+
+```yaml
+version: "3"
+
+services:
+  ...
+  home:
+    container_name: "home-service"
+    build:
+      context: ./home
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.home.rule=Host(`www.company.com`)"
+      - "traefik.http.routers.home.entrypoints=websecure"
+      - "traefik.http.routers.home.tls.certresolver=myresolver"
+    networks:
+      - web
+```
+
+Lets break it down line by line
+
+**services:**
+declare a services block
+
+**home:**
+declare a service by its give name, I called it `home` which corresponds to the folder name I created earlier.
+
+**container_name:**
+tells docker what to call the container.
+
+**build:**
+define a build label and sets the docker build context.
+
+**context:**
+defines the location of the project (relative path to the home directory)
+
+**dockerfile:**
+tells docker to load up the Dockerfile found in that directory.
+
+**labels:**
+This is where Traefik and docker meet for the first time.
+
+- `"traefik.enable=true"`: enables Traefik
+- `"traefik.http.routers.home.rule=Host(`www.company.com`)"`: sets the domain name using the `Host()` function which takes string as an argument. we have set it to `www.company.com`.
+- `"traefik.http.routers.home.entrypoints=websecure"`: sets the app entry point to use `websecure` which we created in Part 1.
+- `"traefik.http.routers.home.tls.certresolver=myresolver"`: sets the TLS Certificate Resolver to use the resolver defined by `myresolver`
+
+Viola! that is it that is all that is needed to help Traefik autodiscover, start and manage your container. Creating a service is literally createing its resource in a folder with it's required Dockerfile and configureing it's `service` block in the main `docker-compose.yml` file in the root.
+
+## Complete docker-compose file
+
+Lets dive into the full docker compose file and walk through the Traefik configuration.
+
+```yaml
+version: "3"
+
+services:
+  traefik:
+    image: "traefik:v3.0"
+    container_name: "traefik"
+    command:
+      - --accesslog=true
+
+      - --api.dashboard=true
+
+      - --certificatesresolvers.myresolver.acme.email=your@email.com
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
+
+      - --entrypoints.web.address=:80
+      - --entryPoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.asDefault=true
+      - --entrypoints.websecure.http.tls.certresolver=myresolver
+
+      - --log.level=INFO
+
+      - --providers.docker.exposedByDefault=false
+      - --providers.docker.network=web
+      - --providers.file.filename=/traefik_dynamic.toml
+
+      - --accesslog.filepath=/var/log/traefik-access.log
+      - --log.filepath=/var/log/traefik.log
+    labels:
+      - traefik.enable=true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "letsencrypt:/letsencrypt"
+      - "./traefik_dynamic.toml:/traefik_dynamic.toml"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - web
+
+  home:
+    build:
+      context: ./home
+      dockerfile: Dockerfile
+    container_name: "home-service"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.home.rule=Host(`www.localhost`)"
+      - "traefik.http.routers.home.entrypoints=websecure"
+      - "traefik.http.routers.home.tls.certresolver=myresolver"
+    networks:
+      - web
+
+  servicea:
+    build:
+      context: ./servicea
+      dockerfile: Dockerfile
+    container_name: service-a
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.servicea.rule=Host(`servicea.localhost`)"
+      - "traefik.http.routers.servicea.entrypoints=websecure"
+      - "traefik.http.routers.servicea.tls.certresolver=myresolver"
+    networks:
+      - web
+
+  serviceb:
+    build:
+      context: ./servicea
+      dockerfile: Dockerfile
+    container_name: service-b
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.serviceb.rule=Host(`serviceb.localhost`)"
+      - "traefik.http.routers.serviceb.entrypoints=websecure"
+      - "traefik.http.routers.serviceb.tls.certresolver=myresolver"
+    networks:
+      - web
+
+  whoami:
+    image: "traefik/whoami"
+    container_name: "whoami-service"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+      - "traefik.http.routers.whoami.entrypoints=websecure"
+      - "traefik.http.routers.whoami.tls.certresolver=myresolver"
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
+    external: true
+    name: web
+  internal:
+    external: false
+
+volumes:
+  letsencrypt:
+    name: letsencrypt
+```

@@ -4,14 +4,14 @@
 /node_modules
 /.pnp
 .pnp.js
+.yarn/install-state.gz
 
 # testing
 /coverage
 
 # next.js
-#/public
 /.next/
-/out
+/out/
 
 # production
 /build
@@ -19,7 +19,6 @@
 # misc
 .DS_Store
 *.pem
-_research
 
 # debug
 npm-debug.log*
@@ -27,20 +26,14 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env
-.env.test
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*.local
 
 # vercel
 .vercel
-tsconfig.tsbuildinfo
 
-# Local Netlify folder
-.netlify
-/test-results/
-/playwright-report/
-/playwright/.cache/
-sendgrid.env
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# velite files
+.velite

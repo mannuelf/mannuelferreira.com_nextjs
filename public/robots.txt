@@ -1,3 +1,5 @@
-User-agent: *
+# https://www.robotstxt.org/robotstxt.html
 
+User-agent: *
+Disallow:
 Sitemap: https://mannuelferreira.com/sitemap.xml
