@@ -10,7 +10,7 @@ import {
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 
-export function ModeToggle() {
+export function ModeToggle(): React.ReactElement {
   const { setTheme } = useTheme();
 
   return (

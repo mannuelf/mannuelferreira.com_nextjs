@@ -2,9 +2,10 @@ export const AVATAR_ME =
   "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1636496492/images/mee.jpg";
 export const CMS_NAME = "Mannuel Ferreira";
 export const CMS_AUTHOR = CMS_NAME;
+export const OCCUPATION = "Software Engineer";
 export const EMAIL = "mannuel@themwebs.me";
 export const GENERIC_META =
-  "Hello world! Mannuel Ferreira here, Software Engineer. Building and designing software is all quite interesting to me. I enjoy working with web technologies like JavaScript, React, python, Node.JS, Deno, CSS, Sass CSS-in-JS, algorithms, data structures, what ever it takes to get the job done";
+  "Hello world! Mannuel Ferreira here, Software Engineer. Building and designing software is all quite interesting to me. I am grateful to have worked with many incredible people on many awesome products and projects over the years. I am currently at Storebrand building with React and Java and more.";
 export const GITHUB_URL = "https://github.com/mannuelf";
 export const GOOGLE_FONTS_URL =
   "https://fonts.googleapis.com/css2?family=Fira+Code&Source+Sans+Pro&family=Ubuntu:wght@300;400;500;700&display=swap";

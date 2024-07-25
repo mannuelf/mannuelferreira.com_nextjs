@@ -1,7 +1,7 @@
-import { NextRequest } from "next/server";
-import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 import { CMS_NAME } from "@/lib/constants";
+import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
