@@ -20,8 +20,10 @@ export default async function AboutPage(): Promise<React.ReactElement> {
           <h1 className="inline-block text-4xl font-black lg:text-5xl">About Me</h1>
         </div>
       </section>
+
       <hr className="my-8" />
-      <section className="flex flex-row items-center gap-8 md:items-start">
+
+      <section className="flex flex-col md:flex-row items-center gap-8 md:items-start">
         <div className="flex flex-col gap-2 min-w-48 max-w-48">
           <Avatar className="w-48 h-48">
             <AvatarImage src={AVATAR_ME} alt={siteConfig.author} />
@@ -30,8 +32,9 @@ export default async function AboutPage(): Promise<React.ReactElement> {
           <h2 className="text-2xl font-bold text-center break-words">{siteConfig.author}</h2>
           <p className="text-center break-words text-muted-foreground">{siteConfig.occupation}</p>
         </div>
-        <p className="py-4 text-lg first-letter:text-lg">{GENERIC_META}</p>
+        <p className="py-4 text-lg">{GENERIC_META}</p>
       </section>
+
       <hr className="my-8" />
 
       <section className="grid-rows-4 grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 text-center ">
