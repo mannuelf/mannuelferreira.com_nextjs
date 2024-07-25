@@ -1,35 +1,41 @@
-## NextJS 14, Tailwind, Shadcn UI, MDX and Velite Blog Template
+# Blog
 
-<p align="center">
- <img src="https://i.imgur.com/VgnktQH.png" width="400">
-</p>
+> Mannuel Ferreira
 
-In this repo is a simple implementation of a markdown static blog, a demo can be seen [here](https://my-first-blog-dusky.vercel.app/), Features include:
+[www.mannuelferreira.com](https://www.mannuelferreira.com)
 
-- MDX Components
-- Shadcn UI
-- Pagination
-- Dynamic Open Graph Image
-- Syntax Highlighting in code block
+## Install dependencies
 
-### Learning Points
+(optional) Install PNPM [here](https://pnpm.io/).
 
-Hopefully, from this project and the video, you can learn:
+```bash
+pnpm install
+```
 
-- NextJS 14 basics (layouts, app router etc)
-- NextJS SEO
-- NextJS Dynamic Graph Images
-- [Velite](https://velite.js.org/) Setup and usage
-- [Shadcn/ui](https://ui.shadcn.com/) setup and usage
-- Custom components in MDX
-- Tailwind styling
+### Local dev
 
-## YouTube
+Runs all build:css, typecheck and local dev server
 
-You can follow along with me as we build this on YouTube. The commits will line up with the GitHub chapters so you can easily see what changed in each section.#
+```bash
+pnpm start:dev
+```
 
-[![YouTube video](https://img.youtube.com/vi/tSI98g3PDyE/0.jpg)](<[https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://youtu.be/tSI98g3PDyE)>)
+or run scripts seperately
 
-## Credits
+```bash
+pnpm typecheck
+```
 
-Much of the design of this project is taken from shadcn in his projects, such as [shadcn/ui](https://ui.shadcn.com/) and [Taxonomy](https://tx.shadcn.com/)
+```bash
+pnpm watch:css
+```
+
+```bash
+pnpm dev
+```
+
+finally do a sanity with vercel dev
+
+```bash
+vercel dev
+```
