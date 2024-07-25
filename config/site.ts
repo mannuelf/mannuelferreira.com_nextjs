@@ -3,6 +3,7 @@ import {
   CMS_NAME,
   GENERIC_META,
   GITHUB_URL,
+  OCCUPATION,
   SITE_URL,
   TWITTER_HANDLE,
 } from "@/lib/constants";
@@ -12,6 +13,7 @@ export const siteConfig = {
   url: SITE_URL,
   description: GENERIC_META,
   author: CMS_AUTHOR,
+  occupation: OCCUPATION,
   links: {
     twitter: `https://x.com/${TWITTER_HANDLE}`,
     github: GITHUB_URL,

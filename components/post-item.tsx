@@ -12,7 +12,7 @@ interface PostItemProps {
   tags: string[];
 }
 
-export function PostItem({ slug, title, excerpt, date, tags }: PostItemProps) {
+export function PostItem({ slug, title, excerpt, date, tags }: PostItemProps): React.ReactElement {
   return (
     <article className="flex flex-col gap-2 py-3 p-5 m-0 mb-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-2 border-white hover:border-orange-400 rounded-md transition-all">
       <div>

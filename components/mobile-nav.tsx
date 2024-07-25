@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Button } from "./ui/button";
+import { siteConfig } from "@/config/site";
 import { Menu } from "lucide-react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Icons } from "./icons";
-import { siteConfig } from "@/config/site";
+import { Button } from "./ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
-export function MobileNav() {
+export function MobileNav(): React.ReactElement {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,8 +22,7 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent side="right">
         <MobileLink onOpenChange={setOpen} href="/" className="flex items-center">
-          <Icons.logo className="mr-2 h-4 w-4" />
-          <span className="font-bold">{siteConfig.name}</span>
+          <span className="sr-only ">{siteConfig.name}</span>
         </MobileLink>
         <div className="flex flex-col gap-3 mt-3">
           <MobileLink onOpenChange={setOpen} href="/blog">

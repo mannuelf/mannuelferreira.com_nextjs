@@ -6,8 +6,8 @@ import {
   PaginationContent,
   PaginationItem,
   PaginationLink,
-  PaginationPrevious,
   PaginationNext,
+  PaginationPrevious,
 } from "./ui/pagination";
 
 interface QueryPaginationProps {
@@ -15,7 +15,10 @@ interface QueryPaginationProps {
   className?: string;
 }
 
-export function QueryPagination({ totalPages, className }: QueryPaginationProps) {
+export function QueryPagination({
+  totalPages,
+  className,
+}: QueryPaginationProps): React.ReactElement {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 

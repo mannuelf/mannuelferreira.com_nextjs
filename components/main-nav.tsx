@@ -1,11 +1,10 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
-import { Icons } from "./icons";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import Image, { ImageProps } from "next/image";
+import { Icons } from "./icons";
 
 export function MainNav() {
   const pathname = usePathname();
@@ -13,7 +12,12 @@ export function MainNav() {
   return (
     <nav className="flex items-center space-x-4 lg:space-x-6">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" title={siteConfig.name} alt={siteConfig.name} />
+        <Icons.logo
+          className="h-6 w-6"
+          title={siteConfig.name}
+          alt={siteConfig.name}
+          srcLight="light"
+        />
         <span className="hidden">{siteConfig.name}</span>
       </Link>
       <Link

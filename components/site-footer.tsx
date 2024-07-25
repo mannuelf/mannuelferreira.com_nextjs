@@ -1,8 +1,9 @@
 import { siteConfig } from "@/config/site";
 import { Mail } from "lucide-react";
 import { Icons } from "./icons";
+import React from "react";
 
-export function SiteFooter() {
+export function SiteFooter(): React.ReactElement {
   return (
     <footer>
       <div className="mb-6 mt-14 flex flex-col items-center">

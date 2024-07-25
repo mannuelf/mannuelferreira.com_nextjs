@@ -3,11 +3,11 @@ import { ImageProps } from "next/image";
 type IconProps = React.HTMLAttributes<SVGElement>;
 type LogoProps = Omit<ImageProps, "src" | "priority" | "loading"> & {
   srcLight: string;
-  srcDark: string;
 };
+
 export const Icons = {
   logo: (props: LogoProps) => {
-    const { srcLight, srcDark } = props;
+    const { srcLight } = props;
     const setLogoBg = srcLight ? "#8FFFFF" : "#28284F";
     return (
       <svg

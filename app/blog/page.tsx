@@ -1,4 +1,5 @@
 import { posts } from "#site/content";
+import Container from "@/components/container";
 import { PostItem } from "@/components/post-item";
 import { QueryPagination } from "@/components/query-pagination";
 import { Tag } from "@/components/tag";
@@ -34,11 +35,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const sortedTags = sortTagsByCount(tags);
 
   return (
-    <div className="container max-w-6xl py-6 lg:py-10">
+    <Container>
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
           <h1 className="inline-block font-black text-4xl lg:text-5xl">Blog</h1>
-          <p className="text-xl text-muted-foreground">A list of posts, you may find helpfull.</p>
+          <p className="text-xl text-muted-foreground">A list of posts, I hope you find helpful.</p>
         </div>
       </div>
       <div className="grid grid-cols-12 gap-3 mt-8">
@@ -70,6 +71,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           <QueryPagination totalPages={totalPages} className="justify-end mt-4" />
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

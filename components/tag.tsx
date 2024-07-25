@@ -7,7 +7,7 @@ interface TagProps {
   current?: boolean;
   count?: number;
 }
-export function Tag({ tag, current, count }: TagProps) {
+export function Tag({ tag, current, count }: TagProps): React.ReactElement {
   return (
     <Link
       className={badgeVariants({
