@@ -38,7 +38,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     <Container>
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-black text-4xl lg:text-5xl">Blog</h1>
+          <h1 className="inline-block font-black text-4xl lg:text-5xl">Posts</h1>
           <p className="text-xl text-muted-foreground">A list of posts, I hope you find helpful.</p>
         </div>
       </div>
@@ -66,7 +66,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               })}
             </ul>
           ) : (
-            <p>Nothing to see here yet</p>
+            <p>No posts 🥺</p>
           )}
           <QueryPagination totalPages={totalPages} className="justify-end mt-4" />
         </div>

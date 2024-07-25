@@ -1,6 +1,6 @@
 {
-  "name": "my-first-blog",
-  "version": "0.1.0",
+  "name": "mannuel-ferreira",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next",
