@@ -5,7 +5,6 @@ import { Menu } from "lucide-react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Icons } from "./icons";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
@@ -25,7 +24,7 @@ export function MobileNav(): React.ReactElement {
           <span className="sr-only ">{siteConfig.name}</span>
         </MobileLink>
         <div className="flex flex-col gap-3 mt-3">
-          <MobileLink onOpenChange={setOpen} href="/blog">
+          <MobileLink onOpenChange={setOpen} href="/posts">
             Blog
           </MobileLink>
           <MobileLink onOpenChange={setOpen} href="/about">

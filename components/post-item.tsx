@@ -1,8 +1,8 @@
+import { cn, formatDate } from "@/lib/utils";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
-import { cn, formatDate } from "@/lib/utils";
 import { Tag } from "./tag";
+import { buttonVariants } from "./ui/button";
 
 interface PostItemProps {
   slug: string;
@@ -14,7 +14,7 @@ interface PostItemProps {
 
 export function PostItem({ slug, title, excerpt, date, tags }: PostItemProps): React.ReactElement {
   return (
-    <article className="flex flex-col gap-2 py-3 p-5 m-0 mb-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-2 border-white hover:border-orange-400 rounded-md transition-all">
+    <article className="flex flex-col gap-2 py-3 p-5 m-0 mb-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-2 border-gray hover:border-orange-400 rounded-md transition-all">
       <div>
         <h2 className="text-2xl font-bold">
           <Link href={"/" + slug}>{title}</Link>
