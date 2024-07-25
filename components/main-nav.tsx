@@ -21,13 +21,13 @@ export function MainNav() {
         <span className="hidden">{siteConfig.name}</span>
       </Link>
       <Link
-        href="/blog"
+        href="/posts"
         className={cn(
           "text-normal text-black font-bold transition-colors hover:text-primary hidden sm:inline-block",
-          pathname === "/blog" ? "text-foreground" : "text-foreground/60",
+          pathname === "/posts" ? "text-foreground" : "text-foreground/60",
         )}
       >
-        Blog
+        Posts
       </Link>
       <Link
         href="/about"
