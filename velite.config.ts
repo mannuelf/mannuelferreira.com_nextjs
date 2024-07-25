@@ -1,7 +1,7 @@
-import { defineCollection, defineConfig, s } from "velite";
-import rehypeSlug from "rehype-slug";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import { defineCollection, defineConfig, s } from "velite";
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
@@ -10,7 +10,7 @@ const computedFields = <T extends { slug: string }>(data: T) => ({
 
 const posts = defineCollection({
   name: "Post",
-  pattern: "blog/**/*.mdx",
+  pattern: "posts/**/*.mdx",
   schema: s
     .object({
       slug: s.path(),
