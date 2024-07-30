@@ -52,6 +52,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.mannuelferreira.com",
+        port: "",
+        pathname: "/**",
+      }
     ],
   },
   webpack: (config) => {

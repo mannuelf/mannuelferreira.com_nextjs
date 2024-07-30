@@ -19,7 +19,9 @@ async function getPostFromParams(params: PostPageProps["params"]) {
   return post;
 }
 
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: PostPageProps,
+): Promise<Metadata> {
   const post = await getPostFromParams(params);
 
   if (!post) {
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       url: post.slug,
       images: [
         {
-          url: `/api/og?${ogSearchParams.toString()}`,
+          url: `${post.coverImage}`,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -51,12 +53,14 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [`/api/og?${ogSearchParams.toString()}`],
+      images: [`${post.coverImage}`],
     },
   };
 }
 
-export async function generateStaticParams(): Promise<PostPageProps["params"][]> {
+export async function generateStaticParams(): Promise<
+  PostPageProps["params"][]
+> {
   return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
 }
 
@@ -70,8 +74,12 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <article className="container py-6 prose dark:prose-invert max-w-3xl mx-auto">
       <h1 className="mb-2">{post.title}</h1>
-      <div className="flex gap-2 mb-2">{post.tags?.map((tag) => <Tag tag={tag} key={tag} />)}</div>
-      {post.excerpt ? <p className="text-xl mt-0 text-muted-foreground">{post.excerpt}</p> : null}
+      <div className="flex gap-2 mb-2">
+        {post.tags?.map((tag) => <Tag tag={tag} key={tag} />)}
+      </div>
+      {post.excerpt
+        ? <p className="text-xl mt-0 text-muted-foreground">{post.excerpt}</p>
+        : null}
       <hr className="my-4" />
       <MDXContent code={post.body} />
     </article>

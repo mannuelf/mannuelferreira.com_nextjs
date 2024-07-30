@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer/footer";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],

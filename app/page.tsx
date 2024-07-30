@@ -5,7 +5,7 @@ import { cn, sortPosts } from "@/lib/utils";
 import Link from "next/link";
 
 export default function Home() {
-  const latestPosts = sortPosts(posts).slice(0, 5);
+  const latestPosts = sortPosts(posts).slice(0, 7);
 
   return (
     <>
@@ -25,11 +25,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container flex flex-col max-w-6xl py-6 mt-10 space-y-6 lg:py-6">
-        <h2 className="text-4xl font-black text-center sm:text-5xl md:text-4xl lg:text-6xl">
+      <section className="container flex flex-col max-w-6xl p-4">
+        <h2 className="text-4xl font-black text-center sm:text-5xl md:text-4xl lg:text-6xl p-4">
           Latest Posts
         </h2>
-        <ul className="flex flex-col">
+        <ul className="grid grid-rows-1 md:grid-cols-3 gap-4">
           {latestPosts.map(
             (post) =>
               post.published && (
@@ -37,6 +37,7 @@ export default function Home() {
                   <PostItem
                     slug={post.slug}
                     title={post.title}
+                    coverImage={post.coverImage}
                     excerpt={post.excerpt}
                     date={post.date}
                     tags={post.tags}
