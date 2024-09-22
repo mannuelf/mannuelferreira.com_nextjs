@@ -3,7 +3,7 @@ published: true
 title: "Fun with Remix, React and the Discogs API"
 excerpt: "I've been playing around with Remix, React and Discogs API and I'm loving it, I think you will too."
 category: "Web Development"
-tags: ["Remix", "React", "Discogs", "API"]
+tags: ["Remix", "React", "API"]
 date: "2024-09-22T14:26:35.322Z"
 author:
   name: "M Ferreira"
@@ -13,7 +13,7 @@ ogImage:
 coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1726992387/mfcom/bo26otlyynrblkwptmww.jpg"
 ---
 
-I'd like to share how i thought about building this app and the process of building it, including some technical details.
+I'd like to share how I thought about building this app and the process of building it, including some technical details.
 
 First some context.
 
@@ -23,8 +23,8 @@ I had a need and an itch to get some game time with Remix.
 
 It is no secret that I am a huge fan of music. I have been collecting and playing records over the years, on and off... and right now very much on.
 I enjoy the physical nature of vinyl records, I enjoy looking at the artwork and reading what ever they got going on in the sleeve notes.
-Some of the classic album covers give you an insight into the time and place the music was made, it's a bit like a time capsule. Ontop
-of that, I love the sound of vinyl, the warmth and the crackles, nudging the platter and pitch fader, it's a fin time.
+Some of the classic album covers give you an insight into the time and place the music was made. Ontop
+of that, I love the sound of vinyl, the warmth and the crackles, nudging the platter and pitch fader, it's a fun time.
 
 I found a local record store that I really like 🎹 [Filter Musikk](https://filtermusikk.no/discogs), I have been buying records from them for the last little while now.
 They have a physical store in Oslo, but they also have a Discogs store online. Discogs is marketplace for music, it's like eBay for music, but better.
@@ -35,7 +35,7 @@ I thought it would be cool to build a little app that would allow me to see what
 
 ## The data
 
-I like to save my endpoints in collection in Postman, so I can easily access them later.
+I like to save my endpoints in collections in Postman, so I can easily refer to them later.
 
 > https://api.discogs.com/users/{{username}}/inventory
 
@@ -58,14 +58,17 @@ so I did not have to build the components from scratch.
 - 💽 [Discogs API](https://www.discogs.com/developers)
 - 📖 [Remix](https://remix.run/docs)
 - 🎨 [shadcn/ui](https://ui.shadcn.com/)
-- 👩‍💻 [React v19](https://react.dev)
+- 👩‍💻 [React](https://react.dev)
 
 ## The code
 
-Make use of the [resources](https://remix.run/resources?category=libraries) for building the app, there are routers, hooks, and other useful stuff.
+Make use of the Remix [resources](https://remix.run/resources?category=libraries) for building the app, no sense reinveinting the wheel.
+
 I used the [server side pagination by Jacob Paris](https://www.jacobparis.com/content/remix-pagination).
 
 ### Type definitions
+
+I like to get occustomed to the data I am working with, so I define the types I will be working with.
 
 ```jsx
 export interface Pagination {
@@ -174,7 +177,7 @@ export interface InventoryFetchResponse {
 }
 ```
 
-### Inventory component
+### Inventory server component
 
 ```jsx
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
@@ -279,8 +282,119 @@ export const loader: LoaderFunction = async ({ request }) => {
 - it returns the data and the seller username to the loader function.
 - returns an error if there is an error fetching the data.
 
+### Inventory client component
+
+The card component is your typical React card component, it has a header, content and footer. I build string of the artist and song title set the `src` attribute of the image to the first image in the images array.
+of the link that opens YouTube Music.
+
+```jsx
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import { cn } from "~/lib/utils";
+import type { InventoryFetchResponse, Listing } from "./inventory.types";
+
+export const Inventory = (data: InventoryFetchResponse): React.ReactElement => {
+  return (
+    <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-4 justify-items-start pb-7">
+      {data.listings.map((listing: Listing) => (
+        <article
+          id={listing.release.title}
+          key={listing.release.title}
+          className="flex justify-start w-full"
+        >
+          <Card className={cn("p-0 shadow-none w-full overflow-hidden")}>
+            <div className="justify-items-start">
+              <CardHeader
+                className="flex-1 h-40 sm:h-60 md:h-90 lg:h-100 p-0 relative"
+                title={listing.release.title}
+                style={{
+                  backgroundImage: listing.release.images[0]
+                    ? `url(${listing.release.images[0].uri})`
+                    : "",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                {listing.condition ?? listing.condition}
+              </CardHeader>
+              <CardContent className="flex-1 pt-4">
+                <CardTitle className="text-sm">
+                  {listing.release.title}
+                </CardTitle>
+                <CardDescription className="leading-6 text-black">
+                  <strong>Artist:</strong> {listing.release.artist}
+                  <br />
+                  <strong>Label:</strong> {listing.release.label} -{" "}
+                  {listing.release.catalog_number}
+                  <br />
+                  <strong>Released:</strong> {listing.release.year}
+                  <br />
+                  <strong>Price:</strong> {listing.original_price.formatted}
+                </CardDescription>
+                <CardDescription className="leading-6">
+                  <span className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                    <a
+                      href={listing.uri}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-white border-0 border-black-600 bg-black hover:text-color-black rounded-md p-2 mt-2 "
+                    >
+                      View on Discogs
+                    </a>
+                    <a
+                      href={`https://music.youtube.com/search?q=${
+                        encodeURIComponent(
+                          listing.release.title,
+                        )
+                      } ${encodeURIComponent(listing.release.artist)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex justify-start text-xs text-white border-0 border-black-600 bg-black hover:text-color-black rounded-md p-2 mt-2"
+                    >
+                      <span className="w-[24px] mt-[2px]">
+                        <img
+                          src={"./icon-youtube.svg"}
+                          alt="YouTube"
+                          width={16}
+                          height={16}
+                        />
+                      </span>
+                      <span>Listen</span>
+                    </a>
+                  </span>
+                </CardDescription>
+              </CardContent>
+            </div>
+            <CardFooter className="p-0"></CardFooter>
+          </Card>
+        </article>
+      ))}
+    </section>
+  );
+};
+```
+
 ## The result
 
 Live demo [here](https://filtermusikk.no/discogs/)
 
 ![Discogs App result](https://res.cloudinary.com/mannuel/image/upload/v1726997752/mfcom/koue1wai4p9uxwrxohpd.jpg)
+
+### Conclusion
+
+I enjoy the plug and play nature of Remix, the documentation is good and easy to follow, it's easy to get started and build something quickly.
+I like the server side rendering and the way it handles data fetching with the loader and hooks to get the data out its concise, did not get the chance yet to use an `action` as I will need to build form (coming up next a site search).
+
+Remix focus on performance and Web standards, which is a good thing. Did not reach for Axios or anything like that because I did not need to, the fetch API is good enough for doing simple server side fetches if no cacheing is needed.
+When it [merges into React Router 7](https://remix.run/blog/merging-remix-and-react-router) I will continue to use it.
+
+Ask me again in the future when [React 19](https://react.dev/blog/2024/04/25/react-19) is out.
+
+Get the code on [GitHub](https://github.com/mannuelf/my-discogs).
