@@ -1,0 +1,402 @@
+---
+published: true
+title: "Fun with Remix, React and the Discogs API"
+excerpt: "I've been playing around with Remix, React and Discogs API and I'm loving it, I think you will too."
+category: "Web Development"
+tags: ["Remix", "React", "API"]
+date: "2024-09-22T14:26:35.322Z"
+author:
+  name: "M Ferreira"
+  picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
+ogImage:
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1726992387/mfcom/bo26otlyynrblkwptmww.jpg"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1726992387/mfcom/bo26otlyynrblkwptmww.jpg"
+---
+
+I'd like to share how I thought about building this app and the process of building it, including some technical details.
+
+First some context.
+
+I had a need and an itch to get some game time with Remix.
+
+> Best way to learn is to build something, preferably something that you are passionate about.
+
+It is no secret that I am a huge fan of music. I have been collecting and playing records over the years, on and off... and right now very much on.
+I enjoy the physical nature of vinyl records, I enjoy looking at the artwork and reading what ever they got going on in the sleeve notes.
+Some of the classic album covers give you an insight into the time and place the music was made. Ontop
+of that, I love the sound of vinyl, the warmth and the crackles, nudging the platter and pitch fader, it's a fun time.
+
+I found a local record store that I really like 🎹 [Filter Musikk](https://filtermusikk.no/discogs), I have been buying records from them for the last little while now.
+They have a physical store in Oslo, but they also have a Discogs store online. Discogs is marketplace for music, it's like eBay for music, but better.
+
+Anyways, lets talk about code the Discogs API and how I have been playing around with it.
+
+I thought it would be cool to build a little app that would allow me to see what they have in stock on Discogs and thier physical store.
+
+## The data
+
+I like to save my endpoints in collections in Postman, so I can easily refer to them later.
+
+Here is the Discogs API endpoint I used to get the inventory of a user.
+
+- https://api.discogs.com/users/{{username}}/inventory?status={{status}}&sort={{sort}}&sort_order={{sort_order}}&per_page={{per_page}}&page={{page}}
+
+![Discogs API collection](https://res.cloudinary.com/mannuel/image/upload/v1727020635/mfcom/sd9onzotxkompojnah2v.png)
+
+## The plan and design
+
+Keep it clean simple design. Focus on the music, the records and the artwork.
+
+![Discogs App design](https://res.cloudinary.com/mannuel/image/upload/v1726997358/mfcom/vibk5qjo7kukuvm1vz3h.jpg)
+
+## The stack
+
+Remix for the server side rendering. I was only concerned with learning how things work in Remix with loaders, routes and actions. So I did not build anything
+from scratch.
+
+I used Tailwind CSS for the styling because it's fast and easy to use, after a second thought I decided to use [shadcn/ui](https://ui.shadcn.com/)
+so I did not have to build the components from scratch.
+
+- 💽 [Discogs API](https://www.discogs.com/developers)
+- 📖 [Remix](https://remix.run/docs)
+- 🎨 [shadcn/ui](https://ui.shadcn.com/)
+- 👩‍💻 [React](https://react.dev)
+
+## The code
+
+Make use of the Remix [resources](https://remix.run/resources?category=libraries) for building the app, no sense reinveinting the wheel.
+
+I used the [server side pagination by Jacob Paris](https://www.jacobparis.com/content/remix-pagination).
+
+### Type definitions
+
+I like to get occustomed to the data I am working with, so I define the types I will be working with.
+
+```jsx
+export interface Pagination {
+  items: number;
+  page: number;
+  pages: number;
+  per_page: number;
+  urls: Record<
+    string,
+    {
+      last: string;
+      next: string;
+    }
+  >;
+}
+
+export interface Price {
+  currency: string;
+  value: number;
+}
+
+interface OriginalPrice {
+  curr_abbr: string;
+  curr_id: number;
+  formatted: string;
+  value: number;
+}
+
+interface SellerStats {
+  rating: string;
+  stars: number;
+  total: number;
+}
+
+interface Seller {
+  id: number;
+  username: string;
+  avatar_url: string;
+  stats: SellerStats;
+  min_order_total: number;
+  html_url: string;
+  uid: number;
+  url: string;
+  payment: string;
+  shipping: string;
+  resource_url: string;
+}
+
+interface Image {
+  type: string;
+  uri: string;
+  resource_url: string;
+  uri150: string;
+  width: number;
+  height: number;
+}
+
+interface ReleaseStatsCommunity {
+  in_wantlist: number;
+  in_collection: number;
+}
+
+interface ReleaseStats {
+  community: ReleaseStatsCommunity;
+}
+
+interface Release {
+  thumbnail: string;
+  description: string;
+  images: Image[];
+  artist: string;
+  format: string;
+  resource_url: string;
+  title: string;
+  year: number;
+  id: number;
+  label: string;
+  catalog_number: string;
+  stats: ReleaseStats;
+}
+
+export interface Listing {
+  id: number;
+  resource_url: string;
+  uri: string;
+  status: string;
+  condition: string;
+  sleeve_condition: string;
+  comments: string;
+  ships_from: string;
+  posted: string;
+  allow_offers: boolean;
+  offer_submitted: boolean;
+  audio: boolean;
+  price: Price;
+  original_price: OriginalPrice;
+  shipping_price: Record<string, unknown>;
+  original_shipping_price: Record<string, unknown>;
+  seller: Seller;
+  release: Release;
+}
+
+export interface InventoryFetchResponse {
+  pagination: Pagination;
+  listings: Listing[];
+}
+```
+
+### Inventory server component
+
+```jsx
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import { json, useLoaderData } from "@remix-run/react";
+import { Footer } from "~/components/footer";
+import { PaginationBar } from "~/components/paginationBar";
+import { StatusAlert } from "~/components/StatusAlert";
+import { fetchUserInventory } from "~/inventory";
+import { Inventory } from "~/inventory/inventory";
+
+export const loader: LoaderFunction = async ({ request }) => {
+
+  try {
+    const data = await fetchUserInventory(
+      pageNumber,
+      "12",
+      process.env.SELLER_USERNAME,
+      "for sale",
+      "listed",
+      "desc",
+    );
+
+    return json({ inventory: data, ENV: { sellerUsername: process.env.SELLER_USERNAME } });
+  } catch (error) {
+    console.log("Error fetching inventory:", error);
+    return json({ error: "Failed to load inventory. Please try again later or" }, { status: 500 });
+  }
+};
+
+export const Meta: MetaFunction = () => {
+  const { ENV } = useLoaderData<typeof loader>();
+  return [
+    {
+      title: `Shop ${ENV.sellerUsername} records`,
+    },
+    {
+      name: "description",
+      content: `Buy some vinyl records from ${ENV.sellerUsername}`,
+    },
+  ];
+};
+
+export default function Index() {
+  const { inventory, error } = useLoaderData<typeof loader>();
+
+  if (error) {
+    <StatusAlert {...error} />;
+  }
+
+  if (!inventory || !inventory.pagination) {
+    return <div>No inventory data available.</div>;
+  }
+
+  return (
+    <>
+      <Inventory {...inventory} />
+      <PaginationBar total={inventory.pagination.pages} />
+      <Footer />
+    </>
+  );
+}
+```
+
+The `Inventory` component takes the inventory data and renders it, it is the entry point for the app index page, no routes planned.
+
+I show an alert if there is an error fetching the data, with a link to Discogs api status page.
+
+Remix works like this:
+
+- you have a `loader` function that fetches the data server side and returns it to the component wrapped by json() function
+- the default Index function then renders the data
+- meta function is used to set the title and description of the page.
+
+### fetchUserInventory function
+
+```jsx
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const searchParams = new URLSearchParams(url.search);
+  const pageNumber = searchParams.get("page") || "1";
+
+  try {
+    const data = await fetchUserInventory(
+      pageNumber,
+      "12",
+      process.env.SELLER_USERNAME,
+      "for sale",
+      "listed",
+      "desc",
+    );
+
+    return json({ inventory: data, ENV: { sellerUsername: process.env.SELLER_USERNAME } });
+  } catch (error) {
+    console.log("Error fetching inventory:", error);
+    return json({ error: "Failed to load inventory. Please try again later or" }, { status: 500 });
+  }
+};
+```
+
+- this function is used to fetch the data from the Discogs API,
+- it takes the page number, number of items per page, seller username, status, condition, sort order as arguments.
+- it returns the data and the seller username to the loader function.
+- returns an error if there is an error fetching the data.
+
+### Inventory client component
+
+The card component is your typical React card component, it has a header, content and footer. I build string of the artist and song title set the `src` attribute of the image to the first image in the images array.
+of the link that opens YouTube Music.
+
+```jsx
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import { cn } from "~/lib/utils";
+import type { InventoryFetchResponse, Listing } from "./inventory.types";
+
+export const Inventory = (data: InventoryFetchResponse): React.ReactElement => {
+  return (
+    <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-4 justify-items-start pb-7">
+      {data.listings.map((listing: Listing) => (
+        <article
+          id={listing.release.title}
+          key={listing.release.title}
+          className="flex justify-start w-full"
+        >
+          <Card className={cn("p-0 shadow-none w-full overflow-hidden")}>
+            <div className="justify-items-start">
+              <CardHeader
+                className="flex-1 h-40 sm:h-60 md:h-90 lg:h-100 p-0 relative"
+                title={listing.release.title}
+                style={{
+                  backgroundImage: listing.release.images[0]
+                    ? `url(${listing.release.images[0].uri})`
+                    : "",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                {listing.condition ?? listing.condition}
+              </CardHeader>
+              <CardContent className="flex-1 pt-4">
+                <CardTitle className="text-sm">
+                  {listing.release.title}
+                </CardTitle>
+                <CardDescription className="leading-6 text-black">
+                  <strong>Artist:</strong> {listing.release.artist}
+                  <br />
+                  <strong>Label:</strong> {listing.release.label} -{" "}
+                  {listing.release.catalog_number}
+                  <br />
+                  <strong>Released:</strong> {listing.release.year}
+                  <br />
+                  <strong>Price:</strong> {listing.original_price.formatted}
+                </CardDescription>
+                <CardDescription className="leading-6">
+                  <span className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                    <a
+                      href={listing.uri}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-white border-0 border-black-600 bg-black hover:text-color-black rounded-md p-2 mt-2 "
+                    >
+                      View on Discogs
+                    </a>
+                    <a
+                      href={`https://music.youtube.com/search?q=${
+                        encodeURIComponent(
+                          listing.release.title,
+                        )
+                      } ${encodeURIComponent(listing.release.artist)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex justify-start text-xs text-white border-0 border-black-600 bg-black hover:text-color-black rounded-md p-2 mt-2"
+                    >
+                      <span className="w-[24px] mt-[2px]">
+                        <img
+                          src={"./icon-youtube.svg"}
+                          alt="YouTube"
+                          width={16}
+                          height={16}
+                        />
+                      </span>
+                      <span>Listen</span>
+                    </a>
+                  </span>
+                </CardDescription>
+              </CardContent>
+            </div>
+            <CardFooter className="p-0"></CardFooter>
+          </Card>
+        </article>
+      ))}
+    </section>
+  );
+};
+```
+
+## The result
+
+Live demo [here](https://filtermusikk.no/discogs/)
+
+![Discogs App result](https://res.cloudinary.com/mannuel/image/upload/v1726997752/mfcom/koue1wai4p9uxwrxohpd.jpg)
+
+### Conclusion
+
+I enjoy the plug and play nature of Remix, the documentation is good and easy to follow, it's easy to get started and build something quickly.
+I like the server side rendering and the way it handles data fetching with the loader and hooks to get the data out its concise, did not get the chance yet to use an `action` as I will need to build form (coming up next a site search).
+
+Remix focus on performance and Web standards, which is a good thing. Did not reach for Axios or anything like that because I did not need to, the fetch API is good enough for doing simple server side fetches if no cacheing is needed.
+When it [merges into React Router 7](https://remix.run/blog/merging-remix-and-react-router) I will continue to use it.
+
+Ask me again in the future when [React 19](https://react.dev/blog/2024/04/25/react-19) is out.
+
+Get the code on [GitHub](https://github.com/mannuelf/my-discogs).
