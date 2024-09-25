@@ -12,11 +12,13 @@ export default function CookieBanner() {
   }, []);
 
   useEffect(() => {
-    const newValue = cookieConsent ? "granted" : "denied";
+    const newValue = !!cookieConsent ? "granted" : "denied";
 
-    window.gtag("consent", "update", {
-      analytics_storage: newValue,
-    });
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        analytics_storage: newValue,
+      });
+    }
 
     setLocalStorage("cookie_consent", newValue);
   }, [cookieConsent]);
@@ -37,10 +39,7 @@ export default function CookieBanner() {
                         bg-gray-700 rounded-lg shadow`}
     >
       <div className="text-center">
-        <p>
-          I use <span className="font-bold text-sky-400">cookies</span> on the site, to see what you
-          like to read hope you cool with that 🤓
-        </p>
+        <p>I use cookies on the site, to see what you like to read hope you cool with that 🤓</p>
       </div>
 
       <div className="flex gap-2">
