@@ -1,3 +1,5 @@
+import CookieBanner from "@/components/consent/cookie-banner";
+import GoogleAnalytics from "@/components/consent/google-analytics";
 import { Providers } from "@/components/providers";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -34,11 +36,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-pt-[3.5rem]">
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-7P7WYKN019" />
       <body className={cn("min-h-screen bg-background font-ubuntu antialiased", ubuntu.variable)}>
         <Providers>
           <section className="relative flex flex-col min-h-dvh bg-background">
             <SiteHeader />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              {children}
+              <CookieBanner />
+            </main>
             <SiteFooter />
           </section>
         </Providers>
