@@ -17,7 +17,7 @@ I'd like to share how I thought about building this app and the process of build
 
 First some context.
 
-I had a need and an itch to get some game time with Remix.
+I had a need and an itch to get some game time with [Remix](https://remix.run/).
 
 > Best way to learn is to build something, preferably something that you are passionate about.
 
@@ -31,9 +31,9 @@ They have a physical store in Oslo, but they also have a Discogs store online. D
 
 Anyways, lets talk about code the Discogs API and how I have been playing around with it.
 
-I thought it would be cool to build a little app that would allow me to see what they have in stock on Discogs and thier physical store.
+I thought it would be cool to build a little app that would allow **me** to see what they have in stock on Discogs and thier physical store.
 
-## The data
+## **The data**
 
 I like to save my endpoints in collections in Postman, so I can easily refer to them later.
 
@@ -43,15 +43,17 @@ Here is the Discogs API endpoint I used to get the inventory of a user.
 https://api.discogs.com/users/{{username}}/inventory?status={{status}}&sort={{sort}}&sort_order={{sort_order}}&per_page={{per_page}}&page={{page}}
 ```
 
+### Mock the data in Postman _(or your something like it)_
+
 ![Discogs API collection](https://res.cloudinary.com/mannuel/image/upload/v1727020635/mfcom/sd9onzotxkompojnah2v.png)
 
-## The plan and design
+## **The plan and design**
 
 Keep it clean simple design. Focus on the music, the records and the artwork.
 
 ![Discogs App design](https://res.cloudinary.com/mannuel/image/upload/v1726997358/mfcom/vibk5qjo7kukuvm1vz3h.jpg)
 
-## The stack
+## **The stack**
 
 Remix for the server side rendering. I was only concerned with learning how things work in Remix with loaders, routes and actions. So I did not build anything
 from scratch.
@@ -64,13 +66,13 @@ so I did not have to build the components from scratch.
 - 🎨 [shadcn/ui](https://ui.shadcn.com/)
 - 👩‍💻 [React](https://react.dev)
 
-## The code
+## **The code**
 
 Make use of the Remix [resources](https://remix.run/resources?category=libraries) for building the app, no sense reinveinting the wheel.
 
 I used the [server side pagination by Jacob Paris](https://www.jacobparis.com/content/remix-pagination).
 
-### Type definitions
+### **Type definitions**
 
 I like to get occustomed to the data I am working with, so I define the types I will be working with.
 
@@ -181,7 +183,17 @@ export interface InventoryFetchResponse {
 }
 ```
 
-### Inventory server component
+### **Inventory server component**
+
+My favourite thing about this is that state is living in the URL, I fetch from Discogs based on the page number in the URL,
+
+```jsx
+const url = new URL(request.url);
+const searchParams = new URLSearchParams(url.search);
+const pageNumber = searchParams.get("page") || "1";
+```
+
+it's not hidden in some state somewhere deep in the React component forest.
 
 ```jsx
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
@@ -193,6 +205,9 @@ import { fetchUserInventory } from "~/inventory";
 import { Inventory } from "~/inventory/inventory";
 
 export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const searchParams = new URLSearchParams(url.search);
+  const pageNumber = searchParams.get("page") || "1";
 
   try {
     const data = await fetchUserInventory(
@@ -255,7 +270,9 @@ Remix works like this:
 - the default Index function then renders the data
 - meta function is used to set the title and description of the page.
 
-### fetchUserInventory function
+### **fetchUserInventory function**
+
+This is out intergration, where we get the data from the Discogs API.
 
 ```jsx
 export const loader: LoaderFunction = async ({ request }) => {
@@ -286,10 +303,25 @@ export const loader: LoaderFunction = async ({ request }) => {
 - it returns the data and the seller username to the loader function.
 - returns an error if there is an error fetching the data.
 
-### Inventory client component
+### **Inventory and Card component**
 
-The card component is your typical React card component, it has a header, content and footer. I build string of the artist and song title set the `src` attribute of the image to the first image in the images array.
+The Inventory and card component is your typical React card component, it has a header, content and footer.
+
+I build string of the artist and song title set the `src` attribute of the image to the first image in the images array.
 of the link that opens YouTube Music.
+
+```jsx
+<a
+  href={`https://music.youtube.com/search?q=${
+    encodeURIComponent(
+      listing.release.title,
+    )
+  } ${encodeURIComponent(listing.release.artist)}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex justify-start text-xs text-white border-0 border-black-600 bg-black hover:text-color-black rounded-md p-2 mt-2"
+>
+```
 
 ```jsx
 import React from "react";
@@ -385,20 +417,28 @@ export const Inventory = (data: InventoryFetchResponse): React.ReactElement => {
 };
 ```
 
-## The result
+## **The result**
 
 Live demo [here](https://filtermusikk.no/discogs/)
 
 ![Discogs App result](https://res.cloudinary.com/mannuel/image/upload/v1726997752/mfcom/koue1wai4p9uxwrxohpd.jpg)
 
-### Conclusion
+### **Conclusion**
 
-I enjoy the plug and play nature of Remix, the documentation is good and easy to follow, it's easy to get started and build something quickly.
-I like the server side rendering and the way it handles data fetching with the loader and hooks to get the data out its concise, did not get the chance yet to use an `action` as I will need to build form (coming up next a site search).
+I enjoy the plug and play nature of Remix and the freedom to do as I please.
 
-Remix focus on performance and Web standards, which is a good thing. Did not reach for Axios or anything like that because I did not need to, the fetch API is good enough for doing simple server side fetches if no cacheing is needed.
-When it [merges into React Router 7](https://remix.run/blog/merging-remix-and-react-router) I will continue to use it.
+The documentation is good and easy to follow, it's easy to get started and build something quickly.
 
-Ask me again in the future when [React 19](https://react.dev/blog/2024/04/25/react-19) is out.
+The data flow concept is easy to understand makes doing SSR much more approachable than it was in the past.
 
-Get the code on [GitHub](https://github.com/mannuelf/my-discogs).
+Data fetching with the loader and hooks to get the data out its concise, did not get the chance yet to use an `action` as I will need to build form (coming up next a site search).
+
+Remix focus on performance and Web standards, which I like. Did not reach for [Axios](https://www.npmjs.com/package/axios) or anything like that ([TanStack query](https://tanstack.com/query/latest)) because I did not need to, the [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) is good enough for simple tasks like this.
+
+When it (Remix) [merges into React Router 7](https://remix.run/blog/merging-remix-and-react-router) I will continue to use it, I will take this on a case by case basis, depending on the project and types of problems we trying to solve.
+
+Looking else where/alternatives would be to use [NextJS](https://nextjs.org/) or maybe look at react [server components](https://react.dev/reference/rsc/server-components) next. Ask me again in the future when [React 19](https://react.dev/blog/2024/04/25/react-19) is out.
+
+Get the code here on [GitHub](https://github.com/mannuelf/my-discogs).
+
+Thanks for scrolling, see you on the next one 🕺
