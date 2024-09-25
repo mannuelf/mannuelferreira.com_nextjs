@@ -3,9 +3,9 @@
 import { pageView } from "@/lib/gtagHelper";
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
-import { use, useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
-export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) {
+function GoogleAnalyticsComponent({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) {
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
@@ -40,5 +40,13 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_
         }}
       />
     </>
+  );
+}
+
+export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GoogleAnalyticsComponent GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+    </Suspense>
   );
 }
