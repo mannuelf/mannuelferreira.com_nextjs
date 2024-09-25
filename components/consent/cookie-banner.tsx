@@ -32,7 +32,7 @@ export default function CookieBanner() {
     <>
       <div
         className={
-          "flex bg-slate-900 my-10 mx-auto max-w-max md:max-w-screen-sm fixed bottom-0 left-0 right-0 px-3 md:px-4 py-3 justify-between items-center flex-col sm:flex-row gap-4 rounded-lg shadow"
+          "flex bg-emerald-700 text-white dark:text-white my-10 mx-auto max-w-max md:max-w-screen-sm fixed bottom-0 left-0 right-0 px-3 md:px-4 py-3 justify-between items-center flex-col sm:flex-row gap-4 rounded-lg shadow"
         }
       >
         <div className="text-center">
@@ -46,11 +46,14 @@ export default function CookieBanner() {
         </div>
 
         <div className="flex gap-2">
-          <button className="px-5 py-2 rounded-md" onClick={() => setCookieConsent(false)}>
+          <button
+            className="px-5 py-2 rounded-md text-primary bg-secondary"
+            onClick={() => setCookieConsent(false)}
+          >
             No
           </button>
           <button
-            className="px-5 py-2 rounded-lg bg-green-900 text-white"
+            className="px-5 py-2 rounded-lg bg-white text-black"
             onClick={() => setCookieConsent(true)}
           >
             Allow
