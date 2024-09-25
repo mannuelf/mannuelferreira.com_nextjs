@@ -3,7 +3,7 @@
 import { pageView } from "@/lib/gtagHelper";
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
-import { useEffect, Suspense } from "react";
+import { Suspense, useEffect } from "react";
 
 function GoogleAnalyticsComponent({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) {
   const pathName = usePathname();
