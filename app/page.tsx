@@ -26,8 +26,8 @@ export default function Home() {
         </div>
       </section>
       <section className="container flex flex-col max-w-6xl p-4">
-        <h2 className="text-4xl font-black text-center sm:text-5xl md:text-4xl lg:text-6xl p-4">
-          Latest Posts
+        <h2 className="text-4xl font-black text-center sm:text-5xl md:text-4xl lg:text-5xl pb-6">
+          Latest posts ✍️
         </h2>
         <ul className="grid grid-rows-1 md:grid-cols-3 gap-4">
           {latestPosts.map(

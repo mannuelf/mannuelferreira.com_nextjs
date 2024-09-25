@@ -6,6 +6,7 @@ export const OCCUPATION = "Software Engineer";
 export const EMAIL = "mannuel@themwebs.me";
 export const GENERIC_META =
   "Hello world! Mannuel Ferreira here, Software Engineer. Building and designing software is all quite interesting to me. I am grateful to have worked with many incredible people on many awesome products and projects over the years. I am currently at Storebrand building with React and Java and more.";
+export const CONSENT_META = "I use cookies to see what you like to read 🤓";
 export const GITHUB_URL = "https://github.com/mannuelf";
 export const GOOGLE_FONTS_URL =
   "https://fonts.googleapis.com/css2?family=Fira+Code&Source+Sans+Pro&family=Ubuntu:wght@300;400;500;700&display=swap";
