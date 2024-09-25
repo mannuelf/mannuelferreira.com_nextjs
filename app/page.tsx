@@ -25,7 +25,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container flex flex-col max-w-6xl p-4">
+      <section className="container flex flex-col max-w-5xl p-4">
         <h2 className="text-4xl font-black text-center sm:text-5xl md:text-4xl lg:text-5xl pb-6">
           Latest posts ✍️
         </h2>

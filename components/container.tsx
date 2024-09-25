@@ -5,7 +5,7 @@ type ContainerProps = {
 };
 
 const Container = ({ children }: ContainerProps) => (
-  <div className="container max-w-6xl py-6 lg:py-10">{children}</div>
+  <div className="container max-w-5xl py-6 lg:py-10">{children}</div>
 );
 
 export default Container;
