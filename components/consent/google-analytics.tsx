@@ -1,6 +1,7 @@
 "use client";
 
 import { pageView } from "@/lib/gtagHelper";
+import LogRocket from "logrocket";
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { Suspense, useEffect } from "react";
@@ -12,6 +13,7 @@ function GoogleAnalyticsComponent({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: st
   useEffect(() => {
     const url = `${pathName}${searchParams.toString()}`;
     pageView(GA_MEASUREMENT_ID, url);
+    LogRocket.init("8bbcyq/mannueferreiracom");
   }, [pathName, searchParams, GA_MEASUREMENT_ID]);
 
   return (
