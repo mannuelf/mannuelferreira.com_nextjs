@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "next",
     "start:dev": "concurrently \"npm run watch:css\" \"npm run dev\" \"npm run typecheck -w\"",
-    "build": "next build",
+    "build": "next build && npm run generate-sitemap",
     "build:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css",
     "watch:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css --watch",
     "lint": "next lint",
     "prettier:fix": "prettier . --write",
     "start": "next start",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "generate-sitemap": "node scripts/sitemap-generator.mjs"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
@@ -22,6 +23,7 @@
     "client-only": "^0.0.1",
     "clsx": "^2.1.1",
     "github-slugger": "^2.0.0",
+    "globby": "^14.0.2",
     "logrocket": "^9.0.0",
     "lucide-react": "^0.446.0",
     "next": "14.2.13",
