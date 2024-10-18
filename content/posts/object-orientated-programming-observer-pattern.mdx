@@ -1,0 +1,101 @@
+---
+published: true
+title: "Oberserver pattern - Object Orientated Programming"
+excerpt: "Object Orientated Programming is a programming paradigm that uses objects and classes to design applications and computer programs."
+category: "Programming"
+tags: ["oop", "programming", "python"]
+date: "2024-10-12T07:35:00.322Z"
+author:
+name: "M Ferreira"
+picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
+ogImage:
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
+---
+
+## Observer pattern
+
+Defines a one-to-many dependency between objects that when on eobject changes state, all of its dependents are notified and updated automatically.
+
+Observer
+
+```python
+from abc,  import ABC, abstractmethod
+
+class Observer(ABC):
+    @abstractmethod
+    def update(self, message):
+      pass
+```
+
+Publisher
+
+```python
+from abc,  import ABC, abstractmethod
+
+class Newspaper(ABC):
+    @abstractmethod
+    def add_subscriber(self, subscriber: Observer):
+      pass
+
+    @abstractmethod
+    def remove_subscriber(self, subscriber: Observer):
+      pass
+
+    @abstractmethod
+    def notify_subscriber(self, subscriber: Observer):
+      pass
+```
+
+Concrete Observer
+
+```python
+class Subscriber(Observer):
+    def __init__(self, name):
+        self.name = name
+
+    def update(self, message: str):
+      print(f"{self._name} received the message {message}")
+```
+
+Concrete Subject
+
+```python
+class OnlineNewsPaper(Newspaper):
+    def __init__(self, name: str):
+      self._name = name
+      self.subscriber = set()
+
+    def publish_article(self, title):
+      self.notify.subscribers(f"New article posted with title {title}")
+
+    def add_subscriber(self, subscriber: Observer):
+      self.subscribers.add(subscriber)
+
+    def remove_subscriber(self, subscriber: Observer):
+      self.subscribers.remove(subscriber)
+
+    def notify_subscriber(self, subscriber: Observer):
+      for subscribers in self.subscribers:
+        subscribe.update(message)
+```
+
+Instantiate a Newspaper
+
+```python
+the_gaurdian = OnlineNewsPaper("The Guardian")
+```
+
+Instantiate a subscriber
+
+```python
+mannuel = PersonalSubscriber("Mannuel")
+```
+
+```python
+the_guadian.add_subscriber(mannuel)
+```
+
+```python
+the_guadian.publish_article("New article was published")
+```
