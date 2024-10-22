@@ -10,7 +10,7 @@
     "watch:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css --watch",
     "lint": "next lint",
     "prettier:fix": "prettier . --write",
-    "postinstall": "npx puppeteer browsers install chrome",
+    "postinstall": "apt-get update && apt-get install -y libnss3 && npx puppeteer browsers install chrome",
     "start": "next start",
     "typecheck": "tsc",
     "generate-sitemap": "node scripts/sitemap-generator.mjs"
