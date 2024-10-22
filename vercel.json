@@ -1,7 +1,8 @@
 {
   "build": {
     "env": {
-      "PUPPETEER_SKIP_DOWNLOAD": "true"
+      "PUPPETEER_SKIP_DOWNLOAD": "true",
+      "PUPPETEER_CACHE_DIR": "/vercel/.cache/puppeteer"
     }
   }
 }
