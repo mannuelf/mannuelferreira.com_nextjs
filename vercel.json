@@ -1,8 +1,7 @@
 {
-  "build": {
-    "env": {
-      "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true"
-    },
-    "buildCommand": "apt-get update && apt-get install -y libnss3 && npm run build"
-  }
+  "env": {
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true"
+  },
+  "installCommand": "apt-get update && apt-get install -y libnss3 && npm install",
+  "buildCommand": "npm run build"
 }
