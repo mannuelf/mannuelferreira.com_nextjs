@@ -2,7 +2,7 @@ import { build } from "velite";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: { serverExternalPackages: ["puppeteer", "puppeteer-core", "@sparticuz/chromium"] },
+  serverExternalPackages: ["puppeteer", "puppeteer-core", "@sparticuz/chromium"],
   images: {
     remotePatterns: [
       {
