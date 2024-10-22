@@ -10,7 +10,6 @@
     "watch:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css --watch",
     "lint": "next lint",
     "prettier:fix": "prettier . --write",
-    "postinstall": "apk --no-cache add nss && npx puppeteer browsers install chrome",
     "start": "next start",
     "typecheck": "tsc",
     "generate-sitemap": "node scripts/sitemap-generator.mjs"
@@ -20,6 +19,7 @@
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
+    "@sparticuz/chromium": "^130.0.0",
     "class-variance-authority": "^0.7.0",
     "client-only": "^0.0.1",
     "clsx": "^2.1.1",
@@ -32,6 +32,7 @@
     "next": "14.2.13",
     "next-themes": "^0.3.0",
     "puppeteer": "^23.6.0",
+    "puppeteer-core": "^23.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.4",
