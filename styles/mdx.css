@@ -37,3 +37,7 @@
 .subheading-anchor {
   @apply no-underline hover:underline;
 }
+
+g.label {
+  line-height: 1;
+}
