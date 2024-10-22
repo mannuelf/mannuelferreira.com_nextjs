@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next",
     "start:dev": "concurrently \"npm run watch:css\" \"npm run dev\" \"npm run typecheck -w\"",
-    "build": "next build",
+    "build": "./install-deps.sh && next build",
     "build:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css",
     "watch:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css --watch",
     "lint": "next lint",
