@@ -3,6 +3,7 @@
     "env": {
       "PUPPETEER_SKIP_DOWNLOAD": "true",
       "PUPPETEER_CACHE_DIR": "/vercel/.cache/puppeteer"
-    }
+    },
+    "installCommand": "dnf install -y libnss3"
   }
 }
