@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "Dockerfile",
-      "use": "@vercel/node"
+      "use": "@vercel/docker"
     }
   ],
   "env": {
