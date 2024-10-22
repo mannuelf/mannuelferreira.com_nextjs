@@ -1,3 +1,3 @@
 #!/bin/bash
 
-yum install -y nss
+yum install -y nss libgbm
