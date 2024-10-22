@@ -1,16 +1,16 @@
 ---
 published: true
-title: "Strategy pattern - Object Orientated Programming"
+title: "Strategy pattern - Design Patterns"
 excerpt: "This pattern falls into the behavioural category, it allows algorithms to be selected on-the-fly at runtime"
 category: "Programming"
-tags: ["oop", "programming", "python"]
-date: "2024-10-12T07:35:00.322Z"
+tags: ["oop", "programming", "design-patterns"]
+date: "2024-10-22T07:35:00.322Z"
 author:
 name: "M Ferreira"
 picture: "https://res.cloudinary.com/mannuel/image/upload/f_auto/v1604067445/images/mee.jpg"
 ogImage:
-  url: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
-coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/ssh-login.png"
+  url: "https://res.cloudinary.com/mannuel/image/upload/v1729574243/mfcom/uvqa1m0nuuoahqii7mof.png"
+coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1729574243/mfcom/uvqa1m0nuuoahqii7mof.png"
 ---
 
 ## Pattern type
@@ -24,3 +24,29 @@ This pattern allows the client to choose from a family of algorithms and gives a
 ## Problem
 
 You may have a class that has a method that performs a specific task, but you want to be able to change the way the task is performed without changing the class.
+
+As an example imagine you have a class that has a method that calculates the total cost of a shopping cart.
+You may want to be able to change the way the total is calculated, for example, you may want to calculate the total with or without tax.
+
+```mermaid
+---
+title: Strategy pattern
+---
+
+classDiagram
+    class ShoppingCart {
+        +calculateTotal()
+        +calulateShipping()
+    }
+
+    class ShoppingCartWithTax {
+        +calculateTotal()
+    }
+
+    class ShoppingCartWithoutTax {
+        +calculateTotal()
+    }
+
+    ShoppingCart <|-- ShoppingCartWithTax
+    ShoppingCart <|-- ShoppingCartWithoutTax
+```
