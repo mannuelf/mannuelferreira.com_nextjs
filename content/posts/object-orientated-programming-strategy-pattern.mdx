@@ -1,7 +1,7 @@
 ---
 published: true
 title: "Strategy pattern - Object Orientated Programming"
-excerpt: "This pattern "
+excerpt: "This pattern falls into the behavioural category, it allows algorithms to be selected on-the-fly at runtime"
 category: "Programming"
 tags: ["oop", "programming", "python"]
 date: "2024-10-12T07:35:00.322Z"
@@ -17,13 +17,10 @@ coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1676011525/mfcom/s
 
 This is a behavioural pattern, it allows algorithms to be selected on-the-fly at runtime
 
-## Design principles
+## Intent
 
-- Identify the aspects of your application that may vary, then separate them from what does not.
-- Pogramme to an interface and not to an implementation
-- Favour composition over inheritance
-- Classes should be open for extension but closed for modification
+This pattern allows the client to choose from a family of algorithms and gives a simple way to switch between the different algorithms.
 
-```python
-...
-```
+## Problem
+
+You may have a class that has a method that performs a specific task, but you want to be able to change the way the task is performed without changing the class.

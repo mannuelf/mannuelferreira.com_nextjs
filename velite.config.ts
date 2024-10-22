@@ -1,3 +1,4 @@
+import mdxMermaid from "mdx-mermaid";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -50,6 +51,6 @@ export default defineConfig({
         },
       ],
     ],
-    remarkPlugins: [],
+    remarkPlugins: [[mdxMermaid, { output: "svg" }]],
   },
 });
