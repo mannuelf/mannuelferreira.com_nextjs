@@ -10,6 +10,9 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Copy the rest of the application code
+COPY . .
+
 # Install dependencies
 RUN npm install
 # Build the CSS
@@ -17,9 +20,6 @@ RUN npm run build:css
 
 # Build the application
 RUN npm run build
-
-# Copy the rest of the application code
-COPY . .
 
 # Build the application
 RUN npm run build
