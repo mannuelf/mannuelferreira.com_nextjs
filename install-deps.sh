@@ -1,3 +1,3 @@
 #!/bin/bash
 
-yum install -y libnss3
+yum install -y nss
