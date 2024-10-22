@@ -9,7 +9,7 @@
     "build:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css",
     "watch:css": "tailwindcss --minify -i styles/global.css -o public/css/tailwind.min.css --watch",
     "lint": "next lint",
-    "postinstall": "npx puppeteer browsers install chrome",
+    "postinstall": "PUPPETEER_SKIP_DOWNLOAD=true npx puppeteer browsers install chrome",
     "prettier:fix": "prettier . --write",
     "start": "next start",
     "typecheck": "tsc",
