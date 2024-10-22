@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnf install -y libnss3
+yum install -y libnss3
