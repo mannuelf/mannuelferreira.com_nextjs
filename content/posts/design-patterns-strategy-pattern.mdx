@@ -28,11 +28,9 @@ You may have a class that has a method that performs a specific task, but you wa
 As an example imagine you have a class that has a method that calculates the total cost of a shopping cart.
 You may want to be able to change the way the total is calculated, for example, you may want to calculate the total with or without tax.
 
-```mermaid
----
-title: Strategy pattern
----
+## Pattern
 
+```mermaid
 classDiagram
     class ShoppingCart {
         +calculateTotal()
@@ -49,4 +47,51 @@ classDiagram
 
     ShoppingCart <|-- ShoppingCartWithTax
     ShoppingCart <|-- ShoppingCartWithoutTax
+
+class Item {
+    +price
+}
+```
+
+## Code example
+
+```python
+class ShoppingCart:
+    def __init__(self, items):
+        self.items = items
+
+    def calculate_total(self):
+        raise NotImplementedError()
+```
+
+```python
+class Item:
+    def __init__(self, price):
+        self.price = price
+```
+
+```python
+class ShoppingCartWithTax(ShoppingCart):
+    def calculate_total(self):
+        total = sum(item.price for item in self.items)
+        return total * 1.2
+
+class ShoppingCartWithoutTax(ShoppingCart):
+    def calculate_total(self):
+        return sum(item.price for item in self.items)
+```
+
+```python
+cart = ShoppingCartWithTax([Item(10), Item(20)])
+print(f"total cart with tax {cart.calculate_total()}")
+
+cart_without_tax = ShoppingCartWithoutTax([Item(10), Item(20)])
+print(f"total cart without tax {cart_without_tax.calculate_total()}")
+```
+
+prints out:
+
+```text
+total cart with tax: 36.0
+total cart with out tax: 30
 ```
