@@ -15,7 +15,7 @@ coverImage: "https://res.cloudinary.com/mannuel/image/upload/v1729574243/mfcom/t
 
 Object orientated programming is a programming paradigm that uses objects and classes to design software applications based on a business domain.
 
-These objects and classes describe and build out functionality and features of real world concepts, ideas or actions. Effecticly you are recreating the real world in code.
+These objects and classes describe and build out functionality and features of real world concepts, ideas or actions. You in a sense recreating the real world in code.
 
 Design patterns and OOP go hand in hand, as designs patterns give us a way to solve common problems in our code.
 
@@ -29,10 +29,10 @@ Design patterns give us a shared vocabulary to talk about solutions we can apply
 
 Good object orientated design is built on a few key principles:
 
-- Identify the aspects of your application that may vary, then separate them from what does not.
-- Pogramme to an interface and not to an implementation
-- Favour composition over inheritance
-- Classes should be open for extension but closed for modification
+> - Identify the aspects of your application that may vary, then separate them from what does not.
+> - Pogramme to an interface and not to an implementation
+> - Favour composition over inheritance
+> - Classes should be open for extension but closed for modification
 
 ## Pattern types
 
@@ -73,8 +73,58 @@ Behavioural patterns are concerned with the interaction between objects. They he
 - Iterator
 - Mediator
 - Memento
-- Observer
+- [Observer](/posts/oop/design-patterns-observer-pattern)
 - State
-- [Strategy](/posts/design-patterns-strategy-pattern)
+- [Strategy](/posts/oop/design-patterns-strategy-pattern)
 - Template Method
 - Visitor
+
+## UML modelling
+
+UML (Unified Modelling Language) is a standardised way to model software systems.
+It is a visual language that helps you communicate your design ideas.
+
+| Type   | Description    |
+| ------ | -------------- |
+| &lt;-- | Inheritance    |
+| \*--   | Composition    |
+| o--    | Aggregation    |
+| -->    | Association    |
+| --     | Link (Solid)   |
+| ..>    | Dependency     |
+| ..&gt; | Realization    |
+| ..     | Link (Dashed)  |
+| &lt;.. | Generalization |
+
+```mermaid
+classDiagram
+classA <|-- classB
+classC *-- classD
+classE o-- classF
+classG <-- classH
+classI -- classJ
+classK <.. classL
+classM <|.. classN
+classO .. classP
+```
+
+---
+
+```mermaid
+classDiagram
+classA --|> classB : Inheritance
+classC --* classD : Composition
+classE --o classF : Aggregation
+classG --> classH : Association
+classI -- classJ : Link(Solid)
+classK ..> classL : Dependency
+classM ..|> classN : Realization
+classO .. classP : Link(Dashed)
+```
+
+source: [Mermaid](https://mermaid-js.github.io/mermaid/#/classDiagram)
+
+## Resources
+
+- [Head First Design Patterns](https://www.oreilly.com/library/view/head-first-design/0596007124/)
+- [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.oreilly.com/library/view/design-patterns-elements/0201633612/)
