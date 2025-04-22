@@ -37,7 +37,19 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "lastfm-img2.akamaized.net",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "upload.wikimedia.org",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "coverartarchive.org",
         port: "",
         pathname: "/**",
       },

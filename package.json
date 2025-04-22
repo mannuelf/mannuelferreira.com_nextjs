@@ -26,6 +26,7 @@
     "clsx": "^2.1.1",
     "github-slugger": "^2.0.0",
     "globby": "^14.0.2",
+    "lastfm-nodejs-client": "^1.5.2",
     "logrocket": "^9.0.0",
     "lucide-react": "^0.446.0",
     "mdx-mermaid": "^2.0.1",
