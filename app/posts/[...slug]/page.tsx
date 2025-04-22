@@ -6,20 +6,19 @@ import "@/styles/mdx.css";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-interface PostPageProps {
-  params: {
-    slug: string[];
-  };
-}
+type Props = {
+  params: { slug: string[] };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-async function getPostFromParams(params: PostPageProps["params"]) {
+async function getPostFromParams(params: Props["params"]) {
   const slug = params?.slug?.join("/");
   const post = posts.find((post) => post.slugAsParams === slug);
 
   return post;
 }
 
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostFromParams(params);
 
   if (!post) {
@@ -56,11 +55,11 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   };
 }
 
-export async function generateStaticParams(): Promise<PostPageProps["params"][]> {
+export async function generateStaticParams(): Promise<Props["params"][]> {
   return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({ params }: { params: { slug: string[] } }) {
   const post = await getPostFromParams(params);
 
   if (!post || !post.published) {
