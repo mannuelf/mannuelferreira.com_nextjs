@@ -8,7 +8,7 @@ import {
   URL_FANARTTV,
   URL_LASTFM_API_DOCS,
   URL_LASTFM_NPM_PKG,
-  URL_TWITTER_PROFILE
+  URL_TWITTER_PROFILE,
 } from "@/lib/constants";
 import { defined } from "@/lib/defined";
 
@@ -39,10 +39,10 @@ type Props = {
 
 type TransformedTrack = {
   image: string;
-  '@attr'?: { nowplaying: string };
+  "@attr"?: { nowplaying: string };
   name: string;
   url: string;
-  artist: { '#text': string };
+  artist: { "#text": string };
 };
 
 type TransformedArtist = {
@@ -77,7 +77,7 @@ async function getData() {
       const data = await lastFm.getInfo(method.user.getInfo, config.username);
       return data as UserResponse;
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error("Error fetching user data:", error);
       return null;
     }
   };
@@ -271,7 +271,8 @@ async function getData() {
 }
 
 export default async function Scrobbles() {
-  const { error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums } = await getData();
+  const { error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums } =
+    await getData();
 
   if (error && error?.length > 0) {
     return (
@@ -312,7 +313,8 @@ export default async function Scrobbles() {
               </a>{" "}
             </p>
             <p>
-              I have built an API wrapper to the lastFM API in TypeScript, if you want to build something similar the client may help.{" "}
+              I have built an API wrapper to the lastFM API in TypeScript, if you want to build
+              something similar the client may help.{" "}
               <a href={URL_LASTFM_NPM_PKG} target="_blank" rel="noopener noreferrer">
                 GET IT HERE
               </a>
@@ -331,7 +333,10 @@ export default async function Scrobbles() {
               {userProfile?.user ? (
                 <>
                   Total plays:{" "}
-                  <span className="text-4xl font-bold text-red-600 ">{userProfile.user.playcount}</span>.
+                  <span className="text-4xl font-bold text-red-600 ">
+                    {userProfile.user.playcount}
+                  </span>
+                  .
                 </>
               ) : null}
             </p>
@@ -364,19 +369,19 @@ export default async function Scrobbles() {
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {recentTracks && recentTracks.length
               ? recentTracks.map((track: TransformedTrack | undefined) => {
-                if (!track) return null;
-                return (
-                  <ScrobblesCard
-                    imageUrl={track.image}
-                    nowplaying={track["@attr"]?.nowplaying || ""}
-                    playTitle={track.name}
-                    siteUrl={track.url}
-                    subTitle={track.artist["#text"]}
-                    title={track.name}
-                    key={track.name.trim().replace(/\s/gm, "")}
-                  />
-                );
-              })
+                  if (!track) return null;
+                  return (
+                    <ScrobblesCard
+                      imageUrl={track.image}
+                      nowplaying={track["@attr"]?.nowplaying || ""}
+                      playTitle={track.name}
+                      siteUrl={track.url}
+                      subTitle={track.artist["#text"]}
+                      title={track.name}
+                      key={track.name.trim().replace(/\s/gm, "")}
+                    />
+                  );
+                })
               : null}
             <hr />
           </div>
@@ -388,16 +393,16 @@ export default async function Scrobbles() {
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {topAlbums && topAlbums.length
               ? topAlbums.map((album: any) => (
-                <ScrobblesCard
-                  playCount={album.playcount.toString()}
-                  playTitle={album.name}
-                  subTitle={album.artist["#text"]}
-                  title={album.name}
-                  siteUrl={album.url}
-                  imageUrl={album.image ? album.image : ""}
-                  key={album.name.trim().replace(/\s/gm, "")}
-                />
-              ))
+                  <ScrobblesCard
+                    playCount={album.playcount.toString()}
+                    playTitle={album.name}
+                    subTitle={album.artist["#text"]}
+                    title={album.name}
+                    siteUrl={album.url}
+                    imageUrl={album.image ? album.image : ""}
+                    key={album.name.trim().replace(/\s/gm, "")}
+                  />
+                ))
               : null}
             <hr />
           </div>
@@ -408,16 +413,16 @@ export default async function Scrobbles() {
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {weeklyAlbumChart && weeklyAlbumChart.length
               ? weeklyAlbumChart.map((album) => (
-                <ScrobblesCard
-                  playCount={album.playcount.toString()}
-                  playTitle={album.name}
-                  subTitle={album.artist["#text"]}
-                  title={album.name}
-                  siteUrl={album.url}
-                  imageUrl={album.image ? album.image : ""}
-                  key={album.name.trim().replace(/\s/gm, "")}
-                />
-              ))
+                  <ScrobblesCard
+                    playCount={album.playcount.toString()}
+                    playTitle={album.name}
+                    subTitle={album.artist["#text"]}
+                    title={album.name}
+                    siteUrl={album.url}
+                    imageUrl={album.image ? album.image : ""}
+                    key={album.name.trim().replace(/\s/gm, "")}
+                  />
+                ))
               : null}
             <hr />
           </div>
@@ -428,16 +433,16 @@ export default async function Scrobbles() {
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 top-artist sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {topArtists && topArtists.length
               ? topArtists.map((artist: TransformedArtist) => (
-                <ScrobblesCard
-                  playCount={artist.playcount.toString()}
-                  playTitle={artist.name}
-                  subTitle={""}
-                  title={artist.name}
-                  siteUrl={artist.url}
-                  imageUrl={artist.image}
-                  key={artist.name.trim().replace(/\s/gm, "")}
-                />
-              ))
+                  <ScrobblesCard
+                    playCount={artist.playcount.toString()}
+                    playTitle={artist.name}
+                    subTitle={""}
+                    title={artist.name}
+                    siteUrl={artist.url}
+                    imageUrl={artist.image}
+                    key={artist.name.trim().replace(/\s/gm, "")}
+                  />
+                ))
               : null}
           </div>
         </div>

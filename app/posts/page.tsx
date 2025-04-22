@@ -54,13 +54,20 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </Card>
         </div>
         <div className="col-span-12 col-start-1">
-          {displayPosts?.length > 0 ?  (
+          {displayPosts?.length > 0 ? (
             <ul className="grid grid-cols-1 md:grid-cols-2 col-span-12 gap-4 mb-32">
               {displayPosts.map((post) => {
                 const { slug, date, title, coverImage, excerpt, tags } = post;
                 return (
                   <li key={slug}>
-                    <PostItem slug={slug} date={date} coverImage={coverImage} title={title} excerpt={excerpt} tags={tags} />
+                    <PostItem
+                      slug={slug}
+                      date={date}
+                      coverImage={coverImage}
+                      title={title}
+                      excerpt={excerpt}
+                      tags={tags}
+                    />
                   </li>
                 );
               })}

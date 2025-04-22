@@ -39,7 +39,18 @@ export default defineConfig({
   mdx: {
     rehypePlugins: [
       rehypeSlug,
-      [rehypePrettyCode, { theme: "github-dark" }],
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          keepBackground: true,
+          onVisitLine(node: any) {
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+          },
+        },
+      ],
       [
         rehypeAutolinkHeadings,
         {
