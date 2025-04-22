@@ -26,8 +26,9 @@ const ScrobblesCard = ({
     <div key={`scrobble-outer-${title}-${mbid}`} className="scrobble-card relative rounded-md">
       <div
         key={`scrobble-inner-${title}-${mbid}`}
-        className={`${nowplaying ? "nowplaying " : ""
-          }relative h-80 md:h-85 bg-white rounded-lg overflow-hidden`}
+        className={`${
+          nowplaying ? "nowplaying " : ""
+        }relative h-80 md:h-85 bg-white rounded-lg overflow-hidden`}
       >
         {imageUrl ? (
           <Image
