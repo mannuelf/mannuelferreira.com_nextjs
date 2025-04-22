@@ -2,7 +2,6 @@ import { build } from "velite";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  serverExternalPackages: ["puppeteer-core", "puppeteer"],
   images: {
     remotePatterns: [
       {
