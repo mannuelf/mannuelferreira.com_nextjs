@@ -1,7 +1,9 @@
 import mdxMermaid from "mdx-mermaid";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeHighlight from "rehype-highlight";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import type { Pluggable } from "unified";
 import { defineCollection, defineConfig, s } from "velite";
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
@@ -26,6 +28,31 @@ const posts = defineCollection({
     .transform(computedFields),
 });
 
+// Base plugins that are always used
+const basePlugins: Pluggable[] = [
+  rehypeSlug,
+  [rehypeAutolinkHeadings, {
+    behavior: "wrap",
+    properties: {
+      className: ["subheading-anchor"],
+      ariaLabel: "Link to section",
+    },
+  }],
+];
+
+// Add syntax highlighting based on environment
+const rehypePlugins: Pluggable[] = process.env.NODE_ENV === 'production'
+  ? [...basePlugins, rehypeHighlight]
+  : [...basePlugins, [rehypePrettyCode, {
+    theme: "github-dark",
+    keepBackground: true,
+    onVisitLine(node: any) {
+      if (node.children.length === 0) {
+        node.children = [{ type: "text", value: " " }];
+      }
+    },
+  }]];
+
 export default defineConfig({
   root: "content",
   output: {
@@ -37,31 +64,7 @@ export default defineConfig({
   },
   collections: { posts },
   mdx: {
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypePrettyCode,
-        {
-          theme: "github-dark",
-          keepBackground: true,
-          onVisitLine(node: any) {
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }];
-            }
-          },
-        },
-      ],
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "wrap",
-          properties: {
-            className: ["subheading-anchor"],
-            ariaLabel: "Link to section",
-          },
-        },
-      ],
-    ],
+    rehypePlugins,
     remarkPlugins: [[mdxMermaid, { output: "svg" }]],
   },
 });
