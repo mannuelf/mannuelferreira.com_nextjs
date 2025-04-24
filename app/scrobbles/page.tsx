@@ -1,16 +1,12 @@
 import Container from "@/components/container";
 import PageTitle from "@/components/page-title";
-import {
-  LOGO_LASTFM,
-  URL_COVER_ART_ARCHIVE,
-  URL_FANARTTV,
-  URL_LASTFM_API_DOCS,
-  URL_LASTFM_NPM_PKG,
-  URL_TWITTER_PROFILE,
-} from "@/lib/constants";
 import { defined } from "@/lib/defined";
+import RecentTracks from "./_components/recentTracks";
+import TopAlbums from "./_components/topAlbums";
+import TopArtists from "./_components/topArtists";
+import UserProfile from "./_components/userProfile";
+import WeeklyAlbums from "./_components/weeklyAlbums";
 
-import { ScrobblesCard } from "@/app/scrobbles/_components/scrobblesCard";
 import { FANART_TV } from "@/lib/fanarttv/fanarttv";
 import { Artistbackground, FanArtArtistResponse } from "@/lib/fanarttv/fanarttv.types";
 import { MUSICBRAINZ } from "@/lib/musicbrainz/musicbrainz-cover-art";
@@ -19,12 +15,11 @@ import LastFmApi from "lastfm-nodejs-client";
 import type {
   Artist,
   Image as LastFmImage,
-  TopAlbums,
+  TopAlbums as TopAlbumsResponse,
   Track,
   User,
   WeeklyAlbum,
 } from "lastfm-nodejs-client/dist/@types/lastfm.types";
-import Image from "next/image";
 
 type Props = {
   error: [];
@@ -32,7 +27,7 @@ type Props = {
   topArtists: Artist[];
   weeklyAlbumChart: WeeklyAlbum[];
   userProfile: User;
-  topAlbums: TopAlbums[];
+  topAlbums: TopAlbumsResponse;
 };
 
 type TransformedTrack = {
@@ -268,180 +263,18 @@ async function getData() {
 }
 
 export default async function Scrobbles() {
-  const { error, recentTracks, topArtists, userProfile, weeklyAlbumChart, topAlbums } =
-    await getData();
-
-  if (error && error?.length > 0) {
-    return (
-      <div>
-        <Container>
-          <PageTitle>Scrobbles</PageTitle>
-          <div className="pt-4 mt-8 mb-16 border-t">
-            {error.length
-              ? "😥 Error fetching data from lastFM, hit CTRL+F5 once or twice, maybe thrice, it eventually works."
-              : null}
-          </div>
-        </Container>
-      </div>
-    );
-  }
-
   return (
     <div>
       <Container>
         <PageTitle>Scrobbles</PageTitle>
-        {userProfile?.user ? (
-          <div className="pt-4 mt-8 mb-16 border-t">
-            <p className="text-lg">
-              My love for collecting music has brought me to keep using lastFm. I have been tracking
-              my listening habits with lastFm since 2008. I have always wanted to play with the
-              data, that is what this page is about. I of course want to share what I have been
-              listening to with you all.
-            </p>
-            <p>
-              If code is what interests you read it{" "}
-              <a
-                href="https://github.com/mannuelf/mannuelferreira.com_nextjs"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                <i className="fab fa-github"></i> here.
-              </a>{" "}
-            </p>
-            <p>
-              I have built an API wrapper to the lastFM API in TypeScript, if you want to build
-              something similar the client may help.{" "}
-              <a href={URL_LASTFM_NPM_PKG} target="_blank" rel="noopener noreferrer">
-                GET IT HERE
-              </a>
-            </p>
-            <p>
-              My scrobbles from {""}
-              <a href={URL_LASTFM_API_DOCS} target="_blank" rel="noopener noreferrer">
-                <Image
-                  src={LOGO_LASTFM}
-                  unoptimized={true}
-                  width={90}
-                  height={26}
-                  alt="LastFm Logo"
-                />
-              </a>
-              {userProfile?.user ? (
-                <>
-                  Total plays:{" "}
-                  <span className="text-4xl font-bold text-red-600 ">
-                    {userProfile.user.playcount}
-                  </span>
-                  .
-                </>
-              ) : null}
-            </p>
-            <p>
-              Some photos from{" "}
-              <a href={URL_FANARTTV} target="_blank" rel="noopener noreferrer">
-                fanart.tv
-              </a>{" "}
-              API, some from{" "}
-              <a href={URL_COVER_ART_ARCHIVE} target="_blank" rel="noopener noreferrer">
-                Musicbrainz Cover Art Archive
-              </a>
-              . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If
-              you know of another API{" "}
-              <a href={URL_TWITTER_PROFILE} target="_blank" rel="noopener noreferrer">
-                let me know about it
-              </a>
-              .🤙
-            </p>
-            <h2 className="text-2xl"></h2>
-          </div>
-        ) : null}
+        <UserProfile />
       </Container>
       <div className="container mx-auto">
         <div className="p-2">
-          <div className="pb-2 pl-4" id="#recenttracks">
-            <h2 className="text-2xl font-medium">Recent Tracks</h2>
-            <p>Listened to today</p>
-          </div>
-          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {recentTracks && recentTracks.length
-              ? recentTracks.map((track: TransformedTrack | undefined, index: number) => {
-                if (!track) return null;
-                return (
-                  <ScrobblesCard
-                    imageUrl={track.image}
-                    nowplaying={track["@attr"]?.nowplaying || ""}
-                    playTitle={track.name}
-                    siteUrl={track.url}
-                    subTitle={track.artist["#text"]}
-                    title={track.name}
-                    key={`${track.name.trim().replace(/\s/gm, "")}-recenttrack-${index}`}
-                  />
-                );
-              })
-              : null}
-            <hr />
-          </div>
-          <div className="pb-2 pl-4">
-            <a href="#" id="#topalbums"></a>
-            <h2 className="text-2xl font-medium">Top Albums</h2>
-            <p>Top Albums of all time</p>
-          </div>
-          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {topAlbums && topAlbums.length
-              ? topAlbums.map((album: any, index: number) => (
-                <ScrobblesCard
-                  playCount={album.playcount.toString()}
-                  playTitle={album.name}
-                  subTitle={album.artist["#text"]}
-                  title={album.name}
-                  siteUrl={album.url}
-                  imageUrl={album.image ? album.image : ""}
-                  key={`${album.name.trim().replace(/\s/gm, "")}-topalbum-${index}`}
-                />
-              ))
-              : null}
-            <hr />
-          </div>
-          <div className="pb-2 pl-4" id="#weeklyalbumcharts">
-            <h2 className="text-2xl font-medium">Weekly Album Charts</h2>
-            <p>Scrobbles this week</p>
-          </div>
-          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {weeklyAlbumChart && weeklyAlbumChart.length
-              ? weeklyAlbumChart.map((album, index: number) => (
-                <ScrobblesCard
-                  playCount={album.playcount.toString()}
-                  playTitle={album.name}
-                  subTitle={album.artist["#text"]}
-                  title={album.name}
-                  siteUrl={album.url}
-                  imageUrl={album.image ? album.image : ""}
-                  key={`${album.name.trim().replace(/\s/gm, "")}-weeklyalbum-${index}`}
-                />
-              ))
-              : null}
-            <hr />
-          </div>
-          <div className="pb-2 pl-4" id="#topartists">
-            <h2 className="text-2xl font-medium">Top Artists</h2>
-            <p>Scrobbles since 2008</p>
-          </div>
-          <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 top-artist sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-            {topArtists && topArtists.length
-              ? topArtists.map((artist: TransformedArtist, index: number) => (
-                <ScrobblesCard
-                  playCount={artist.playcount.toString()}
-                  playTitle={artist.name}
-                  subTitle={""}
-                  title={artist.name}
-                  siteUrl={artist.url}
-                  imageUrl={artist.image}
-                  key={`${artist.name.trim().replace(/\s/gm, "")}-topartist-${index}`}
-                />
-              ))
-              : null}
-          </div>
+          <RecentTracks />
+          <TopAlbums />
+          <WeeklyAlbums />
+          <TopArtists />
         </div>
       </div>
     </div>
