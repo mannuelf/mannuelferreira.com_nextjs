@@ -10,18 +10,13 @@ type TransformedTrack = {
   artist: { "#text": string };
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function getRecentTracks() {
   const lastFm = LastFmApi();
   const { config, method } = lastFm;
 
-  const data = await lastFm.getRecentTracks(
-    method.user.getRecentTracks,
-    config.username,
-    "",
-    "50",
-  );
+  const data = await lastFm.getRecentTracks(method.user.getRecentTracks, config.username, "", "50");
   const { recenttracks } = data;
   return recenttracks;
 }
@@ -46,22 +41,22 @@ export default async function RecentTracks() {
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {recentTracksWithImages && recentTracksWithImages.length
           ? recentTracksWithImages.map((track: TransformedTrack | undefined, index: number) => {
-            if (!track) return null;
-            return (
-              <ScrobblesCard
-                imageUrl={track.image}
-                nowplaying={track["@attr"]?.nowplaying || ""}
-                playTitle={track.name}
-                siteUrl={track.url}
-                subTitle={track.artist["#text"]}
-                title={track.name}
-                key={`${track.name.trim().replace(/\s/gm, "")}-recenttrack-${index}`}
-              />
-            );
-          })
+              if (!track) return null;
+              return (
+                <ScrobblesCard
+                  imageUrl={track.image}
+                  nowplaying={track["@attr"]?.nowplaying || ""}
+                  playTitle={track.name}
+                  siteUrl={track.url}
+                  subTitle={track.artist["#text"]}
+                  title={track.name}
+                  key={`${track.name.trim().replace(/\s/gm, "")}-recenttrack-${index}`}
+                />
+              );
+            })
           : null}
         <hr />
       </div>
     </div>
   );
-} 
+}

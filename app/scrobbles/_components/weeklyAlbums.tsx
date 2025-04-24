@@ -13,7 +13,7 @@ type TransformedWeeklyAlbum = {
   mbid: string;
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function getWeeklyAlbumChart() {
   const lastFm = LastFmApi();
@@ -30,7 +30,9 @@ export async function getWeeklyAlbumChart() {
 
 export const getAlbumCoverArt = async (albumMbId: string) => {
   try {
-    const response = await fetch(`${MUSICBRAINZ.base_url}/release/${albumMbId}`, { cache: 'no-store' });
+    const response = await fetch(`${MUSICBRAINZ.base_url}/release/${albumMbId}`, {
+      cache: "no-store",
+    });
     return (await response.json()) satisfies MusicBrainzCoverArt.RootObject;
   } catch (error: any) {
     const errMessage = `😞 Album cover ${albumMbId} - ${error.message}`;
@@ -95,19 +97,19 @@ export default async function WeeklyAlbums() {
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {weeklyAlbumChartWithImages && weeklyAlbumChartWithImages.length
           ? weeklyAlbumChartWithImages.map((album: TransformedWeeklyAlbum, index: number) => (
-            <ScrobblesCard
-              playCount={album.playcount}
-              playTitle={album.name}
-              subTitle={album.artist["#text"]}
-              title={album.name}
-              siteUrl={album.url}
-              imageUrl={album.image}
-              key={`${album.name.trim().replace(/\s/gm, "")}-weeklyalbum-${index}`}
-            />
-          ))
+              <ScrobblesCard
+                playCount={album.playcount}
+                playTitle={album.name}
+                subTitle={album.artist["#text"]}
+                title={album.name}
+                siteUrl={album.url}
+                imageUrl={album.image}
+                key={`${album.name.trim().replace(/\s/gm, "")}-weeklyalbum-${index}`}
+              />
+            ))
           : null}
         <hr />
       </div>
     </div>
   );
-} 
+}

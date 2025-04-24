@@ -31,27 +31,37 @@ const posts = defineCollection({
 // Base plugins that are always used
 const basePlugins: Pluggable[] = [
   rehypeSlug,
-  [rehypeAutolinkHeadings, {
-    behavior: "wrap",
-    properties: {
-      className: ["subheading-anchor"],
-      ariaLabel: "Link to section",
+  [
+    rehypeAutolinkHeadings,
+    {
+      behavior: "wrap",
+      properties: {
+        className: ["subheading-anchor"],
+        ariaLabel: "Link to section",
+      },
     },
-  }],
+  ],
 ];
 
 // Add syntax highlighting based on environment
-const rehypePlugins: Pluggable[] = process.env.NODE_ENV === 'production'
-  ? [...basePlugins, rehypeHighlight]
-  : [...basePlugins, [rehypePrettyCode, {
-    theme: "github-dark",
-    keepBackground: true,
-    onVisitLine(node: any) {
-      if (node.children.length === 0) {
-        node.children = [{ type: "text", value: " " }];
-      }
-    },
-  }]];
+const rehypePlugins: Pluggable[] =
+  process.env.NODE_ENV === "production"
+    ? [...basePlugins, rehypeHighlight]
+    : [
+        ...basePlugins,
+        [
+          rehypePrettyCode,
+          {
+            theme: "github-dark",
+            keepBackground: true,
+            onVisitLine(node: any) {
+              if (node.children.length === 0) {
+                node.children = [{ type: "text", value: " " }];
+              }
+            },
+          },
+        ],
+      ];
 
 export default defineConfig({
   root: "content",

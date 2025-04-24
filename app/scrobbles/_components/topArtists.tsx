@@ -11,7 +11,7 @@ type TransformedArtist = {
   playcount: number;
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function getTopArtists() {
   const lastFm = LastFmApi();
@@ -28,7 +28,7 @@ export async function getTopArtists() {
 
 export const getFanartTvData = async (mbid: string): Promise<FanArtArtistResponse> => {
   const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
-  const data = await fetch(FANART_TV_ENDPOINT, { cache: 'no-store' });
+  const data = await fetch(FANART_TV_ENDPOINT, { cache: "no-store" });
   return data.json() satisfies Promise<FanArtArtistResponse>;
 };
 
@@ -42,7 +42,9 @@ export default async function TopArtists() {
       if (!mbId) {
         return;
       }
-      const res = await fetch(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`, { cache: 'no-store' });
+      const res = await fetch(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`, {
+        cache: "no-store",
+      });
       if (res.status === 200) {
         return res.json() satisfies Promise<FanArtArtistResponse>;
       }
@@ -86,18 +88,18 @@ export default async function TopArtists() {
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 top-artist sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {topArtistsWithImages && topArtistsWithImages.length
           ? topArtistsWithImages.map((artist: TransformedArtist, index: number) => (
-            <ScrobblesCard
-              playCount={artist.playcount.toString()}
-              playTitle={artist.name}
-              subTitle={""}
-              title={artist.name}
-              siteUrl={artist.url}
-              imageUrl={artist.image}
-              key={`${artist.name.trim().replace(/\s/gm, "")}-topartist-${index}`}
-            />
-          ))
+              <ScrobblesCard
+                playCount={artist.playcount.toString()}
+                playTitle={artist.name}
+                subTitle={""}
+                title={artist.name}
+                siteUrl={artist.url}
+                imageUrl={artist.image}
+                key={`${artist.name.trim().replace(/\s/gm, "")}-topartist-${index}`}
+              />
+            ))
           : null}
       </div>
     </div>
   );
-} 
+}

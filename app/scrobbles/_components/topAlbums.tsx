@@ -10,7 +10,7 @@ type TransformedAlbum = {
   artist: { "#text": string };
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function getTopAlbums() {
   const lastFm = LastFmApi();
@@ -45,19 +45,19 @@ export default async function TopAlbums() {
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {topAlbumsWithImages && topAlbumsWithImages.length
           ? topAlbumsWithImages.map((album: TransformedAlbum, index: number) => (
-            <ScrobblesCard
-              playCount={album.playcount}
-              playTitle={album.name}
-              subTitle={album.artist["#text"]}
-              title={album.name}
-              siteUrl={album.url}
-              imageUrl={album.image}
-              key={`${album.name.trim().replace(/\s/gm, "")}-topalbum-${index}`}
-            />
-          ))
+              <ScrobblesCard
+                playCount={album.playcount}
+                playTitle={album.name}
+                subTitle={album.artist["#text"]}
+                title={album.name}
+                siteUrl={album.url}
+                imageUrl={album.image}
+                key={`${album.name.trim().replace(/\s/gm, "")}-topalbum-${index}`}
+              />
+            ))
           : null}
         <hr />
       </div>
     </div>
   );
-} 
+}

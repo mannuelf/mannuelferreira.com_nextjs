@@ -17,7 +17,7 @@ type UserResponse = {
   };
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function getUser() {
   const lastFm = LastFmApi();
@@ -40,10 +40,10 @@ export default async function UserProfile() {
   return (
     <div className="pt-4 mt-8 mb-16 border-t">
       <p className="text-lg">
-        My love for collecting music has brought me to keep using lastFm. I have been tracking
-        my listening habits with lastFm since 2008. I have always wanted to play with the
-        data, that is what this page is about. I of course want to share what I have been
-        listening to with you all.
+        My love for collecting music has brought me to keep using lastFm. I have been tracking my
+        listening habits with lastFm since 2008. I have always wanted to play with the data, that is
+        what this page is about. I of course want to share what I have been listening to with you
+        all.
       </p>
       <p>
         If code is what interests you read it{" "}
@@ -57,8 +57,8 @@ export default async function UserProfile() {
         </a>{" "}
       </p>
       <p>
-        I have built an API wrapper to the lastFM API in TypeScript, if you want to build
-        something similar the client may help.{" "}
+        I have built an API wrapper to the lastFM API in TypeScript, if you want to build something
+        similar the client may help.{" "}
         <a href={URL_LASTFM_NPM_PKG} target="_blank" rel="noopener noreferrer">
           GET IT HERE
         </a>
@@ -66,21 +66,12 @@ export default async function UserProfile() {
       <p>
         My scrobbles from {""}
         <a href={URL_LASTFM_API_DOCS} target="_blank" rel="noopener noreferrer">
-          <Image
-            src={LOGO_LASTFM}
-            unoptimized={true}
-            width={90}
-            height={26}
-            alt="LastFm Logo"
-          />
+          <Image src={LOGO_LASTFM} unoptimized={true} width={90} height={26} alt="LastFm Logo" />
         </a>
         {userProfile?.user ? (
           <>
             Total plays:{" "}
-            <span className="text-4xl font-bold text-red-600 ">
-              {userProfile.user.playcount}
-            </span>
-            .
+            <span className="text-4xl font-bold text-red-600 ">{userProfile.user.playcount}</span>.
           </>
         ) : null}
       </p>
@@ -93,8 +84,8 @@ export default async function UserProfile() {
         <a href={URL_COVER_ART_ARCHIVE} target="_blank" rel="noopener noreferrer">
           Musicbrainz Cover Art Archive
         </a>
-        . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If
-        you know of another API{" "}
+        . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you
+        know of another API{" "}
         <a href={URL_TWITTER_PROFILE} target="_blank" rel="noopener noreferrer">
           let me know about it
         </a>
@@ -102,4 +93,4 @@ export default async function UserProfile() {
       </p>
     </div>
   );
-} 
+}

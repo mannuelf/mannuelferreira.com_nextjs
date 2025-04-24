@@ -25,8 +25,9 @@ export const ScrobblesCard = ({
   return (
     <div className="scrobble-card relative rounded-md">
       <div
-        className={`${nowplaying ? "nowplaying " : ""
-          }relative h-80 md:h-85 bg-white rounded-lg overflow-hidden`}
+        className={`${
+          nowplaying ? "nowplaying " : ""
+        }relative h-80 md:h-85 bg-white rounded-lg overflow-hidden`}
       >
         {imageUrl ? (
           <Image
@@ -124,4 +125,3 @@ export const ScrobblesCard = ({
     </div>
   );
 };
-
