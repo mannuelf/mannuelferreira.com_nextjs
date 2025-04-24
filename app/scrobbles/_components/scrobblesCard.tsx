@@ -12,7 +12,7 @@ type ScrobblesCard = {
   title: string;
 };
 
-const ScrobblesCard = ({
+export const ScrobblesCard = ({
   imageUrl,
   mbid,
   nowplaying,
@@ -23,12 +23,10 @@ const ScrobblesCard = ({
   title,
 }: ScrobblesCard) => {
   return (
-    <div key={`scrobble-outer-${title}-${mbid}`} className="scrobble-card relative rounded-md">
+    <div className="scrobble-card relative rounded-md">
       <div
-        key={`scrobble-inner-${title}-${mbid}`}
-        className={`${
-          nowplaying ? "nowplaying " : ""
-        }relative h-80 md:h-85 bg-white rounded-lg overflow-hidden`}
+        className={`${nowplaying ? "nowplaying " : ""
+          }relative h-80 md:h-85 bg-white rounded-lg overflow-hidden`}
       >
         {imageUrl ? (
           <Image
@@ -109,7 +107,7 @@ const ScrobblesCard = ({
             </h3>
           ) : null}{" "}
           {nowplaying ? (
-            <h3 className="p-2 text-xs font-normal text-white rounded-tr-lg rounded-br-lg">
+            <h3 className="p-2 text-xs font-normal text-white rounded-tr-lg rounded-br-lg bg-yellow-600 w-fit">
               🎹 Playing
             </h3>
           ) : null}
@@ -127,4 +125,3 @@ const ScrobblesCard = ({
   );
 };
 
-export default ScrobblesCard;

@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-pt-[3.5rem]">
+    <html lang="en" className="scroll-pt-[3.5rem]" suppressHydrationWarning>
       <GoogleAnalytics GA_MEASUREMENT_ID="G-7P7WYKN019" />
       <body className={cn("min-h-screen bg-background font-ubuntu antialiased", ubuntu.variable)}>
         <Providers>

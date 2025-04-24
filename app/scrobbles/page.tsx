@@ -1,6 +1,4 @@
-// import Layout from "@/components/Layout/layout";
 import Container from "@/components/container";
-// import MetaTags from "@/components/meta-tags";
 import PageTitle from "@/components/page-title";
 import {
   LOGO_LASTFM,
@@ -12,7 +10,7 @@ import {
 } from "@/lib/constants";
 import { defined } from "@/lib/defined";
 
-import ScrobblesCard from "@/app/scrobbles/_components/scrobblesCard";
+import { ScrobblesCard } from "@/app/scrobbles/_components/scrobblesCard";
 import { FANART_TV } from "@/lib/fanarttv/fanarttv";
 import { Artistbackground, FanArtArtistResponse } from "@/lib/fanarttv/fanarttv.types";
 import { MUSICBRAINZ } from "@/lib/musicbrainz/musicbrainz-cover-art";
@@ -57,7 +55,6 @@ type UserResponse = {
     playcount: string;
     name: string;
     url: string;
-    // Add other user properties as needed
   };
 };
 
@@ -87,7 +84,7 @@ async function getData() {
       method.user.getRecentTracks,
       config.username,
       "",
-      "22",
+      "50",
     );
     const { recenttracks } = data;
     return recenttracks;
@@ -368,20 +365,20 @@ export default async function Scrobbles() {
           </div>
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {recentTracks && recentTracks.length
-              ? recentTracks.map((track: TransformedTrack | undefined) => {
-                  if (!track) return null;
-                  return (
-                    <ScrobblesCard
-                      imageUrl={track.image}
-                      nowplaying={track["@attr"]?.nowplaying || ""}
-                      playTitle={track.name}
-                      siteUrl={track.url}
-                      subTitle={track.artist["#text"]}
-                      title={track.name}
-                      key={track.name.trim().replace(/\s/gm, "")}
-                    />
-                  );
-                })
+              ? recentTracks.map((track: TransformedTrack | undefined, index: number) => {
+                if (!track) return null;
+                return (
+                  <ScrobblesCard
+                    imageUrl={track.image}
+                    nowplaying={track["@attr"]?.nowplaying || ""}
+                    playTitle={track.name}
+                    siteUrl={track.url}
+                    subTitle={track.artist["#text"]}
+                    title={track.name}
+                    key={`${track.name.trim().replace(/\s/gm, "")}-recenttrack-${index}`}
+                  />
+                );
+              })
               : null}
             <hr />
           </div>
@@ -392,17 +389,17 @@ export default async function Scrobbles() {
           </div>
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {topAlbums && topAlbums.length
-              ? topAlbums.map((album: any) => (
-                  <ScrobblesCard
-                    playCount={album.playcount.toString()}
-                    playTitle={album.name}
-                    subTitle={album.artist["#text"]}
-                    title={album.name}
-                    siteUrl={album.url}
-                    imageUrl={album.image ? album.image : ""}
-                    key={album.name.trim().replace(/\s/gm, "")}
-                  />
-                ))
+              ? topAlbums.map((album: any, index: number) => (
+                <ScrobblesCard
+                  playCount={album.playcount.toString()}
+                  playTitle={album.name}
+                  subTitle={album.artist["#text"]}
+                  title={album.name}
+                  siteUrl={album.url}
+                  imageUrl={album.image ? album.image : ""}
+                  key={`${album.name.trim().replace(/\s/gm, "")}-topalbum-${index}`}
+                />
+              ))
               : null}
             <hr />
           </div>
@@ -412,17 +409,17 @@ export default async function Scrobbles() {
           </div>
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {weeklyAlbumChart && weeklyAlbumChart.length
-              ? weeklyAlbumChart.map((album) => (
-                  <ScrobblesCard
-                    playCount={album.playcount.toString()}
-                    playTitle={album.name}
-                    subTitle={album.artist["#text"]}
-                    title={album.name}
-                    siteUrl={album.url}
-                    imageUrl={album.image ? album.image : ""}
-                    key={album.name.trim().replace(/\s/gm, "")}
-                  />
-                ))
+              ? weeklyAlbumChart.map((album, index: number) => (
+                <ScrobblesCard
+                  playCount={album.playcount.toString()}
+                  playTitle={album.name}
+                  subTitle={album.artist["#text"]}
+                  title={album.name}
+                  siteUrl={album.url}
+                  imageUrl={album.image ? album.image : ""}
+                  key={`${album.name.trim().replace(/\s/gm, "")}-weeklyalbum-${index}`}
+                />
+              ))
               : null}
             <hr />
           </div>
@@ -432,17 +429,17 @@ export default async function Scrobbles() {
           </div>
           <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 top-artist sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {topArtists && topArtists.length
-              ? topArtists.map((artist: TransformedArtist) => (
-                  <ScrobblesCard
-                    playCount={artist.playcount.toString()}
-                    playTitle={artist.name}
-                    subTitle={""}
-                    title={artist.name}
-                    siteUrl={artist.url}
-                    imageUrl={artist.image}
-                    key={artist.name.trim().replace(/\s/gm, "")}
-                  />
-                ))
+              ? topArtists.map((artist: TransformedArtist, index: number) => (
+                <ScrobblesCard
+                  playCount={artist.playcount.toString()}
+                  playTitle={artist.name}
+                  subTitle={""}
+                  title={artist.name}
+                  siteUrl={artist.url}
+                  imageUrl={artist.image}
+                  key={`${artist.name.trim().replace(/\s/gm, "")}-topartist-${index}`}
+                />
+              ))
               : null}
           </div>
         </div>
