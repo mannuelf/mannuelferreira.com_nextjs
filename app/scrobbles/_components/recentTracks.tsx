@@ -1,8 +1,10 @@
-import LastFmApi from "lastfm-nodejs-client";
+"use client";
+
 import type { Track } from "lastfm-nodejs-client/dist/@types/lastfm.types";
+import { useRecentTracks } from "../_hooks/useScrobbles";
 import { ScrobblesCard } from "./scrobblesCard";
 
-type TransformedTrack = {
+type TrackProps = {
   image: string;
   "@attr"?: { nowplaying: string };
   name: string;
@@ -10,27 +12,22 @@ type TransformedTrack = {
   artist: { "#text": string };
 };
 
-export const dynamic = "force-dynamic";
+export default function RecentTracks() {
+  const { data, isLoading, error } = useRecentTracks();
 
-export async function getRecentTracks() {
-  const lastFm = LastFmApi();
-  const { config, method } = lastFm;
+  if (isLoading) return null;
+  if (error) return <div>Error loading recent tracks</div>;
 
-  const data = await lastFm.getRecentTracks(method.user.getRecentTracks, config.username, "", "50");
-  const { recenttracks } = data;
-  return recenttracks;
-}
-
-export default async function RecentTracks() {
-  const { track } = await getRecentTracks();
-  const recentTracksWithImages = track.map((track: Track, index: number) => {
-    if (!track.image) return;
-    const getImage = track.image.find((img) => img.size === "extralarge");
-    return {
-      ...track,
-      image: getImage ? getImage["#text"] : "",
-    } as TransformedTrack;
-  });
+  const tracks = data?.track
+    .map((track: Track) => {
+      if (!track.image) return null;
+      const getImage = track.image.find((img) => img.size === "extralarge");
+      return {
+        ...track,
+        image: getImage ? getImage["#text"] : "",
+      } as TrackProps;
+    })
+    .filter(Boolean) as TrackProps[];
 
   return (
     <div>
@@ -39,21 +36,18 @@ export default async function RecentTracks() {
         <p>Listened to today</p>
       </div>
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {recentTracksWithImages && recentTracksWithImages.length
-          ? recentTracksWithImages.map((track: TransformedTrack | undefined, index: number) => {
-              if (!track) return null;
-              return (
-                <ScrobblesCard
-                  imageUrl={track.image}
-                  nowplaying={track["@attr"]?.nowplaying || ""}
-                  playTitle={track.name}
-                  siteUrl={track.url}
-                  subTitle={track.artist["#text"]}
-                  title={track.name}
-                  key={`${track.name.trim().replace(/\s/gm, "")}-recenttrack-${index}`}
-                />
-              );
-            })
+        {tracks && tracks.length
+          ? tracks.map((track: TrackProps, index: number) => (
+              <ScrobblesCard
+                imageUrl={track.image}
+                nowplaying={track["@attr"]?.nowplaying || ""}
+                playTitle={track.name}
+                siteUrl={track.url}
+                subTitle={track.artist["#text"]}
+                title={track.name}
+                key={`${track.name.trim().replace(/\s/gm, "")}-recenttrack-${index}`}
+              />
+            ))
           : null}
         <hr />
       </div>

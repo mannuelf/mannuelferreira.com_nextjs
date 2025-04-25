@@ -1,8 +1,10 @@
-import LastFmApi from "lastfm-nodejs-client";
+"use client";
+
 import type { Image as LastFmImage } from "lastfm-nodejs-client/dist/@types/lastfm.types";
+import { useTopAlbums } from "../_hooks/useScrobbles";
 import { ScrobblesCard } from "./scrobblesCard";
 
-type TransformedAlbum = {
+type AlbumProps = {
   name: string;
   url: string;
   image: string;
@@ -12,27 +14,18 @@ type TransformedAlbum = {
 
 export const dynamic = "force-dynamic";
 
-export async function getTopAlbums() {
-  const lastFm = LastFmApi();
-  const { config, method } = lastFm;
+export default function TopAlbums() {
+  const { data, isLoading, error } = useTopAlbums();
 
-  const data = await lastFm.getTopAlbums(
-    method.user.getTopAlbums,
-    config.username,
-    "overall",
-    "50",
-  );
-  return data;
-}
+  if (isLoading) return null;
+  if (error) return <div>Error loading top albums</div>;
 
-export default async function TopAlbums() {
-  const { topalbums } = await getTopAlbums();
-  const topAlbumsWithImages = topalbums.album.map((album: any, index: number) => {
+  const albums = data?.album.map((album: any) => {
     const getImage = album.image.find((img: LastFmImage) => img.size === "extralarge");
     return {
       ...album,
       image: getImage ? getImage["#text"] : "",
-    } as TransformedAlbum;
+    } as AlbumProps;
   });
 
   return (
@@ -43,8 +36,8 @@ export default async function TopAlbums() {
         <p>Top Albums of all time</p>
       </div>
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {topAlbumsWithImages && topAlbumsWithImages.length
-          ? topAlbumsWithImages.map((album: TransformedAlbum, index: number) => (
+        {albums && albums.length
+          ? albums.map((album: AlbumProps, index: number) => (
               <ScrobblesCard
                 playCount={album.playcount}
                 playTitle={album.name}

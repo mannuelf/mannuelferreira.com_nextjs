@@ -1,10 +1,13 @@
+"use client";
+
 import { MUSICBRAINZ } from "@/lib/musicbrainz/musicbrainz-cover-art";
 import { MusicBrainzCoverArt } from "@/lib/musicbrainz/musicbrainz-cover-art.types";
 import LastFmApi from "lastfm-nodejs-client";
 import type { WeeklyAlbum } from "lastfm-nodejs-client/dist/@types/lastfm.types";
+import { useAlbumCoverArt, useWeeklyAlbums } from "../_hooks/useScrobbles";
 import { ScrobblesCard } from "./scrobblesCard";
 
-type TransformedWeeklyAlbum = {
+type WeeklyAlbumProps = {
   name: string;
   url: string;
   image: string;
@@ -40,53 +43,46 @@ export const getAlbumCoverArt = async (albumMbId: string) => {
   }
 };
 
-export default async function WeeklyAlbums() {
-  const { weeklyalbumchart } = await getWeeklyAlbumChart();
-  const { album } = weeklyalbumchart;
+export default function WeeklyAlbums() {
+  const {
+    data: weeklyAlbumsData,
+    isLoading: isLoadingAlbums,
+    error: albumsError,
+  } = useWeeklyAlbums();
+  const albumMbIds = weeklyAlbumsData?.album.map((album) => album.mbid) || [];
 
-  let musicBrainzResponse = await Promise.allSettled(
-    album.map(async (album) => await getAlbumCoverArt(album.mbid)),
+  const { data: coverArtData, isLoading: isLoadingCoverArt } = useAlbumCoverArt(
+    albumMbIds[0] || "",
   );
-  let musicBrainzResult: MusicBrainzCoverArt.RootObject[] = musicBrainzResponse
-    .map(({ value }: any) => {
-      return value;
-    })
-    .filter(Boolean);
 
-  const getAlbumCoverImage = (
-    artistMbId: string,
-    albumMbId: string,
-    albumTitle?: string,
-    artistName?: string,
-  ) => {
+  if (isLoadingAlbums || isLoadingCoverArt) return null;
+  if (albumsError) return <div>Error loading weekly albums</div>;
+
+  const getAlbumCoverImage = (albumMbId: string) => {
+    if (!albumMbId || !coverArtData) return "";
     let imageUrl = "";
-    if (albumMbId === "") return "";
-    musicBrainzResult.find((album) => {
-      if (album.release.includes(albumMbId)) {
-        album.images
-          .map((image) => {
-            if (image.front) {
-              return image.thumbnails;
-            }
-            return imageUrl;
-          })
-          .map((thumb) => {
-            if (thumb && thumb[500]) {
-              imageUrl = thumb[500].toString();
-            }
-            return imageUrl;
-          });
-      }
-    });
+    if (coverArtData.release.includes(albumMbId)) {
+      coverArtData.images
+        .map((image) => {
+          if (image.front) {
+            return image.thumbnails;
+          }
+          return imageUrl;
+        })
+        .map((thumb) => {
+          if (thumb && thumb[500]) {
+            imageUrl = thumb[500].toString();
+          }
+          return imageUrl;
+        });
+    }
     return imageUrl;
   };
 
-  const weeklyAlbumChartWithImages = album.map((album: WeeklyAlbum, index: number) => {
-    return {
-      ...album,
-      image: getAlbumCoverImage(album.artist.mbid, album.mbid, album.name, album.artist["#text"]),
-    } as TransformedWeeklyAlbum;
-  });
+  const albums = weeklyAlbumsData?.album.map((album: WeeklyAlbum) => ({
+    ...album,
+    image: getAlbumCoverImage(album.mbid),
+  })) as WeeklyAlbumProps[];
 
   return (
     <div>
@@ -95,8 +91,8 @@ export default async function WeeklyAlbums() {
         <p>Scrobbles this week</p>
       </div>
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {weeklyAlbumChartWithImages && weeklyAlbumChartWithImages.length
-          ? weeklyAlbumChartWithImages.map((album: TransformedWeeklyAlbum, index: number) => (
+        {albums && albums.length
+          ? albums.map((album: WeeklyAlbumProps, index: number) => (
               <ScrobblesCard
                 playCount={album.playcount}
                 playTitle={album.name}

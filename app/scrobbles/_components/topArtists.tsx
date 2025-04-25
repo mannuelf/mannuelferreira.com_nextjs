@@ -1,83 +1,44 @@
-import { FANART_TV } from "@/lib/fanarttv/fanarttv";
-import { Artistbackground, FanArtArtistResponse } from "@/lib/fanarttv/fanarttv.types";
-import LastFmApi from "lastfm-nodejs-client";
+"use client";
+
 import type { Artist } from "lastfm-nodejs-client/dist/@types/lastfm.types";
+import { useFanartTvData, useTopArtists } from "../_hooks/useScrobbles";
 import { ScrobblesCard } from "./scrobblesCard";
 
-type TransformedArtist = {
+type TopArtistProps = {
   image: string;
   name: string;
   url: string;
   playcount: number;
 };
 
-export const dynamic = "force-dynamic";
+export default function TopArtists() {
+  const {
+    data: topArtistsData,
+    isLoading: isLoadingArtists,
+    error: artistsError,
+  } = useTopArtists();
+  const artistMbIds = topArtistsData?.artist.map((artist: Artist) => artist.mbid) || [];
 
-export async function getTopArtists() {
-  const lastFm = LastFmApi();
-  const { config, method } = lastFm;
+  const { data: fanartData, isLoading: isLoadingFanart } = useFanartTvData(artistMbIds[0] || "");
 
-  const data = await lastFm.getTopArtists(
-    method.user.getTopArtists,
-    config.username,
-    "overall",
-    "50",
-  );
-  return data;
-}
+  if (isLoadingArtists || isLoadingFanart) return null;
+  if (artistsError) return <div>Error loading top artists</div>;
 
-export const getFanartTvData = async (mbid: string): Promise<FanArtArtistResponse> => {
-  const FANART_TV_ENDPOINT = `${FANART_TV.base_url}${mbid}?api_key=${FANART_TV.api_key}`;
-  const data = await fetch(FANART_TV_ENDPOINT, { cache: "no-store" });
-  return data.json() satisfies Promise<FanArtArtistResponse>;
-};
-
-export default async function TopArtists() {
-  const { topartists } = await getTopArtists();
-  const { artist } = topartists;
-  const artistMbIds: string[] = artist.map((artist: Artist) => artist.mbid);
-
-  const fanartTvResponses = await Promise.allSettled(
-    artistMbIds.map(async (mbId) => {
-      if (!mbId) {
-        return;
-      }
-      const res = await fetch(`${FANART_TV.base_url}${mbId}?api_key=${FANART_TV.api_key}`, {
-        cache: "no-store",
-      });
-      if (res.status === 200) {
-        return res.json() satisfies Promise<FanArtArtistResponse>;
-      }
-      return {
-        ...res,
-      };
-    }),
-  );
-  let fanArtTvResult: FanArtArtistResponse[] = fanartTvResponses
-    .map(({ value }: any) => {
-      return value;
-    })
-    .filter(Boolean);
-
-  const getTopArtistImage = (mbid: string): string => {
-    if (!mbid) return "";
+  const getTopArtistImage = (mbid: string) => {
+    if (!mbid || !fanartData) return "";
     let imageUrl = "";
-    fanArtTvResult.find((artist) => {
-      if (artist.mbid_id === mbid) {
-        artist.artistbackground?.map((artistBackground: Artistbackground) => {
-          imageUrl = artistBackground.url;
-        });
-      }
-    });
+    if (fanartData.mbid_id === mbid) {
+      fanartData.artistbackground?.map((artistBackground) => {
+        imageUrl = artistBackground.url;
+      });
+    }
     return imageUrl;
   };
 
-  const topArtistsWithImages = artist.map((artist: Artist, index: number) => {
-    return {
-      ...artist,
-      image: getTopArtistImage(artist.mbid),
-    } as TransformedArtist;
-  });
+  const artists = topArtistsData?.artist.map((artist: Artist) => ({
+    ...artist,
+    image: getTopArtistImage(artist.mbid),
+  })) as TopArtistProps[];
 
   return (
     <div>
@@ -86,8 +47,8 @@ export default async function TopArtists() {
         <p>Scrobbles since 2008</p>
       </div>
       <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 top-artist sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        {topArtistsWithImages && topArtistsWithImages.length
-          ? topArtistsWithImages.map((artist: TransformedArtist, index: number) => (
+        {artists && artists.length
+          ? artists.map((artist: TopArtistProps, index: number) => (
               <ScrobblesCard
                 playCount={artist.playcount.toString()}
                 playTitle={artist.name}
