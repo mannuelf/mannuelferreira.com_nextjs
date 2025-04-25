@@ -1,10 +1,10 @@
 import { build } from "velite";
 
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ["puppeteer-core", "puppeteer"],
-  },
+  serverExternalPackages: ["puppeteer-core", "puppeteer"],
   images: {
     remotePatterns: [
       {

@@ -87,3 +87,20 @@ export const useFanartTvData = (mbid: string) => {
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 };
+
+export const useMultipleArtistsFanart = (mbids: string[]) => {
+  return useQuery({
+    queryKey: ["fanartTv", "multiple", mbids],
+    queryFn: async () => {
+      const promises = mbids.map(async (mbid) => {
+        if (!mbid) return null;
+        const response = await fetch(`/api/fanart/${mbid}`);
+        if (!response.ok) return null;
+        return response.json() as Promise<FanArtArtistResponse>;
+      });
+      return Promise.all(promises);
+    },
+    enabled: mbids.length > 0,
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+  });
+};

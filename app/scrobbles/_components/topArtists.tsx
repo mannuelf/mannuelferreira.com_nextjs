@@ -1,7 +1,8 @@
 "use client";
 
+import type { FanArtArtistResponse } from "@/lib/fanarttv/fanarttv.types";
 import type { Artist } from "lastfm-nodejs-client/dist/@types/lastfm.types";
-import { useFanartTvData, useTopArtists } from "../_hooks/useScrobbles";
+import { useMultipleArtistsFanart, useTopArtists } from "../_hooks/useScrobbles";
 import { ScrobblesCard } from "./scrobblesCard";
 
 type TopArtistProps = {
@@ -17,22 +18,29 @@ export default function TopArtists() {
     isLoading: isLoadingArtists,
     error: artistsError,
   } = useTopArtists();
-  const artistMbIds = topArtistsData?.artist.map((artist: Artist) => artist.mbid) || [];
 
-  const { data: fanartData, isLoading: isLoadingFanart } = useFanartTvData(artistMbIds[0] || "");
+  // Get all artist MBIDs that are not empty
+  const artistMbIds =
+    topArtistsData?.artist
+      .filter((artist: Artist) => artist.mbid)
+      .map((artist: Artist) => artist.mbid) || [];
+
+  const { data: fanartData, isLoading: isLoadingFanart } = useMultipleArtistsFanart(artistMbIds);
 
   if (isLoadingArtists || isLoadingFanart) return null;
   if (artistsError) return <div>Error loading top artists</div>;
 
   const getTopArtistImage = (mbid: string) => {
     if (!mbid || !fanartData) return "";
-    let imageUrl = "";
-    if (fanartData.mbid_id === mbid) {
-      fanartData.artistbackground?.map((artistBackground) => {
-        imageUrl = artistBackground.url;
-      });
-    }
-    return imageUrl;
+
+    // Find the matching fanart data for this artist
+    const artistFanart = fanartData.find(
+      (data: FanArtArtistResponse | null) => data?.mbid_id === mbid,
+    );
+    if (!artistFanart?.artistbackground?.length) return "";
+
+    // Return the first available background image
+    return artistFanart.artistbackground[0].url;
   };
 
   const artists = topArtistsData?.artist.map((artist: Artist) => ({
