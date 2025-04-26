@@ -3,10 +3,10 @@
 # Check if we're running on Linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "Installing Playwright dependencies for Linux..."
+    # Update package list
+    apt-get update
     # Install all required dependencies for Playwright
-    yum install -y \
-        nss \
-        libgbm \
+    apt-get install -y \
         libnss3 \
         libnspr4 \
         libgbm1 \
@@ -17,7 +17,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         libxext6 \
         libxi6 \
         libxtst6 \
-        libnss3 \
         libcups2 \
         libxss1 \
         libxrandr2 \
