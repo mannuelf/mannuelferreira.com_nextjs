@@ -4,9 +4,9 @@
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "Installing Playwright dependencies for Linux..."
     # Update package list
-    apt-get update
+    sudo apt-get update
     # Install all required dependencies for Playwright
-    apt-get install -y \
+    sudo apt-get install -y \
         libnss3 \
         libnspr4 \
         libgbm1 \
