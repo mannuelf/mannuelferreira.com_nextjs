@@ -1,6 +1,6 @@
-import mdxMermaid from "mdx-mermaid";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
+import rehypeMermaid from "rehype-mermaid";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import type { Pluggable } from "unified";
@@ -48,20 +48,20 @@ const rehypePlugins: Pluggable[] =
   process.env.NODE_ENV === "production"
     ? [...basePlugins, rehypeHighlight]
     : [
-        ...basePlugins,
-        [
-          rehypePrettyCode,
-          {
-            theme: "github-dark",
-            keepBackground: true,
-            onVisitLine(node: any) {
-              if (node.children.length === 0) {
-                node.children = [{ type: "text", value: " " }];
-              }
-            },
+      ...basePlugins,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          keepBackground: true,
+          onVisitLine(node: any) {
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
           },
-        ],
-      ];
+        },
+      ],
+    ];
 
 export default defineConfig({
   root: "content",
@@ -74,7 +74,7 @@ export default defineConfig({
   },
   collections: { posts },
   mdx: {
-    rehypePlugins,
-    remarkPlugins: [[mdxMermaid, { output: "svg" }]],
+    rehypePlugins: [...rehypePlugins, rehypeMermaid],
+    remarkPlugins: [],
   },
 });

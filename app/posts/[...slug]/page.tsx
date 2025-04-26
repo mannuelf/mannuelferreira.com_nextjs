@@ -12,10 +12,8 @@ type Props = {
 };
 
 async function getPostFromParams(params: Props["params"]) {
-  const slug = params?.slug?.join("/");
-  const post = posts.find((post) => post.slugAsParams === slug);
-
-  return post;
+  const slug = params.slug.join("/");
+  return posts.find((post) => post.slugAsParams === slug);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -59,7 +57,7 @@ export async function generateStaticParams(): Promise<Props["params"][]> {
   return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
 }
 
-export default async function PostPage({ params }: { params: { slug: string[] } }) {
+export default async function PostPage({ params }: Props) {
   const post = await getPostFromParams(params);
 
   if (!post || !post.published) {
@@ -69,7 +67,11 @@ export default async function PostPage({ params }: { params: { slug: string[] } 
   return (
     <article className="container py-6 prose dark:prose-invert max-w-5xl mx-auto">
       <h1 className="mb-2">{post.title}</h1>
-      <div className="flex gap-2 mb-2">{post.tags?.map((tag) => <Tag tag={tag} key={tag} />)}</div>
+      <div className="flex gap-2 mb-2">
+        {post.tags?.map((tag) => (
+          <Tag tag={tag} key={tag} />
+        ))}
+      </div>
       {post.excerpt ? <p className="text-xl mt-0 text-muted-foreground">{post.excerpt}</p> : null}
       <hr className="my-4" />
       <MDXContent code={post.body} />
