@@ -60,8 +60,8 @@ importers:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       playwright:
-        specifier: ^1.52.0
-        version: 1.52.0
+        specifier: ^1.55.1
+        version: 1.55.1
       puppeteer:
         specifier: ^22.0.0
         version: 22.15.0(typescript@5.8.3)
@@ -76,7 +76,7 @@ importers:
         version: 7.0.2
       rehype-mermaid:
         specifier: ^3.0.0
-        version: 3.0.0(playwright@1.52.0)
+        version: 3.0.0(playwright@1.55.1)
       shiki:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3214,13 +3214,13 @@ packages:
   pkg-types@2.1.0:
     resolution: {integrity: sha512-wmJwA+8ihJixSoHKxZJRBQG1oY8Yr9pGLzRmSsNms0iNWyHHAlZCa7mmKiFR10YPZuz/2k169JiS/inOjBCZ2A==}
 
-  playwright-core@1.52.0:
-    resolution: {integrity: sha512-l2osTgLXSMeuLZOML9qYODUQoPPnUsKsb5/P6LJ2e6uPKXUdPK5WYhN4z03G+YNbWmGDY4YENauNu4ZKczreHg==}
+  playwright-core@1.55.1:
+    resolution: {integrity: sha512-Z6Mh9mkwX+zxSlHqdr5AOcJnfp+xUWLCt9uKV18fhzA8eyxUd8NUWzAjxUh55RZKSYwDGX0cfaySdhZJGMoJ+w==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.52.0:
-    resolution: {integrity: sha512-JAwMNMBlxJ2oD1kce4KPtMkDeKGHQstdpFPcPH3maElAXon/QZeTvtsfXmTMRyO9TslfoYOXkSsvao2nE1ilTw==}
+  playwright@1.55.1:
+    resolution: {integrity: sha512-cJW4Xd/G3v5ovXtJJ52MAOclqeac9S/aGGgRzLabuF8TnIb6xHvMzKIa6JmrRzUkeXJgfL1MhukP0NK6l39h3A==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3327,6 +3327,7 @@ packages:
   puppeteer@22.15.0:
     resolution: {integrity: sha512-XjCY1SiSEi1T7iSYuxS82ft85kwDJUS7wj1Z0eGVXKdtr5g4xnVcbjwxhq5xBnpK/E7x1VZZoJDxpjAOasHT4Q==}
     engines: {node: '>=18'}
+    deprecated: < 24.15.0 is no longer supported
     hasBin: true
 
   quansync@0.2.10:
@@ -7047,12 +7048,12 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  mermaid-isomorphic@3.0.4(playwright@1.52.0):
+  mermaid-isomorphic@3.0.4(playwright@1.55.1):
     dependencies:
       '@fortawesome/fontawesome-free': 6.7.2
       mermaid: 11.6.0
     optionalDependencies:
-      playwright: 1.52.0
+      playwright: 1.55.1
     transitivePeerDependencies:
       - supports-color
 
@@ -7547,11 +7548,11 @@ snapshots:
       exsolve: 1.0.5
       pathe: 2.0.3
 
-  playwright-core@1.52.0: {}
+  playwright-core@1.55.1: {}
 
-  playwright@1.52.0:
+  playwright@1.55.1:
     dependencies:
-      playwright-core: 1.52.0
+      playwright-core: 1.55.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -7806,19 +7807,19 @@ snapshots:
       unist-util-visit: 5.0.0
       vfile: 6.0.3
 
-  rehype-mermaid@3.0.0(playwright@1.52.0):
+  rehype-mermaid@3.0.0(playwright@1.55.1):
     dependencies:
       '@types/hast': 3.0.4
       hast-util-from-html-isomorphic: 2.0.0
       hast-util-to-text: 4.0.2
-      mermaid-isomorphic: 3.0.4(playwright@1.52.0)
+      mermaid-isomorphic: 3.0.4(playwright@1.55.1)
       mini-svg-data-uri: 1.4.4
       space-separated-tokens: 2.0.2
       unified: 11.0.5
       unist-util-visit-parents: 6.0.1
       vfile: 6.0.3
     optionalDependencies:
-      playwright: 1.52.0
+      playwright: 1.55.1
     transitivePeerDependencies:
       - supports-color
 
