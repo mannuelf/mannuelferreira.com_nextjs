@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
 [data-rehype-pretty-code-figure] pre {
   @apply px-0;
 }

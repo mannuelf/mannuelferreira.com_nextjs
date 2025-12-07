@@ -21,7 +21,9 @@ export default async function TagsPage() {
       </div>
       <hr className="my-4" />
       <div className="flex flex-wrap gap-2">
-        {sortedTags?.map((tag) => <Tag tag={tag} count={tags[tag]} key={tag} />)}
+        {sortedTags?.map((tag) => (
+          <Tag tag={tag} count={tags[tag]} key={tag} />
+        ))}
       </div>
     </div>
   );

@@ -49,7 +49,9 @@ export default function TagPage({ params }: TagPageProps) {
               <CardTitle className="text-gray-500">Tags</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              {sortedTags?.map((tag) => <Tag tag={tag} key={tag} count={tags[tag]} />)}
+              {sortedTags?.map((tag) => (
+                <Tag tag={tag} key={tag} count={tags[tag]} />
+              ))}
             </CardContent>
           </Card>
         </div>

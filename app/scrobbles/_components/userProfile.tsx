@@ -1,13 +1,10 @@
 import {
-  LOGO_LASTFM,
   URL_COVER_ART_ARCHIVE,
   URL_FANARTTV,
-  URL_LASTFM_API_DOCS,
   URL_LASTFM_NPM_PKG,
   URL_TWITTER_PROFILE,
 } from "@/lib/constants";
 import LastFmApi from "lastfm-nodejs-client";
-import Image from "next/image";
 
 type UserResponse = {
   user: {
@@ -63,34 +60,35 @@ export default async function UserProfile() {
           GET IT HERE
         </a>
       </p>
-      <p>
-        My scrobbles from {""}
-        <a href={URL_LASTFM_API_DOCS} target="_blank" rel="noopener noreferrer">
-          <Image src={LOGO_LASTFM} unoptimized={true} width={90} height={26} alt="LastFm Logo" />
-        </a>
-        {userProfile?.user ? (
-          <>
-            Total plays:{" "}
-            <span className="text-4xl font-bold text-red-600 ">{userProfile.user.playcount}</span>.
-          </>
-        ) : null}
-      </p>
-      <p>
-        Some photos from{" "}
-        <a href={URL_FANARTTV} target="_blank" rel="noopener noreferrer">
-          fanart.tv
-        </a>{" "}
-        API, some from{" "}
-        <a href={URL_COVER_ART_ARCHIVE} target="_blank" rel="noopener noreferrer">
-          Musicbrainz Cover Art Archive
-        </a>
-        . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you
-        know of another API{" "}
-        <a href={URL_TWITTER_PROFILE} target="_blank" rel="noopener noreferrer">
-          let me know about it
-        </a>
-        .🤙
-      </p>
+      <div className="flex flex-col gap-4  mt-8">
+        <p>
+          {userProfile?.user ? (
+            <>
+              Total plays:{" "}
+              <span className="text-4xl font-bold text-red-600 ">{userProfile.user.playcount}</span>
+              .
+            </>
+          ) : null}
+        </p>
+      </div>
+      <div className="flex flex-col gap-4 mt-8">
+        <p>
+          Some photos from{" "}
+          <a href={URL_FANARTTV} target="_blank" rel="noopener noreferrer">
+            fanart.tv
+          </a>{" "}
+          API, some from{" "}
+          <a href={URL_COVER_ART_ARCHIVE} target="_blank" rel="noopener noreferrer">
+            Musicbrainz Cover Art Archive
+          </a>
+          . Unfortunately not all album artwork is available through Musicbrainz or FanartTv. If you
+          know of another API{" "}
+          <a href={URL_TWITTER_PROFILE} target="_blank" rel="noopener noreferrer">
+            let me know about it
+          </a>
+          .🤙
+        </p>
+      </div>
     </div>
   );
 }

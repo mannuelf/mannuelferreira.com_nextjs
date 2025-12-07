@@ -7,12 +7,13 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: { slug: string[] };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string[] }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 async function getPostFromParams(params: Props["params"]) {
-  const slug = params.slug.join("/");
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug.join("/");
   return posts.find((post) => post.slugAsParams === slug);
 }
 

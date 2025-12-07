@@ -171,7 +171,6 @@ A policy that tells the browser what to do with a request, allow it or block it 
 (in order or appearance):
 
 - `X-Frame-Options` prevents **click jacking** by not allowing your webpage to be loaded in a frame or iframe. The SAMEORIGIN property allows a page to be loaded in a frame on the same origin as the page itself only. `DEPRECATED` [Read more](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html#x-frame-options-header-types)
-
   - use Content-Security-Policy: **frame-ancestors 'self'**; instead
 
 - `X-XSS-Protection` blocks any request that is deemed to be [Cross Site Scripting Attack](#CrossSiteScriptingAttack). `DEPRECATED` [Read more](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#x-xss-protection-header)

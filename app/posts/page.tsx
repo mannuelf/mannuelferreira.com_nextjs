@@ -16,13 +16,14 @@ export const metadata: Metadata = {
 const POSTS_PER_PAGE = 6;
 
 interface BlogPageProps {
-  searchParams: {
+  searchParams: Promise<{
     page?: string;
-  };
+  }>;
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const currentPage = Number(await searchParams?.page) || 1;
+  const resolvedSearchParams = await searchParams;
+  const currentPage = Number(resolvedSearchParams?.page) || 1;
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
   const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
 
@@ -49,7 +50,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               <CardTitle>Tags</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              {sortedTags?.map((tag) => <Tag tag={tag} key={tag} count={tags[tag]} />)}
+              {sortedTags?.map((tag) => (
+                <Tag tag={tag} key={tag} count={tags[tag]} />
+              ))}
             </CardContent>
           </Card>
         </div>

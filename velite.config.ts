@@ -48,20 +48,20 @@ const rehypePlugins: Pluggable[] =
   process.env.NODE_ENV === "production"
     ? [...basePlugins, rehypeHighlight]
     : [
-      ...basePlugins,
-      [
-        rehypePrettyCode,
-        {
-          theme: "github-dark",
-          keepBackground: true,
-          onVisitLine(node: any) {
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }];
-            }
+        ...basePlugins,
+        [
+          rehypePrettyCode,
+          {
+            theme: "github-dark",
+            keepBackground: true,
+            onVisitLine(node: any) {
+              if (node.children.length === 0) {
+                node.children = [{ type: "text", value: " " }];
+              }
+            },
           },
-        },
-      ],
-    ];
+        ],
+      ];
 
 export default defineConfig({
   root: "content",

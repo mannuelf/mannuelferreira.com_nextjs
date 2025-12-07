@@ -4,9 +4,8 @@ import { build } from "velite";
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ["playwright"],
-  },
+  serverExternalPackages: ["playwright"],
+  experimental: {},
   images: {
     remotePatterns: [
       {
