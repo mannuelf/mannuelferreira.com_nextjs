@@ -13,7 +13,7 @@ interface TagPageProps {
 }
 
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
-  const { tag } = params;
+  const { tag } = await params;
   return {
     title: tag,
     description: `Posts on the topic of ${tag}`,
@@ -26,8 +26,8 @@ export const generateStaticParams = () => {
   return paths;
 };
 
-export default function TagPage({ params }: TagPageProps) {
-  const { tag } = params;
+export default async function TagPage({ params }: TagPageProps) {
+  const { tag } = await params;
   const title = tag.split("-").join(" ");
 
   const allPosts = getPostsByTagSlug(posts, tag);
