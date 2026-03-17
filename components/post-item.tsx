@@ -23,7 +23,7 @@ export function PostItem({
   tags,
 }: PostItemProps): React.ReactElement {
   return (
-    <article className="flex flex-col gap-2 py-3 p-5 m-0 mb-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-2 border-border hover:border-orange-400 rounded-md transition-all">
+    <article className="flex flex-col gap-2 py-3 p-5 m-0 mb-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-2 border-border dark:border-white/10 hover:border-orange-400 rounded-md transition-all">
       <div className="flex justify-between items-center">
         <Link href={"/" + slug}>
           <Image
