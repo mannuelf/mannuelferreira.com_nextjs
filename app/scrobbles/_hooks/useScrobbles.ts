@@ -3,11 +3,11 @@ import { MUSICBRAINZ } from "@/lib/musicbrainz/musicbrainz-cover-art";
 import type { MusicBrainzCoverArt } from "@/lib/musicbrainz/musicbrainz-cover-art.types";
 import { useQuery } from "@tanstack/react-query";
 
-export const useRecentTracks = (page = 1, limit = 50) => {
+export const useRecentTracks = (page = 1, limit = 12, period = "7day") => {
   return useQuery({
-    queryKey: ["recentTracks", page, limit],
+    queryKey: ["recentTracks", page, limit, period],
     queryFn: async () => {
-      const response = await fetch(`/api/lastfm/recent-tracks?limit=${limit}`);
+      const response = await fetch(`/api/lastfm/recent-tracks?limit=${limit}&period=${period}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -17,11 +17,11 @@ export const useRecentTracks = (page = 1, limit = 50) => {
   });
 };
 
-export const useTopAlbums = (page = 1, limit = 50) => {
+export const useTopAlbums = (page = 1, limit = 12, period = "7day") => {
   return useQuery({
-    queryKey: ["topAlbums", page, limit],
+    queryKey: ["topAlbums", page, limit, period],
     queryFn: async () => {
-      const response = await fetch(`/api/lastfm/top-albums?limit=${limit}`);
+      const response = await fetch(`/api/lastfm/top-albums?limit=${limit}&period=${period}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -45,11 +45,11 @@ export const useWeeklyAlbums = (page = 1, limit = 22) => {
   });
 };
 
-export const useTopArtists = (page = 1, limit = 50) => {
+export const useTopArtists = (page = 1, limit = 12, period = "7day") => {
   return useQuery({
-    queryKey: ["topArtists", page, limit],
+    queryKey: ["topArtists", page, limit, period],
     queryFn: async () => {
-      const response = await fetch(`/api/lastfm/top-artists?limit=${limit}`);
+      const response = await fetch(`/api/lastfm/top-artists?limit=${limit}&period=${period}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

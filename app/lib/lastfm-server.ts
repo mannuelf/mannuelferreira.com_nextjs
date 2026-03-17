@@ -4,21 +4,35 @@ import { LASTFM_CONFIG } from "../config/lastfm";
 const lastFm = LastFmApi();
 const { method } = lastFm;
 
-export async function getRecentTracks(limit: number = 50) {
+function periodToFrom(period: string): string | undefined {
+  if (!period || period === "today") return undefined;
+  const now = Math.floor(Date.now() / 1000);
+  const map: Record<string, number> = {
+    "7day": 7 * 24 * 60 * 60,
+    "1month": 30 * 24 * 60 * 60,
+    "3month": 90 * 24 * 60 * 60,
+    "6month": 180 * 24 * 60 * 60,
+    "12month": 365 * 24 * 60 * 60,
+  };
+  return map[period] ? String(now - map[period]) : undefined;
+}
+
+export async function getRecentTracks(limit: number = 50, period: string = "today") {
+  const from = periodToFrom(period);
   const data = await lastFm.getRecentTracks(
     method.user.getRecentTracks,
     LASTFM_CONFIG.USER!,
-    "",
     limit.toString(),
+    from,
   );
   return data.recenttracks;
 }
 
-export async function getTopAlbums(limit: number = 50) {
+export async function getTopAlbums(limit: number = 50, period: string = "overall") {
   const data = await lastFm.getTopAlbums(
     method.user.getTopAlbums,
     LASTFM_CONFIG.USER!,
-    "overall",
+    period,
     limit.toString(),
   );
   return data.topalbums;
@@ -34,11 +48,11 @@ export async function getWeeklyAlbums(limit: number = 22) {
   return data.weeklyalbumchart;
 }
 
-export async function getTopArtists(limit: number = 50) {
+export async function getTopArtists(limit: number = 50, period: string = "overall") {
   const data = await lastFm.getTopArtists(
     method.user.getTopArtists,
     LASTFM_CONFIG.USER!,
-    "overall",
+    period,
     limit.toString(),
   );
   return data.topartists;

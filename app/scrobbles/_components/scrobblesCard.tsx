@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,7 +26,14 @@ export const ScrobblesCard = ({
   title,
 }: ScrobblesCard) => {
   return (
-    <div className="scrobble-card relative rounded-md">
+    <motion.div
+      className="scrobble-card relative rounded-md"
+      variants={{
+        hidden: { opacity: 0, y: 16 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+    >
       <div
         className={`${
           nowplaying ? "nowplaying " : ""
@@ -122,6 +132,6 @@ export const ScrobblesCard = ({
           </h2>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

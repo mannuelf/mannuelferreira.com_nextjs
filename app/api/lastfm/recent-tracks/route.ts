@@ -5,7 +5,8 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const limit = Number(searchParams.get("limit")) || 50;
-    const data = await getRecentTracks(limit);
+    const period = searchParams.get("period") || "today";
+    const data = await getRecentTracks(limit, period);
     return NextResponse.json(data);
   } catch (error) {
     console.error("Error fetching recent tracks:", error);

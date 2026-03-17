@@ -2,8 +2,14 @@
 
 import type { FanArtArtistResponse } from "@/lib/fanarttv/fanarttv.types";
 import type { Artist } from "lastfm-nodejs-client/dist/@types/lastfm.types";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { useMultipleArtistsFanart, useTopArtists } from "../_hooks/useScrobbles";
+import { usePeriodParam } from "../_hooks/usePeriodParam";
+import PeriodFilter from "./periodFilter";
 import { ScrobblesCard } from "./scrobblesCard";
+
+const DEFAULT_LIMIT = 12;
 
 type TopArtistProps = {
   image: string;
@@ -13,13 +19,20 @@ type TopArtistProps = {
 };
 
 export default function TopArtists() {
+  const [period, setPeriod] = usePeriodParam("artists_period", "overall");
+  const [limit, setLimit] = useState(DEFAULT_LIMIT);
+
+  const handlePeriodChange = (p: string) => {
+    setLimit(DEFAULT_LIMIT);
+    setPeriod(p);
+  };
+
   const {
     data: topArtistsData,
     isLoading: isLoadingArtists,
     error: artistsError,
-  } = useTopArtists();
+  } = useTopArtists(1, limit, period);
 
-  // Get all artist MBIDs that are not empty
   const artistMbIds =
     topArtistsData?.artist
       .filter((artist: Artist) => artist.mbid)
@@ -27,19 +40,14 @@ export default function TopArtists() {
 
   const { data: fanartData, isLoading: isLoadingFanart } = useMultipleArtistsFanart(artistMbIds);
 
-  if (isLoadingArtists || isLoadingFanart) return null;
   if (artistsError) return <div>Error loading top artists</div>;
 
   const getTopArtistImage = (mbid: string) => {
     if (!mbid || !fanartData) return "";
-
-    // Find the matching fanart data for this artist
     const artistFanart = fanartData.find(
       (data: FanArtArtistResponse | null) => data?.mbid_id === mbid,
     );
     if (!artistFanart?.artistbackground?.length) return "";
-
-    // Return the first available background image
     return artistFanart.artistbackground[0].url;
   };
 
@@ -48,26 +56,51 @@ export default function TopArtists() {
     image: getTopArtistImage(artist.mbid),
   })) as TopArtistProps[];
 
+  const isLoading = isLoadingArtists || isLoadingFanart;
+
   return (
     <div>
-      <div className="pb-2 pl-4" id="#topartists">
-        <h2 className="text-2xl font-medium">Top Artists</h2>
-        <p>Scrobbles since 2008</p>
+      <div className="flex items-start justify-between pb-2 pl-4 pr-1" id="#topartists">
+        <div>
+          <h2 className="text-2xl font-medium">Top Artists</h2>
+          <p>Scrobbles since 2008</p>
+        </div>
+        <PeriodFilter value={period} onChange={handlePeriodChange} />
       </div>
-      <div className="grid grid-flow-row-dense grid-rows-4 gap-2 pb-20 top-artist sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        {artists && artists.length
-          ? artists.map((artist: TopArtistProps, index: number) => (
-              <ScrobblesCard
-                playCount={artist.playcount.toString()}
-                playTitle={artist.name}
-                subTitle={""}
-                title={artist.name}
-                siteUrl={artist.url}
-                imageUrl={artist.image}
-                key={`${artist.name.trim().replace(/\s/gm, "")}-topartist-${index}`}
-              />
-            ))
-          : null}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`${period}-${limit}`}
+          className="grid grid-flow-row-dense gap-2 top-artist sm:grid-cols-2 md:grid-cols-2 md:min-h-[1036px] lg:grid-cols-3"
+          initial="hidden"
+          animate={isLoading ? "hidden" : "visible"}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
+          }}
+        >
+          {artists && artists.length
+            ? artists.map((artist: TopArtistProps, index: number) => (
+                <ScrobblesCard
+                  playCount={artist.playcount.toString()}
+                  playTitle={artist.name}
+                  subTitle={""}
+                  title={artist.name}
+                  siteUrl={artist.url}
+                  imageUrl={artist.image}
+                  key={`${artist.name.trim().replace(/\s/gm, "")}-topartist-${index}`}
+                />
+              ))
+            : null}
+        </motion.div>
+      </AnimatePresence>
+      <div className="flex justify-center pb-8 pt-2">
+        <button
+          onClick={() => setLimit((l) => l + DEFAULT_LIMIT)}
+          disabled={isLoading}
+          className="px-8 py-3 text-base rounded-full bg-black text-white dark:bg-white dark:text-black transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          Load more
+        </button>
       </div>
     </div>
   );
