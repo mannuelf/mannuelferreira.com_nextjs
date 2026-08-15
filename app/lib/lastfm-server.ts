@@ -48,6 +48,34 @@ export async function getWeeklyAlbums(limit: number = 22) {
   return data.weeklyalbumchart;
 }
 
+export async function getUserTopTags(limit: number = 50) {
+  const data = await lastFm.getUserTopTags(
+    method.user.getTopTags,
+    LASTFM_CONFIG.USER!,
+    limit.toString(),
+  );
+  return data.toptags;
+}
+
+export async function getLovedTracks(limit: number = 12) {
+  const data = await lastFm.getLovedTracks(
+    method.user.getLovedTracks,
+    LASTFM_CONFIG.USER!,
+    "",
+    limit.toString(),
+  );
+  return data.lovedtracks;
+}
+
+export async function getTagTopTracks(tag: string, limit: number = 12) {
+  const data = await lastFm.tag.tagTopTracks(
+    method.tag.getTopTracks,
+    tag,
+    limit.toString(),
+  );
+  return data.tracks;
+}
+
 export async function getTopArtists(limit: number = 50, period: string = "overall") {
   const data = await lastFm.getTopArtists(
     method.user.getTopArtists,

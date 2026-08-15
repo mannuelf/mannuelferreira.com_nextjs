@@ -4,6 +4,9 @@
 			"path": "."
 		},
 		{
+			"path": "../skills"
+		},
+		{
 			"path": "../lastfm-nodejs-client"
 		}
 	],

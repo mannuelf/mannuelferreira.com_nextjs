@@ -3,13 +3,19 @@ export const dynamic = "force-dynamic";
 
 import PageTitle from "@/components/page-title";
 import { Suspense } from "react";
+import LovedTracks from "./_components/lovedTracks";
 import RecentTracks from "./_components/recentTracks";
+import TopTags from "./_components/topTags";
+import TagTopTracks from "./_components/tagTopTracks";
 import TopAlbums from "./_components/topAlbums";
 import TopArtists from "./_components/topArtists";
 import UserProfile from "./_components/userProfile";
 import WeeklyAlbums from "./_components/weeklyAlbums";
 import {
+  LovedTracksLoading,
   RecentTracksLoading,
+  TopTagsLoading,
+  TagTopTracksLoading,
   TopAlbumsLoading,
   TopArtistsLoading,
   WeeklyAlbumsLoading,
@@ -24,6 +30,9 @@ export default async function Scrobbles() {
             <PageTitle>Scrobbles</PageTitle>
             <UserProfile />
           </div>
+          <Suspense fallback={<TopTagsLoading />}>
+            <TopTags />
+          </Suspense>
           <Suspense fallback={<RecentTracksLoading />}>
             <RecentTracks />
           </Suspense>
@@ -35,6 +44,12 @@ export default async function Scrobbles() {
           </Suspense>
           <Suspense fallback={<WeeklyAlbumsLoading />}>
             <WeeklyAlbums />
+          </Suspense>
+          <Suspense fallback={<TagTopTracksLoading />}>
+            <TagTopTracks />
+          </Suspense>
+          <Suspense fallback={<LovedTracksLoading />}>
+            <LovedTracks />
           </Suspense>
         </div>
       </div>

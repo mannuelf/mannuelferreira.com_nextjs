@@ -4,7 +4,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import type { Period, RecentPeriod } from "../types";
 
-export function usePeriodParam(key: string, defaultPeriod: Period | RecentPeriod = "overall"): [Period | RecentPeriod, (p: string) => void] {
+export function usePeriodParam(
+  key: string,
+  defaultPeriod: Period | RecentPeriod = "overall",
+): [Period | RecentPeriod, (p: string) => void] {
   const searchParams = useSearchParams();
   const router = useRouter();
 

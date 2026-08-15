@@ -1,11 +1,10 @@
 "use client";
 
-import type { Track } from "lastfm-nodejs-client/dist/@types/lastfm.types";
 import { AnimatePresence, motion } from "framer-motion";
+import type { Track } from "lastfm-nodejs-client/dist/@types/lastfm.types";
 import { useState } from "react";
 import { usePeriodParam } from "../_hooks/usePeriodParam";
 import { useRecentTracks } from "../_hooks/useScrobbles";
-import PeriodFilter from "./periodFilter";
 import { ScrobblesCard } from "./scrobblesCard";
 
 const DEFAULT_LIMIT = 12;
@@ -48,7 +47,6 @@ export default function RecentTracks() {
           <h2 className="text-2xl font-medium">Recent Tracks</h2>
           <p>Listened to today</p>
         </div>
-        <PeriodFilter value={period} onChange={handlePeriodChange} variant="recent" />
       </div>
       <AnimatePresence mode="wait">
         <motion.div

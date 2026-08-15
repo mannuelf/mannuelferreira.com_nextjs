@@ -32,13 +32,13 @@ Add interactive date period filters to each section of the `/scrobbles` page, al
 
 ## Sections & API Support
 
-| Section | API Method | Period Param | Supported Values |
-|---|---|---|---|
-| Top Artists | `user.getTopArtists` | `period` | `7day \| 1month \| 3month \| 6month \| 12month \| overall` |
-| Top Albums | `user.getTopAlbums` | `period` | `7day \| 1month \| 3month \| 6month \| 12month \| overall` |
-| Top Tracks *(new)* | `user.getTopTracks` | `period` | `7day \| 1month \| 3month \| 6month \| 12month \| overall` |
-| Recent Tracks | `user.getRecentTracks` | — | No filter; always shows latest |
-| Weekly Albums | `user.getWeeklyAlbumChart` | — | Uses `from`/`to`; out of scope v1 |
+| Section            | API Method                 | Period Param | Supported Values                                           |
+| ------------------ | -------------------------- | ------------ | ---------------------------------------------------------- |
+| Top Artists        | `user.getTopArtists`       | `period`     | `7day \| 1month \| 3month \| 6month \| 12month \| overall` |
+| Top Albums         | `user.getTopAlbums`        | `period`     | `7day \| 1month \| 3month \| 6month \| 12month \| overall` |
+| Top Tracks _(new)_ | `user.getTopTracks`        | `period`     | `7day \| 1month \| 3month \| 6month \| 12month \| overall` |
+| Recent Tracks      | `user.getRecentTracks`     | —            | No filter; always shows latest                             |
+| Weekly Albums      | `user.getWeeklyAlbumChart` | —            | Uses `from`/`to`; out of scope v1                          |
 
 ---
 
@@ -50,11 +50,11 @@ Filters live in search params so they are shareable and bookmarkable.
 /scrobbles?artists_period=1month&albums_period=overall&tracks_period=7day
 ```
 
-| Param | Default | Controls |
-|---|---|---|
+| Param            | Default   | Controls            |
+| ---------------- | --------- | ------------------- |
 | `artists_period` | `overall` | Top Artists section |
-| `albums_period` | `overall` | Top Albums section |
-| `tracks_period` | `overall` | Top Tracks section |
+| `albums_period`  | `overall` | Top Albums section  |
+| `tracks_period`  | `overall` | Top Tracks section  |
 
 ---
 
@@ -76,13 +76,13 @@ Top Artists  [7d] [1M] [3M] [6M] [12M] [All]
 ### Label Map
 
 | API Value | Display Label |
-|---|---|
-| `7day` | `7d` |
-| `1month` | `1M` |
-| `3month` | `3M` |
-| `6month` | `6M` |
-| `12month` | `12M` |
-| `overall` | `All` |
+| --------- | ------------- |
+| `7day`    | `7d`          |
+| `1month`  | `1M`          |
+| `3month`  | `3M`          |
+| `6month`  | `6M`          |
+| `12month` | `12M`         |
+| `overall` | `All`         |
 
 ---
 
@@ -116,15 +116,19 @@ interface PeriodFilterProps {
 - Accepts a `paramKey` argument (e.g. `"artists_period"`) and a default period
 
 ```typescript
-function usePeriodParam(key: string, defaultPeriod: Period = "overall"): [Period, (p: Period) => void]
+function usePeriodParam(
+  key: string,
+  defaultPeriod: Period = "overall",
+): [Period, (p: Period) => void];
 ```
 
 ### 3. Update API routes to accept `period` param
 
 **Files:**
+
 - `app/api/lastfm/top-albums/route.ts`
 - `app/api/lastfm/top-artists/route.ts`
-- `app/api/lastfm/top-tracks/route.ts` *(new)*
+- `app/api/lastfm/top-tracks/route.ts` _(new)_
 
 Add `period` query param extraction with `"overall"` fallback. Validate against allowed values.
 
@@ -133,6 +137,7 @@ Add `period` query param extraction with `"overall"` fallback. Validate against 
 **File:** `app/lib/lastfm-server.ts`
 
 Update signatures:
+
 ```typescript
 getTopAlbums(limit = 50, period: Period = "overall")
 getTopArtists(limit = 50, period: Period = "overall")
@@ -146,6 +151,7 @@ Pass `period` through to the `lastfm-nodejs-client` call.
 **File:** `app/scrobbles/_hooks/useScrobbles.ts`
 
 Update signatures:
+
 ```typescript
 useTopAlbums(page = 1, limit = 50, period: Period = "overall")
 useTopArtists(page = 1, limit = 50, period: Period = "overall")
@@ -157,7 +163,7 @@ useTopTracks(page = 1, limit = 50, period: Period = "overall")  // new
 
 ### 6. Add Top Tracks section
 
-**File:** `app/scrobbles/_components/topTracks.tsx` *(new)*
+**File:** `app/scrobbles/_components/topTracks.tsx` _(new)_
 
 - Mirror pattern of `topAlbums.tsx`
 - Uses `useTopTracks()` hook
@@ -167,6 +173,7 @@ useTopTracks(page = 1, limit = 50, period: Period = "overall")  // new
 ### 7. Wire filters into existing section components
 
 **Files:**
+
 - `app/scrobbles/_components/topAlbums.tsx`
 - `app/scrobbles/_components/topArtists.tsx`
 
@@ -182,20 +189,20 @@ Add `TopTracksLoading` skeleton (mirrors existing ones). No changes needed to fi
 
 ## File Change Summary
 
-| File | Change |
-|---|---|
-| `app/scrobbles/_components/periodFilter.tsx` | **New** — shared filter pill component |
-| `app/scrobbles/_hooks/usePeriodParam.ts` | **New** — URL search param state hook |
-| `app/scrobbles/_components/topTracks.tsx` | **New** — Top Tracks section |
-| `app/scrobbles/_components/topAlbums.tsx` | **Update** — add period filter |
-| `app/scrobbles/_components/topArtists.tsx` | **Update** — add period filter |
-| `app/scrobbles/_hooks/useScrobbles.ts` | **Update** — add period to hooks + new `useTopTracks` |
-| `app/lib/lastfm-server.ts` | **Update** — add period param to functions + new `getTopTracks` |
-| `app/api/lastfm/top-albums/route.ts` | **Update** — accept `period` query param |
-| `app/api/lastfm/top-artists/route.ts` | **Update** — accept `period` query param |
-| `app/api/lastfm/top-tracks/route.ts` | **New** — API route for top tracks |
-| `app/scrobbles/loading.tsx` | **Update** — add `TopTracksLoading` skeleton |
-| `app/scrobbles/page.tsx` | **Update** — add Top Tracks section + wrap in Suspense |
+| File                                         | Change                                                          |
+| -------------------------------------------- | --------------------------------------------------------------- |
+| `app/scrobbles/_components/periodFilter.tsx` | **New** — shared filter pill component                          |
+| `app/scrobbles/_hooks/usePeriodParam.ts`     | **New** — URL search param state hook                           |
+| `app/scrobbles/_components/topTracks.tsx`    | **New** — Top Tracks section                                    |
+| `app/scrobbles/_components/topAlbums.tsx`    | **Update** — add period filter                                  |
+| `app/scrobbles/_components/topArtists.tsx`   | **Update** — add period filter                                  |
+| `app/scrobbles/_hooks/useScrobbles.ts`       | **Update** — add period to hooks + new `useTopTracks`           |
+| `app/lib/lastfm-server.ts`                   | **Update** — add period param to functions + new `getTopTracks` |
+| `app/api/lastfm/top-albums/route.ts`         | **Update** — accept `period` query param                        |
+| `app/api/lastfm/top-artists/route.ts`        | **Update** — accept `period` query param                        |
+| `app/api/lastfm/top-tracks/route.ts`         | **New** — API route for top tracks                              |
+| `app/scrobbles/loading.tsx`                  | **Update** — add `TopTracksLoading` skeleton                    |
+| `app/scrobbles/page.tsx`                     | **Update** — add Top Tracks section + wrap in Suspense          |
 
 ---
 

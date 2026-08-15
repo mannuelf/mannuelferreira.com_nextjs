@@ -88,6 +88,49 @@ export const useFanartTvData = (mbid: string) => {
   });
 };
 
+export const useUserTopTags = (limit = 50) => {
+  return useQuery({
+    queryKey: ["userTopTags", limit],
+    queryFn: async () => {
+      const response = await fetch(`/api/lastfm/top-tags?limit=${limit}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+  });
+};
+
+export const useLovedTracks = (limit = 12) => {
+  return useQuery({
+    queryKey: ["lovedTracks", limit],
+    queryFn: async () => {
+      const response = await fetch(`/api/lastfm/loved-tracks?limit=${limit}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
+    staleTime: 1000 * 60 * 60, // 1 hour
+  });
+};
+
+export const useTagTopTracks = (tag: string, limit = 12) => {
+  return useQuery({
+    queryKey: ["tagTopTracks", tag, limit],
+    queryFn: async () => {
+      const response = await fetch(`/api/lastfm/tag-top-tracks?tag=${encodeURIComponent(tag)}&limit=${limit}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
+    enabled: !!tag,
+    staleTime: 1000 * 60 * 60, // 1 hour
+  });
+};
+
 export const useMultipleArtistsFanart = (mbids: string[]) => {
   return useQuery({
     queryKey: ["fanartTv", "multiple", mbids],

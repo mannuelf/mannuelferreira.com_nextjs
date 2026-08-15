@@ -72,6 +72,61 @@ export const TopAlbumsLoading = () => (
   </div>
 );
 
+export const TopTagsLoading = () => (
+  <div className="pb-8">
+    <div className="pb-4 pl-4">
+      <h2 className="text-2xl font-medium">Top Tags</h2>
+      <p className="text-muted-foreground text-sm">Genres and tags I listen to most</p>
+    </div>
+    <div className="flex flex-wrap gap-3 px-4">
+      {Array.from({ length: 30 }).map((_, i) => (
+        <div
+          key={i}
+          className="h-5 bg-muted rounded animate-pulse"
+          style={{ width: `${40 + Math.random() * 60}px` }}
+        />
+      ))}
+    </div>
+  </div>
+);
+
+export const LovedTracksLoading = () => (
+  <div>
+    <div className="pb-2 pl-4">
+      <h2 className="text-2xl font-medium">Loved Tracks</h2>
+      <p className="text-muted-foreground text-sm">Tracks I have loved on Last.fm</p>
+    </div>
+    <div className="grid grid-flow-row-dense gap-2 sm:grid-cols-2 md:grid-cols-3 md:min-h-[1036px] lg:grid-cols-4">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <SkeletonCard key={`loved-track-loading-${i}`} />
+      ))}
+    </div>
+    <SkeletonLoadMore />
+  </div>
+);
+
+export const TagTopTracksLoading = () => (
+  <div>
+    <div className="flex items-start justify-between pb-2 pl-4 pr-1">
+      <div className="flex flex-col gap-1">
+        <h2 className="text-2xl font-medium">Top Tracks by Tag</h2>
+        <p className="text-muted-foreground text-sm">Global top tracks per genre</p>
+      </div>
+      <div className="flex flex-wrap gap-1 justify-end max-w-xs">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="h-7 w-16 bg-muted rounded-full animate-pulse" />
+        ))}
+      </div>
+    </div>
+    <div className="grid grid-flow-row-dense gap-2 sm:grid-cols-2 md:grid-cols-3 md:min-h-[1036px] lg:grid-cols-4">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <SkeletonCard key={`tag-top-track-loading-${i}`} />
+      ))}
+    </div>
+    <SkeletonLoadMore />
+  </div>
+);
+
 export const WeeklyAlbumsLoading = () => (
   <div>
     <div className="pb-2 pl-4">
@@ -93,10 +148,13 @@ export default function Loading() {
         <div className="flex items-center gap-3 py-6 lg:py-10">
           <div className="h-12 w-48 bg-muted rounded-lg animate-pulse" />
         </div>
+        <TopTagsLoading />
         <RecentTracksLoading />
         <TopArtistsLoading />
         <TopAlbumsLoading />
         <WeeklyAlbumsLoading />
+        <TagTopTracksLoading />
+        <LovedTracksLoading />
       </div>
     </div>
   );
