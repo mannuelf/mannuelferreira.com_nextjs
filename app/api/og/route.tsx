@@ -2,12 +2,10 @@ import { siteConfig } from "@/config/site";
 import { CMS_NAME } from "@/lib/constants";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
-export const runtime = "edge";
-
-const ubuntuBold = fetch(new URL("../../../assets/fonts/Ubuntu-Bold.ttf", import.meta.url)).then(
-  (res) => res.arrayBuffer(),
-);
+const ubuntuBold = readFile(path.join(process.cwd(), "assets/fonts/Ubuntu-Bold.ttf"));
 
 export async function GET(req: NextRequest) {
   try {
