@@ -1,8 +1,8 @@
-onlyBuiltDependencies:
-  - esbuild
-  - puppeteer
-  - sharp
-  - unrs-resolver
 minimumReleaseAgeExclude:
   - '@types/node@26.6.2'
   - eslint@10.11.0
+allowBuilds:
+  esbuild: true
+  puppeteer: true
+  sharp: true
+  unrs-resolver: true
