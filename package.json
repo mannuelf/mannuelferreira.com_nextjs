@@ -2,6 +2,7 @@
   "name": "mannuel-ferreira",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@12.4.2",
   "scripts": {
     "dev": "next dev --webpack",
     "start:dev": "concurrently \"npm run watch:css\" \"npm run dev\" \"npm run typecheck -w\"",
