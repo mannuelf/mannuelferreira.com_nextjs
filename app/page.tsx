@@ -1,15 +1,30 @@
 import { posts } from "#site/content";
 import { PostItem } from "@/components/post-item";
+import { HeroBanner } from "@/components/hero-banner";
 import { buttonVariants } from "@/components/ui/button";
 import { cn, sortPosts } from "@/lib/utils";
 import Link from "next/link";
 
 export default function Home() {
-  const latestPosts = sortPosts(posts).slice(0, 7);
+  const sortedPosts = sortPosts(posts);
+  const publishedPosts = sortedPosts.filter((post) => post.published);
+  const heroBannerSlides = publishedPosts.slice(0, 3).map((post) => ({
+    id: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    coverImage: post.coverImage,
+    slug: post.slug,
+  }));
+  const latestPosts = sortedPosts.slice(0, 7);
 
   return (
     <>
-      <section className="pt-6 pb-8 space-y-6 md:pb-12 md:mt-2 lg:py-32">
+      <section className="pt-6 pb-8 space-y-6 md:pb-12 md:mt-2">
+        <div className="container max-w-7xl px-4">
+          <HeroBanner slides={heroBannerSlides} />
+        </div>
+      </section>
+      <section className="pt-6 pb-8 space-y-6 md:pb-12 lg:py-16">
         <div className="container flex flex-col gap-4 text-center">
           <h1 className="text-3xl font-black sm:text-5xl md:text-6xl lg:text-6xl text-balance">
             Hello world
